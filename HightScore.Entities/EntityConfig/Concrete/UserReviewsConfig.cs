@@ -12,7 +12,9 @@ namespace HightScore.Entities.EntityConfig.Concrete
 
             builder.Property(i => i.ItemId).IsRequired();
             builder.Property(i => i.UserRating).IsRequired();
-            builder.Property(i => i.Comment).IsRequired();
+            builder.Property(i => i.Comment).IsRequired().HasMaxLength(800);
+
+
 
             builder.HasData(
     new UserReview

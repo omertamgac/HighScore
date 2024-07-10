@@ -3,6 +3,7 @@ using System;
 using HightScore.Entities.DbContexts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HightScore.Entities.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240710213520_'Deneme'")]
+    partial class Deneme
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -66,7 +69,7 @@ namespace HightScore.Entities.Migrations
                             Id = 1,
                             ActionType = "User Management",
                             AdminId = 1,
-                            CreatedTime = new DateTime(2024, 7, 11, 0, 41, 13, 554, DateTimeKind.Local).AddTicks(6999),
+                            CreatedTime = new DateTime(2024, 7, 11, 0, 35, 19, 778, DateTimeKind.Local).AddTicks(2305),
                             Description = "Created new user roles."
                         },
                         new
@@ -74,7 +77,7 @@ namespace HightScore.Entities.Migrations
                             Id = 2,
                             ActionType = "Content Management",
                             AdminId = 2,
-                            CreatedTime = new DateTime(2024, 7, 11, 0, 41, 13, 554, DateTimeKind.Local).AddTicks(7006),
+                            CreatedTime = new DateTime(2024, 7, 11, 0, 35, 19, 778, DateTimeKind.Local).AddTicks(2320),
                             Description = "Published new articles."
                         },
                         new
@@ -82,7 +85,7 @@ namespace HightScore.Entities.Migrations
                             Id = 3,
                             ActionType = "System Maintenance",
                             AdminId = 3,
-                            CreatedTime = new DateTime(2024, 7, 11, 0, 41, 13, 554, DateTimeKind.Local).AddTicks(7008),
+                            CreatedTime = new DateTime(2024, 7, 11, 0, 35, 19, 778, DateTimeKind.Local).AddTicks(2322),
                             Description = "Performed database backup."
                         },
                         new
@@ -90,7 +93,7 @@ namespace HightScore.Entities.Migrations
                             Id = 4,
                             ActionType = "User Management",
                             AdminId = 1,
-                            CreatedTime = new DateTime(2024, 7, 11, 0, 41, 13, 554, DateTimeKind.Local).AddTicks(7010),
+                            CreatedTime = new DateTime(2024, 7, 11, 0, 35, 19, 778, DateTimeKind.Local).AddTicks(2324),
                             Description = "Updated user permissions."
                         },
                         new
@@ -98,7 +101,7 @@ namespace HightScore.Entities.Migrations
                             Id = 5,
                             ActionType = "Content Management",
                             AdminId = 2,
-                            CreatedTime = new DateTime(2024, 7, 11, 0, 41, 13, 554, DateTimeKind.Local).AddTicks(7012),
+                            CreatedTime = new DateTime(2024, 7, 11, 0, 35, 19, 778, DateTimeKind.Local).AddTicks(2325),
                             Description = "Reviewed and edited user-submitted content."
                         });
                 });
@@ -135,70 +138,70 @@ namespace HightScore.Entities.Migrations
                             Id = 1,
                             CategoryDescription = "Games that emphasize physical challenges, including hand-eye coordination and reaction-time.",
                             CategoryName = "Action",
-                            CreatedTime = new DateTime(2024, 7, 11, 0, 41, 13, 555, DateTimeKind.Local).AddTicks(865)
+                            CreatedTime = new DateTime(2024, 7, 11, 0, 35, 19, 778, DateTimeKind.Local).AddTicks(5190)
                         },
                         new
                         {
                             Id = 2,
                             CategoryDescription = "Games focused on story-driven gameplay and exploration of a virtual world.",
                             CategoryName = "Adventure",
-                            CreatedTime = new DateTime(2024, 7, 11, 0, 41, 13, 555, DateTimeKind.Local).AddTicks(868)
+                            CreatedTime = new DateTime(2024, 7, 11, 0, 35, 19, 778, DateTimeKind.Local).AddTicks(5196)
                         },
                         new
                         {
                             Id = 3,
                             CategoryDescription = "Games where players assume the roles of characters in a fictional setting and take control over many of those characters' actions.",
                             CategoryName = "Role-Playing (RPG)",
-                            CreatedTime = new DateTime(2024, 7, 11, 0, 41, 13, 555, DateTimeKind.Local).AddTicks(871)
+                            CreatedTime = new DateTime(2024, 7, 11, 0, 35, 19, 778, DateTimeKind.Local).AddTicks(5198)
                         },
                         new
                         {
                             Id = 4,
                             CategoryDescription = "Games designed to simulate real-world activities and scenarios as closely as possible.",
                             CategoryName = "Simulation",
-                            CreatedTime = new DateTime(2024, 7, 11, 0, 41, 13, 555, DateTimeKind.Local).AddTicks(873)
+                            CreatedTime = new DateTime(2024, 7, 11, 0, 35, 19, 778, DateTimeKind.Local).AddTicks(5199)
                         },
                         new
                         {
                             Id = 5,
                             CategoryDescription = "Games that focus on careful planning and skillful thinking to achieve victory.",
                             CategoryName = "Strategy",
-                            CreatedTime = new DateTime(2024, 7, 11, 0, 41, 13, 555, DateTimeKind.Local).AddTicks(875)
+                            CreatedTime = new DateTime(2024, 7, 11, 0, 35, 19, 778, DateTimeKind.Local).AddTicks(5200)
                         },
                         new
                         {
                             Id = 6,
                             CategoryDescription = "Games that simulate the practice of sports, including team sports, track and field, and extreme sports.",
                             CategoryName = "Sports",
-                            CreatedTime = new DateTime(2024, 7, 11, 0, 41, 13, 555, DateTimeKind.Local).AddTicks(876)
+                            CreatedTime = new DateTime(2024, 7, 11, 0, 35, 19, 778, DateTimeKind.Local).AddTicks(5212)
                         },
                         new
                         {
                             Id = 7,
                             CategoryDescription = "Games that emphasize solving puzzles as the main gameplay element.",
                             CategoryName = "Puzzle",
-                            CreatedTime = new DateTime(2024, 7, 11, 0, 41, 13, 555, DateTimeKind.Local).AddTicks(878)
+                            CreatedTime = new DateTime(2024, 7, 11, 0, 35, 19, 778, DateTimeKind.Local).AddTicks(5213)
                         },
                         new
                         {
                             Id = 8,
                             CategoryDescription = "Games designed to scare the player, often through a combination of atmosphere, storytelling, and shock elements.",
                             CategoryName = "Horror",
-                            CreatedTime = new DateTime(2024, 7, 11, 0, 41, 13, 555, DateTimeKind.Local).AddTicks(880)
+                            CreatedTime = new DateTime(2024, 7, 11, 0, 35, 19, 778, DateTimeKind.Local).AddTicks(5214)
                         },
                         new
                         {
                             Id = 9,
                             CategoryDescription = "Games where the primary objective is to race against opponents or the clock.",
                             CategoryName = "Racing",
-                            CreatedTime = new DateTime(2024, 7, 11, 0, 41, 13, 555, DateTimeKind.Local).AddTicks(883)
+                            CreatedTime = new DateTime(2024, 7, 11, 0, 35, 19, 778, DateTimeKind.Local).AddTicks(5215)
                         },
                         new
                         {
                             Id = 10,
                             CategoryDescription = "Games that support large numbers of players interacting with each other in a persistent virtual world.",
                             CategoryName = "MMO (Massively Multiplayer Online)",
-                            CreatedTime = new DateTime(2024, 7, 11, 0, 41, 13, 555, DateTimeKind.Local).AddTicks(885)
+                            CreatedTime = new DateTime(2024, 7, 11, 0, 35, 19, 778, DateTimeKind.Local).AddTicks(5216)
                         });
                 });
 
@@ -241,364 +244,361 @@ namespace HightScore.Entities.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedTime = new DateTime(2024, 7, 11, 0, 41, 13, 555, DateTimeKind.Local).AddTicks(4243),
+                            CreatedTime = new DateTime(2024, 7, 11, 0, 35, 19, 778, DateTimeKind.Local).AddTicks(8259),
                             Description = "An action-adventure game developed and published by Nintendo.",
                             MediaAverageRating = 9.8m,
                             RelaseDate = new DateTime(2017, 3, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "The Legend of Zelda: Breath of the Wild",
-                            UpdatedAt = new DateTime(2024, 7, 11, 0, 41, 13, 555, DateTimeKind.Local).AddTicks(4254),
+                            UpdatedAt = new DateTime(2024, 7, 11, 0, 35, 19, 778, DateTimeKind.Local).AddTicks(8270),
                             UserAverageRating = 9.5m
                         },
                         new
                         {
                             Id = 2,
-                            CreatedTime = new DateTime(2024, 7, 11, 0, 41, 13, 555, DateTimeKind.Local).AddTicks(4260),
+                            CreatedTime = new DateTime(2024, 7, 11, 0, 35, 19, 778, DateTimeKind.Local).AddTicks(8274),
                             Description = "A platform game developed and published by Nintendo for the Nintendo Switch.",
                             MediaAverageRating = 9.7m,
                             RelaseDate = new DateTime(2017, 10, 27, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Super Mario Odyssey",
-                            UpdatedAt = new DateTime(2024, 7, 11, 0, 41, 13, 555, DateTimeKind.Local).AddTicks(4263),
+                            UpdatedAt = new DateTime(2024, 7, 11, 0, 35, 19, 778, DateTimeKind.Local).AddTicks(8276),
                             UserAverageRating = 9.3m
                         },
                         new
                         {
                             Id = 3,
-                            CreatedTime = new DateTime(2024, 7, 11, 0, 41, 13, 555, DateTimeKind.Local).AddTicks(4267),
+                            CreatedTime = new DateTime(2024, 7, 11, 0, 35, 19, 778, DateTimeKind.Local).AddTicks(8277),
                             Description = "An action-adventure game developed and published by Rockstar Games.",
                             MediaAverageRating = 9.8m,
                             RelaseDate = new DateTime(2018, 10, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Red Dead Redemption 2",
-                            UpdatedAt = new DateTime(2024, 7, 11, 0, 41, 13, 555, DateTimeKind.Local).AddTicks(4270),
+                            UpdatedAt = new DateTime(2024, 7, 11, 0, 35, 19, 778, DateTimeKind.Local).AddTicks(8279),
                             UserAverageRating = 9.6m
                         },
                         new
                         {
                             Id = 4,
-                            CreatedTime = new DateTime(2024, 7, 11, 0, 41, 13, 555, DateTimeKind.Local).AddTicks(4271),
+                            CreatedTime = new DateTime(2024, 7, 11, 0, 35, 19, 778, DateTimeKind.Local).AddTicks(8280),
                             Description = "An action-adventure game developed by Santa Monica Studio and published by Sony Interactive Entertainment.",
                             MediaAverageRating = 9.6m,
                             RelaseDate = new DateTime(2018, 4, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "God of War",
-                            UpdatedAt = new DateTime(2024, 7, 11, 0, 41, 13, 555, DateTimeKind.Local).AddTicks(4273),
+                            UpdatedAt = new DateTime(2024, 7, 11, 0, 35, 19, 778, DateTimeKind.Local).AddTicks(8283),
                             UserAverageRating = 9.4m
                         },
                         new
                         {
                             Id = 5,
-                            CreatedTime = new DateTime(2024, 7, 11, 0, 41, 13, 555, DateTimeKind.Local).AddTicks(4275),
+                            CreatedTime = new DateTime(2024, 7, 11, 0, 35, 19, 778, DateTimeKind.Local).AddTicks(8284),
                             Description = "An action role-playing game developed and published by CD Projekt.",
                             MediaAverageRating = 9.9m,
                             RelaseDate = new DateTime(2015, 5, 19, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "The Witcher 3: Wild Hunt",
-                            UpdatedAt = new DateTime(2024, 7, 11, 0, 41, 13, 555, DateTimeKind.Local).AddTicks(4277),
+                            UpdatedAt = new DateTime(2024, 7, 11, 0, 35, 19, 778, DateTimeKind.Local).AddTicks(8286),
                             UserAverageRating = 9.7m
                         },
                         new
                         {
                             Id = 6,
-                            CreatedTime = new DateTime(2024, 7, 11, 0, 41, 13, 555, DateTimeKind.Local).AddTicks(4279),
+                            CreatedTime = new DateTime(2024, 7, 11, 0, 35, 19, 778, DateTimeKind.Local).AddTicks(8287),
                             Description = "An action role-playing game developed and published by CD Projekt.",
                             MediaAverageRating = 8.9m,
                             RelaseDate = new DateTime(2020, 12, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Cyberpunk 2077",
-                            UpdatedAt = new DateTime(2024, 7, 11, 0, 41, 13, 555, DateTimeKind.Local).AddTicks(4283),
+                            UpdatedAt = new DateTime(2024, 7, 11, 0, 35, 19, 778, DateTimeKind.Local).AddTicks(8289),
                             UserAverageRating = 8.5m
                         },
                         new
                         {
                             Id = 7,
-                            CreatedTime = new DateTime(2024, 7, 11, 0, 41, 13, 555, DateTimeKind.Local).AddTicks(4284),
+                            CreatedTime = new DateTime(2024, 7, 11, 0, 35, 19, 778, DateTimeKind.Local).AddTicks(8290),
                             Description = "A sandbox video game developed by Mojang.",
                             MediaAverageRating = 9.5m,
                             RelaseDate = new DateTime(2011, 11, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Minecraft",
-                            UpdatedAt = new DateTime(2024, 7, 11, 0, 41, 13, 555, DateTimeKind.Local).AddTicks(4286),
+                            UpdatedAt = new DateTime(2024, 7, 11, 0, 35, 19, 778, DateTimeKind.Local).AddTicks(8293),
                             UserAverageRating = 9.2m
                         },
                         new
                         {
                             Id = 8,
-                            CreatedTime = new DateTime(2024, 7, 11, 0, 41, 13, 555, DateTimeKind.Local).AddTicks(4288),
+                            CreatedTime = new DateTime(2024, 7, 11, 0, 35, 19, 778, DateTimeKind.Local).AddTicks(8294),
                             Description = "An online video game developed by Epic Games.",
                             MediaAverageRating = 9.0m,
                             RelaseDate = new DateTime(2017, 7, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Fortnite",
-                            UpdatedAt = new DateTime(2024, 7, 11, 0, 41, 13, 555, DateTimeKind.Local).AddTicks(4291),
+                            UpdatedAt = new DateTime(2024, 7, 11, 0, 35, 19, 778, DateTimeKind.Local).AddTicks(8296),
                             UserAverageRating = 8.8m
                         },
                         new
                         {
                             Id = 9,
-                            CreatedTime = new DateTime(2024, 7, 11, 0, 41, 13, 555, DateTimeKind.Local).AddTicks(4293),
+                            CreatedTime = new DateTime(2024, 7, 11, 0, 35, 19, 778, DateTimeKind.Local).AddTicks(8297),
                             Description = "An action role-playing game developed by Bethesda Game Studios and published by Bethesda Softworks.",
                             MediaAverageRating = 9.7m,
                             RelaseDate = new DateTime(2011, 11, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "The Elder Scrolls V: Skyrim",
-                            UpdatedAt = new DateTime(2024, 7, 11, 0, 41, 13, 555, DateTimeKind.Local).AddTicks(4295),
+                            UpdatedAt = new DateTime(2024, 7, 11, 0, 35, 19, 778, DateTimeKind.Local).AddTicks(8299),
                             UserAverageRating = 9.4m
                         },
                         new
                         {
                             Id = 10,
-                            CreatedTime = new DateTime(2024, 7, 11, 0, 41, 13, 555, DateTimeKind.Local).AddTicks(4297),
+                            CreatedTime = new DateTime(2024, 7, 11, 0, 35, 19, 778, DateTimeKind.Local).AddTicks(8300),
                             Description = "An action role-playing game developed by Guerrilla Games and published by Sony Interactive Entertainment.",
                             MediaAverageRating = 9.5m,
                             RelaseDate = new DateTime(2017, 2, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Horizon Zero Dawn",
-                            UpdatedAt = new DateTime(2024, 7, 11, 0, 41, 13, 555, DateTimeKind.Local).AddTicks(4299),
+                            UpdatedAt = new DateTime(2024, 7, 11, 0, 35, 19, 778, DateTimeKind.Local).AddTicks(8301),
                             UserAverageRating = 9.3m
                         },
                         new
                         {
                             Id = 11,
-                            CreatedTime = new DateTime(2024, 7, 11, 0, 41, 13, 555, DateTimeKind.Local).AddTicks(4301),
+                            CreatedTime = new DateTime(2024, 7, 11, 0, 35, 19, 778, DateTimeKind.Local).AddTicks(8302),
                             Description = "An action role-playing game developed and published by Square Enix.",
                             MediaAverageRating = 8.8m,
                             RelaseDate = new DateTime(2016, 11, 29, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Final Fantasy XV",
-                            UpdatedAt = new DateTime(2024, 7, 11, 0, 41, 13, 555, DateTimeKind.Local).AddTicks(4303),
+                            UpdatedAt = new DateTime(2024, 7, 11, 0, 35, 19, 778, DateTimeKind.Local).AddTicks(8304),
                             UserAverageRating = 8.6m
                         },
                         new
                         {
                             Id = 12,
-                            CreatedTime = new DateTime(2024, 7, 11, 0, 41, 13, 555, DateTimeKind.Local).AddTicks(4305),
+                            CreatedTime = new DateTime(2024, 7, 11, 0, 35, 19, 778, DateTimeKind.Local).AddTicks(8305),
                             Description = "A role-playing video game developed by Atlus.",
                             MediaAverageRating = 9.6m,
                             RelaseDate = new DateTime(2016, 9, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Persona 5",
-                            UpdatedAt = new DateTime(2024, 7, 11, 0, 41, 13, 555, DateTimeKind.Local).AddTicks(4307),
+                            UpdatedAt = new DateTime(2024, 7, 11, 0, 35, 19, 778, DateTimeKind.Local).AddTicks(8307),
                             UserAverageRating = 9.5m
                         },
                         new
                         {
                             Id = 13,
-                            CreatedTime = new DateTime(2024, 7, 11, 0, 41, 13, 555, DateTimeKind.Local).AddTicks(4309),
+                            CreatedTime = new DateTime(2024, 7, 11, 0, 35, 19, 778, DateTimeKind.Local).AddTicks(8308),
                             Description = "An action role-playing game developed by FromSoftware and published by Bandai Namco Entertainment.",
                             MediaAverageRating = 9.3m,
                             RelaseDate = new DateTime(2016, 3, 24, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Dark Souls III",
-                            UpdatedAt = new DateTime(2024, 7, 11, 0, 41, 13, 555, DateTimeKind.Local).AddTicks(4311),
+                            UpdatedAt = new DateTime(2024, 7, 11, 0, 35, 19, 778, DateTimeKind.Local).AddTicks(8310),
                             UserAverageRating = 9.1m
                         },
                         new
                         {
                             Id = 14,
-                            CreatedTime = new DateTime(2024, 7, 11, 0, 41, 13, 555, DateTimeKind.Local).AddTicks(4313),
+                            CreatedTime = new DateTime(2024, 7, 11, 0, 35, 19, 778, DateTimeKind.Local).AddTicks(8311),
                             Description = "An action role-playing game developed by FromSoftware and published by Sony Computer Entertainment.",
                             MediaAverageRating = 9.4m,
                             RelaseDate = new DateTime(2015, 3, 24, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Bloodborne",
-                            UpdatedAt = new DateTime(2024, 7, 11, 0, 41, 13, 555, DateTimeKind.Local).AddTicks(4315),
+                            UpdatedAt = new DateTime(2024, 7, 11, 0, 35, 19, 778, DateTimeKind.Local).AddTicks(8313),
                             UserAverageRating = 9.3m
                         },
                         new
                         {
                             Id = 15,
-                            CreatedTime = new DateTime(2024, 7, 11, 0, 41, 13, 555, DateTimeKind.Local).AddTicks(4317),
+                            CreatedTime = new DateTime(2024, 7, 11, 0, 35, 19, 778, DateTimeKind.Local).AddTicks(8314),
                             Description = "A team-based multiplayer first-person shooter developed and published by Blizzard Entertainment.",
                             MediaAverageRating = 9.1m,
                             RelaseDate = new DateTime(2016, 5, 24, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Overwatch",
-                            UpdatedAt = new DateTime(2024, 7, 11, 0, 41, 13, 555, DateTimeKind.Local).AddTicks(4319),
+                            UpdatedAt = new DateTime(2024, 7, 11, 0, 35, 19, 778, DateTimeKind.Local).AddTicks(8316),
                             UserAverageRating = 8.9m
                         },
                         new
                         {
                             Id = 16,
-                            CreatedTime = new DateTime(2024, 7, 11, 0, 41, 13, 555, DateTimeKind.Local).AddTicks(4320),
+                            CreatedTime = new DateTime(2024, 7, 11, 0, 35, 19, 778, DateTimeKind.Local).AddTicks(8317),
                             Description = "An action-adventure game developed by FromSoftware and published by Activision.",
                             MediaAverageRating = 9.5m,
                             RelaseDate = new DateTime(2019, 3, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Sekiro: Shadows Die Twice",
-                            UpdatedAt = new DateTime(2024, 7, 11, 0, 41, 13, 555, DateTimeKind.Local).AddTicks(4323),
+                            UpdatedAt = new DateTime(2024, 7, 11, 0, 35, 19, 778, DateTimeKind.Local).AddTicks(8319),
                             UserAverageRating = 9.2m
                         },
                         new
                         {
                             Id = 17,
-                            CreatedTime = new DateTime(2024, 7, 11, 0, 41, 13, 555, DateTimeKind.Local).AddTicks(4325),
+                            CreatedTime = new DateTime(2024, 7, 11, 0, 35, 19, 778, DateTimeKind.Local).AddTicks(8320),
                             Description = "An action role-playing game developed by Team Ninja and published by Koei Tecmo.",
                             MediaAverageRating = 8.9m,
                             RelaseDate = new DateTime(2017, 2, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Nioh",
-                            UpdatedAt = new DateTime(2024, 7, 11, 0, 41, 13, 555, DateTimeKind.Local).AddTicks(4327),
+                            UpdatedAt = new DateTime(2024, 7, 11, 0, 35, 19, 778, DateTimeKind.Local).AddTicks(8322),
                             UserAverageRating = 8.7m
                         },
                         new
                         {
                             Id = 18,
-                            CreatedTime = new DateTime(2024, 7, 11, 0, 41, 13, 555, DateTimeKind.Local).AddTicks(4329),
+                            CreatedTime = new DateTime(2024, 7, 11, 0, 35, 19, 778, DateTimeKind.Local).AddTicks(8322),
                             Description = "An action role-playing game developed and published by Capcom.",
                             MediaAverageRating = 9.2m,
                             RelaseDate = new DateTime(2018, 1, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Monster Hunter: World",
-                            UpdatedAt = new DateTime(2024, 7, 11, 0, 41, 13, 555, DateTimeKind.Local).AddTicks(4331),
+                            UpdatedAt = new DateTime(2024, 7, 11, 0, 35, 19, 778, DateTimeKind.Local).AddTicks(8324),
                             UserAverageRating = 9.0m
                         },
                         new
                         {
                             Id = 19,
-                            CreatedTime = new DateTime(2024, 7, 11, 0, 41, 13, 555, DateTimeKind.Local).AddTicks(4332),
+                            CreatedTime = new DateTime(2024, 7, 11, 0, 35, 19, 778, DateTimeKind.Local).AddTicks(8325),
                             Description = "A survival horror game developed and published by Capcom.",
                             MediaAverageRating = 9.5m,
                             RelaseDate = new DateTime(2019, 1, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Resident Evil 2",
-                            UpdatedAt = new DateTime(2024, 7, 11, 0, 41, 13, 555, DateTimeKind.Local).AddTicks(4334),
+                            UpdatedAt = new DateTime(2024, 7, 11, 0, 35, 19, 778, DateTimeKind.Local).AddTicks(8327),
                             UserAverageRating = 9.3m
                         },
                         new
                         {
                             Id = 20,
-                            CreatedTime = new DateTime(2024, 7, 11, 0, 41, 13, 555, DateTimeKind.Local).AddTicks(4336),
+                            CreatedTime = new DateTime(2024, 7, 11, 0, 35, 19, 778, DateTimeKind.Local).AddTicks(8328),
                             Description = "An action-adventure game developed by Sucker Punch Productions and published by Sony Interactive Entertainment.",
                             MediaAverageRating = 9.5m,
                             RelaseDate = new DateTime(2020, 7, 17, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Ghost of Tsushima",
-                            UpdatedAt = new DateTime(2024, 7, 11, 0, 41, 13, 555, DateTimeKind.Local).AddTicks(4338),
+                            UpdatedAt = new DateTime(2024, 7, 11, 0, 35, 19, 778, DateTimeKind.Local).AddTicks(8330),
                             UserAverageRating = 9.4m
                         },
                         new
                         {
                             Id = 21,
-                            CreatedTime = new DateTime(2024, 7, 11, 0, 41, 13, 555, DateTimeKind.Local).AddTicks(4339),
+                            CreatedTime = new DateTime(2024, 7, 11, 0, 35, 19, 778, DateTimeKind.Local).AddTicks(8331),
                             Description = "An action role-playing video game developed by Ubisoft Montreal and published by Ubisoft.",
                             MediaAverageRating = 9.0m,
                             RelaseDate = new DateTime(2020, 11, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Assassin's Creed Valhalla",
-                            UpdatedAt = new DateTime(2024, 7, 11, 0, 41, 13, 555, DateTimeKind.Local).AddTicks(4342),
+                            UpdatedAt = new DateTime(2024, 7, 11, 0, 35, 19, 778, DateTimeKind.Local).AddTicks(8333),
                             UserAverageRating = 8.8m
                         },
                         new
                         {
                             Id = 22,
-                            CreatedTime = new DateTime(2024, 7, 11, 0, 41, 13, 555, DateTimeKind.Local).AddTicks(4344),
+                            CreatedTime = new DateTime(2024, 7, 11, 0, 35, 19, 778, DateTimeKind.Local).AddTicks(8334),
                             Description = "An action-adventure game developed by Naughty Dog and published by Sony Interactive Entertainment.",
                             MediaAverageRating = 9.8m,
                             RelaseDate = new DateTime(2020, 6, 19, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "The Last of Us Part II",
-                            UpdatedAt = new DateTime(2024, 7, 11, 0, 41, 13, 555, DateTimeKind.Local).AddTicks(4345),
+                            UpdatedAt = new DateTime(2024, 7, 11, 0, 35, 19, 778, DateTimeKind.Local).AddTicks(8337),
                             UserAverageRating = 9.6m
                         },
                         new
                         {
                             Id = 23,
-                            CreatedTime = new DateTime(2024, 7, 11, 0, 41, 13, 555, DateTimeKind.Local).AddTicks(4347),
+                            CreatedTime = new DateTime(2024, 7, 11, 0, 35, 19, 778, DateTimeKind.Local).AddTicks(8337),
                             Description = "An action-adventure game developed by Remedy Entertainment and published by 505 Games.",
                             MediaAverageRating = 9.1m,
                             RelaseDate = new DateTime(2019, 8, 27, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Control",
-                            UpdatedAt = new DateTime(2024, 7, 11, 0, 41, 13, 555, DateTimeKind.Local).AddTicks(4349),
+                            UpdatedAt = new DateTime(2024, 7, 11, 0, 35, 19, 778, DateTimeKind.Local).AddTicks(8340),
                             UserAverageRating = 8.9m
                         },
                         new
                         {
                             Id = 24,
-                            CreatedTime = new DateTime(2024, 7, 11, 0, 41, 13, 555, DateTimeKind.Local).AddTicks(4351),
+                            CreatedTime = new DateTime(2024, 7, 11, 0, 35, 19, 778, DateTimeKind.Local).AddTicks(8341),
                             Description = "A roguelike action dungeon crawler video game developed and published by Supergiant Games.",
                             MediaAverageRating = 9.7m,
                             RelaseDate = new DateTime(2020, 9, 17, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Hades",
-                            UpdatedAt = new DateTime(2024, 7, 11, 0, 41, 13, 555, DateTimeKind.Local).AddTicks(4354),
+                            UpdatedAt = new DateTime(2024, 7, 11, 0, 35, 19, 778, DateTimeKind.Local).AddTicks(8343),
                             UserAverageRating = 9.5m
                         },
                         new
                         {
                             Id = 25,
-                            CreatedTime = new DateTime(2024, 7, 11, 0, 41, 13, 555, DateTimeKind.Local).AddTicks(4369),
+                            CreatedTime = new DateTime(2024, 7, 11, 0, 35, 19, 778, DateTimeKind.Local).AddTicks(8344),
                             Description = "A first-person shooter game developed by id Software and published by Bethesda Softworks.",
                             MediaAverageRating = 9.3m,
                             RelaseDate = new DateTime(2020, 3, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Doom Eternal",
-                            UpdatedAt = new DateTime(2024, 7, 11, 0, 41, 13, 555, DateTimeKind.Local).AddTicks(4371),
+                            UpdatedAt = new DateTime(2024, 7, 11, 0, 35, 19, 778, DateTimeKind.Local).AddTicks(8345),
                             UserAverageRating = 9.1m
                         },
                         new
                         {
                             Id = 26,
-                            CreatedTime = new DateTime(2024, 7, 11, 0, 41, 13, 555, DateTimeKind.Local).AddTicks(4373),
+                            CreatedTime = new DateTime(2024, 7, 11, 0, 35, 19, 778, DateTimeKind.Local).AddTicks(8346),
                             Description = "An action role-playing game developed and published by miHoYo.",
                             MediaAverageRating = 8.8m,
                             RelaseDate = new DateTime(2020, 9, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Genshin Impact",
-                            UpdatedAt = new DateTime(2024, 7, 11, 0, 41, 13, 555, DateTimeKind.Local).AddTicks(4375),
+                            UpdatedAt = new DateTime(2024, 7, 11, 0, 35, 19, 778, DateTimeKind.Local).AddTicks(8349),
                             UserAverageRating = 8.6m
                         },
                         new
                         {
                             Id = 27,
-                            CreatedTime = new DateTime(2024, 7, 11, 0, 41, 13, 555, DateTimeKind.Local).AddTicks(4377),
+                            CreatedTime = new DateTime(2024, 7, 11, 0, 35, 19, 778, DateTimeKind.Local).AddTicks(8359),
                             Description = "An action game developed by Kojima Productions and published by Sony Interactive Entertainment.",
                             MediaAverageRating = 8.9m,
                             RelaseDate = new DateTime(2019, 11, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Death Stranding",
-                            UpdatedAt = new DateTime(2024, 7, 11, 0, 41, 13, 555, DateTimeKind.Local).AddTicks(4379),
+                            UpdatedAt = new DateTime(2024, 7, 11, 0, 35, 19, 778, DateTimeKind.Local).AddTicks(8362),
                             UserAverageRating = 8.7m
                         },
                         new
                         {
                             Id = 28,
-                            CreatedTime = new DateTime(2024, 7, 11, 0, 41, 13, 555, DateTimeKind.Local).AddTicks(4381),
+                            CreatedTime = new DateTime(2024, 7, 11, 0, 35, 19, 778, DateTimeKind.Local).AddTicks(8363),
                             Description = "An action-adventure game developed by Insomniac Games and published by Sony Interactive Entertainment.",
                             MediaAverageRating = 9.3m,
                             RelaseDate = new DateTime(2018, 9, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Marvel's Spider-Man",
-                            UpdatedAt = new DateTime(2024, 7, 11, 0, 41, 13, 555, DateTimeKind.Local).AddTicks(4383),
+                            UpdatedAt = new DateTime(2024, 7, 11, 0, 35, 19, 778, DateTimeKind.Local).AddTicks(8366),
                             UserAverageRating = 9.2m
                         },
                         new
                         {
                             Id = 29,
-                            CreatedTime = new DateTime(2024, 7, 11, 0, 41, 13, 555, DateTimeKind.Local).AddTicks(4385),
+                            CreatedTime = new DateTime(2024, 7, 11, 0, 35, 19, 778, DateTimeKind.Local).AddTicks(8367),
                             Description = "A virtual reality first-person shooter developed and published by Valve.",
                             MediaAverageRating = 9.6m,
                             RelaseDate = new DateTime(2020, 3, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Half-Life: Alyx",
-                            UpdatedAt = new DateTime(2024, 7, 11, 0, 41, 13, 555, DateTimeKind.Local).AddTicks(4387),
+                            UpdatedAt = new DateTime(2024, 7, 11, 0, 35, 19, 778, DateTimeKind.Local).AddTicks(8370),
                             UserAverageRating = 9.4m
                         },
                         new
                         {
                             Id = 30,
-                            CreatedTime = new DateTime(2024, 7, 11, 0, 41, 13, 555, DateTimeKind.Local).AddTicks(4388),
+                            CreatedTime = new DateTime(2024, 7, 11, 0, 35, 19, 778, DateTimeKind.Local).AddTicks(8371),
                             Description = "An action role-playing game developed and published by TaleWorlds Entertainment. Bannerlord is a prequel to Mount & Blade: Warband, a stand-alone expansion pack for the 2008 game Mount & Blade.",
                             MediaAverageRating = 8.7m,
                             RelaseDate = new DateTime(2020, 3, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Mount and Blade II: Bannerlord",
-                            UpdatedAt = new DateTime(2024, 7, 11, 0, 41, 13, 555, DateTimeKind.Local).AddTicks(4390),
+                            UpdatedAt = new DateTime(2024, 7, 11, 0, 35, 19, 778, DateTimeKind.Local).AddTicks(8377),
                             UserAverageRating = 8.5m
                         },
                         new
                         {
                             Id = 31,
-                            CreatedTime = new DateTime(2024, 7, 11, 0, 41, 13, 555, DateTimeKind.Local).AddTicks(4392),
+                            CreatedTime = new DateTime(2024, 7, 11, 0, 35, 19, 778, DateTimeKind.Local).AddTicks(8379),
                             Description = "Explore the depths of Arkham Asylum as Batman, unraveling a sinister plot orchestrated by his arch-nemesis, the Joker.",
                             MediaAverageRating = 9.2m,
                             RelaseDate = new DateTime(2009, 8, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Batman: Arkham Asylum",
-                            UpdatedAt = new DateTime(2024, 7, 11, 0, 41, 13, 555, DateTimeKind.Local).AddTicks(4394),
                             UserAverageRating = 9.0m
                         },
                         new
                         {
                             Id = 32,
-                            CreatedTime = new DateTime(2024, 7, 11, 0, 41, 13, 555, DateTimeKind.Local).AddTicks(4396),
+                            CreatedTime = new DateTime(2024, 7, 11, 0, 35, 19, 778, DateTimeKind.Local).AddTicks(8381),
                             Description = "Gotham City is transformed into a sprawling prison, and Batman must navigate its dangerous streets to uncover a new threat.",
                             MediaAverageRating = 9.3m,
                             RelaseDate = new DateTime(2011, 10, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Batman: Arkham City",
-                            UpdatedAt = new DateTime(2024, 7, 11, 0, 41, 13, 555, DateTimeKind.Local).AddTicks(4397),
                             UserAverageRating = 9.1m
                         },
                         new
                         {
                             Id = 33,
-                            CreatedTime = new DateTime(2024, 7, 11, 0, 41, 13, 555, DateTimeKind.Local).AddTicks(4399),
+                            CreatedTime = new DateTime(2024, 7, 11, 0, 35, 19, 778, DateTimeKind.Local).AddTicks(8383),
                             Description = "The Dark Knight faces the ultimate threat to Gotham City as the Scarecrow unites Batman's foes to destroy him once and for all.",
                             MediaAverageRating = 9.0m,
                             RelaseDate = new DateTime(2015, 6, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Batman: Arkham Knight",
-                            UpdatedAt = new DateTime(2024, 7, 11, 0, 41, 13, 555, DateTimeKind.Local).AddTicks(4401),
                             UserAverageRating = 8.9m
                         });
                 });
@@ -682,7 +682,7 @@ namespace HightScore.Entities.Migrations
                             Id = 1,
                             City = "San Francisco",
                             Country = "USA",
-                            CreatedTime = new DateTime(2024, 7, 11, 0, 41, 13, 555, DateTimeKind.Local).AddTicks(8397),
+                            CreatedTime = new DateTime(2024, 7, 11, 0, 35, 19, 779, DateTimeKind.Local).AddTicks(2724),
                             Email = "contact@ign.com",
                             Fax = "123-456-7891",
                             MediaName = "IGN",
@@ -696,7 +696,7 @@ namespace HightScore.Entities.Migrations
                             Id = 2,
                             City = "New York",
                             Country = "USA",
-                            CreatedTime = new DateTime(2024, 7, 11, 0, 41, 13, 555, DateTimeKind.Local).AddTicks(8402),
+                            CreatedTime = new DateTime(2024, 7, 11, 0, 35, 19, 779, DateTimeKind.Local).AddTicks(2733),
                             Email = "contact@gamespot.com",
                             Fax = "987-654-3211",
                             MediaName = "GameSpot",
@@ -710,7 +710,7 @@ namespace HightScore.Entities.Migrations
                             Id = 3,
                             City = "Atlanta",
                             Country = "USA",
-                            CreatedTime = new DateTime(2024, 7, 11, 0, 41, 13, 555, DateTimeKind.Local).AddTicks(8405),
+                            CreatedTime = new DateTime(2024, 7, 11, 0, 35, 19, 779, DateTimeKind.Local).AddTicks(2737),
                             Email = "contact@polygon.com",
                             Fax = "456-789-1231",
                             MediaName = "Polygon",
@@ -724,7 +724,7 @@ namespace HightScore.Entities.Migrations
                             Id = 4,
                             City = "Los Angeles",
                             Country = "USA",
-                            CreatedTime = new DateTime(2024, 7, 11, 0, 41, 13, 555, DateTimeKind.Local).AddTicks(8408),
+                            CreatedTime = new DateTime(2024, 7, 11, 0, 35, 19, 779, DateTimeKind.Local).AddTicks(2739),
                             Email = "contact@kotaku.com",
                             Fax = "654-321-9871",
                             MediaName = "Kotaku",
@@ -738,7 +738,7 @@ namespace HightScore.Entities.Migrations
                             Id = 5,
                             City = "Brighton",
                             Country = "UK",
-                            CreatedTime = new DateTime(2024, 7, 11, 0, 41, 13, 555, DateTimeKind.Local).AddTicks(8411),
+                            CreatedTime = new DateTime(2024, 7, 11, 0, 35, 19, 779, DateTimeKind.Local).AddTicks(2741),
                             Email = "contact@eurogamer.net",
                             Fax = "321-987-6541",
                             MediaName = "Eurogamer",
@@ -752,7 +752,7 @@ namespace HightScore.Entities.Migrations
                             Id = 6,
                             City = "Minneapolis",
                             Country = "USA",
-                            CreatedTime = new DateTime(2024, 7, 11, 0, 41, 13, 555, DateTimeKind.Local).AddTicks(8413),
+                            CreatedTime = new DateTime(2024, 7, 11, 0, 35, 19, 779, DateTimeKind.Local).AddTicks(2743),
                             Email = "contact@gameinformer.com",
                             Fax = "789-123-4561",
                             MediaName = "Game Informer",
@@ -766,7 +766,7 @@ namespace HightScore.Entities.Migrations
                             Id = 7,
                             City = "Bath",
                             Country = "UK",
-                            CreatedTime = new DateTime(2024, 7, 11, 0, 41, 13, 555, DateTimeKind.Local).AddTicks(8416),
+                            CreatedTime = new DateTime(2024, 7, 11, 0, 35, 19, 779, DateTimeKind.Local).AddTicks(2746),
                             Email = "contact@pcgamer.com",
                             Fax = "111-222-3331",
                             MediaName = "PC Gamer",
@@ -780,7 +780,7 @@ namespace HightScore.Entities.Migrations
                             Id = 8,
                             City = "London",
                             Country = "UK",
-                            CreatedTime = new DateTime(2024, 7, 11, 0, 41, 13, 555, DateTimeKind.Local).AddTicks(8418),
+                            CreatedTime = new DateTime(2024, 7, 11, 0, 35, 19, 779, DateTimeKind.Local).AddTicks(2749),
                             Email = "contact@rockpapershotgun.com",
                             Fax = "222-333-4441",
                             MediaName = "Rock Paper Shotgun",
@@ -794,7 +794,7 @@ namespace HightScore.Entities.Migrations
                             Id = 9,
                             City = "San Francisco",
                             Country = "USA",
-                            CreatedTime = new DateTime(2024, 7, 11, 0, 41, 13, 555, DateTimeKind.Local).AddTicks(8422),
+                            CreatedTime = new DateTime(2024, 7, 11, 0, 35, 19, 779, DateTimeKind.Local).AddTicks(2752),
                             Email = "contact@destructoid.com",
                             Fax = "333-444-5551",
                             MediaName = "Destructoid",
@@ -808,7 +808,7 @@ namespace HightScore.Entities.Migrations
                             Id = 10,
                             City = "San Francisco",
                             Country = "USA",
-                            CreatedTime = new DateTime(2024, 7, 11, 0, 41, 13, 555, DateTimeKind.Local).AddTicks(8425),
+                            CreatedTime = new DateTime(2024, 7, 11, 0, 35, 19, 779, DateTimeKind.Local).AddTicks(2754),
                             Email = "contact@giantbomb.com",
                             Fax = "444-555-6661",
                             MediaName = "Giant Bomb",
@@ -822,7 +822,7 @@ namespace HightScore.Entities.Migrations
                             Id = 11,
                             City = "New York",
                             Country = "USA",
-                            CreatedTime = new DateTime(2024, 7, 11, 0, 41, 13, 555, DateTimeKind.Local).AddTicks(8427),
+                            CreatedTime = new DateTime(2024, 7, 11, 0, 35, 19, 779, DateTimeKind.Local).AddTicks(2757),
                             Email = "contact@theverge.com",
                             Fax = "555-666-7771",
                             MediaName = "The Verge",
@@ -836,7 +836,7 @@ namespace HightScore.Entities.Migrations
                             Id = 12,
                             City = "San Francisco",
                             Country = "USA",
-                            CreatedTime = new DateTime(2024, 7, 11, 0, 41, 13, 555, DateTimeKind.Local).AddTicks(8430),
+                            CreatedTime = new DateTime(2024, 7, 11, 0, 35, 19, 779, DateTimeKind.Local).AddTicks(2762),
                             Email = "contact@venturebeat.com",
                             Fax = "666-777-8881",
                             MediaName = "VentureBeat",
@@ -850,7 +850,7 @@ namespace HightScore.Entities.Migrations
                             Id = 13,
                             City = "San Francisco",
                             Country = "USA",
-                            CreatedTime = new DateTime(2024, 7, 11, 0, 41, 13, 555, DateTimeKind.Local).AddTicks(8432),
+                            CreatedTime = new DateTime(2024, 7, 11, 0, 35, 19, 779, DateTimeKind.Local).AddTicks(2764),
                             Email = "contact@techcrunch.com",
                             Fax = "777-888-9991",
                             MediaName = "TechCrunch",
@@ -864,7 +864,7 @@ namespace HightScore.Entities.Migrations
                             Id = 14,
                             City = "New York",
                             Country = "USA",
-                            CreatedTime = new DateTime(2024, 7, 11, 0, 41, 13, 555, DateTimeKind.Local).AddTicks(8435),
+                            CreatedTime = new DateTime(2024, 7, 11, 0, 35, 19, 779, DateTimeKind.Local).AddTicks(2767),
                             Email = "contact@wired.com",
                             Fax = "888-999-0001",
                             MediaName = "Wired",
@@ -878,7 +878,7 @@ namespace HightScore.Entities.Migrations
                             Id = 15,
                             City = "New York",
                             Country = "USA",
-                            CreatedTime = new DateTime(2024, 7, 11, 0, 41, 13, 555, DateTimeKind.Local).AddTicks(8437),
+                            CreatedTime = new DateTime(2024, 7, 11, 0, 35, 19, 779, DateTimeKind.Local).AddTicks(2770),
                             Email = "contact@mashable.com",
                             Fax = "999-000-1111",
                             MediaName = "Mashable",
@@ -892,7 +892,7 @@ namespace HightScore.Entities.Migrations
                             Id = 16,
                             City = "San Francisco",
                             Country = "USA",
-                            CreatedTime = new DateTime(2024, 7, 11, 0, 41, 13, 555, DateTimeKind.Local).AddTicks(8440),
+                            CreatedTime = new DateTime(2024, 7, 11, 0, 35, 19, 779, DateTimeKind.Local).AddTicks(2772),
                             Email = "contact@cnet.com",
                             Fax = "000-111-2221",
                             MediaName = "CNET",
@@ -906,7 +906,7 @@ namespace HightScore.Entities.Migrations
                             Id = 17,
                             City = "New York",
                             Country = "USA",
-                            CreatedTime = new DateTime(2024, 7, 11, 0, 41, 13, 555, DateTimeKind.Local).AddTicks(8443),
+                            CreatedTime = new DateTime(2024, 7, 11, 0, 35, 19, 779, DateTimeKind.Local).AddTicks(2775),
                             Email = "contact@arstechnica.com",
                             Fax = "aaa-111-bbb1",
                             MediaName = "Ars Technica",
@@ -920,7 +920,7 @@ namespace HightScore.Entities.Migrations
                             Id = 18,
                             City = "New York",
                             Country = "USA",
-                            CreatedTime = new DateTime(2024, 7, 11, 0, 41, 13, 555, DateTimeKind.Local).AddTicks(8446),
+                            CreatedTime = new DateTime(2024, 7, 11, 0, 35, 19, 779, DateTimeKind.Local).AddTicks(2777),
                             Email = "contact@gizmodo.com",
                             Fax = "bbb-222-ccc1",
                             MediaName = "Gizmodo",
@@ -934,7 +934,7 @@ namespace HightScore.Entities.Migrations
                             Id = 19,
                             City = "Portland",
                             Country = "USA",
-                            CreatedTime = new DateTime(2024, 7, 11, 0, 41, 13, 555, DateTimeKind.Local).AddTicks(8448),
+                            CreatedTime = new DateTime(2024, 7, 11, 0, 35, 19, 779, DateTimeKind.Local).AddTicks(2781),
                             Email = "contact@digitaltrends.com",
                             Fax = "ccc-333-ddd1",
                             MediaName = "Digital Trends",
@@ -948,7 +948,7 @@ namespace HightScore.Entities.Migrations
                             Id = 20,
                             City = "Bath",
                             Country = "UK",
-                            CreatedTime = new DateTime(2024, 7, 11, 0, 41, 13, 555, DateTimeKind.Local).AddTicks(8450),
+                            CreatedTime = new DateTime(2024, 7, 11, 0, 35, 19, 779, DateTimeKind.Local).AddTicks(2783),
                             Email = "contact@techradar.com",
                             Fax = "ddd-444-eee1",
                             MediaName = "TechRadar",
@@ -962,7 +962,7 @@ namespace HightScore.Entities.Migrations
                             Id = 21,
                             City = "İstanbul",
                             Country = "Türkiye",
-                            CreatedTime = new DateTime(2024, 7, 11, 0, 41, 13, 555, DateTimeKind.Local).AddTicks(8453),
+                            CreatedTime = new DateTime(2024, 7, 11, 0, 35, 19, 779, DateTimeKind.Local).AddTicks(2785),
                             Email = "contact@level.com.tr",
                             Fax = "+90-212-123-4568",
                             MediaName = "Level",
@@ -976,7 +976,7 @@ namespace HightScore.Entities.Migrations
                             Id = 22,
                             City = "Ankara",
                             Country = "Türkiye",
-                            CreatedTime = new DateTime(2024, 7, 11, 0, 41, 13, 555, DateTimeKind.Local).AddTicks(8455),
+                            CreatedTime = new DateTime(2024, 7, 11, 0, 35, 19, 779, DateTimeKind.Local).AddTicks(2787),
                             Email = "contact@oyungezer.com.tr",
                             Fax = "+90-312-987-6544",
                             MediaName = "Oyungezer",
@@ -990,7 +990,7 @@ namespace HightScore.Entities.Migrations
                             Id = 23,
                             City = "İstanbul",
                             Country = "Türkiye",
-                            CreatedTime = new DateTime(2024, 7, 11, 0, 41, 13, 555, DateTimeKind.Local).AddTicks(8458),
+                            CreatedTime = new DateTime(2024, 7, 11, 0, 35, 19, 779, DateTimeKind.Local).AddTicks(2790),
                             Email = "contact@merlininkazani.com",
                             Fax = "+90-212-567-8902",
                             MediaName = "Merlin'in Kazanı",
@@ -1004,7 +1004,7 @@ namespace HightScore.Entities.Migrations
                             Id = 24,
                             City = "İzmir",
                             Country = "Türkiye",
-                            CreatedTime = new DateTime(2024, 7, 11, 0, 41, 13, 555, DateTimeKind.Local).AddTicks(8460),
+                            CreatedTime = new DateTime(2024, 7, 11, 0, 35, 19, 779, DateTimeKind.Local).AddTicks(2792),
                             Email = "contact@turunculevye.com",
                             Fax = "+90-232-345-6790",
                             MediaName = "Turuncu Levye",
@@ -1018,7 +1018,7 @@ namespace HightScore.Entities.Migrations
                             Id = 25,
                             City = "Bursa",
                             Country = "Türkiye",
-                            CreatedTime = new DateTime(2024, 7, 11, 0, 41, 13, 555, DateTimeKind.Local).AddTicks(8463),
+                            CreatedTime = new DateTime(2024, 7, 11, 0, 35, 19, 779, DateTimeKind.Local).AddTicks(2795),
                             Email = "contact@multiplayer.com.tr",
                             Fax = "+90-224-456-7891",
                             MediaName = "Multiplayer",
@@ -1032,7 +1032,7 @@ namespace HightScore.Entities.Migrations
                             Id = 26,
                             City = "Antalya",
                             Country = "Türkiye",
-                            CreatedTime = new DateTime(2024, 7, 11, 0, 41, 13, 555, DateTimeKind.Local).AddTicks(8465),
+                            CreatedTime = new DateTime(2024, 7, 11, 0, 35, 19, 779, DateTimeKind.Local).AddTicks(2797),
                             Email = "contact@tamindir.com",
                             Fax = "+90-242-678-9013",
                             MediaName = "Tamindir",
@@ -1046,7 +1046,7 @@ namespace HightScore.Entities.Migrations
                             Id = 27,
                             City = "İstanbul",
                             Country = "Türkiye",
-                            CreatedTime = new DateTime(2024, 7, 11, 0, 41, 13, 555, DateTimeKind.Local).AddTicks(8476),
+                            CreatedTime = new DateTime(2024, 7, 11, 0, 35, 19, 779, DateTimeKind.Local).AddTicks(2800),
                             Email = "contact@donanimhaber.com",
                             Fax = "+90-212-789-0124",
                             MediaName = "Donanım Haber",
@@ -1060,7 +1060,7 @@ namespace HightScore.Entities.Migrations
                             Id = 28,
                             City = "İstanbul",
                             Country = "Türkiye",
-                            CreatedTime = new DateTime(2024, 7, 11, 0, 41, 13, 555, DateTimeKind.Local).AddTicks(8478),
+                            CreatedTime = new DateTime(2024, 7, 11, 0, 35, 19, 779, DateTimeKind.Local).AddTicks(2803),
                             Email = "contact@technopat.net",
                             Fax = "+90-212-890-1235",
                             MediaName = "Technopat",
@@ -1074,7 +1074,7 @@ namespace HightScore.Entities.Migrations
                             Id = 29,
                             City = "İstanbul",
                             Country = "Türkiye",
-                            CreatedTime = new DateTime(2024, 7, 11, 0, 41, 13, 555, DateTimeKind.Local).AddTicks(8481),
+                            CreatedTime = new DateTime(2024, 7, 11, 0, 35, 19, 779, DateTimeKind.Local).AddTicks(2805),
                             Email = "contact@shiftdelete.net",
                             Fax = "+90-212-901-2346",
                             MediaName = "ShiftDelete.Net",
@@ -1088,7 +1088,7 @@ namespace HightScore.Entities.Migrations
                             Id = 30,
                             City = "İstanbul",
                             Country = "Türkiye",
-                            CreatedTime = new DateTime(2024, 7, 11, 0, 41, 13, 555, DateTimeKind.Local).AddTicks(8483),
+                            CreatedTime = new DateTime(2024, 7, 11, 0, 35, 19, 779, DateTimeKind.Local).AddTicks(2808),
                             Email = "contact@webtekno.com",
                             Fax = "+90-212-012-3457",
                             MediaName = "Webtekno",
@@ -1134,7 +1134,7 @@ namespace HightScore.Entities.Migrations
                         {
                             Id = 1,
                             Comment = "Great game with stunning graphics and engaging gameplay.",
-                            CreatedTime = new DateTime(2024, 7, 11, 0, 41, 13, 556, DateTimeKind.Local).AddTicks(870),
+                            CreatedTime = new DateTime(2024, 7, 11, 0, 35, 19, 779, DateTimeKind.Local).AddTicks(4982),
                             ItemId = 1,
                             MediaId = 21,
                             Rating = 85
@@ -1143,7 +1143,7 @@ namespace HightScore.Entities.Migrations
                         {
                             Id = 2,
                             Comment = "Interesting storyline but could improve on the controls.",
-                            CreatedTime = new DateTime(2024, 7, 11, 0, 41, 13, 556, DateTimeKind.Local).AddTicks(873),
+                            CreatedTime = new DateTime(2024, 7, 11, 0, 35, 19, 779, DateTimeKind.Local).AddTicks(4989),
                             ItemId = 2,
                             MediaId = 22,
                             Rating = 70
@@ -1152,7 +1152,7 @@ namespace HightScore.Entities.Migrations
                         {
                             Id = 3,
                             Comment = "Fantastic multiplayer experience, highly recommended!",
-                            CreatedTime = new DateTime(2024, 7, 11, 0, 41, 13, 556, DateTimeKind.Local).AddTicks(876),
+                            CreatedTime = new DateTime(2024, 7, 11, 0, 35, 19, 779, DateTimeKind.Local).AddTicks(4992),
                             ItemId = 3,
                             MediaId = 23,
                             Rating = 95
@@ -1161,7 +1161,7 @@ namespace HightScore.Entities.Migrations
                         {
                             Id = 4,
                             Comment = "Average game, had high expectations but it fell short.",
-                            CreatedTime = new DateTime(2024, 7, 11, 0, 41, 13, 556, DateTimeKind.Local).AddTicks(877),
+                            CreatedTime = new DateTime(2024, 7, 11, 0, 35, 19, 779, DateTimeKind.Local).AddTicks(4993),
                             ItemId = 4,
                             MediaId = 24,
                             Rating = 60
@@ -1170,7 +1170,7 @@ namespace HightScore.Entities.Migrations
                         {
                             Id = 5,
                             Comment = "Good game overall, but needs some bug fixes.",
-                            CreatedTime = new DateTime(2024, 7, 11, 0, 41, 13, 556, DateTimeKind.Local).AddTicks(879),
+                            CreatedTime = new DateTime(2024, 7, 11, 0, 35, 19, 779, DateTimeKind.Local).AddTicks(4996),
                             ItemId = 5,
                             MediaId = 25,
                             Rating = 75
@@ -1179,7 +1179,7 @@ namespace HightScore.Entities.Migrations
                         {
                             Id = 6,
                             Comment = "Very enjoyable game with lots of content.",
-                            CreatedTime = new DateTime(2024, 7, 11, 0, 41, 13, 556, DateTimeKind.Local).AddTicks(881),
+                            CreatedTime = new DateTime(2024, 7, 11, 0, 35, 19, 779, DateTimeKind.Local).AddTicks(4997),
                             ItemId = 6,
                             MediaId = 26,
                             Rating = 80
@@ -1188,7 +1188,7 @@ namespace HightScore.Entities.Migrations
                         {
                             Id = 7,
                             Comment = "One of the best games I've played this year!",
-                            CreatedTime = new DateTime(2024, 7, 11, 0, 41, 13, 556, DateTimeKind.Local).AddTicks(882),
+                            CreatedTime = new DateTime(2024, 7, 11, 0, 35, 19, 779, DateTimeKind.Local).AddTicks(4998),
                             ItemId = 7,
                             MediaId = 27,
                             Rating = 90
@@ -1197,7 +1197,7 @@ namespace HightScore.Entities.Migrations
                         {
                             Id = 8,
                             Comment = "Decent game but lacks depth in some areas.",
-                            CreatedTime = new DateTime(2024, 7, 11, 0, 41, 13, 556, DateTimeKind.Local).AddTicks(884),
+                            CreatedTime = new DateTime(2024, 7, 11, 0, 35, 19, 779, DateTimeKind.Local).AddTicks(5000),
                             ItemId = 8,
                             MediaId = 28,
                             Rating = 65
@@ -1206,7 +1206,7 @@ namespace HightScore.Entities.Migrations
                         {
                             Id = 9,
                             Comment = "Solid game with good mechanics and storyline.",
-                            CreatedTime = new DateTime(2024, 7, 11, 0, 41, 13, 556, DateTimeKind.Local).AddTicks(886),
+                            CreatedTime = new DateTime(2024, 7, 11, 0, 35, 19, 779, DateTimeKind.Local).AddTicks(5002),
                             ItemId = 9,
                             MediaId = 29,
                             Rating = 78
@@ -1215,7 +1215,7 @@ namespace HightScore.Entities.Migrations
                         {
                             Id = 10,
                             Comment = "Great game, would recommend to all RPG fans.",
-                            CreatedTime = new DateTime(2024, 7, 11, 0, 41, 13, 556, DateTimeKind.Local).AddTicks(887),
+                            CreatedTime = new DateTime(2024, 7, 11, 0, 35, 19, 779, DateTimeKind.Local).AddTicks(5004),
                             ItemId = 10,
                             MediaId = 30,
                             Rating = 88
@@ -1250,133 +1250,133 @@ namespace HightScore.Entities.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedTime = new DateTime(2024, 7, 11, 0, 41, 13, 557, DateTimeKind.Local).AddTicks(1492),
+                            CreatedTime = new DateTime(2024, 7, 11, 0, 35, 19, 780, DateTimeKind.Local).AddTicks(7204),
                             PlatformName = "PlayStation 5"
                         },
                         new
                         {
                             Id = 2,
-                            CreatedTime = new DateTime(2024, 7, 11, 0, 41, 13, 557, DateTimeKind.Local).AddTicks(1495),
+                            CreatedTime = new DateTime(2024, 7, 11, 0, 35, 19, 780, DateTimeKind.Local).AddTicks(7209),
                             PlatformName = "Xbox Series X"
                         },
                         new
                         {
                             Id = 3,
-                            CreatedTime = new DateTime(2024, 7, 11, 0, 41, 13, 557, DateTimeKind.Local).AddTicks(1497),
+                            CreatedTime = new DateTime(2024, 7, 11, 0, 35, 19, 780, DateTimeKind.Local).AddTicks(7211),
                             PlatformName = "Nintendo Switch"
                         },
                         new
                         {
                             Id = 4,
-                            CreatedTime = new DateTime(2024, 7, 11, 0, 41, 13, 557, DateTimeKind.Local).AddTicks(1498),
+                            CreatedTime = new DateTime(2024, 7, 11, 0, 35, 19, 780, DateTimeKind.Local).AddTicks(7212),
                             PlatformName = "PlayStation 4"
                         },
                         new
                         {
                             Id = 5,
-                            CreatedTime = new DateTime(2024, 7, 11, 0, 41, 13, 557, DateTimeKind.Local).AddTicks(1499),
+                            CreatedTime = new DateTime(2024, 7, 11, 0, 35, 19, 780, DateTimeKind.Local).AddTicks(7213),
                             PlatformName = "Xbox One"
                         },
                         new
                         {
                             Id = 6,
-                            CreatedTime = new DateTime(2024, 7, 11, 0, 41, 13, 557, DateTimeKind.Local).AddTicks(1501),
+                            CreatedTime = new DateTime(2024, 7, 11, 0, 35, 19, 780, DateTimeKind.Local).AddTicks(7214),
                             PlatformName = "PC"
                         },
                         new
                         {
                             Id = 7,
-                            CreatedTime = new DateTime(2024, 7, 11, 0, 41, 13, 557, DateTimeKind.Local).AddTicks(1502),
+                            CreatedTime = new DateTime(2024, 7, 11, 0, 35, 19, 780, DateTimeKind.Local).AddTicks(7215),
                             PlatformName = "PlayStation Vita"
                         },
                         new
                         {
                             Id = 8,
-                            CreatedTime = new DateTime(2024, 7, 11, 0, 41, 13, 557, DateTimeKind.Local).AddTicks(1504),
+                            CreatedTime = new DateTime(2024, 7, 11, 0, 35, 19, 780, DateTimeKind.Local).AddTicks(7216),
                             PlatformName = "Nintendo 3DS"
                         },
                         new
                         {
                             Id = 9,
-                            CreatedTime = new DateTime(2024, 7, 11, 0, 41, 13, 557, DateTimeKind.Local).AddTicks(1506),
+                            CreatedTime = new DateTime(2024, 7, 11, 0, 35, 19, 780, DateTimeKind.Local).AddTicks(7217),
                             PlatformName = "Stadia"
                         },
                         new
                         {
                             Id = 10,
-                            CreatedTime = new DateTime(2024, 7, 11, 0, 41, 13, 557, DateTimeKind.Local).AddTicks(1507),
+                            CreatedTime = new DateTime(2024, 7, 11, 0, 35, 19, 780, DateTimeKind.Local).AddTicks(7218),
                             PlatformName = "Oculus Quest 2"
                         },
                         new
                         {
                             Id = 11,
-                            CreatedTime = new DateTime(2024, 7, 11, 0, 41, 13, 557, DateTimeKind.Local).AddTicks(1509),
+                            CreatedTime = new DateTime(2024, 7, 11, 0, 35, 19, 780, DateTimeKind.Local).AddTicks(7219),
                             PlatformName = "Nintendo Wii U"
                         },
                         new
                         {
                             Id = 12,
-                            CreatedTime = new DateTime(2024, 7, 11, 0, 41, 13, 557, DateTimeKind.Local).AddTicks(1510),
+                            CreatedTime = new DateTime(2024, 7, 11, 0, 35, 19, 780, DateTimeKind.Local).AddTicks(7221),
                             PlatformName = "PlayStation 3"
                         },
                         new
                         {
                             Id = 13,
-                            CreatedTime = new DateTime(2024, 7, 11, 0, 41, 13, 557, DateTimeKind.Local).AddTicks(1511),
+                            CreatedTime = new DateTime(2024, 7, 11, 0, 35, 19, 780, DateTimeKind.Local).AddTicks(7222),
                             PlatformName = "Xbox 360"
                         },
                         new
                         {
                             Id = 14,
-                            CreatedTime = new DateTime(2024, 7, 11, 0, 41, 13, 557, DateTimeKind.Local).AddTicks(1513),
+                            CreatedTime = new DateTime(2024, 7, 11, 0, 35, 19, 780, DateTimeKind.Local).AddTicks(7223),
                             PlatformName = "Nintendo Wii"
                         },
                         new
                         {
                             Id = 15,
-                            CreatedTime = new DateTime(2024, 7, 11, 0, 41, 13, 557, DateTimeKind.Local).AddTicks(1514),
+                            CreatedTime = new DateTime(2024, 7, 11, 0, 35, 19, 780, DateTimeKind.Local).AddTicks(7224),
                             PlatformName = "PlayStation Portable (PSP)"
                         },
                         new
                         {
                             Id = 16,
-                            CreatedTime = new DateTime(2024, 7, 11, 0, 41, 13, 557, DateTimeKind.Local).AddTicks(1515),
+                            CreatedTime = new DateTime(2024, 7, 11, 0, 35, 19, 780, DateTimeKind.Local).AddTicks(7225),
                             PlatformName = "Game Boy Advance"
                         },
                         new
                         {
                             Id = 17,
-                            CreatedTime = new DateTime(2024, 7, 11, 0, 41, 13, 557, DateTimeKind.Local).AddTicks(1516),
+                            CreatedTime = new DateTime(2024, 7, 11, 0, 35, 19, 780, DateTimeKind.Local).AddTicks(7226),
                             PlatformName = "Sega Dreamcast"
                         },
                         new
                         {
                             Id = 18,
-                            CreatedTime = new DateTime(2024, 7, 11, 0, 41, 13, 557, DateTimeKind.Local).AddTicks(1518),
+                            CreatedTime = new DateTime(2024, 7, 11, 0, 35, 19, 780, DateTimeKind.Local).AddTicks(7227),
                             PlatformName = "Super Nintendo Entertainment System (SNES)"
                         },
                         new
                         {
                             Id = 19,
-                            CreatedTime = new DateTime(2024, 7, 11, 0, 41, 13, 557, DateTimeKind.Local).AddTicks(1519),
+                            CreatedTime = new DateTime(2024, 7, 11, 0, 35, 19, 780, DateTimeKind.Local).AddTicks(7228),
                             PlatformName = "Sega Genesis"
                         },
                         new
                         {
                             Id = 20,
-                            CreatedTime = new DateTime(2024, 7, 11, 0, 41, 13, 557, DateTimeKind.Local).AddTicks(1520),
+                            CreatedTime = new DateTime(2024, 7, 11, 0, 35, 19, 780, DateTimeKind.Local).AddTicks(7229),
                             PlatformName = "Atari 2600"
                         },
                         new
                         {
                             Id = 21,
-                            CreatedTime = new DateTime(2024, 7, 11, 0, 41, 13, 557, DateTimeKind.Local).AddTicks(1522),
+                            CreatedTime = new DateTime(2024, 7, 11, 0, 35, 19, 780, DateTimeKind.Local).AddTicks(7230),
                             PlatformName = "PlayStation 2"
                         },
                         new
                         {
                             Id = 22,
-                            CreatedTime = new DateTime(2024, 7, 11, 0, 41, 13, 557, DateTimeKind.Local).AddTicks(1523),
+                            CreatedTime = new DateTime(2024, 7, 11, 0, 35, 19, 780, DateTimeKind.Local).AddTicks(7231),
                             PlatformName = "PlayStation 1"
                         });
                 });
@@ -1433,7 +1433,7 @@ namespace HightScore.Entities.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedTime = new DateTime(2024, 7, 11, 0, 41, 13, 557, DateTimeKind.Local).AddTicks(6648),
+                            CreatedTime = new DateTime(2024, 7, 11, 0, 35, 19, 781, DateTimeKind.Local).AddTicks(3245),
                             Email = "admin1@example.com",
                             NickName = "AdminOne",
                             Password = "admin1_password",
@@ -1444,7 +1444,7 @@ namespace HightScore.Entities.Migrations
                         new
                         {
                             Id = 2,
-                            CreatedTime = new DateTime(2024, 7, 11, 0, 41, 13, 557, DateTimeKind.Local).AddTicks(6663),
+                            CreatedTime = new DateTime(2024, 7, 11, 0, 35, 19, 781, DateTimeKind.Local).AddTicks(3253),
                             Email = "admin2@example.com",
                             NickName = "AdminTwo",
                             Password = "admin2_password",
@@ -1455,7 +1455,7 @@ namespace HightScore.Entities.Migrations
                         new
                         {
                             Id = 3,
-                            CreatedTime = new DateTime(2024, 7, 11, 0, 41, 13, 557, DateTimeKind.Local).AddTicks(6666),
+                            CreatedTime = new DateTime(2024, 7, 11, 0, 35, 19, 781, DateTimeKind.Local).AddTicks(3256),
                             Email = "editor1@example.com",
                             NickName = "EditorOne",
                             Password = "editor1_password",
@@ -1466,7 +1466,7 @@ namespace HightScore.Entities.Migrations
                         new
                         {
                             Id = 4,
-                            CreatedTime = new DateTime(2024, 7, 11, 0, 41, 13, 557, DateTimeKind.Local).AddTicks(6669),
+                            CreatedTime = new DateTime(2024, 7, 11, 0, 35, 19, 781, DateTimeKind.Local).AddTicks(3258),
                             Email = "editor2@example.com",
                             NickName = "EditorTwo",
                             Password = "editor2_password",
@@ -1477,7 +1477,7 @@ namespace HightScore.Entities.Migrations
                         new
                         {
                             Id = 5,
-                            CreatedTime = new DateTime(2024, 7, 11, 0, 41, 13, 557, DateTimeKind.Local).AddTicks(6671),
+                            CreatedTime = new DateTime(2024, 7, 11, 0, 35, 19, 781, DateTimeKind.Local).AddTicks(3260),
                             Email = "editor3@example.com",
                             NickName = "EditorThree",
                             Password = "editor3_password",
@@ -1488,7 +1488,7 @@ namespace HightScore.Entities.Migrations
                         new
                         {
                             Id = 6,
-                            CreatedTime = new DateTime(2024, 7, 11, 0, 41, 13, 557, DateTimeKind.Local).AddTicks(6673),
+                            CreatedTime = new DateTime(2024, 7, 11, 0, 35, 19, 781, DateTimeKind.Local).AddTicks(3262),
                             Email = "editor4@example.com",
                             NickName = "EditorFour",
                             Password = "editor4_password",
@@ -1499,7 +1499,7 @@ namespace HightScore.Entities.Migrations
                         new
                         {
                             Id = 7,
-                            CreatedTime = new DateTime(2024, 7, 11, 0, 41, 13, 557, DateTimeKind.Local).AddTicks(6675),
+                            CreatedTime = new DateTime(2024, 7, 11, 0, 35, 19, 781, DateTimeKind.Local).AddTicks(3264),
                             Email = "editor5@example.com",
                             NickName = "EditorFive",
                             Password = "editor5_password",
@@ -1510,7 +1510,7 @@ namespace HightScore.Entities.Migrations
                         new
                         {
                             Id = 8,
-                            CreatedTime = new DateTime(2024, 7, 11, 0, 41, 13, 557, DateTimeKind.Local).AddTicks(6677),
+                            CreatedTime = new DateTime(2024, 7, 11, 0, 35, 19, 781, DateTimeKind.Local).AddTicks(3266),
                             Email = "user1@example.com",
                             NickName = "UserOne",
                             Password = "user1_password",
@@ -1521,7 +1521,7 @@ namespace HightScore.Entities.Migrations
                         new
                         {
                             Id = 9,
-                            CreatedTime = new DateTime(2024, 7, 11, 0, 41, 13, 557, DateTimeKind.Local).AddTicks(6679),
+                            CreatedTime = new DateTime(2024, 7, 11, 0, 35, 19, 781, DateTimeKind.Local).AddTicks(3267),
                             Email = "user2@example.com",
                             NickName = "UserTwo",
                             Password = "user2_password",
@@ -1532,7 +1532,7 @@ namespace HightScore.Entities.Migrations
                         new
                         {
                             Id = 10,
-                            CreatedTime = new DateTime(2024, 7, 11, 0, 41, 13, 557, DateTimeKind.Local).AddTicks(6681),
+                            CreatedTime = new DateTime(2024, 7, 11, 0, 35, 19, 781, DateTimeKind.Local).AddTicks(3269),
                             Email = "user3@example.com",
                             NickName = "UserThree",
                             Password = "user3_password",
@@ -1543,7 +1543,7 @@ namespace HightScore.Entities.Migrations
                         new
                         {
                             Id = 11,
-                            CreatedTime = new DateTime(2024, 7, 11, 0, 41, 13, 557, DateTimeKind.Local).AddTicks(6683),
+                            CreatedTime = new DateTime(2024, 7, 11, 0, 35, 19, 781, DateTimeKind.Local).AddTicks(3271),
                             Email = "user4@example.com",
                             NickName = "UserFour",
                             Password = "user4_password",
@@ -1554,7 +1554,7 @@ namespace HightScore.Entities.Migrations
                         new
                         {
                             Id = 12,
-                            CreatedTime = new DateTime(2024, 7, 11, 0, 41, 13, 557, DateTimeKind.Local).AddTicks(6685),
+                            CreatedTime = new DateTime(2024, 7, 11, 0, 35, 19, 781, DateTimeKind.Local).AddTicks(3273),
                             Email = "user5@example.com",
                             NickName = "UserFive",
                             Password = "user5_password",
@@ -1565,7 +1565,7 @@ namespace HightScore.Entities.Migrations
                         new
                         {
                             Id = 13,
-                            CreatedTime = new DateTime(2024, 7, 11, 0, 41, 13, 557, DateTimeKind.Local).AddTicks(6687),
+                            CreatedTime = new DateTime(2024, 7, 11, 0, 35, 19, 781, DateTimeKind.Local).AddTicks(3276),
                             Email = "user6@example.com",
                             NickName = "UserSix",
                             Password = "user6_password",
@@ -1576,7 +1576,7 @@ namespace HightScore.Entities.Migrations
                         new
                         {
                             Id = 14,
-                            CreatedTime = new DateTime(2024, 7, 11, 0, 41, 13, 557, DateTimeKind.Local).AddTicks(6689),
+                            CreatedTime = new DateTime(2024, 7, 11, 0, 35, 19, 781, DateTimeKind.Local).AddTicks(3277),
                             Email = "user7@example.com",
                             NickName = "UserSeven",
                             Password = "user7_password",
@@ -1587,7 +1587,7 @@ namespace HightScore.Entities.Migrations
                         new
                         {
                             Id = 15,
-                            CreatedTime = new DateTime(2024, 7, 11, 0, 41, 13, 557, DateTimeKind.Local).AddTicks(6692),
+                            CreatedTime = new DateTime(2024, 7, 11, 0, 35, 19, 781, DateTimeKind.Local).AddTicks(3279),
                             Email = "user8@example.com",
                             NickName = "UserEight",
                             Password = "user8_password",
@@ -1598,7 +1598,7 @@ namespace HightScore.Entities.Migrations
                         new
                         {
                             Id = 16,
-                            CreatedTime = new DateTime(2024, 7, 11, 0, 41, 13, 557, DateTimeKind.Local).AddTicks(6695),
+                            CreatedTime = new DateTime(2024, 7, 11, 0, 35, 19, 781, DateTimeKind.Local).AddTicks(3281),
                             Email = "user9@example.com",
                             NickName = "UserNine",
                             Password = "user9_password",
@@ -1609,7 +1609,7 @@ namespace HightScore.Entities.Migrations
                         new
                         {
                             Id = 17,
-                            CreatedTime = new DateTime(2024, 7, 11, 0, 41, 13, 557, DateTimeKind.Local).AddTicks(6697),
+                            CreatedTime = new DateTime(2024, 7, 11, 0, 35, 19, 781, DateTimeKind.Local).AddTicks(3282),
                             Email = "user10@example.com",
                             NickName = "UserTen",
                             Password = "user10_password",
@@ -1620,7 +1620,7 @@ namespace HightScore.Entities.Migrations
                         new
                         {
                             Id = 18,
-                            CreatedTime = new DateTime(2024, 7, 11, 0, 41, 13, 557, DateTimeKind.Local).AddTicks(6699),
+                            CreatedTime = new DateTime(2024, 7, 11, 0, 35, 19, 781, DateTimeKind.Local).AddTicks(3292),
                             Email = "user11@example.com",
                             NickName = "UserEleven",
                             Password = "user11_password",
@@ -1631,7 +1631,7 @@ namespace HightScore.Entities.Migrations
                         new
                         {
                             Id = 19,
-                            CreatedTime = new DateTime(2024, 7, 11, 0, 41, 13, 557, DateTimeKind.Local).AddTicks(6701),
+                            CreatedTime = new DateTime(2024, 7, 11, 0, 35, 19, 781, DateTimeKind.Local).AddTicks(3294),
                             Email = "user12@example.com",
                             NickName = "UserTwelve",
                             Password = "user12_password",
@@ -1642,7 +1642,7 @@ namespace HightScore.Entities.Migrations
                         new
                         {
                             Id = 20,
-                            CreatedTime = new DateTime(2024, 7, 11, 0, 41, 13, 557, DateTimeKind.Local).AddTicks(6703),
+                            CreatedTime = new DateTime(2024, 7, 11, 0, 35, 19, 781, DateTimeKind.Local).AddTicks(3297),
                             Email = "user13@example.com",
                             NickName = "UserThirteen",
                             Password = "user13_password",
@@ -1653,7 +1653,7 @@ namespace HightScore.Entities.Migrations
                         new
                         {
                             Id = 21,
-                            CreatedTime = new DateTime(2024, 7, 11, 0, 41, 13, 557, DateTimeKind.Local).AddTicks(6706),
+                            CreatedTime = new DateTime(2024, 7, 11, 0, 35, 19, 781, DateTimeKind.Local).AddTicks(3299),
                             Email = "user14@example.com",
                             NickName = "UserFourteen",
                             Password = "user14_password",
@@ -1664,7 +1664,7 @@ namespace HightScore.Entities.Migrations
                         new
                         {
                             Id = 22,
-                            CreatedTime = new DateTime(2024, 7, 11, 0, 41, 13, 557, DateTimeKind.Local).AddTicks(6708),
+                            CreatedTime = new DateTime(2024, 7, 11, 0, 35, 19, 781, DateTimeKind.Local).AddTicks(3301),
                             Email = "user15@example.com",
                             NickName = "UserFifteen",
                             Password = "user15_password",
@@ -1675,7 +1675,7 @@ namespace HightScore.Entities.Migrations
                         new
                         {
                             Id = 23,
-                            CreatedTime = new DateTime(2024, 7, 11, 0, 41, 13, 557, DateTimeKind.Local).AddTicks(6710),
+                            CreatedTime = new DateTime(2024, 7, 11, 0, 35, 19, 781, DateTimeKind.Local).AddTicks(3302),
                             Email = "user16@example.com",
                             NickName = "UserSixteen",
                             Password = "user16_password",
@@ -1686,7 +1686,7 @@ namespace HightScore.Entities.Migrations
                         new
                         {
                             Id = 24,
-                            CreatedTime = new DateTime(2024, 7, 11, 0, 41, 13, 557, DateTimeKind.Local).AddTicks(6712),
+                            CreatedTime = new DateTime(2024, 7, 11, 0, 35, 19, 781, DateTimeKind.Local).AddTicks(3304),
                             Email = "user17@example.com",
                             NickName = "UserSeventeen",
                             Password = "user17_password",
@@ -1697,7 +1697,7 @@ namespace HightScore.Entities.Migrations
                         new
                         {
                             Id = 25,
-                            CreatedTime = new DateTime(2024, 7, 11, 0, 41, 13, 557, DateTimeKind.Local).AddTicks(6714),
+                            CreatedTime = new DateTime(2024, 7, 11, 0, 35, 19, 781, DateTimeKind.Local).AddTicks(3306),
                             Email = "user18@example.com",
                             NickName = "UserEighteen",
                             Password = "user18_password",
@@ -1708,7 +1708,7 @@ namespace HightScore.Entities.Migrations
                         new
                         {
                             Id = 26,
-                            CreatedTime = new DateTime(2024, 7, 11, 0, 41, 13, 557, DateTimeKind.Local).AddTicks(6716),
+                            CreatedTime = new DateTime(2024, 7, 11, 0, 35, 19, 781, DateTimeKind.Local).AddTicks(3307),
                             Email = "user19@example.com",
                             NickName = "UserNineteen",
                             Password = "user19_password",
@@ -1719,7 +1719,7 @@ namespace HightScore.Entities.Migrations
                         new
                         {
                             Id = 27,
-                            CreatedTime = new DateTime(2024, 7, 11, 0, 41, 13, 557, DateTimeKind.Local).AddTicks(6718),
+                            CreatedTime = new DateTime(2024, 7, 11, 0, 35, 19, 781, DateTimeKind.Local).AddTicks(3309),
                             Email = "user20@example.com",
                             NickName = "UserTwenty",
                             Password = "user20_password",
@@ -1730,7 +1730,7 @@ namespace HightScore.Entities.Migrations
                         new
                         {
                             Id = 28,
-                            CreatedTime = new DateTime(2024, 7, 11, 0, 41, 13, 557, DateTimeKind.Local).AddTicks(6721),
+                            CreatedTime = new DateTime(2024, 7, 11, 0, 35, 19, 781, DateTimeKind.Local).AddTicks(3311),
                             Email = "user21@example.com",
                             NickName = "UserTwentyOne",
                             Password = "user21_password",
@@ -1741,7 +1741,7 @@ namespace HightScore.Entities.Migrations
                         new
                         {
                             Id = 29,
-                            CreatedTime = new DateTime(2024, 7, 11, 0, 41, 13, 557, DateTimeKind.Local).AddTicks(6723),
+                            CreatedTime = new DateTime(2024, 7, 11, 0, 35, 19, 781, DateTimeKind.Local).AddTicks(3313),
                             Email = "user22@example.com",
                             NickName = "UserTwentyTwo",
                             Password = "user22_password",
@@ -1752,7 +1752,7 @@ namespace HightScore.Entities.Migrations
                         new
                         {
                             Id = 30,
-                            CreatedTime = new DateTime(2024, 7, 11, 0, 41, 13, 557, DateTimeKind.Local).AddTicks(6725),
+                            CreatedTime = new DateTime(2024, 7, 11, 0, 35, 19, 781, DateTimeKind.Local).AddTicks(3316),
                             Email = "user23@example.com",
                             NickName = "UserTwentyThree",
                             Password = "user23_password",
@@ -1763,7 +1763,7 @@ namespace HightScore.Entities.Migrations
                         new
                         {
                             Id = 31,
-                            CreatedTime = new DateTime(2024, 7, 11, 0, 41, 13, 557, DateTimeKind.Local).AddTicks(6727),
+                            CreatedTime = new DateTime(2024, 7, 11, 0, 35, 19, 781, DateTimeKind.Local).AddTicks(3318),
                             Email = "user24@example.com",
                             NickName = "UserTwentyFour",
                             Password = "user24_password",
@@ -1774,7 +1774,7 @@ namespace HightScore.Entities.Migrations
                         new
                         {
                             Id = 32,
-                            CreatedTime = new DateTime(2024, 7, 11, 0, 41, 13, 557, DateTimeKind.Local).AddTicks(6729),
+                            CreatedTime = new DateTime(2024, 7, 11, 0, 35, 19, 781, DateTimeKind.Local).AddTicks(3319),
                             Email = "user25@example.com",
                             NickName = "UserTwentyFive",
                             Password = "user25_password",
@@ -1785,7 +1785,7 @@ namespace HightScore.Entities.Migrations
                         new
                         {
                             Id = 33,
-                            CreatedTime = new DateTime(2024, 7, 11, 0, 41, 13, 557, DateTimeKind.Local).AddTicks(6731),
+                            CreatedTime = new DateTime(2024, 7, 11, 0, 35, 19, 781, DateTimeKind.Local).AddTicks(3321),
                             Email = "user26@example.com",
                             NickName = "UserTwentySix",
                             Password = "user26_password",
@@ -1796,7 +1796,7 @@ namespace HightScore.Entities.Migrations
                         new
                         {
                             Id = 34,
-                            CreatedTime = new DateTime(2024, 7, 11, 0, 41, 13, 557, DateTimeKind.Local).AddTicks(6733),
+                            CreatedTime = new DateTime(2024, 7, 11, 0, 35, 19, 781, DateTimeKind.Local).AddTicks(3323),
                             Email = "user27@example.com",
                             NickName = "UserTwentySeven",
                             Password = "user27_password",
@@ -1807,7 +1807,7 @@ namespace HightScore.Entities.Migrations
                         new
                         {
                             Id = 35,
-                            CreatedTime = new DateTime(2024, 7, 11, 0, 41, 13, 557, DateTimeKind.Local).AddTicks(6736),
+                            CreatedTime = new DateTime(2024, 7, 11, 0, 35, 19, 781, DateTimeKind.Local).AddTicks(3324),
                             Email = "user28@example.com",
                             NickName = "UserTwentyEight",
                             Password = "user28_password",
@@ -1818,7 +1818,7 @@ namespace HightScore.Entities.Migrations
                         new
                         {
                             Id = 36,
-                            CreatedTime = new DateTime(2024, 7, 11, 0, 41, 13, 557, DateTimeKind.Local).AddTicks(6738),
+                            CreatedTime = new DateTime(2024, 7, 11, 0, 35, 19, 781, DateTimeKind.Local).AddTicks(3326),
                             Email = "user29@example.com",
                             NickName = "UserTwentyNine",
                             Password = "user29_password",
@@ -1829,7 +1829,7 @@ namespace HightScore.Entities.Migrations
                         new
                         {
                             Id = 37,
-                            CreatedTime = new DateTime(2024, 7, 11, 0, 41, 13, 557, DateTimeKind.Local).AddTicks(6741),
+                            CreatedTime = new DateTime(2024, 7, 11, 0, 35, 19, 781, DateTimeKind.Local).AddTicks(3329),
                             Email = "user30@example.com",
                             NickName = "UserThirty",
                             Password = "user30_password",
@@ -1875,7 +1875,7 @@ namespace HightScore.Entities.Migrations
                         {
                             Id = 1,
                             Comment = "Great game, enjoyed playing it!",
-                            CreatedTime = new DateTime(2024, 7, 11, 0, 41, 13, 557, DateTimeKind.Local).AddTicks(3484),
+                            CreatedTime = new DateTime(2024, 7, 11, 0, 35, 19, 780, DateTimeKind.Local).AddTicks(9771),
                             ItemId = 1,
                             UserId = 8,
                             UserRating = 8
@@ -1884,7 +1884,7 @@ namespace HightScore.Entities.Migrations
                         {
                             Id = 2,
                             Comment = "Interesting game but needs better controls.",
-                            CreatedTime = new DateTime(2024, 7, 11, 0, 41, 13, 557, DateTimeKind.Local).AddTicks(3488),
+                            CreatedTime = new DateTime(2024, 7, 11, 0, 35, 19, 780, DateTimeKind.Local).AddTicks(9781),
                             ItemId = 2,
                             UserId = 9,
                             UserRating = 7
@@ -1893,7 +1893,7 @@ namespace HightScore.Entities.Migrations
                         {
                             Id = 3,
                             Comment = "Absolutely loved this game, couldn't stop playing.",
-                            CreatedTime = new DateTime(2024, 7, 11, 0, 41, 13, 557, DateTimeKind.Local).AddTicks(3490),
+                            CreatedTime = new DateTime(2024, 7, 11, 0, 35, 19, 780, DateTimeKind.Local).AddTicks(9784),
                             ItemId = 3,
                             UserId = 10,
                             UserRating = 9
@@ -1902,7 +1902,7 @@ namespace HightScore.Entities.Migrations
                         {
                             Id = 4,
                             Comment = "Decent game, but could use more content.",
-                            CreatedTime = new DateTime(2024, 7, 11, 0, 41, 13, 557, DateTimeKind.Local).AddTicks(3491),
+                            CreatedTime = new DateTime(2024, 7, 11, 0, 35, 19, 780, DateTimeKind.Local).AddTicks(9786),
                             ItemId = 4,
                             UserId = 11,
                             UserRating = 6
@@ -1911,7 +1911,7 @@ namespace HightScore.Entities.Migrations
                         {
                             Id = 5,
                             Comment = "Good game overall, enjoyed the storyline.",
-                            CreatedTime = new DateTime(2024, 7, 11, 0, 41, 13, 557, DateTimeKind.Local).AddTicks(3493),
+                            CreatedTime = new DateTime(2024, 7, 11, 0, 35, 19, 780, DateTimeKind.Local).AddTicks(9788),
                             ItemId = 5,
                             UserId = 12,
                             UserRating = 7
@@ -1920,7 +1920,7 @@ namespace HightScore.Entities.Migrations
                         {
                             Id = 6,
                             Comment = "Very immersive experience, would recommend.",
-                            CreatedTime = new DateTime(2024, 7, 11, 0, 41, 13, 557, DateTimeKind.Local).AddTicks(3495),
+                            CreatedTime = new DateTime(2024, 7, 11, 0, 35, 19, 780, DateTimeKind.Local).AddTicks(9789),
                             ItemId = 6,
                             UserId = 13,
                             UserRating = 8
@@ -1929,7 +1929,7 @@ namespace HightScore.Entities.Migrations
                         {
                             Id = 7,
                             Comment = "One of my favorite games, highly recommended.",
-                            CreatedTime = new DateTime(2024, 7, 11, 0, 41, 13, 557, DateTimeKind.Local).AddTicks(3497),
+                            CreatedTime = new DateTime(2024, 7, 11, 0, 35, 19, 780, DateTimeKind.Local).AddTicks(9791),
                             ItemId = 7,
                             UserId = 14,
                             UserRating = 9
@@ -1938,7 +1938,7 @@ namespace HightScore.Entities.Migrations
                         {
                             Id = 8,
                             Comment = "Liked the game, but could be more challenging.",
-                            CreatedTime = new DateTime(2024, 7, 11, 0, 41, 13, 557, DateTimeKind.Local).AddTicks(3498),
+                            CreatedTime = new DateTime(2024, 7, 11, 0, 35, 19, 780, DateTimeKind.Local).AddTicks(9792),
                             ItemId = 8,
                             UserId = 15,
                             UserRating = 6
@@ -1947,7 +1947,7 @@ namespace HightScore.Entities.Migrations
                         {
                             Id = 9,
                             Comment = "Solid gameplay mechanics, enjoyable experience.",
-                            CreatedTime = new DateTime(2024, 7, 11, 0, 41, 13, 557, DateTimeKind.Local).AddTicks(3500),
+                            CreatedTime = new DateTime(2024, 7, 11, 0, 35, 19, 780, DateTimeKind.Local).AddTicks(9794),
                             ItemId = 9,
                             UserId = 16,
                             UserRating = 7
@@ -1956,7 +1956,7 @@ namespace HightScore.Entities.Migrations
                         {
                             Id = 10,
                             Comment = "Great RPG game, loved the customization options.",
-                            CreatedTime = new DateTime(2024, 7, 11, 0, 41, 13, 557, DateTimeKind.Local).AddTicks(3502),
+                            CreatedTime = new DateTime(2024, 7, 11, 0, 35, 19, 780, DateTimeKind.Local).AddTicks(9796),
                             ItemId = 10,
                             UserId = 17,
                             UserRating = 8

@@ -22,6 +22,9 @@ namespace HightScore.Entities.EntityConfig.Concrete
             builder.HasMany(g => g.Platforms)
                    .WithMany(p => p.items);
 
+
+
+
             builder.HasData(
             new Item
             {
@@ -325,7 +328,45 @@ namespace HightScore.Entities.EntityConfig.Concrete
                 UserAverageRating = 8.5m,
                 MediaAverageRating = 8.7m,
                 UpdatedAt = DateTime.Now
-            }
+            },
+
+
+    new Item
+    {
+        Id = 31,
+        Title = "Batman: Arkham Asylum",
+        Description = "Explore the depths of Arkham Asylum as Batman, unraveling a sinister plot orchestrated by his arch-nemesis, the Joker.",
+        RelaseDate = new DateTime(2009, 8, 25),
+        UserAverageRating = 9.0m,
+        MediaAverageRating = 9.2m,
+        UpdatedAt = DateTime.Now
+        // Platforms = new List<Platform> { new Platform { Id = 1, Name = "PlayStation 3" }, new Platform { Id = 2, Name = "Xbox 360" }, new Platform { Id = 3, Name = "Microsoft Windows" } }
+    },
+    new Item
+    {
+        Id = 32,
+        Title = "Batman: Arkham City",
+        Description = "Gotham City is transformed into a sprawling prison, and Batman must navigate its dangerous streets to uncover a new threat.",
+        RelaseDate = new DateTime(2011, 10, 18),
+        UserAverageRating = 9.1m,
+        MediaAverageRating = 9.3m,
+        UpdatedAt = DateTime.Now
+        // Platforms = new List<Platform> { new Platform { Id = 1, Name = "PlayStation 3" }, new Platform { Id = 2, Name = "Xbox 360" }, new Platform { Id = 3, Name = "Microsoft Windows" } }
+    },
+    new Item
+    {
+        Id = 33,
+        Title = "Batman: Arkham Knight",
+        Description = "The Dark Knight faces the ultimate threat to Gotham City as the Scarecrow unites Batman's foes to destroy him once and for all.",
+        RelaseDate = new DateTime(2015, 6, 23),
+        UserAverageRating = 8.9m,
+        MediaAverageRating = 9.0m,
+        UpdatedAt = DateTime.Now
+        // Platforms = new List<Platform> { new Platform { Id = 1, PlatformName = "PlayStation 4" }, new Platform { Id = 2, PlatformName = "Xbox One" }, new Platform { Id = 3, PlatformName = "Microsoft Windows" } }
+    }
+
+
+
 
         );
         }

@@ -1,6 +1,6 @@
-﻿using HightScore.Entities.EntityConfig.Concrete;
-using HightScore.Entities.Model.Concrete;
+﻿using HightScore.Entities.Model.Concrete;
 using Microsoft.EntityFrameworkCore;
+using System.Reflection;
 
 namespace HightScore.Entities.DbContexts
 {
@@ -24,15 +24,8 @@ namespace HightScore.Entities.DbContexts
         //Seed dataların database'e işlenmesini sağlayan metod
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.ApplyConfiguration(new AdminActionConfig());
-            modelBuilder.ApplyConfiguration(new CategoriesConfig());
-            modelBuilder.ApplyConfiguration(new ItemsConfig());
-            modelBuilder.ApplyConfiguration(new MediaConfig());
-            modelBuilder.ApplyConfiguration(new MediaReviewConfig());
-            modelBuilder.ApplyConfiguration(new PlatformsConfig());
-            modelBuilder.ApplyConfiguration(new UserReviewsConfig());
-            modelBuilder.ApplyConfiguration(new UsersConfig());
 
+            modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
 
         }
 

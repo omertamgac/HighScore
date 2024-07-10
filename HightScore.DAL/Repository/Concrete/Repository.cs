@@ -17,42 +17,42 @@ namespace HightScore.DAL.Repository.Concrete
             _dbSet = _dbContext.Set<T>();
         }
 
-        public int Delete(T input)
+        public virtual int Delete(T input)
         {
             throw new NotImplementedException();
         }
 
-        public int DeleteById(int id)
+        public virtual int DeleteById(int id)
         {
             throw new NotImplementedException();
         }
 
-        public T? Get(Expression<Func<T, bool>> predicate = null)
+        public virtual T? Get(Expression<Func<T, bool>> predicate = null)
         {
             throw new NotImplementedException();
         }
 
-        public List<T>? GetAll(Expression<Func<T, bool>> predicate = null)
+        public virtual List<T>? GetAll(Expression<Func<T, bool>> predicate = null)
         {
             throw new NotImplementedException();
         }
 
-        public IQueryable<T> GetAllInclude(Expression<Func<T, bool>>? predicate, params Expression<Func<T, object>>[] include)
+        public virtual IQueryable<T> GetAllInclude(Expression<Func<T, bool>>? predicate, params Expression<Func<T, object>>[] include)
         {
             throw new NotImplementedException();
         }
 
-        public T? GetById(int id)
+        public virtual T? GetById(int id)
         {
             throw new NotImplementedException();
         }
 
-        public int Insert(T input)
+        public virtual int Insert(T input)
         {
             throw new NotImplementedException();
         }
 
-        public int Update(T input)
+        public virtual int Update(T input)
         {
             throw new NotImplementedException();
         }
