@@ -6,6 +6,6 @@ namespace HightScore.Entities.Model.Concrete
     {
         public string CategoryName { get; set; }
         public string CategoryDescription { get; set; }
-        public ICollection<Item> items { get; set; }
+        public ICollection<ItemCategory> ItemCategories { get; set; }
     }
 }

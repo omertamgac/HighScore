@@ -7,7 +7,7 @@ namespace HightScore.Entities.Model.Concrete
         public int ItemId { get; set; }
         public Item itemId { get; set; }
         public int UserId { get; set; }
-        public User userId { get; set; }
+        public User user { get; set; }
         public int UserRating { get; set; }
         public string Comment { get; set; }
     }

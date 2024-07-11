@@ -13,14 +13,9 @@ namespace HightScore.Entities.EntityConfig.Concrete
             builder.Property(g => g.Title).IsRequired().HasMaxLength(80);
             builder.Property(g => g.Description).HasMaxLength(800);
             builder.Property(g => g.RelaseDate).IsRequired();
-
-            // Relationships
-            builder.HasMany(g => g.Categroies)
-                   .WithMany(c => c.items);
+            //  builder.Property(g => g.ItemCategories).IsRequired();
 
 
-            builder.HasMany(g => g.Platforms)
-                   .WithMany(p => p.items);
 
 
 

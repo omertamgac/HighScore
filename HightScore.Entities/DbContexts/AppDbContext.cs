@@ -6,6 +6,21 @@ namespace HightScore.Entities.DbContexts
 {
     public class AppDbContext : DbContext
     {
+
+        public DbSet<AdminAction> AdminActions { get; set; }
+        public DbSet<Category> Categories { get; set; }
+        public DbSet<Item> Items { get; set; }
+        public DbSet<Media> Medias { get; set; }
+        public DbSet<MediaReview> MediaReviews { get; set; }
+        public DbSet<Platform> Platforms { get; set; }
+        public DbSet<User> Users { get; set; }
+        public DbSet<UserReview> UserReviews { get; set; }
+        public DbSet<UserRole> UserRoles { get; set; }
+        public DbSet<ItemCategory> ItemCategories { get; set; }
+        public DbSet<ItemPlatform> ItemPlatforms { get; set; }
+        public DbSet<Role> Roles { get; set; }
+
+
         public AppDbContext()
         {
 
@@ -30,14 +45,7 @@ namespace HightScore.Entities.DbContexts
         }
 
 
-        public DbSet<AdminAction> AdminActions { get; set; }
-        public DbSet<Category> Categories { get; set; }
-        public DbSet<Item> Items { get; set; }
-        public DbSet<Media> Medias { get; set; }
-        public DbSet<MediaReview> MediaReviews { get; set; }
-        public DbSet<Platform> Platforms { get; set; }
-        public DbSet<User> Users { get; set; }
-        public DbSet<UserReview> UserReviews { get; set; }
+
 
 
 

@@ -6,6 +6,6 @@ namespace HightScore.Entities.Model.Concrete
     {
         public string PlatformName { get; set; }
         public byte? Logo { get; set; }
-        public ICollection<Item> items { get; set; }
+        public ICollection<ItemPlatform> ItemPlatforms { get; set; }
     }
 }

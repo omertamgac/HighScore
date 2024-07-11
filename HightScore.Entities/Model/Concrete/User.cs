@@ -9,6 +9,9 @@ namespace HightScore.Entities.Model.Concrete
         public string Password { get; set; }
         public string? Phone { get; set; }
         public string NickName { get; set; }
-        public ICollection<Role> Roles { get; set; }
+        public ICollection<UserRole> UserRoles { get; set; }
+
+        public ICollection<UserReview> userReviews { get; set; }
+
     }
 }
