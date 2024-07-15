@@ -5,5 +5,6 @@ namespace HightScore.BL.Managers.Concrete
 {
     public class CategoryManager : ManagerBase<Category>, ICategoryManager
     {
+
     }
 }

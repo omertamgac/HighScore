@@ -1,4 +1,6 @@
 using HightScore.Entities.DbContexts;
+using HightScore.Entities.Model.Concrete;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -13,8 +15,18 @@ builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseMySQL(connectionString);
 });
 
+builder.Services.AddIdentity<MetaUser, IdentityRole>()
+        .AddEntityFrameworkStores<AppDbContext>();
 
+builder.Services.Configure<IdentityOptions>(options =>
+{
+    options.Password.RequireLowercase = false;
+    options.Password.RequireUppercase = false;
+    options.Password.RequireDigit = false;
 
+    options.User.RequireUniqueEmail = true;
+
+});
 
 var app = builder.Build();
 

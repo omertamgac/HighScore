@@ -1,34 +1,33 @@
 ﻿using HightScore.Entities.Model.Concrete;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection;
 
 namespace HightScore.Entities.DbContexts
 {
-    public class AppDbContext : DbContext
+    public class AppDbContext : IdentityDbContext
     {
 
-        public DbSet<AdminAction> AdminActions { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Item> Items { get; set; }
         public DbSet<Media> Medias { get; set; }
         public DbSet<MediaReview> MediaReviews { get; set; }
         public DbSet<Platform> Platforms { get; set; }
-        public DbSet<User> Users { get; set; }
         public DbSet<UserReview> UserReviews { get; set; }
-        public DbSet<UserRole> UserRoles { get; set; }
         public DbSet<ItemCategory> ItemCategories { get; set; }
         public DbSet<ItemPlatform> ItemPlatforms { get; set; }
-        public DbSet<Role> Roles { get; set; }
 
 
-        public AppDbContext()
-        {
 
-        }
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
         {
 
         }
+
+        public AppDbContext()
+        {
+        }
+
         //Bu metod sayesinde migration ve database'e update işlemi yapıyoruz.
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -39,7 +38,7 @@ namespace HightScore.Entities.DbContexts
         //Seed dataların database'e işlenmesini sağlayan metod
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-
+            base.OnModelCreating(modelBuilder);
             modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
 
         }

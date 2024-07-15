@@ -1,4 +1,6 @@
+using HightScore.Entities.Model.Concrete;
 using HightScore.Models;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
@@ -7,10 +9,12 @@ namespace HightScore.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private UserManager<MetaUser> _userManager;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, UserManager<MetaUser> userManager)
         {
             _logger = logger;
+            _userManager = userManager;
         }
 
         public IActionResult Index()
@@ -19,7 +23,7 @@ namespace HightScore.Controllers
         }
         public IActionResult Login()
         {
-            return View();
+            return View(_userManager.Users);
         }
 
         public IActionResult Privacy()
