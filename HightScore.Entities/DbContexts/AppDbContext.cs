@@ -1,11 +1,12 @@
 ﻿using HightScore.Entities.Model.Concrete;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection;
 
 namespace HightScore.Entities.DbContexts
 {
-    public class AppDbContext : IdentityDbContext
+    public class AppDbContext : IdentityDbContext<MetaUser, IdentityRole, string>
     {
 
         public DbSet<Category> Categories { get; set; }
