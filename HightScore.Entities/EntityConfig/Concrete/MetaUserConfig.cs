@@ -16,7 +16,7 @@ namespace HightScore.Entities.EntityConfig.Concrete
             builder.HasData(
                 new MetaUser
                 {
-                    Id = "1",
+                    Id = new Guid().ToString(),
                     UserName = "admin",
                     NormalizedUserName = "ADMIN",
                     Email = "admin@example.com",

@@ -15,7 +15,7 @@ builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseMySQL(connectionString);
 });
 
-builder.Services.AddIdentity<MetaUser, IdentityRole>()
+builder.Services.AddIdentity<MetaUser, Role>()
         .AddEntityFrameworkStores<AppDbContext>();
 
 builder.Services.Configure<IdentityOptions>(options =>
