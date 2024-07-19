@@ -15,11 +15,17 @@ namespace HightScore.Controllers
         }
 
 
-        public IActionResult Create()
+        public IActionResult Index()
         {
 
+            return View(_roleManager.Roles);
+        }
+
+        public IActionResult Create()
+        {
             return View();
         }
+
 
         [HttpPost]
         public async Task<IActionResult> Create(Role model)
@@ -30,7 +36,7 @@ namespace HightScore.Controllers
                 var result = await _roleManager.CreateAsync(model);
                 if (result.Succeeded)
                 {
-                    return RedirectToAction("Create");
+                    return RedirectToAction("Index");
                 }
 
                 foreach (var err in result.Errors)
