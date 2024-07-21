@@ -1,9 +1,12 @@
 ﻿using HightScore.Entities.Model.Concrete;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace HightScore.Controllers
 {
+
+    [Authorize(Roles = "Admin")]
     public class RolesController : Controller
     {
 
@@ -44,9 +47,22 @@ namespace HightScore.Controllers
                     ModelState.AddModelError("", err.Description);
                 }
             }
-            return View(model);
+            return RedirectToAction("Roles");
         }
 
-
+        [HttpPost]
+        public async Task<IActionResult> Delete(string id)
+        {
+            var role = await _roleManager.FindByIdAsync(id);
+            if (role != null)
+            {
+                var result = await _roleManager.DeleteAsync(role);
+                if (result.Succeeded)
+                {
+                    return RedirectToAction("Index");
+                }
+            }
+            return RedirectToAction("Index");
+        }
     }
 }

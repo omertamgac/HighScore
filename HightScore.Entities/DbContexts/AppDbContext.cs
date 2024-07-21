@@ -41,6 +41,9 @@ namespace HightScore.Entities.DbContexts
             base.OnModelCreating(modelBuilder);
             modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
 
+            modelBuilder.Entity<MetaUser>()
+           .HasDiscriminator<string>("Discriminator")
+           .HasValue<MetaUser>("MetaUser");
         }
 
 

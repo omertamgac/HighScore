@@ -19,5 +19,7 @@ namespace HightScore.Models
         public string? ConfirmPassword { get; set; }
 
         public string? Phone { get; set; }
+        public IList<string>? SelectedRoles { get; set; }
+
     }
 }

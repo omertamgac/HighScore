@@ -4,5 +4,6 @@ namespace HightScore.Entities.Model.Concrete
 {
     public class MetaUser : IdentityUser
     {
+
     }
 }

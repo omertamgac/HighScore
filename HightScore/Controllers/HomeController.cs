@@ -1,36 +1,47 @@
 using HightScore.Entities.Model.Concrete;
 using HightScore.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
 
 namespace HightScore.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
         private UserManager<MetaUser> _userManager;
-
-        public HomeController(ILogger<HomeController> logger, UserManager<MetaUser> userManager)
+        private RoleManager<Role> _roleManager;
+        public HomeController(ILogger<HomeController> logger, UserManager<MetaUser> userManager, RoleManager<Role> roleManager)
         {
             _logger = logger;
             _userManager = userManager;
+            _roleManager = roleManager;
         }
 
+        [AllowAnonymous]
         public IActionResult Index()
         {
             return View();
         }
-        public IActionResult Login()
+
+
+
+        public IActionResult Users()
         {
+
             return View(_userManager.Users);
         }
 
+        [AllowAnonymous]
         public IActionResult Privacy()
         {
             return View();
         }
 
+        [AllowAnonymous]
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
@@ -49,6 +60,8 @@ namespace HightScore.Controllers
 
             if (user != null)
             {
+                ViewBag.Roles = await _roleManager.Roles.Select(i => i.Name).ToListAsync();
+
                 return View(new EditVM
                 {
                     Id = user.Id,
@@ -57,6 +70,7 @@ namespace HightScore.Controllers
                     Password = user.PasswordHash,
                     ConfirmPassword = user.PasswordHash,
                     Phone = user.PhoneNumber,
+                    SelectedRoles = await _userManager.GetRolesAsync(user),
                 });
             }
             return View();
@@ -94,7 +108,13 @@ namespace HightScore.Controllers
 
                     if (result.Succeeded)
                     {
-                        return RedirectToAction("Index");
+                        await _userManager.RemoveFromRolesAsync(user, await _userManager.GetRolesAsync(user));
+                        if (model.SelectedRoles != null)
+                        {
+                            await _userManager.AddToRolesAsync(user, model.SelectedRoles);
+                        }
+
+                        return RedirectToAction("Users");
                     }
 
                     foreach (var err in result.Errors)

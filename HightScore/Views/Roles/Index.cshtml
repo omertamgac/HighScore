@@ -19,10 +19,12 @@
         <tr>
             <td>@role.Id</td>
             <td>@role.Name</td>
-            <td>Users list</td>
-            <td>
-                <form method="post">
-                    <a class="btn btn-primary btn-sm">Edit</a>
+            <td>kullanıcı listesi</td>
+@*             <td asp-role-users="@role.Id"></td>
+ *@            <td>
+                <a class="btn btn-primary btn-sm">Edit</a>
+                <form action="Roles/Delete" method="post" onsubmit="return confirm('Are you sure you want to delete the role?')" style="display:inline-block;">
+                    <input type="hidden" value="@role.Id" name="id" />
                     <button type="submit" class="btn btn-danger btn-sm">Delete</button>
                 </form>
             </td>

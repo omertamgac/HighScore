@@ -1,0 +1,37 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Account Verified</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f8f9fa;
+        }
+        .card {
+            padding: 2rem;
+            border-radius: 1rem;
+        }
+        .card-title {
+            margin-bottom: 1rem;
+        }
+        .card-text {
+            margin-bottom: 1.5rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="card text-center shadow">
+        <div class="card-body">
+            <h1 class="card-title text-success">Your Account Has Been Verified!</h1>
+            <p class="card-text">Congratulations! Your account has been successfully verified. You can now enjoy all the features of our platform.</p>
+            <a asp-controller="Account" asp-action="Login" class="btn btn-primary">Go to Login</a>
+        </div>
+    </div>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
