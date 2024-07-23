@@ -1,3 +1,4 @@
+using HightScore.BL.Managers.Abstract;
 using HightScore.Entities.Model.Concrete;
 using HightScore.Models;
 using Microsoft.AspNetCore.Authorization;
@@ -14,17 +15,34 @@ namespace HightScore.Controllers
         private readonly ILogger<HomeController> _logger;
         private UserManager<MetaUser> _userManager;
         private RoleManager<Role> _roleManager;
-        public HomeController(ILogger<HomeController> logger, UserManager<MetaUser> userManager, RoleManager<Role> roleManager)
+        private readonly IitemManager _itemManager;
+        private readonly ICategoryManager _categoryManager;
+        private readonly IPlatformManager _platformManager;
+
+        public HomeController(ILogger<HomeController> logger, UserManager<MetaUser> userManager,
+            RoleManager<Role> roleManager, IitemManager itemManager, ICategoryManager categoryManager, IPlatformManager platformManager)
         {
             _logger = logger;
             _userManager = userManager;
             _roleManager = roleManager;
+            _itemManager = itemManager;
+            _categoryManager = categoryManager;
+            _platformManager = platformManager;
         }
 
         [AllowAnonymous]
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            var items = await _itemManager.GetAllGamesAsync();
+            var games = items.Select(item => new CardVM
+            {
+                Id = item.Id,
+                photo = item.photo,
+                name = item.Title,
+                Score = item.MediaAverageRating
+            }).ToList();
+
+            return View(games);
         }
 
 
@@ -138,6 +156,82 @@ namespace HightScore.Controllers
 
             return RedirectToAction("Index");
         }
+
+
+
+        public IActionResult CreateGame()
+        {
+            // `ViewBag.Categories` ve `ViewBag.Platforms`'ýn `null` olup olmadýðýný kontrol edin.
+            ViewBag.Categories = _categoryManager.GetAll() ?? new List<Category>();
+            ViewBag.Platforms = _platformManager.GetAll() ?? new List<Platform>();
+
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult CreateGame(GameVM model)
+        {
+            if (ModelState.IsValid)
+            {
+                var game = new Item
+                {
+                    Description = model.Description,
+                    Iframe = model.Iframe,
+                    ItemPlatforms = model.ItemPlatforms,
+                    ItemCategories = model.ItemCategories,
+                    MediaAverageRating = model.MediaAverageRating,
+                    photo = model.photo,
+                    Title = model.Title,
+                    RelaseDate = model.RelaseDate,
+                    UserAverageRating = model.UserAverageRating,
+                };
+
+                var result = _itemManager.Insert(game);
+
+                if (result > 0)
+                {
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    ModelState.AddModelError(string.Empty, "Oyun eklenirken bir hata oluþtu.");
+                }
+
+                ViewBag.Categories = _categoryManager.GetAll();
+                ViewBag.Platforms = _platformManager.GetAll();
+
+
+            }
+
+            return View(model);
+        }
+
+
+        public async Task<IActionResult> Details(int id)
+        {
+            var game = await _itemManager.GetGameByIdAsync(id); // Bu methodun implementation'ý sizin için uygun olmalý
+
+            if (game == null)
+            {
+                return NotFound();
+            }
+
+            var viewModel = new GameVM
+            {
+                Title = game.Title,
+                Description = game.Description,
+                RelaseDate = game.RelaseDate,
+                Iframe = game.Iframe,
+                photo = game.photo,
+                UserAverageRating = game.UserAverageRating,
+                MediaAverageRating = game.MediaAverageRating,
+                ItemCategories = game.ItemCategories.ToList(),
+                ItemPlatforms = game.ItemPlatforms.ToList()
+            };
+
+            return View(viewModel);
+        }
+
 
     }
 }

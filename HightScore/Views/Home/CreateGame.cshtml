@@ -1,0 +1,62 @@
+﻿@model GameVM
+
+<form asp-action="CreateGame" method="post">
+    <!-- Oyun başlığı -->
+    <div class="form-group">
+        <label asp-for="Title"></label>
+        <input asp-for="Title" class="form-control" />
+        <span asp-validation-for="Title" class="text-danger"></span>
+    </div>
+
+    <!-- Açıklama -->
+    <div class="form-group">
+        <label asp-for="Description"></label>
+        <textarea asp-for="Description" class="form-control"></textarea>
+        <span asp-validation-for="Description" class="text-danger"></span>
+    </div>
+
+    <!-- Kategoriler -->
+    <div class="form-group">
+        <label>Kategoriler</label>
+        <select asp-for="ItemCategories" asp-items="@(new SelectList(ViewBag.Categories, "Id", "Name"))" class="form-control" multiple></select>
+    </div>
+
+    <!-- Platformlar -->
+    <div class="form-group">
+        <label>Platformlar</label>
+        <select asp-for="ItemPlatforms" asp-items="@(new SelectList(ViewBag.Platforms, "Id", "Name"))" class="form-control" multiple></select>
+    </div>
+
+    <!-- Diğer alanlar -->
+    <div class="form-group">
+        <label asp-for="Iframe"></label>
+        <input asp-for="Iframe" class="form-control" />
+        <span asp-validation-for="Iframe" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="photo"></label>
+        <input asp-for="photo" class="form-control" />
+        <span asp-validation-for="photo" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="UserAverageRating"></label>
+        <input asp-for="UserAverageRating" type="number" step="0.01" class="form-control" />
+        <span asp-validation-for="UserAverageRating" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="MediaAverageRating"></label>
+        <input asp-for="MediaAverageRating" type="number" step="0.01" class="form-control" />
+        <span asp-validation-for="MediaAverageRating" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="RelaseDate"></label>
+        <input asp-for="RelaseDate" type="date" class="form-control" />
+        <span asp-validation-for="RelaseDate" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Oyun Ekle</button>
+</form>

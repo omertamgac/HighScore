@@ -58,7 +58,14 @@
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="logout">Logout</a>
                             </li>
                         }
-                        
+                        @if (User.Identity?.IsAuthenticated == false)
+                        {
+                           
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="login">Login</a>
+                            </li>
+
+                        }
                    </ul>
                    
                </div>

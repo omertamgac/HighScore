@@ -1,8 +1,42 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿@model IEnumerable<CardVM>
+
+@{
+    ViewData["Title"] = "Games";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+
+<style>
+    .card-img-top {
+        width: 100%;
+        height: 200px; /* Yükseklik ihtiyaca göre ayarlanabilir */
+        object-fit: cover; /* Resimlerin kartın içine düzgün sığmasını sağlar */
+    }
+
+    .card-body {
+        display: flex;
+        flex-direction: column;
+        justify-content: center; /* İçeriği dikeyde ortalar */
+        text-align: center; /* İçeriği yatayda ortalar */
+        padding: 1rem; /* Kartın içindeki boşlukları ayarlar */
+    }
+</style>
+
+<div class="container">
+    <div class="row">
+        @foreach (var game in Model)
+        {
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <img src="/images/@game.photo" class="card-img-top" alt="@game.name">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            <a asp-controller="Home" asp-action="Details" asp-route-id="@game.Id">@game.name</a>
+                        </h5>
+                        <p class="card-text">Puan: @game.Score</p>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
 </div>
+

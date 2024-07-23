@@ -1,3 +1,5 @@
+using HightScore.BL.Managers.Abstract;
+using HightScore.BL.Managers.Concrete;
 using HightScore.Entities.DbContexts;
 using HightScore.Entities.Model.Concrete;
 using HightScore.Models;
@@ -14,7 +16,6 @@ builder.Services.AddScoped<IEmailSender, SmtpEmailSender>(i =>
        builder.Configuration.GetValue<bool>("EmailSender:EnableSSL"),
        builder.Configuration["EmailSender:Username"],
        builder.Configuration["EmailSender:Password"])
-
 );
 
 builder.Services.AddControllersWithViews();
@@ -37,7 +38,7 @@ builder.Services.Configure<IdentityOptions>(options =>
 
     options.User.RequireUniqueEmail = true;
 
-    options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(3);
+    options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(5);
     options.Lockout.MaxFailedAccessAttempts = 5;
 
     options.SignIn.RequireConfirmedEmail = true;
@@ -45,15 +46,25 @@ builder.Services.Configure<IdentityOptions>(options =>
 
 builder.Services.ConfigureApplicationCookie(options =>
 {
-    options.LoginPath = "/Account/Login";
-    options.AccessDeniedPath = "/Account/AccessDenied";
+    // options.LoginPath = "/Account/Login";
+    // options.AccessDeniedPath = "/Account/AccessDenied";
     options.SlidingExpiration = true;
     options.ExpireTimeSpan = TimeSpan.FromDays(30);
 }
 );
 
 
+
+
+
+builder.Services.AddScoped<IitemManager, ItemManager>();
+builder.Services.AddScoped<ICategoryManager, CategoryManager>();
+builder.Services.AddScoped<IPlatformManager, PlatformManager>();
+
 var app = builder.Build();
+
+
+
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
@@ -62,6 +73,8 @@ if (!app.Environment.IsDevelopment())
     // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
+
+
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
@@ -76,3 +89,4 @@ app.MapControllerRoute(
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
 app.Run();
+

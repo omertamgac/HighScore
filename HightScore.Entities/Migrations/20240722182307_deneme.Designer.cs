@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HightScore.Entities.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20240715181037_deneme")]
+    [Migration("20240722182307_deneme")]
     partial class deneme
     {
         /// <inheritdoc />
@@ -359,6 +359,9 @@ namespace HightScore.Entities.Migrations
                         .HasMaxLength(800)
                         .HasColumnType("varchar(800)");
 
+                    b.Property<string>("Iframe")
+                        .HasColumnType("longtext");
+
                     b.Property<decimal>("MediaAverageRating")
                         .HasColumnType("decimal(18,2)");
 
@@ -376,6 +379,9 @@ namespace HightScore.Entities.Migrations
                     b.Property<decimal>("UserAverageRating")
                         .HasColumnType("decimal(18,2)");
 
+                    b.Property<string>("photo")
+                        .HasColumnType("longtext");
+
                     b.HasKey("Id");
 
                     b.ToTable("Items");
@@ -388,8 +394,9 @@ namespace HightScore.Entities.Migrations
                             MediaAverageRating = 9.8m,
                             RelaseDate = new DateTime(2017, 3, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "The Legend of Zelda: Breath of the Wild",
-                            UpdatedAt = new DateTime(2024, 7, 15, 21, 10, 36, 769, DateTimeKind.Local).AddTicks(4147),
-                            UserAverageRating = 9.5m
+                            UpdatedAt = new DateTime(2024, 7, 22, 21, 23, 6, 561, DateTimeKind.Local).AddTicks(7799),
+                            UserAverageRating = 9.5m,
+                            photo = "1.jpg"
                         },
                         new
                         {
@@ -398,8 +405,9 @@ namespace HightScore.Entities.Migrations
                             MediaAverageRating = 9.7m,
                             RelaseDate = new DateTime(2017, 10, 27, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Super Mario Odyssey",
-                            UpdatedAt = new DateTime(2024, 7, 15, 21, 10, 36, 769, DateTimeKind.Local).AddTicks(4164),
-                            UserAverageRating = 9.3m
+                            UpdatedAt = new DateTime(2024, 7, 22, 21, 23, 6, 561, DateTimeKind.Local).AddTicks(7821),
+                            UserAverageRating = 9.3m,
+                            photo = "2.webp"
                         },
                         new
                         {
@@ -408,8 +416,9 @@ namespace HightScore.Entities.Migrations
                             MediaAverageRating = 9.8m,
                             RelaseDate = new DateTime(2018, 10, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Red Dead Redemption 2",
-                            UpdatedAt = new DateTime(2024, 7, 15, 21, 10, 36, 769, DateTimeKind.Local).AddTicks(4167),
-                            UserAverageRating = 9.6m
+                            UpdatedAt = new DateTime(2024, 7, 22, 21, 23, 6, 561, DateTimeKind.Local).AddTicks(7824),
+                            UserAverageRating = 9.6m,
+                            photo = "3.jpg"
                         },
                         new
                         {
@@ -418,8 +427,9 @@ namespace HightScore.Entities.Migrations
                             MediaAverageRating = 9.6m,
                             RelaseDate = new DateTime(2018, 4, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "God of War",
-                            UpdatedAt = new DateTime(2024, 7, 15, 21, 10, 36, 769, DateTimeKind.Local).AddTicks(4170),
-                            UserAverageRating = 9.4m
+                            UpdatedAt = new DateTime(2024, 7, 22, 21, 23, 6, 561, DateTimeKind.Local).AddTicks(7827),
+                            UserAverageRating = 9.4m,
+                            photo = "4.jpg"
                         },
                         new
                         {
@@ -428,8 +438,9 @@ namespace HightScore.Entities.Migrations
                             MediaAverageRating = 9.9m,
                             RelaseDate = new DateTime(2015, 5, 19, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "The Witcher 3: Wild Hunt",
-                            UpdatedAt = new DateTime(2024, 7, 15, 21, 10, 36, 769, DateTimeKind.Local).AddTicks(4172),
-                            UserAverageRating = 9.7m
+                            UpdatedAt = new DateTime(2024, 7, 22, 21, 23, 6, 561, DateTimeKind.Local).AddTicks(7829),
+                            UserAverageRating = 9.7m,
+                            photo = "5.jpg"
                         },
                         new
                         {
@@ -438,8 +449,9 @@ namespace HightScore.Entities.Migrations
                             MediaAverageRating = 8.9m,
                             RelaseDate = new DateTime(2020, 12, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Cyberpunk 2077",
-                            UpdatedAt = new DateTime(2024, 7, 15, 21, 10, 36, 769, DateTimeKind.Local).AddTicks(4176),
-                            UserAverageRating = 8.5m
+                            UpdatedAt = new DateTime(2024, 7, 22, 21, 23, 6, 561, DateTimeKind.Local).AddTicks(7836),
+                            UserAverageRating = 8.5m,
+                            photo = "6.jpg"
                         },
                         new
                         {
@@ -448,8 +460,9 @@ namespace HightScore.Entities.Migrations
                             MediaAverageRating = 9.5m,
                             RelaseDate = new DateTime(2011, 11, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Minecraft",
-                            UpdatedAt = new DateTime(2024, 7, 15, 21, 10, 36, 769, DateTimeKind.Local).AddTicks(4179),
-                            UserAverageRating = 9.2m
+                            UpdatedAt = new DateTime(2024, 7, 22, 21, 23, 6, 561, DateTimeKind.Local).AddTicks(7838),
+                            UserAverageRating = 9.2m,
+                            photo = "7.jpg"
                         },
                         new
                         {
@@ -458,8 +471,9 @@ namespace HightScore.Entities.Migrations
                             MediaAverageRating = 9.0m,
                             RelaseDate = new DateTime(2017, 7, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Fortnite",
-                            UpdatedAt = new DateTime(2024, 7, 15, 21, 10, 36, 769, DateTimeKind.Local).AddTicks(4181),
-                            UserAverageRating = 8.8m
+                            UpdatedAt = new DateTime(2024, 7, 22, 21, 23, 6, 561, DateTimeKind.Local).AddTicks(7841),
+                            UserAverageRating = 8.8m,
+                            photo = "8.png"
                         },
                         new
                         {
@@ -468,8 +482,9 @@ namespace HightScore.Entities.Migrations
                             MediaAverageRating = 9.7m,
                             RelaseDate = new DateTime(2011, 11, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "The Elder Scrolls V: Skyrim",
-                            UpdatedAt = new DateTime(2024, 7, 15, 21, 10, 36, 769, DateTimeKind.Local).AddTicks(4185),
-                            UserAverageRating = 9.4m
+                            UpdatedAt = new DateTime(2024, 7, 22, 21, 23, 6, 561, DateTimeKind.Local).AddTicks(7844),
+                            UserAverageRating = 9.4m,
+                            photo = "9.jpg"
                         },
                         new
                         {
@@ -478,8 +493,9 @@ namespace HightScore.Entities.Migrations
                             MediaAverageRating = 9.5m,
                             RelaseDate = new DateTime(2017, 2, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Horizon Zero Dawn",
-                            UpdatedAt = new DateTime(2024, 7, 15, 21, 10, 36, 769, DateTimeKind.Local).AddTicks(4188),
-                            UserAverageRating = 9.3m
+                            UpdatedAt = new DateTime(2024, 7, 22, 21, 23, 6, 561, DateTimeKind.Local).AddTicks(7847),
+                            UserAverageRating = 9.3m,
+                            photo = "10.jpg"
                         },
                         new
                         {
@@ -488,8 +504,9 @@ namespace HightScore.Entities.Migrations
                             MediaAverageRating = 8.8m,
                             RelaseDate = new DateTime(2016, 11, 29, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Final Fantasy XV",
-                            UpdatedAt = new DateTime(2024, 7, 15, 21, 10, 36, 769, DateTimeKind.Local).AddTicks(4190),
-                            UserAverageRating = 8.6m
+                            UpdatedAt = new DateTime(2024, 7, 22, 21, 23, 6, 561, DateTimeKind.Local).AddTicks(7850),
+                            UserAverageRating = 8.6m,
+                            photo = "11.jpg"
                         },
                         new
                         {
@@ -498,8 +515,9 @@ namespace HightScore.Entities.Migrations
                             MediaAverageRating = 9.6m,
                             RelaseDate = new DateTime(2016, 9, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Persona 5",
-                            UpdatedAt = new DateTime(2024, 7, 15, 21, 10, 36, 769, DateTimeKind.Local).AddTicks(4193),
-                            UserAverageRating = 9.5m
+                            UpdatedAt = new DateTime(2024, 7, 22, 21, 23, 6, 561, DateTimeKind.Local).AddTicks(7853),
+                            UserAverageRating = 9.5m,
+                            photo = "12.png"
                         },
                         new
                         {
@@ -508,8 +526,9 @@ namespace HightScore.Entities.Migrations
                             MediaAverageRating = 9.3m,
                             RelaseDate = new DateTime(2016, 3, 24, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Dark Souls III",
-                            UpdatedAt = new DateTime(2024, 7, 15, 21, 10, 36, 769, DateTimeKind.Local).AddTicks(4195),
-                            UserAverageRating = 9.1m
+                            UpdatedAt = new DateTime(2024, 7, 22, 21, 23, 6, 561, DateTimeKind.Local).AddTicks(7857),
+                            UserAverageRating = 9.1m,
+                            photo = "13.jpg"
                         },
                         new
                         {
@@ -518,8 +537,9 @@ namespace HightScore.Entities.Migrations
                             MediaAverageRating = 9.4m,
                             RelaseDate = new DateTime(2015, 3, 24, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Bloodborne",
-                            UpdatedAt = new DateTime(2024, 7, 15, 21, 10, 36, 769, DateTimeKind.Local).AddTicks(4202),
-                            UserAverageRating = 9.3m
+                            UpdatedAt = new DateTime(2024, 7, 22, 21, 23, 6, 561, DateTimeKind.Local).AddTicks(7859),
+                            UserAverageRating = 9.3m,
+                            photo = "14.jpg"
                         },
                         new
                         {
@@ -528,8 +548,9 @@ namespace HightScore.Entities.Migrations
                             MediaAverageRating = 9.1m,
                             RelaseDate = new DateTime(2016, 5, 24, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Overwatch",
-                            UpdatedAt = new DateTime(2024, 7, 15, 21, 10, 36, 769, DateTimeKind.Local).AddTicks(4204),
-                            UserAverageRating = 8.9m
+                            UpdatedAt = new DateTime(2024, 7, 22, 21, 23, 6, 561, DateTimeKind.Local).AddTicks(7862),
+                            UserAverageRating = 8.9m,
+                            photo = "15.jpg"
                         },
                         new
                         {
@@ -538,8 +559,9 @@ namespace HightScore.Entities.Migrations
                             MediaAverageRating = 9.5m,
                             RelaseDate = new DateTime(2019, 3, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Sekiro: Shadows Die Twice",
-                            UpdatedAt = new DateTime(2024, 7, 15, 21, 10, 36, 769, DateTimeKind.Local).AddTicks(4207),
-                            UserAverageRating = 9.2m
+                            UpdatedAt = new DateTime(2024, 7, 22, 21, 23, 6, 561, DateTimeKind.Local).AddTicks(7882),
+                            UserAverageRating = 9.2m,
+                            photo = "16.jpg"
                         },
                         new
                         {
@@ -548,8 +570,9 @@ namespace HightScore.Entities.Migrations
                             MediaAverageRating = 8.9m,
                             RelaseDate = new DateTime(2017, 2, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Nioh",
-                            UpdatedAt = new DateTime(2024, 7, 15, 21, 10, 36, 769, DateTimeKind.Local).AddTicks(4209),
-                            UserAverageRating = 8.7m
+                            UpdatedAt = new DateTime(2024, 7, 22, 21, 23, 6, 561, DateTimeKind.Local).AddTicks(7885),
+                            UserAverageRating = 8.7m,
+                            photo = "17.jpg"
                         },
                         new
                         {
@@ -558,8 +581,9 @@ namespace HightScore.Entities.Migrations
                             MediaAverageRating = 9.2m,
                             RelaseDate = new DateTime(2018, 1, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Monster Hunter: World",
-                            UpdatedAt = new DateTime(2024, 7, 15, 21, 10, 36, 769, DateTimeKind.Local).AddTicks(4211),
-                            UserAverageRating = 9.0m
+                            UpdatedAt = new DateTime(2024, 7, 22, 21, 23, 6, 561, DateTimeKind.Local).AddTicks(7887),
+                            UserAverageRating = 9.0m,
+                            photo = "18.png"
                         },
                         new
                         {
@@ -568,8 +592,9 @@ namespace HightScore.Entities.Migrations
                             MediaAverageRating = 9.5m,
                             RelaseDate = new DateTime(2019, 1, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Resident Evil 2",
-                            UpdatedAt = new DateTime(2024, 7, 15, 21, 10, 36, 769, DateTimeKind.Local).AddTicks(4213),
-                            UserAverageRating = 9.3m
+                            UpdatedAt = new DateTime(2024, 7, 22, 21, 23, 6, 561, DateTimeKind.Local).AddTicks(7890),
+                            UserAverageRating = 9.3m,
+                            photo = "19.jpg"
                         },
                         new
                         {
@@ -578,8 +603,9 @@ namespace HightScore.Entities.Migrations
                             MediaAverageRating = 9.5m,
                             RelaseDate = new DateTime(2020, 7, 17, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Ghost of Tsushima",
-                            UpdatedAt = new DateTime(2024, 7, 15, 21, 10, 36, 769, DateTimeKind.Local).AddTicks(4216),
-                            UserAverageRating = 9.4m
+                            UpdatedAt = new DateTime(2024, 7, 22, 21, 23, 6, 561, DateTimeKind.Local).AddTicks(7893),
+                            UserAverageRating = 9.4m,
+                            photo = "20.jpg"
                         },
                         new
                         {
@@ -588,8 +614,9 @@ namespace HightScore.Entities.Migrations
                             MediaAverageRating = 9.0m,
                             RelaseDate = new DateTime(2020, 11, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Assassin's Creed Valhalla",
-                            UpdatedAt = new DateTime(2024, 7, 15, 21, 10, 36, 769, DateTimeKind.Local).AddTicks(4218),
-                            UserAverageRating = 8.8m
+                            UpdatedAt = new DateTime(2024, 7, 22, 21, 23, 6, 561, DateTimeKind.Local).AddTicks(7897),
+                            UserAverageRating = 8.8m,
+                            photo = "21.jpg"
                         },
                         new
                         {
@@ -598,8 +625,9 @@ namespace HightScore.Entities.Migrations
                             MediaAverageRating = 9.8m,
                             RelaseDate = new DateTime(2020, 6, 19, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "The Last of Us Part II",
-                            UpdatedAt = new DateTime(2024, 7, 15, 21, 10, 36, 769, DateTimeKind.Local).AddTicks(4233),
-                            UserAverageRating = 9.6m
+                            UpdatedAt = new DateTime(2024, 7, 22, 21, 23, 6, 561, DateTimeKind.Local).AddTicks(7899),
+                            UserAverageRating = 9.6m,
+                            photo = "22.jpg"
                         },
                         new
                         {
@@ -608,8 +636,9 @@ namespace HightScore.Entities.Migrations
                             MediaAverageRating = 9.1m,
                             RelaseDate = new DateTime(2019, 8, 27, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Control",
-                            UpdatedAt = new DateTime(2024, 7, 15, 21, 10, 36, 769, DateTimeKind.Local).AddTicks(4236),
-                            UserAverageRating = 8.9m
+                            UpdatedAt = new DateTime(2024, 7, 22, 21, 23, 6, 561, DateTimeKind.Local).AddTicks(7902),
+                            UserAverageRating = 8.9m,
+                            photo = "23.jpg"
                         },
                         new
                         {
@@ -618,8 +647,9 @@ namespace HightScore.Entities.Migrations
                             MediaAverageRating = 9.7m,
                             RelaseDate = new DateTime(2020, 9, 17, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Hades",
-                            UpdatedAt = new DateTime(2024, 7, 15, 21, 10, 36, 769, DateTimeKind.Local).AddTicks(4238),
-                            UserAverageRating = 9.5m
+                            UpdatedAt = new DateTime(2024, 7, 22, 21, 23, 6, 561, DateTimeKind.Local).AddTicks(7905),
+                            UserAverageRating = 9.5m,
+                            photo = "24.png"
                         },
                         new
                         {
@@ -628,8 +658,9 @@ namespace HightScore.Entities.Migrations
                             MediaAverageRating = 9.3m,
                             RelaseDate = new DateTime(2020, 3, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Doom Eternal",
-                            UpdatedAt = new DateTime(2024, 7, 15, 21, 10, 36, 769, DateTimeKind.Local).AddTicks(4240),
-                            UserAverageRating = 9.1m
+                            UpdatedAt = new DateTime(2024, 7, 22, 21, 23, 6, 561, DateTimeKind.Local).AddTicks(7907),
+                            UserAverageRating = 9.1m,
+                            photo = "25.jpg"
                         },
                         new
                         {
@@ -638,8 +669,9 @@ namespace HightScore.Entities.Migrations
                             MediaAverageRating = 8.8m,
                             RelaseDate = new DateTime(2020, 9, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Genshin Impact",
-                            UpdatedAt = new DateTime(2024, 7, 15, 21, 10, 36, 769, DateTimeKind.Local).AddTicks(4242),
-                            UserAverageRating = 8.6m
+                            UpdatedAt = new DateTime(2024, 7, 22, 21, 23, 6, 561, DateTimeKind.Local).AddTicks(7910),
+                            UserAverageRating = 8.6m,
+                            photo = "26.jpg"
                         },
                         new
                         {
@@ -648,8 +680,9 @@ namespace HightScore.Entities.Migrations
                             MediaAverageRating = 8.9m,
                             RelaseDate = new DateTime(2019, 11, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Death Stranding",
-                            UpdatedAt = new DateTime(2024, 7, 15, 21, 10, 36, 769, DateTimeKind.Local).AddTicks(4244),
-                            UserAverageRating = 8.7m
+                            UpdatedAt = new DateTime(2024, 7, 22, 21, 23, 6, 561, DateTimeKind.Local).AddTicks(7913),
+                            UserAverageRating = 8.7m,
+                            photo = "27.jpg"
                         },
                         new
                         {
@@ -658,8 +691,9 @@ namespace HightScore.Entities.Migrations
                             MediaAverageRating = 9.3m,
                             RelaseDate = new DateTime(2018, 9, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Marvel's Spider-Man",
-                            UpdatedAt = new DateTime(2024, 7, 15, 21, 10, 36, 769, DateTimeKind.Local).AddTicks(4246),
-                            UserAverageRating = 9.2m
+                            UpdatedAt = new DateTime(2024, 7, 22, 21, 23, 6, 561, DateTimeKind.Local).AddTicks(7916),
+                            UserAverageRating = 9.2m,
+                            photo = "28.jpg"
                         },
                         new
                         {
@@ -668,8 +702,9 @@ namespace HightScore.Entities.Migrations
                             MediaAverageRating = 9.6m,
                             RelaseDate = new DateTime(2020, 3, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Half-Life: Alyx",
-                            UpdatedAt = new DateTime(2024, 7, 15, 21, 10, 36, 769, DateTimeKind.Local).AddTicks(4248),
-                            UserAverageRating = 9.4m
+                            UpdatedAt = new DateTime(2024, 7, 22, 21, 23, 6, 561, DateTimeKind.Local).AddTicks(7922),
+                            UserAverageRating = 9.4m,
+                            photo = "29.webp"
                         },
                         new
                         {
@@ -678,8 +713,9 @@ namespace HightScore.Entities.Migrations
                             MediaAverageRating = 8.7m,
                             RelaseDate = new DateTime(2020, 3, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Mount and Blade II: Bannerlord",
-                            UpdatedAt = new DateTime(2024, 7, 15, 21, 10, 36, 769, DateTimeKind.Local).AddTicks(4250),
-                            UserAverageRating = 8.5m
+                            UpdatedAt = new DateTime(2024, 7, 22, 21, 23, 6, 561, DateTimeKind.Local).AddTicks(7924),
+                            UserAverageRating = 8.5m,
+                            photo = "30.jpg"
                         },
                         new
                         {
@@ -688,8 +724,9 @@ namespace HightScore.Entities.Migrations
                             MediaAverageRating = 9.2m,
                             RelaseDate = new DateTime(2009, 8, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Batman: Arkham Asylum",
-                            UpdatedAt = new DateTime(2024, 7, 15, 21, 10, 36, 769, DateTimeKind.Local).AddTicks(4253),
-                            UserAverageRating = 9.0m
+                            UpdatedAt = new DateTime(2024, 7, 22, 21, 23, 6, 561, DateTimeKind.Local).AddTicks(7929),
+                            UserAverageRating = 9.0m,
+                            photo = "31.jpg"
                         },
                         new
                         {
@@ -698,8 +735,9 @@ namespace HightScore.Entities.Migrations
                             MediaAverageRating = 9.3m,
                             RelaseDate = new DateTime(2011, 10, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Batman: Arkham City",
-                            UpdatedAt = new DateTime(2024, 7, 15, 21, 10, 36, 769, DateTimeKind.Local).AddTicks(4255),
-                            UserAverageRating = 9.1m
+                            UpdatedAt = new DateTime(2024, 7, 22, 21, 23, 6, 561, DateTimeKind.Local).AddTicks(7933),
+                            UserAverageRating = 9.1m,
+                            photo = "32.jpg"
                         },
                         new
                         {
@@ -708,8 +746,9 @@ namespace HightScore.Entities.Migrations
                             MediaAverageRating = 9.0m,
                             RelaseDate = new DateTime(2015, 6, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Batman: Arkham Knight",
-                            UpdatedAt = new DateTime(2024, 7, 15, 21, 10, 36, 769, DateTimeKind.Local).AddTicks(4257),
-                            UserAverageRating = 8.9m
+                            UpdatedAt = new DateTime(2024, 7, 22, 21, 23, 6, 561, DateTimeKind.Local).AddTicks(7935),
+                            UserAverageRating = 8.9m,
+                            photo = "33.jpg"
                         });
                 });
 
@@ -1404,6 +1443,95 @@ namespace HightScore.Entities.Migrations
                         });
                 });
 
+            modelBuilder.Entity("HightScore.Entities.Model.Concrete.MetaUser", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("varchar(255)");
+
+                    b.Property<int>("AccessFailedCount")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ConcurrencyStamp")
+                        .IsConcurrencyToken()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Discriminator")
+                        .IsRequired()
+                        .HasMaxLength(8)
+                        .HasColumnType("varchar(8)");
+
+                    b.Property<string>("Email")
+                        .HasMaxLength(256)
+                        .HasColumnType("varchar(256)");
+
+                    b.Property<bool>("EmailConfirmed")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<bool>("LockoutEnabled")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<DateTimeOffset?>("LockoutEnd")
+                        .HasColumnType("datetime");
+
+                    b.Property<string>("NormalizedEmail")
+                        .HasMaxLength(256)
+                        .HasColumnType("varchar(256)");
+
+                    b.Property<string>("NormalizedUserName")
+                        .HasMaxLength(256)
+                        .HasColumnType("varchar(256)");
+
+                    b.Property<string>("PasswordHash")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("PhoneNumber")
+                        .HasColumnType("longtext");
+
+                    b.Property<bool>("PhoneNumberConfirmed")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<string>("SecurityStamp")
+                        .HasColumnType("longtext");
+
+                    b.Property<bool>("TwoFactorEnabled")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<string>("UserName")
+                        .HasMaxLength(256)
+                        .HasColumnType("varchar(256)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("NormalizedEmail")
+                        .HasDatabaseName("EmailIndex");
+
+                    b.HasIndex("NormalizedUserName")
+                        .IsUnique()
+                        .HasDatabaseName("UserNameIndex");
+
+                    b.ToTable("AspNetUsers", (string)null);
+
+                    b.HasDiscriminator<string>("Discriminator").HasValue("MetaUser");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "00000000-0000-0000-0000-000000000000",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "d4a7ff6f-2000-44ea-8b82-9c191c2f87c1",
+                            Email = "admin@hotmail.com",
+                            EmailConfirmed = true,
+                            LockoutEnabled = false,
+                            NormalizedEmail = "ADMIN@HOTMAIL.COM",
+                            NormalizedUserName = "ADMIN",
+                            PasswordHash = "asd123.",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "JZTQQKJ3CQCXYN4AWFLARBLI4NXY2FYW",
+                            TwoFactorEnabled = false,
+                            UserName = "admin"
+                        });
+                });
+
             modelBuilder.Entity("HightScore.Entities.Model.Concrete.Platform", b =>
                 {
                     b.Property<int>("Id")
@@ -1538,6 +1666,32 @@ namespace HightScore.Entities.Migrations
                         });
                 });
 
+            modelBuilder.Entity("HightScore.Entities.Model.Concrete.Role", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("varchar(255)");
+
+                    b.Property<string>("ConcurrencyStamp")
+                        .IsConcurrencyToken()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Name")
+                        .HasMaxLength(256)
+                        .HasColumnType("varchar(256)");
+
+                    b.Property<string>("NormalizedName")
+                        .HasMaxLength(256)
+                        .HasColumnType("varchar(256)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("NormalizedName")
+                        .IsUnique()
+                        .HasDatabaseName("RoleNameIndex");
+
+                    b.ToTable("AspNetRoles", (string)null);
+                });
+
             modelBuilder.Entity("HightScore.Entities.Model.Concrete.UserReview", b =>
                 {
                     b.Property<int>("Id")
@@ -1565,32 +1719,6 @@ namespace HightScore.Entities.Migrations
                     b.ToTable("UserReviews");
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
-                {
-                    b.Property<string>("Id")
-                        .HasColumnType("varchar(255)");
-
-                    b.Property<string>("ConcurrencyStamp")
-                        .IsConcurrencyToken()
-                        .HasColumnType("longtext");
-
-                    b.Property<string>("Name")
-                        .HasMaxLength(256)
-                        .HasColumnType("varchar(256)");
-
-                    b.Property<string>("NormalizedName")
-                        .HasMaxLength(256)
-                        .HasColumnType("varchar(256)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("NormalizedName")
-                        .IsUnique()
-                        .HasDatabaseName("RoleNameIndex");
-
-                    b.ToTable("AspNetRoles", (string)null);
-                });
-
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.Property<int>("Id")
@@ -1612,79 +1740,6 @@ namespace HightScore.Entities.Migrations
                     b.HasIndex("RoleId");
 
                     b.ToTable("AspNetRoleClaims", (string)null);
-                });
-
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUser", b =>
-                {
-                    b.Property<string>("Id")
-                        .HasColumnType("varchar(255)");
-
-                    b.Property<int>("AccessFailedCount")
-                        .HasColumnType("int");
-
-                    b.Property<string>("ConcurrencyStamp")
-                        .IsConcurrencyToken()
-                        .HasColumnType("longtext");
-
-                    b.Property<string>("Discriminator")
-                        .IsRequired()
-                        .HasMaxLength(13)
-                        .HasColumnType("varchar(13)");
-
-                    b.Property<string>("Email")
-                        .HasMaxLength(256)
-                        .HasColumnType("varchar(256)");
-
-                    b.Property<bool>("EmailConfirmed")
-                        .HasColumnType("tinyint(1)");
-
-                    b.Property<bool>("LockoutEnabled")
-                        .HasColumnType("tinyint(1)");
-
-                    b.Property<DateTimeOffset?>("LockoutEnd")
-                        .HasColumnType("datetime");
-
-                    b.Property<string>("NormalizedEmail")
-                        .HasMaxLength(256)
-                        .HasColumnType("varchar(256)");
-
-                    b.Property<string>("NormalizedUserName")
-                        .HasMaxLength(256)
-                        .HasColumnType("varchar(256)");
-
-                    b.Property<string>("PasswordHash")
-                        .HasColumnType("longtext");
-
-                    b.Property<string>("PhoneNumber")
-                        .HasColumnType("longtext");
-
-                    b.Property<bool>("PhoneNumberConfirmed")
-                        .HasColumnType("tinyint(1)");
-
-                    b.Property<string>("SecurityStamp")
-                        .HasColumnType("longtext");
-
-                    b.Property<bool>("TwoFactorEnabled")
-                        .HasColumnType("tinyint(1)");
-
-                    b.Property<string>("UserName")
-                        .HasMaxLength(256)
-                        .HasColumnType("varchar(256)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("NormalizedEmail")
-                        .HasDatabaseName("EmailIndex");
-
-                    b.HasIndex("NormalizedUserName")
-                        .IsUnique()
-                        .HasDatabaseName("UserNameIndex");
-
-                    b.ToTable("AspNetUsers", (string)null);
-
-                    b.HasDiscriminator<string>("Discriminator").HasValue("IdentityUser");
-
-                    b.UseTphMappingStrategy();
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
@@ -1766,31 +1821,6 @@ namespace HightScore.Entities.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("HightScore.Entities.Model.Concrete.MetaUser", b =>
-                {
-                    b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityUser");
-
-                    b.HasDiscriminator().HasValue("MetaUser");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = "1",
-                            AccessFailedCount = 0,
-                            ConcurrencyStamp = "d4a7ff6f-2000-44ea-8b82-9c191c2f87c1",
-                            Email = "admin@example.com",
-                            EmailConfirmed = true,
-                            LockoutEnabled = false,
-                            NormalizedEmail = "ADMIN@EXAMPLE.COM",
-                            NormalizedUserName = "ADMIN",
-                            PasswordHash = "AQAAAAEAACcQAAAAEFj6FZQ6ew2o4PjB5HbjZc2P6A0EHkD3OXizZrj0LxG8B8el1omRZcU/lY8qdJWpWw==",
-                            PhoneNumberConfirmed = false,
-                            SecurityStamp = "JZTQQKJ3CQCXYN4AWFLARBLI4NXY2FYW",
-                            TwoFactorEnabled = false,
-                            UserName = "admin"
-                        });
-                });
-
             modelBuilder.Entity("HightScore.Entities.Model.Concrete.ItemCategory", b =>
                 {
                     b.HasOne("HightScore.Entities.Model.Concrete.Category", "category")
@@ -1861,7 +1891,7 @@ namespace HightScore.Entities.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
+                    b.HasOne("HightScore.Entities.Model.Concrete.Role", null)
                         .WithMany()
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -1870,7 +1900,7 @@ namespace HightScore.Entities.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
                 {
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", null)
+                    b.HasOne("HightScore.Entities.Model.Concrete.MetaUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -1879,7 +1909,7 @@ namespace HightScore.Entities.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", null)
+                    b.HasOne("HightScore.Entities.Model.Concrete.MetaUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -1888,13 +1918,13 @@ namespace HightScore.Entities.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<string>", b =>
                 {
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
+                    b.HasOne("HightScore.Entities.Model.Concrete.Role", null)
                         .WithMany()
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", null)
+                    b.HasOne("HightScore.Entities.Model.Concrete.MetaUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -1903,7 +1933,7 @@ namespace HightScore.Entities.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
                 {
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", null)
+                    b.HasOne("HightScore.Entities.Model.Concrete.MetaUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)

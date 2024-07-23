@@ -1,0 +1,40 @@
+﻿@model GameVM
+
+@{
+    ViewData["Title"] = Model.Title;
+}
+
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-8">
+            <h1>@Model.Title</h1>
+            <img src="/images/@Model.photo" alt="@Model.Title" class="img-fluid"/>
+            <p>@Model.Description</p>
+            <p><strong>Release Date:</strong> @Model.RelaseDate.ToShortDateString()</p>
+            @if (Model.Iframe != null)
+            {
+                <div>
+                    <iframe src="@Model.Iframe" frameborder="0" allowfullscreen class="w-100" style="height: 400px;"></iframe>
+                </div>
+            }
+            <p><strong>User Average Rating:</strong> @Model.UserAverageRating</p>
+            <p><strong>Media Average Rating:</strong> @Model.MediaAverageRating</p>
+            
+            <h4>Categories</h4>
+            <ul>
+                @foreach (var category in Model.ItemCategories)
+                {
+                    <li>@category.category</li>
+                }
+            </ul>
+            
+            <h4>Platforms</h4>
+            <ul>
+                @foreach (var platform in Model.ItemPlatforms)
+                {
+                    <li>@platform.platform</li>
+                }
+            </ul>
+        </div>
+    </div>
+</div>

@@ -29,7 +29,9 @@ namespace HightScore.Entities.EntityConfig.Concrete
                 RelaseDate = new DateTime(2017, 3, 3),
                 UserAverageRating = 9.5m,
                 MediaAverageRating = 9.8m,
-                UpdatedAt = DateTime.Now
+                UpdatedAt = DateTime.Now,
+                photo = "1.jpg"
+
             },
             new Item
             {
@@ -39,7 +41,8 @@ namespace HightScore.Entities.EntityConfig.Concrete
                 RelaseDate = new DateTime(2017, 10, 27),
                 UserAverageRating = 9.3m,
                 MediaAverageRating = 9.7m,
-                UpdatedAt = DateTime.Now
+                UpdatedAt = DateTime.Now,
+                photo = "2.webp"
             },
             new Item
             {
@@ -49,7 +52,9 @@ namespace HightScore.Entities.EntityConfig.Concrete
                 RelaseDate = new DateTime(2018, 10, 26),
                 UserAverageRating = 9.6m,
                 MediaAverageRating = 9.8m,
-                UpdatedAt = DateTime.Now
+                UpdatedAt = DateTime.Now,
+                photo = "3.jpg"
+
             },
             new Item
             {
@@ -59,7 +64,9 @@ namespace HightScore.Entities.EntityConfig.Concrete
                 RelaseDate = new DateTime(2018, 4, 20),
                 UserAverageRating = 9.4m,
                 MediaAverageRating = 9.6m,
-                UpdatedAt = DateTime.Now
+                UpdatedAt = DateTime.Now,
+                photo = "4.jpg"
+
             },
             new Item
             {
@@ -69,7 +76,8 @@ namespace HightScore.Entities.EntityConfig.Concrete
                 RelaseDate = new DateTime(2015, 5, 19),
                 UserAverageRating = 9.7m,
                 MediaAverageRating = 9.9m,
-                UpdatedAt = DateTime.Now
+                UpdatedAt = DateTime.Now,
+                photo = "5.jpg"
             },
             new Item
             {
@@ -79,7 +87,8 @@ namespace HightScore.Entities.EntityConfig.Concrete
                 RelaseDate = new DateTime(2020, 12, 10),
                 UserAverageRating = 8.5m,
                 MediaAverageRating = 8.9m,
-                UpdatedAt = DateTime.Now
+                UpdatedAt = DateTime.Now,
+                photo = "6.jpg"
             },
             new Item
             {
@@ -89,7 +98,8 @@ namespace HightScore.Entities.EntityConfig.Concrete
                 RelaseDate = new DateTime(2011, 11, 18),
                 UserAverageRating = 9.2m,
                 MediaAverageRating = 9.5m,
-                UpdatedAt = DateTime.Now
+                UpdatedAt = DateTime.Now,
+                photo = "7.jpg"
             },
             new Item
             {
@@ -99,7 +109,8 @@ namespace HightScore.Entities.EntityConfig.Concrete
                 RelaseDate = new DateTime(2017, 7, 25),
                 UserAverageRating = 8.8m,
                 MediaAverageRating = 9.0m,
-                UpdatedAt = DateTime.Now
+                UpdatedAt = DateTime.Now,
+                photo = "8.png"
             },
             new Item
             {
@@ -109,7 +120,8 @@ namespace HightScore.Entities.EntityConfig.Concrete
                 RelaseDate = new DateTime(2011, 11, 11),
                 UserAverageRating = 9.4m,
                 MediaAverageRating = 9.7m,
-                UpdatedAt = DateTime.Now
+                UpdatedAt = DateTime.Now,
+                photo = "9.jpg"
             },
             new Item
             {
@@ -119,7 +131,8 @@ namespace HightScore.Entities.EntityConfig.Concrete
                 RelaseDate = new DateTime(2017, 2, 28),
                 UserAverageRating = 9.3m,
                 MediaAverageRating = 9.5m,
-                UpdatedAt = DateTime.Now
+                UpdatedAt = DateTime.Now,
+                photo = "10.jpg"
             },
 
 
@@ -131,7 +144,8 @@ namespace HightScore.Entities.EntityConfig.Concrete
                     RelaseDate = new DateTime(2016, 11, 29),
                     UserAverageRating = 8.6m,
                     MediaAverageRating = 8.8m,
-                    UpdatedAt = DateTime.Now
+                    UpdatedAt = DateTime.Now,
+                    photo = "11.jpg"
                 },
             new Item
             {
@@ -141,7 +155,8 @@ namespace HightScore.Entities.EntityConfig.Concrete
                 RelaseDate = new DateTime(2016, 9, 15),
                 UserAverageRating = 9.5m,
                 MediaAverageRating = 9.6m,
-                UpdatedAt = DateTime.Now
+                UpdatedAt = DateTime.Now,
+                photo = "12.png"
             },
             new Item
             {
@@ -151,7 +166,8 @@ namespace HightScore.Entities.EntityConfig.Concrete
                 RelaseDate = new DateTime(2016, 3, 24),
                 UserAverageRating = 9.1m,
                 MediaAverageRating = 9.3m,
-                UpdatedAt = DateTime.Now
+                UpdatedAt = DateTime.Now,
+                photo = "13.jpg"
             },
             new Item
             {
@@ -161,7 +177,8 @@ namespace HightScore.Entities.EntityConfig.Concrete
                 RelaseDate = new DateTime(2015, 3, 24),
                 UserAverageRating = 9.3m,
                 MediaAverageRating = 9.4m,
-                UpdatedAt = DateTime.Now
+                UpdatedAt = DateTime.Now,
+                photo = "14.jpg"
             },
             new Item
             {
@@ -171,7 +188,8 @@ namespace HightScore.Entities.EntityConfig.Concrete
                 RelaseDate = new DateTime(2016, 5, 24),
                 UserAverageRating = 8.9m,
                 MediaAverageRating = 9.1m,
-                UpdatedAt = DateTime.Now
+                UpdatedAt = DateTime.Now,
+                photo = "15.jpg"
             },
             new Item
             {
@@ -181,7 +199,8 @@ namespace HightScore.Entities.EntityConfig.Concrete
                 RelaseDate = new DateTime(2019, 3, 22),
                 UserAverageRating = 9.2m,
                 MediaAverageRating = 9.5m,
-                UpdatedAt = DateTime.Now
+                UpdatedAt = DateTime.Now,
+                photo = "16.jpg"
             },
             new Item
             {
@@ -191,7 +210,8 @@ namespace HightScore.Entities.EntityConfig.Concrete
                 RelaseDate = new DateTime(2017, 2, 7),
                 UserAverageRating = 8.7m,
                 MediaAverageRating = 8.9m,
-                UpdatedAt = DateTime.Now
+                UpdatedAt = DateTime.Now,
+                photo = "17.jpg"
             },
             new Item
             {
@@ -201,7 +221,8 @@ namespace HightScore.Entities.EntityConfig.Concrete
                 RelaseDate = new DateTime(2018, 1, 26),
                 UserAverageRating = 9.0m,
                 MediaAverageRating = 9.2m,
-                UpdatedAt = DateTime.Now
+                UpdatedAt = DateTime.Now,
+                photo = "18.png"
             },
             new Item
             {
@@ -211,7 +232,8 @@ namespace HightScore.Entities.EntityConfig.Concrete
                 RelaseDate = new DateTime(2019, 1, 25),
                 UserAverageRating = 9.3m,
                 MediaAverageRating = 9.5m,
-                UpdatedAt = DateTime.Now
+                UpdatedAt = DateTime.Now,
+                photo = "19.jpg"
             },
             new Item
             {
@@ -221,7 +243,8 @@ namespace HightScore.Entities.EntityConfig.Concrete
                 RelaseDate = new DateTime(2020, 7, 17),
                 UserAverageRating = 9.4m,
                 MediaAverageRating = 9.5m,
-                UpdatedAt = DateTime.Now
+                UpdatedAt = DateTime.Now,
+                photo = "20.jpg"
             },
             new Item
             {
@@ -231,7 +254,8 @@ namespace HightScore.Entities.EntityConfig.Concrete
                 RelaseDate = new DateTime(2020, 11, 10),
                 UserAverageRating = 8.8m,
                 MediaAverageRating = 9.0m,
-                UpdatedAt = DateTime.Now
+                UpdatedAt = DateTime.Now,
+                photo = "21.jpg"
             },
             new Item
             {
@@ -241,7 +265,8 @@ namespace HightScore.Entities.EntityConfig.Concrete
                 RelaseDate = new DateTime(2020, 6, 19),
                 UserAverageRating = 9.6m,
                 MediaAverageRating = 9.8m,
-                UpdatedAt = DateTime.Now
+                UpdatedAt = DateTime.Now,
+                photo = "22.jpg"
             },
             new Item
             {
@@ -251,7 +276,8 @@ namespace HightScore.Entities.EntityConfig.Concrete
                 RelaseDate = new DateTime(2019, 8, 27),
                 UserAverageRating = 8.9m,
                 MediaAverageRating = 9.1m,
-                UpdatedAt = DateTime.Now
+                UpdatedAt = DateTime.Now,
+                photo = "23.jpg"
             },
             new Item
             {
@@ -261,7 +287,8 @@ namespace HightScore.Entities.EntityConfig.Concrete
                 RelaseDate = new DateTime(2020, 9, 17),
                 UserAverageRating = 9.5m,
                 MediaAverageRating = 9.7m,
-                UpdatedAt = DateTime.Now
+                UpdatedAt = DateTime.Now,
+                photo = "24.png"
             },
             new Item
             {
@@ -271,7 +298,8 @@ namespace HightScore.Entities.EntityConfig.Concrete
                 RelaseDate = new DateTime(2020, 3, 20),
                 UserAverageRating = 9.1m,
                 MediaAverageRating = 9.3m,
-                UpdatedAt = DateTime.Now
+                UpdatedAt = DateTime.Now,
+                photo = "25.jpg"
             },
             new Item
             {
@@ -281,7 +309,8 @@ namespace HightScore.Entities.EntityConfig.Concrete
                 RelaseDate = new DateTime(2020, 9, 28),
                 UserAverageRating = 8.6m,
                 MediaAverageRating = 8.8m,
-                UpdatedAt = DateTime.Now
+                UpdatedAt = DateTime.Now,
+                photo = "26.jpg"
             },
             new Item
             {
@@ -291,7 +320,8 @@ namespace HightScore.Entities.EntityConfig.Concrete
                 RelaseDate = new DateTime(2019, 11, 8),
                 UserAverageRating = 8.7m,
                 MediaAverageRating = 8.9m,
-                UpdatedAt = DateTime.Now
+                UpdatedAt = DateTime.Now,
+                photo = "27.jpg"
             },
             new Item
             {
@@ -301,7 +331,8 @@ namespace HightScore.Entities.EntityConfig.Concrete
                 RelaseDate = new DateTime(2018, 9, 7),
                 UserAverageRating = 9.2m,
                 MediaAverageRating = 9.3m,
-                UpdatedAt = DateTime.Now
+                UpdatedAt = DateTime.Now,
+                photo = "28.jpg"
             },
             new Item
             {
@@ -311,7 +342,8 @@ namespace HightScore.Entities.EntityConfig.Concrete
                 RelaseDate = new DateTime(2020, 3, 23),
                 UserAverageRating = 9.4m,
                 MediaAverageRating = 9.6m,
-                UpdatedAt = DateTime.Now
+                UpdatedAt = DateTime.Now,
+                photo = "29.webp"
             },
 
             new Item
@@ -322,7 +354,8 @@ namespace HightScore.Entities.EntityConfig.Concrete
                 RelaseDate = new DateTime(2020, 3, 30),
                 UserAverageRating = 8.5m,
                 MediaAverageRating = 8.7m,
-                UpdatedAt = DateTime.Now
+                UpdatedAt = DateTime.Now,
+                photo = "30.jpg"
             },
 
 
@@ -334,8 +367,8 @@ namespace HightScore.Entities.EntityConfig.Concrete
         RelaseDate = new DateTime(2009, 8, 25),
         UserAverageRating = 9.0m,
         MediaAverageRating = 9.2m,
-        UpdatedAt = DateTime.Now
-        // Platforms = new List<Platform> { new Platform { Id = 1, Name = "PlayStation 3" }, new Platform { Id = 2, Name = "Xbox 360" }, new Platform { Id = 3, Name = "Microsoft Windows" } }
+        UpdatedAt = DateTime.Now,
+        photo = "31.jpg"
     },
     new Item
     {
@@ -345,8 +378,8 @@ namespace HightScore.Entities.EntityConfig.Concrete
         RelaseDate = new DateTime(2011, 10, 18),
         UserAverageRating = 9.1m,
         MediaAverageRating = 9.3m,
-        UpdatedAt = DateTime.Now
-        // Platforms = new List<Platform> { new Platform { Id = 1, Name = "PlayStation 3" }, new Platform { Id = 2, Name = "Xbox 360" }, new Platform { Id = 3, Name = "Microsoft Windows" } }
+        UpdatedAt = DateTime.Now,
+        photo = "32.jpg"
     },
     new Item
     {
@@ -356,11 +389,9 @@ namespace HightScore.Entities.EntityConfig.Concrete
         RelaseDate = new DateTime(2015, 6, 23),
         UserAverageRating = 8.9m,
         MediaAverageRating = 9.0m,
-        UpdatedAt = DateTime.Now
-        // Platforms = new List<Platform> { new Platform { Id = 1, PlatformName = "PlayStation 4" }, new Platform { Id = 2, PlatformName = "Xbox One" }, new Platform { Id = 3, PlatformName = "Microsoft Windows" } }
+        UpdatedAt = DateTime.Now,
+        photo = "33.jpg"
     }
-
-
 
 
         );
