@@ -1,6 +1,4 @@
-﻿using HightScore.Entities.Model.Concrete;
-
-namespace HightScore.Models
+﻿namespace HightScore.Models
 {
     public class GameVM
     {
@@ -11,8 +9,8 @@ namespace HightScore.Models
         public string? photo { get; set; }
         public decimal UserAverageRating { get; set; }
         public decimal MediaAverageRating { get; set; }
-        public List<ItemCategory>? ItemCategories { get; set; }
-        public List<ItemPlatform>? ItemPlatforms { get; set; }
+        public List<string>? Categories { get; set; }
+        public List<string>? Platforms { get; set; }
 
     }
 }

@@ -60,6 +60,8 @@ builder.Services.ConfigureApplicationCookie(options =>
 builder.Services.AddScoped<IitemManager, ItemManager>();
 builder.Services.AddScoped<ICategoryManager, CategoryManager>();
 builder.Services.AddScoped<IPlatformManager, PlatformManager>();
+builder.Services.AddScoped<IitemCategoryManager, ItemCategoryManager>();
+builder.Services.AddScoped<IitemPlatformManager, itemPlatformManager>();
 
 var app = builder.Build();
 

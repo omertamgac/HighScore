@@ -1,62 +1,75 @@
-﻿@model GameVM
+﻿@using HightScore.Entities.Model.Concrete
+@model GameVM
 
-<form asp-action="CreateGame" method="post">
-    <!-- Oyun başlığı -->
-    <div class="form-group">
-        <label asp-for="Title"></label>
-        <input asp-for="Title" class="form-control" />
-        <span asp-validation-for="Title" class="text-danger"></span>
+@{
+    ViewData["Title"] = "Create Game";
+    var categories = ViewBag.Categories as List<Category>;
+    var platforms = ViewBag.Platforms as List<Platform>;
+}
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <h2>Create New Game</h2>
+            <form asp-action="CreateGame" method="post" enctype="multipart/form-data">
+                <div class="mb-3">
+                    <label for="Title" class="form-label">Title</label>
+                    <input type="text" class="form-control" id="Title" name="Title" maxlength="80" required>
+                </div>
+                <div class="mb-3">
+                    <label for="Description" class="form-label">Description</label>
+                    <textarea class="form-control" id="Description" name="Description" rows="5" maxlength="800" required></textarea>
+                </div>
+                <div class="mb-3">
+                    <label for="RelaseDate" class="form-label">Release Date</label>
+                    <input type="date" class="form-control" id="RelaseDate" name="RelaseDate" required>
+                </div>
+                <div class="mb-3">
+                    <label for="Iframe" class="form-label">Iframe (Optional)</label>
+                    <input type="url" class="form-control" id="Iframe" name="Iframe">
+                </div>
+                <div class="mb-3">
+                    <label for="photo" class="form-label">Photo</label>
+                    <input type="file" class="form-control" id="photo" name="photo" accept="image/*">
+                </div>
+                <div class="mb-3">
+                    <label for="UserAverageRating" class="form-label">User Average Rating</label>
+                    <input type="number" class="form-control" id="UserAverageRating" name="UserAverageRating" step="0.1" min="0" max="10" required>
+                </div>
+                <div class="mb-3">
+                    <label for="MediaAverageRating" class="form-label">Media Average Rating</label>
+                    <input type="number" class="form-control" id="MediaAverageRating" name="MediaAverageRating" step="0.1" min="0" max="10" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Categories</label>
+                    <div class="form-check" style="max-height: 200px; overflow-y: auto;">
+                        @foreach (var category in categories)
+                        {
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="@category.Id" id="category_@category.Id" name="Categories">
+                                <label class="form-check-label" for="category_@category.Id">
+                                    @category.CategoryName
+                                </label>
+                            </div>
+                        }
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Platforms</label>
+                    <div class="form-check" style="max-height: 200px; overflow-y: auto;">
+                        @foreach (var platform in platforms)
+                        {
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="@platform.Id" id="platform_@platform.Id" name="Platforms">
+                                <label class="form-check-label" for="platform_@platform.Id">
+                                    @platform.PlatformName
+                                </label>
+                            </div>
+                        }
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary">Create Game</button>
+            </form>
+        </div>
     </div>
-
-    <!-- Açıklama -->
-    <div class="form-group">
-        <label asp-for="Description"></label>
-        <textarea asp-for="Description" class="form-control"></textarea>
-        <span asp-validation-for="Description" class="text-danger"></span>
-    </div>
-
-    <!-- Kategoriler -->
-    <div class="form-group">
-        <label>Kategoriler</label>
-        <select asp-for="ItemCategories" asp-items="@(new SelectList(ViewBag.Categories, "Id", "Name"))" class="form-control" multiple></select>
-    </div>
-
-    <!-- Platformlar -->
-    <div class="form-group">
-        <label>Platformlar</label>
-        <select asp-for="ItemPlatforms" asp-items="@(new SelectList(ViewBag.Platforms, "Id", "Name"))" class="form-control" multiple></select>
-    </div>
-
-    <!-- Diğer alanlar -->
-    <div class="form-group">
-        <label asp-for="Iframe"></label>
-        <input asp-for="Iframe" class="form-control" />
-        <span asp-validation-for="Iframe" class="text-danger"></span>
-    </div>
-
-    <div class="form-group">
-        <label asp-for="photo"></label>
-        <input asp-for="photo" class="form-control" />
-        <span asp-validation-for="photo" class="text-danger"></span>
-    </div>
-
-    <div class="form-group">
-        <label asp-for="UserAverageRating"></label>
-        <input asp-for="UserAverageRating" type="number" step="0.01" class="form-control" />
-        <span asp-validation-for="UserAverageRating" class="text-danger"></span>
-    </div>
-
-    <div class="form-group">
-        <label asp-for="MediaAverageRating"></label>
-        <input asp-for="MediaAverageRating" type="number" step="0.01" class="form-control" />
-        <span asp-validation-for="MediaAverageRating" class="text-danger"></span>
-    </div>
-
-    <div class="form-group">
-        <label asp-for="RelaseDate"></label>
-        <input asp-for="RelaseDate" type="date" class="form-control" />
-        <span asp-validation-for="RelaseDate" class="text-danger"></span>
-    </div>
-
-    <button type="submit" class="btn btn-primary">Oyun Ekle</button>
-</form>
+</div>

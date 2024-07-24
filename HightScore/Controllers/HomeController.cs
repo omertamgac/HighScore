@@ -18,9 +18,12 @@ namespace HightScore.Controllers
         private readonly IitemManager _itemManager;
         private readonly ICategoryManager _categoryManager;
         private readonly IPlatformManager _platformManager;
+        private readonly IitemPlatformManager _itemPlatformManager;
+        private readonly IitemCategoryManager _itemCategoryManager;
 
         public HomeController(ILogger<HomeController> logger, UserManager<MetaUser> userManager,
-            RoleManager<Role> roleManager, IitemManager itemManager, ICategoryManager categoryManager, IPlatformManager platformManager)
+            RoleManager<Role> roleManager, IitemManager itemManager, ICategoryManager categoryManager,
+            IPlatformManager platformManager, IitemPlatformManager itemPlatformManager, IitemCategoryManager _itemcategoryManager)
         {
             _logger = logger;
             _userManager = userManager;
@@ -28,6 +31,8 @@ namespace HightScore.Controllers
             _itemManager = itemManager;
             _categoryManager = categoryManager;
             _platformManager = platformManager;
+            _itemPlatformManager = itemPlatformManager;
+            _itemCategoryManager = _itemcategoryManager;
         }
 
         [AllowAnonymous]
@@ -159,31 +164,44 @@ namespace HightScore.Controllers
 
 
 
+        [HttpGet]
         public IActionResult CreateGame()
         {
-            // `ViewBag.Categories` ve `ViewBag.Platforms`'ýn `null` olup olmadýðýný kontrol edin.
-            ViewBag.Categories = _categoryManager.GetAll() ?? new List<Category>();
-            ViewBag.Platforms = _platformManager.GetAll() ?? new List<Platform>();
-
+            ViewBag.Categories = _categoryManager.GetAll();
+            ViewBag.Platforms = _platformManager.GetAll();
             return View();
         }
 
         [HttpPost]
-        public IActionResult CreateGame(GameVM model)
+        public async Task<IActionResult> CreateGame(GameVM model, List<int> Categories, List<int> Platforms, IFormFile photo)
         {
             if (ModelState.IsValid)
             {
+                string photoFileName = null;
+
+                if (photo != null && photo.Length > 0)
+                {
+
+                    photoFileName = Guid.NewGuid().ToString() + Path.GetExtension(photo.FileName);
+                    var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images", photoFileName);
+
+                    using (var stream = new FileStream(filePath, FileMode.Create))
+                    {
+                        await photo.CopyToAsync(stream);
+                    }
+                }
+
                 var game = new Item
                 {
-                    Description = model.Description,
-                    Iframe = model.Iframe,
-                    ItemPlatforms = model.ItemPlatforms,
-                    ItemCategories = model.ItemCategories,
-                    MediaAverageRating = model.MediaAverageRating,
-                    photo = model.photo,
                     Title = model.Title,
+                    Description = model.Description,
                     RelaseDate = model.RelaseDate,
+                    Iframe = model.Iframe,
+                    photo = photoFileName,
                     UserAverageRating = model.UserAverageRating,
+                    MediaAverageRating = model.MediaAverageRating,
+                    ItemCategories = Categories.Select(c => new ItemCategory { categoryId = c }).ToList(),
+                    ItemPlatforms = Platforms.Select(p => new ItemPlatform { platformId = p }).ToList(),
                 };
 
                 var result = _itemManager.Insert(game);
@@ -194,22 +212,23 @@ namespace HightScore.Controllers
                 }
                 else
                 {
-                    ModelState.AddModelError(string.Empty, "Oyun eklenirken bir hata oluþtu.");
+                    ModelState.AddModelError(string.Empty, "An error occurred while adding the game.");
                 }
-
-                ViewBag.Categories = _categoryManager.GetAll();
-                ViewBag.Platforms = _platformManager.GetAll();
-
-
             }
 
+            ViewBag.Categories = _categoryManager.GetAll();
+            ViewBag.Platforms = _platformManager.GetAll();
             return View(model);
         }
 
 
+
+        [AllowAnonymous]
         public async Task<IActionResult> Details(int id)
         {
-            var game = await _itemManager.GetGameByIdAsync(id); // Bu methodun implementation'ý sizin için uygun olmalý
+            var game = await _itemManager.GetGameByIdAsync(id);
+            var categories = await _itemCategoryManager.GetByIdAsync(id);
+            var platforms = await _itemPlatformManager.GetByIdAsync(id);
 
             if (game == null)
             {
@@ -225,12 +244,13 @@ namespace HightScore.Controllers
                 photo = game.photo,
                 UserAverageRating = game.UserAverageRating,
                 MediaAverageRating = game.MediaAverageRating,
-                ItemCategories = game.ItemCategories.ToList(),
-                ItemPlatforms = game.ItemPlatforms.ToList()
+                Categories = categories.Select(c => c.category.CategoryName).ToList(),
+                Platforms = platforms.Select(p => p.platform.PlatformName).ToList(),
             };
 
             return View(viewModel);
         }
+
 
 
     }

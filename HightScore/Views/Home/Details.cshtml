@@ -14,7 +14,7 @@
             @if (Model.Iframe != null)
             {
                 <div>
-                    <iframe src="@Model.Iframe" frameborder="0" allowfullscreen class="w-100" style="height: 400px;"></iframe>
+                    @Html.Raw(Model.Iframe)
                 </div>
             }
             <p><strong>User Average Rating:</strong> @Model.UserAverageRating</p>
@@ -22,17 +22,17 @@
             
             <h4>Categories</h4>
             <ul>
-                @foreach (var category in Model.ItemCategories)
+                @foreach (var category in Model.Categories)
                 {
-                    <li>@category.category</li>
+                    <li>@category</li>
                 }
             </ul>
             
             <h4>Platforms</h4>
             <ul>
-                @foreach (var platform in Model.ItemPlatforms)
+                @foreach (var platform in Model.Platforms)
                 {
-                    <li>@platform.platform</li>
+                    <li>@platform</li>
                 }
             </ul>
         </div>
