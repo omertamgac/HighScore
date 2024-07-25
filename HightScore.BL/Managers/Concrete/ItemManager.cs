@@ -15,6 +15,17 @@ namespace HightScore.BL.Managers.Concrete
             _context = context;
         }
 
+        public async Task DeleteAsync(Item item)
+        {
+            _context.Items.Remove(item);
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task<Item> FindByIdAsync(int id)
+        {
+            return await _context.Items.FindAsync(id);
+        }
+
         public async Task<IEnumerable<Item>> GetAllGamesAsync()
         {
             return await _context.Items.ToListAsync();

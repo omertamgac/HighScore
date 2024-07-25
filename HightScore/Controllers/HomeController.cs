@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
-
+using X.PagedList.Extensions;
 namespace HightScore.Controllers
 {
     [Authorize(Roles = "Admin")]
@@ -36,7 +36,7 @@ namespace HightScore.Controllers
         }
 
         [AllowAnonymous]
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int page = 1)
         {
             var items = await _itemManager.GetAllGamesAsync();
             var games = items.Select(item => new CardVM
@@ -45,9 +45,11 @@ namespace HightScore.Controllers
                 photo = item.photo,
                 name = item.Title,
                 Score = item.MediaAverageRating
-            }).ToList();
+            }).OrderByDescending(game => game.Id).ToList();
 
-            return View(games);
+            var pagedGames = games.ToPagedList(page, 9);
+
+            return View(pagedGames);
         }
 
 
@@ -251,7 +253,19 @@ namespace HightScore.Controllers
             return View(viewModel);
         }
 
+        [HttpPost]
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> GameDelete(int id)
+        {
+            var game = await _itemManager.FindByIdAsync(id);
 
+            if (game != null)
+            {
+                await _itemManager.DeleteAsync(game);
+            }
+
+            return RedirectToAction("Index");
+        }
 
     }
 }

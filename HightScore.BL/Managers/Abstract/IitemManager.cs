@@ -6,5 +6,7 @@ namespace HightScore.BL.Managers.Abstract
     {
         public Task<IEnumerable<Item>> GetAllGamesAsync();
         Task<Item> GetGameByIdAsync(int id);
+        Task<Item> FindByIdAsync(int id);
+        Task DeleteAsync(Item item);
     }
 }

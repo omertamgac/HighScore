@@ -1,23 +1,59 @@
-﻿@model IEnumerable<CardVM>
+﻿@using X.PagedList;
+@using X.PagedList.Mvc.Core;
+@model IPagedList<CardVM>
 
 @{
     ViewData["Title"] = "Games";
 }
 
-
 <style>
     .card-img-top {
         width: 100%;
-        height: 400px; /* Yükseklik ihtiyaca göre ayarlanabilir */
-        object-fit: fill; /* Resimlerin kartın içine düzgün sığmasını sağlar */
+        height: 400px;
+        object-fit: fill;
     }
 
     .card-body {
         display: flex;
         flex-direction: column;
-        justify-content: center; /* İçeriği dikeyde ortalar */
-        text-align: center; /* İçeriği yatayda ortalar */
-        padding: 1rem; /* Kartın içindeki boşlukları ayarlar */
+        justify-content: center;
+        text-align: center;
+        padding: 1rem;
+    }
+
+    .card {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        position: relative; /* Butonu konumlandırmak için */
+    }
+
+    .delete-button {
+        background-color: red;
+        color: white;
+        border: none;
+        padding: 0.5rem 1rem;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 0.75rem; /* Butonun küçük görünmesi için */
+        cursor: pointer;
+        border-radius: 0.25rem;
+        position: absolute; /* Butonu sağ üst köşeye yerleştirmek için */
+        top: 10px;
+        right: 10px;
+        opacity: 0; /* Başlangıçta görünmemesi için */
+        transition: opacity 0.3s ease; /* Yumuşak geçiş efekti için */
+    }
+
+    .card:hover .delete-button {
+        opacity: 1; /* İmleç üzerine gelince görünür */
+    }
+
+    .pagination {
+        display: flex;
+        justify-content: center;
+        padding: 1rem 0;
     }
 </style>
 
@@ -25,18 +61,35 @@
     <div class="row">
         @foreach (var game in Model)
         {
-            <div class="col-md-4 mb-4">
-                <div class="card">
+            <div class="col-md-4 mb-4 d-flex">
+                <div class="card w-100">
                     <img src="/images/@game.photo" class="card-img-top" alt="@game.name">
                     <div class="card-body">
                         <h5 class="card-title">
                             <a asp-controller="Home" asp-action="Details" asp-route-id="@game.Id">@game.name</a>
                         </h5>
                         <p class="card-text">Puan: @game.Score</p>
+                        @if (User.IsInRole("Admin"))
+                        {
+                            <form asp-action="GameDelete" method="post">
+                                <input type="hidden" name="id" value="@game.Id" />
+                                <button type="submit" class="delete-button">Delete</button>
+                            </form>
+                        }
                     </div>
                 </div>
             </div>
         }
     </div>
+    <div class="row">
+        <div class="col-12">
+            @Html.PagedListPager(Model, page => Url.Action("Index", new { page }),
+                     new PagedListRenderOptions
+            {
+                LiElementClasses = new[] { "page-item" },
+                PageClasses = new[] { "page-link" },
+                ActiveLiElementClass = "active"
+            })
+        </div>
+    </div>
 </div>
-
