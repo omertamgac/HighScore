@@ -33,11 +33,48 @@ namespace HightScore.BL.Managers.Concrete
 
         public async Task<Item> GetGameByIdAsync(int id)
         {
-            return await _context.Items
+            var game = await _context.Items
                 .Include(g => g.ItemCategories)
                 .Include(g => g.ItemPlatforms)
                 .FirstOrDefaultAsync(g => g.Id == id);
+
+            game.ItemCategories ??= new List<ItemCategory>();
+            game.ItemPlatforms ??= new List<ItemPlatform>();
+
+            return game;
         }
+
+
+        public int Update(Item item)
+        {
+            _context.Items.Update(item);
+            return _context.SaveChanges();
+        }
+
+        public async Task<int> UpdateAsync(Item item)
+        {
+            var entity = _context.Items.FirstOrDefault(x => x.Id == item.Id);
+            if (entity != null)
+            {
+                entity.Id = item.Id;
+                entity.Iframe = item.Iframe;
+                entity.Title = item.Title;
+                entity.photo = item.photo;
+                entity.ItemCategories = item.ItemCategories;
+                entity.ItemPlatforms = item.ItemPlatforms;
+                entity.UpdatedAt = item.UpdatedAt;
+                entity.Description = item.Description;
+                entity.RelaseDate = item.RelaseDate;
+                entity.MediaAverageRating = item.MediaAverageRating;
+                entity.UserAverageRating = item.UserAverageRating;
+            }
+
+            _context.Items.Update(item);
+            return await _context.SaveChangesAsync();
+        }
+
+
+
     }
 
 }

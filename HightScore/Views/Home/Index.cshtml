@@ -4,6 +4,7 @@
 
 @{
     ViewData["Title"] = "Games";
+
 }
 
 <style>
@@ -25,9 +26,30 @@
         display: flex;
         flex-direction: column;
         height: 100%;
-        position: relative; /* Butonu konumlandırmak için */
+        position: relative; 
     }
 
+    .edit-button {
+        background-color: cornflowerblue;
+        color: white;
+        border: none;
+        padding: 0.5rem 1rem;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 0.75rem;
+        cursor: pointer;
+        border-radius: 0.25rem;
+        position: absolute;
+        top: 10px;
+        right: 48px;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+
+    .card:hover .edit-button {
+        opacity: 1;
+    }
     .delete-button {
         background-color: red;
         color: white;
@@ -36,18 +58,18 @@
         text-align: center;
         text-decoration: none;
         display: inline-block;
-        font-size: 0.75rem; /* Butonun küçük görünmesi için */
+        font-size: 0.75rem; 
         cursor: pointer;
         border-radius: 0.25rem;
-        position: absolute; /* Butonu sağ üst köşeye yerleştirmek için */
+        position: absolute; 
         top: 10px;
         right: 10px;
-        opacity: 0; /* Başlangıçta görünmemesi için */
-        transition: opacity 0.3s ease; /* Yumuşak geçiş efekti için */
+        opacity: 0; 
+        transition: opacity 0.3s ease; 
     }
 
     .card:hover .delete-button {
-        opacity: 1; /* İmleç üzerine gelince görünür */
+        opacity: 1; 
     }
 
     .pagination {
@@ -57,7 +79,18 @@
     }
 </style>
 
-<div class="container">
+
+<div class="container mt-5">
+    <form method="get" asp-action="Index" class="d-flex justify-content-center">
+        <div class="input-group mb-5 w-30">
+            <input type="text" class="form-control" placeholder="Search for games" name="searchQuery" value="@ViewContext.HttpContext.Request.Query["searchQuery"]">
+            <button class="btn btn-primary" type="submit">Search</button>
+        </div>
+    </form>
+
+
+
+
     <div class="row">
         @foreach (var game in Model)
         {
@@ -66,14 +99,18 @@
                     <img src="/images/@game.photo" class="card-img-top" alt="@game.name">
                     <div class="card-body">
                         <h5 class="card-title">
-                            <a asp-controller="Home" asp-action="Details" asp-route-id="@game.Id">@game.name</a>
+                            <a asp-controller="Items" asp-action="Details" asp-route-id="@game.Id">@game.name</a>
                         </h5>
                         <p class="card-text">Puan: @game.Score</p>
                         @if (User.IsInRole("Admin"))
                         {
-                            <form asp-action="GameDelete" method="post">
+                            <form asp-controller=Items asp-action="GameDelete" method="post">
                                 <input type="hidden" name="id" value="@game.Id" />
-                                <button type="submit" class="delete-button">Delete</button>
+                                <button type="submit" class="delete-button">X</button>
+                            </form>
+                            <form asp-controller=Items asp-action="EditGame" method="get">
+                                <input type="hidden" name="id" value="@game.Id" />
+                                <button type="submit" class="edit-button">Edit</button>
                             </form>
                         }
                     </div>
