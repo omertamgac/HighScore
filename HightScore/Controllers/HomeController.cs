@@ -33,7 +33,7 @@ namespace HightScore.Controllers
                 Id = item.Id,
                 photo = item.photo,
                 name = item.Title,
-                Score = item.MediaAverageRating
+                Score = 9
             }).ToList();
 
             if (!string.IsNullOrEmpty(searchQuery))

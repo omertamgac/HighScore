@@ -63,8 +63,7 @@ namespace HightScore.Controllers
                     RelaseDate = model.RelaseDate,
                     Iframe = model.Iframe,
                     photo = photoFileName,
-                    UserAverageRating = model.UserAverageRating,
-                    MediaAverageRating = model.MediaAverageRating,
+
                     ItemCategories = Categories.Select(c => new ItemCategory { categoryId = c }).ToList(),
                     ItemPlatforms = Platforms.Select(p => new ItemPlatform { platformId = p }).ToList(),
                 };
@@ -107,8 +106,6 @@ namespace HightScore.Controllers
                 RelaseDate = game.RelaseDate,
                 Iframe = game.Iframe,
                 photo = game.photo,
-                UserAverageRating = game.UserAverageRating,
-                MediaAverageRating = game.MediaAverageRating,
                 Categories = categories.Select(c => c.category.CategoryName).ToList(),
                 Platforms = platforms.Select(p => p.platform.PlatformName).ToList(),
             };
@@ -130,92 +127,93 @@ namespace HightScore.Controllers
         }
 
 
-        [HttpPost]
-        public async Task<IActionResult> EditGame(int id, GameEditVM model, List<int> SelectedCategories, List<int> SelectedPlatforms, IFormFile photo)
+        public async Task<IActionResult> EditGame(int id)
         {
-            try
+            var game = await _itemManager.FindByIdAsync(id);
+            var gameCategories = await _itemCategoryManager.GetByIdAsync(id);
+            var gamePlatforms = await _itemPlatformManager.GetByIdAsync(id);
+
+            if (game == null)
             {
-                if (id != model.Id)
-                {
-                    return BadRequest();
-                }
+                return NotFound();
+            }
 
-                if (ModelState.IsValid)
-                {
-                    Item game = await _itemManager.GetGameByIdAsync(id); // Ensure to include related entities
-                    if (game == null)
-                    {
-                        return NotFound();
-                    }
+            ViewBag.Categories = await _categoryManager.GetAllAsync();
+            ViewBag.Platforms = await _platformManager.GetAllAsync();
 
-                    string photoFileName = game.photo;
+            var model = new GameEditVM
+            {
+                Id = id,
+                Description = game.Description,
+                Iframe = game.Iframe,
+                RelaseDate = game.RelaseDate,
+                Title = game.Title,
+                ExistingPhoto = game.photo,
+                SelectedCategories = gameCategories.Select(c => c.categoryId).ToList(),
+                SelectedPlatforms = gamePlatforms.Select(p => p.platformId).ToList()
+            };
+
+            return View(model);
+        }
+
+
+
+
+
+        [HttpPost]
+        public async Task<IActionResult> EditGame(GameEditVM model, IFormFile? photo)
+        {
+            if (ModelState.IsValid)
+            {
+                var game = await _itemManager.FindByIdAsync(model.Id);
+                if (game != null)
+                {
+                    game.Title = model.Title;
+                    game.Description = model.Description;
+                    game.RelaseDate = model.RelaseDate;
+                    game.Iframe = model.Iframe;
+
+
                     if (photo != null && photo.Length > 0)
                     {
-                        if (!string.IsNullOrEmpty(photoFileName))
-                        {
-                            var oldFilePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images", photoFileName);
-                            if (System.IO.File.Exists(oldFilePath))
-                            {
-                                System.IO.File.Delete(oldFilePath);
-                            }
-                        }
-
-                        photoFileName = Guid.NewGuid().ToString() + Path.GetExtension(photo.FileName);
+                        string photoFileName = Guid.NewGuid().ToString() + Path.GetExtension(photo.FileName);
                         var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images", photoFileName);
 
                         using (var stream = new FileStream(filePath, FileMode.Create))
                         {
                             await photo.CopyToAsync(stream);
                         }
+
+                        game.photo = photoFileName;
                     }
 
-                    game.Title = model.Title;
-                    game.Description = model.Description;
-                    game.RelaseDate = model.RelaseDate;
-                    game.Iframe = model.Iframe;
-                    game.photo = photoFileName;
-                    game.UserAverageRating = model.UserAverageRating;
-                    game.MediaAverageRating = model.MediaAverageRating;
-
-                    // Update ItemCategories
-                    var existingCategories = game.ItemCategories.Select(c => c.categoryId).ToList();
-                    var categoriesToRemove = existingCategories.Except(SelectedCategories).ToList();
-                    var categoriesToAdd = SelectedCategories.Except(existingCategories).ToList();
-
-                    foreach (var categoryId in categoriesToRemove)
+                    else
                     {
-                        var categoryToRemove = game.ItemCategories.FirstOrDefault(c => c.categoryId == categoryId);
-                        if (categoryToRemove != null)
+                        game.photo = model.ExistingPhoto;
+                    }
+
+                    await _itemCategoryManager.RemoveByItemIdAsync(game.Id);
+                    await _itemPlatformManager.RemoveByItemIdAsync(game.Id);
+
+                    if (model.SelectedCategories != null)
+                    {
+                        var newCategories = model.SelectedCategories.Select(c => new ItemCategory { itemId = game.Id, categoryId = c }).ToList();
+                        foreach (var itemCategory in newCategories)
                         {
-                            game.ItemCategories.Remove(categoryToRemove);
+                            await _itemCategoryManager.AddAsync(itemCategory);
                         }
                     }
 
-                    foreach (var categoryId in categoriesToAdd)
+                    if (model.SelectedPlatforms != null)
                     {
-                        game.ItemCategories.Add(new ItemCategory { categoryId = categoryId });
-                    }
-
-                    // Update ItemPlatforms
-                    var existingPlatforms = game.ItemPlatforms.Select(p => p.platformId).ToList();
-                    var platformsToRemove = existingPlatforms.Except(SelectedPlatforms).ToList();
-                    var platformsToAdd = SelectedPlatforms.Except(existingPlatforms).ToList();
-
-                    foreach (var platformId in platformsToRemove)
-                    {
-                        var platformToRemove = game.ItemPlatforms.FirstOrDefault(p => p.platformId == platformId);
-                        if (platformToRemove != null)
+                        var newPlatforms = model.SelectedPlatforms.Select(p => new ItemPlatform { itemId = game.Id, platformId = p }).ToList();
+                        foreach (var itemPlatform in newPlatforms)
                         {
-                            game.ItemPlatforms.Remove(platformToRemove);
+                            await _itemPlatformManager.AddAsync(itemPlatform);
                         }
                     }
 
-                    foreach (var platformId in platformsToAdd)
-                    {
-                        game.ItemPlatforms.Add(new ItemPlatform { platformId = platformId });
-                    }
-
-                    var result = await _itemManager.UpdateAsync(game);
+                    var result = _itemManager.Update(game);
 
                     if (result > 0)
                     {
@@ -226,26 +224,13 @@ namespace HightScore.Controllers
                         ModelState.AddModelError(string.Empty, "An error occurred while updating the game.");
                     }
                 }
-                else
-                {
-                    foreach (var error in ModelState.Values.SelectMany(v => v.Errors))
-                    {
-                        Console.WriteLine(error.ErrorMessage);
-                    }
-                }
+            }
 
-                ViewBag.Categories = await _categoryManager.GetAllAsync();
-                ViewBag.Platforms = await _platformManager.GetAllAsync();
-                return View(model);
-            }
-            catch (Exception ex)
-            {
-                // Hata detaylarını logla
-                Console.WriteLine(ex.Message);
-                Console.WriteLine(ex.StackTrace);
-                return StatusCode(500, "Internal server error");
-            }
+            ViewBag.Categories = await _categoryManager.GetAllAsync();
+            ViewBag.Platforms = await _platformManager.GetAllAsync();
+            return View(model);
         }
+
 
 
 

@@ -10,8 +10,6 @@ namespace HightScore.Entities.Model.Concrete
         public DateTime? UpdatedAt { get; set; }
         public string? Iframe { get; set; }
         public string? photo { get; set; }
-        public decimal UserAverageRating { get; set; }
-        public decimal MediaAverageRating { get; set; }
         public ICollection<ItemCategory> ItemCategories { get; set; } = new List<ItemCategory>();
         public ICollection<ItemPlatform> ItemPlatforms { get; set; }
     }

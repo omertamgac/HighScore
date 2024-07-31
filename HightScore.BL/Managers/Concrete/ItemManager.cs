@@ -65,14 +65,12 @@ namespace HightScore.BL.Managers.Concrete
                 entity.UpdatedAt = item.UpdatedAt;
                 entity.Description = item.Description;
                 entity.RelaseDate = item.RelaseDate;
-                entity.MediaAverageRating = item.MediaAverageRating;
-                entity.UserAverageRating = item.UserAverageRating;
+
             }
 
             _context.Items.Update(item);
             return await _context.SaveChangesAsync();
         }
-
 
 
     }

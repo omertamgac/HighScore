@@ -1,73 +1,91 @@
 ﻿@model GameEditVM
 
 @{
-    ViewData["Title"] = "Edit Game";
-    var categories = ViewBag.Categories as List<HightScore.Entities.Model.Concrete.Category> ?? new List<HightScore.Entities.Model.Concrete.Category>();
-    var platforms = ViewBag.Platforms as List<HightScore.Entities.Model.Concrete.Platform> ?? new List<HightScore.Entities.Model.Concrete.Platform>();
+    ViewBag.Title = "Edit Game";
 }
 
-<div class="container mt-5">
-    <h2>Edit Game</h2>
-    <form asp-controller="Home" asp-action="EditGame" method="post" enctype="multipart/form-data">
-        <input type="hidden" name="Id" value="@Model.Id" />
-        <div class="mb-3">
-            <label for="Title" class="form-label">Title</label>
-            <input type="text" class="form-control" id="Title" name="Title" value="@Model.Title" maxlength="80" required>
-        </div>
-        <div class="mb-3">
-            <label for="Description" class="form-label">Description</label>
-            <textarea class="form-control" id="Description" name="Description" rows="5" maxlength="800" required>@Model.Description</textarea>
-        </div>
-        <div class="mb-3">
-            <label for="RelaseDate" class="form-label">Release Date</label>
-            <input type="date" class="form-control" id="RelaseDate" name="RelaseDate" value="@Model.RelaseDate.ToString("yyyy-MM-dd")" required>
-        </div>
-        <div class="mb-3">
-            <label for="Iframe" class="form-label">Iframe</label>
-            <input type="text" class="form-control" id="Iframe" name="Iframe" value="@Model.Iframe">
-        </div>
-        <div class="mb-3">
-            <label for="photo" class="form-label">Photo</label>
-            <input type="file" class="form-control" id="photo" name="photo" accept="image/*">
-            @if (!string.IsNullOrEmpty(Model.photo))
+<h2>Edit Game</h2>
+
+<form asp-action="EditGame" enctype="multipart/form-data" method="post">
+    <input type="hidden" asp-for="Id" />
+    <input type="hidden" name="ExistingPhoto" value="@Model.ExistingPhoto" />
+
+    <div class="form-group">
+        <label asp-for="Title" class="control-label"></label>
+        <input asp-for="Title" class="form-control" />
+        <span asp-validation-for="Title" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Description" class="control-label"></label>
+        <textarea asp-for="Description" class="form-control"></textarea>
+        <span asp-validation-for="Description" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="RelaseDate" class="control-label"></label>
+        <input asp-for="RelaseDate" type="date" class="form-control" />
+        <span asp-validation-for="RelaseDate" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Iframe" class="control-label"></label>
+        <input asp-for="Iframe" class="form-control" />
+        <span asp-validation-for="Iframe" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Photo" class="control-label">Photo</label>
+        <input asp-for="Photo" type="file" class="form-control" />
+        <span asp-validation-for="Photo" class="text-danger"></span>
+
+        @if (!string.IsNullOrEmpty(Model.ExistingPhoto))
+        {
+            <div class="mt-2">
+                <label>Current Photo:</label>
+                <img src="@Url.Content($"/images/{Model.ExistingPhoto}")" alt="Current Photo" style="max-width: 200px; max-height: 200px;" />
+            </div>
+        }
+    </div>
+
+    <div class="form-group">
+        <label>Categories</label>
+        <div style="max-height: 200px; overflow-y: auto;">
+            @foreach (var category in (ViewBag.Categories as IEnumerable<HightScore.Entities.Model.Concrete.Category>))
             {
-                <div class="mt-2">
-                    <img src="@Url.Content($"~/images/{Model.photo}")" alt="Current photo" class="img-thumbnail" style="max-width: 200px;">
+                <div class="form-check">
+                    <input type="checkbox" name="SelectedCategories" value="@category.Id" class="form-check-input"
+                    @(Model.SelectedCategories.Contains(category.Id) ? "checked" : "") />
+                    <label class="form-check-label">
+                        @category.CategoryName
+                    </label>
                 </div>
             }
         </div>
-        <div class="mb-3">
-            <label for="UserAverageRating" class="form-label">User Average Rating</label>
-            <input type="number" class="form-control" id="UserAverageRating" name="UserAverageRating" value="@Model.UserAverageRating" step="0.1" min="0" max="10" required>
+    </div>
+
+    <div class="form-group">
+        <label>Platforms</label>
+        <div style="max-height: 200px; overflow-y: auto;">
+            @foreach (var platform in (ViewBag.Platforms as IEnumerable<HightScore.Entities.Model.Concrete.Platform>))
+            {
+                <div class="form-check">
+                    <input type="checkbox" name="SelectedPlatforms" value="@platform.Id" class="form-check-input"
+                    @(Model.SelectedPlatforms.Contains(platform.Id) ? "checked" : "") />
+                    <label class="form-check-label">
+                        @platform.PlatformName
+                    </label>
+                </div>
+            }
         </div>
-        <div class="mb-3">
-            <label for="MediaAverageRating" class="form-label">Media Average Rating</label>
-            <input type="number" class="form-control" id="MediaAverageRating" name="MediaAverageRating" value="@Model.MediaAverageRating" step="0.1" min="0" max="10" required>
-        </div>
-        <div class="mb-3">
-            <label class="form-label">Categories</label>
-            <div class="form-check" style="max-height: 200px; overflow-y: auto;">
-                @foreach (var category in categories)
-                {
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="@category.Id" name="SelectedCategories" @(Model.SelectedCategories.Contains(category.Id) ? "checked" : "")>
-                        <label class="form-check-label" for="SelectedCategories">@category.CategoryName</label>
-                    </div>
-                }
-            </div>
-        </div>
-        <div class="mb-3">
-            <label class="form-label">Platforms</label>
-            <div class="form-check" style="max-height: 200px; overflow-y: auto;">
-                @foreach (var platform in platforms)
-                {
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="@platform.Id" name="SelectedPlatforms" @(Model.SelectedPlatforms.Contains(platform.Id) ? "checked" : "")>
-                        <label class="form-check-label" for="SelectedPlatforms">@platform.PlatformName</label>
-                    </div>
-                }
-            </div>
-        </div>
-        <button type="submit" class="btn btn-primary">Save</button>
-    </form>
-</div>
+    </div>
+    <br />
+    <br />
+    <div class="form-group">
+        <input type="submit" value="Save" class="btn btn-primary" />
+
+        <a asp-controller="Home" asp-action="Index" class="btn btn-danger btn-sm" role="button">
+            <i class="bi bi-arrow-left"></i> Back to List
+        </a>
+    </div>
+</form>
+
+
+
