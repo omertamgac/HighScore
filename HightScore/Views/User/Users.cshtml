@@ -1,40 +1,171 @@
-﻿@using HightScore.Entities.Model.Concrete
-@model IEnumerable<MetaUser>
+﻿@model UserListViewModel
 
-<a class="btn btn-primary" asp-controller="Account" asp-action="Create">Create User</a>
-
-<table class="table table-sm table-bordered">
-    <thead>
-        <tr>
-            <th>Id</th>
-            <th>Username</th>
-            <th>Email</th>
-            <th>Number</th>
-        </tr>
-    </thead>
-    <tbody>
-
-        @if (Model.Count() == 0)
-        {
-             <tr>
-                <td colspan="4" class="text-center">No users found...</td>
-            </tr>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Users</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            color: #333;
         }
-        @foreach (var user in Model)
-        {
+
+        .filter-container {
+            border: 1px solid #ddd;
+            padding: 15px;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+            margin-bottom: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+            .filter-container h4 {
+                margin-bottom: 15px;
+                color: #007bff;
+            }
+
+        .filter-option {
+            margin-bottom: 10px;
+        }
+
+            .filter-option input[type="checkbox"] {
+                margin-right: 10px;
+            }
+
+        .btn {
+            display: inline-block;
+            font-weight: 400;
+            color: #fff;
+            text-align: center;
+            vertical-align: middle;
+            background-color: #007bff;
+            border: 1px solid #007bff;
+            padding: 0.375rem 0.75rem;
+            font-size: 1rem;
+            line-height: 1.5;
+            border-radius: 0.25rem;
+            transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+            text-decoration: none;
+        }
+
+        .btn-primary {
+            color: #fff;
+            background-color: #007bff;
+            border-color: #007bff;
+        }
+
+            .btn-primary:hover {
+                background-color: #0056b3;
+                border-color: #004085;
+            }
+
+        .btn-danger {
+            color: #fff;
+            background-color: #dc3545;
+            border-color: #dc3545;
+        }
+
+            .btn-danger:hover {
+                background-color: #c82333;
+                border-color: #bd2130;
+            }
+
+        .table {
+            width: 100%;
+            margin-bottom: 1rem;
+            color: #212529;
+            border-collapse: collapse;
+        }
+
+            .table th,
+            .table td {
+                padding: 0.75rem;
+                vertical-align: top;
+                border-top: 1px solid #dee2e6;
+            }
+
+            .table thead th {
+                vertical-align: bottom;
+                background-color: #f8f9fa;
+            }
+
+            .table tbody + tbody {
+                border-top: 2px solid #dee2e6;
+            }
+
+        .text-center {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h2>Users</h2>
+
+    <form method="get" asp-action="Users">
+        <div class="filter-container">
+            <h4>Filter by Roles:</h4>
+            @foreach (var role in Model.Roles)
+            {
+                <div class="filter-option">
+                    <input type="checkbox" name="selectedRoles" value="@role.Name" @(Model.SelectedRoles != null && Model.SelectedRoles.Contains(role.Name) ? "checked" : "") />
+                    <label>@role.Name</label>
+                </div>
+            }
+        </div>
+        <button type="submit" class="btn btn-primary">Filter</button>
+    </form>
+
+    <table class="table table-sm table-bordered">
+        <thead>
             <tr>
-                <td>@user.Id</td>
-                <td>@user.UserName</td>
-                <td>@user.Email</td>
-                <td>@user.PhoneNumber</td>
-                <td>
-                    <a asp-controller="User" asp-action="Edit" asp-route-id="@user.Id" class=" btn btn-primary btn-sm">Edit</a>
-                    <form action="Delete" method="post" onsubmit="confirm('Are you sure you want to delete the user?')" style="display:inline-block;">
-                        <input type="hidden" value="@user.Id" name="id" />
-                        <button type="submit" class=" btn btn-danger btn-sm">Delete</button>
-                    </form>
-                </td>
+                <th>Id</th>
+                <th>User Name</th>
+                <th>Email</th>
+                <th>Phone Number</th>
+                <th>Roles</th>
+                <th>Actions</th>
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @if (Model.Users.Count() == 0)
+            {
+                <tr>
+                    <td colspan="6" class="text-center">No users found...</td>
+                </tr>
+            }
+
+            @foreach (var user in Model.Users)
+            {
+                <tr>
+                    <td>@user.Id</td>
+                    <td>@user.UserName</td>
+                    <td>@user.Email</td>
+                    <td>@user.PhoneNumber</td>
+                    <td>
+                        @if (Model.UserRoles.TryGetValue(user.Id, out var roles))
+                        {
+                            @foreach (var role in roles)
+                            {
+                                <span>@role</span>
+                                <br />
+                            }
+                        }
+                    </td>
+                    <td>
+                        <a class="btn btn-primary btn-sm" asp-action="Edit" asp-route-id="@user.Id">Edit</a>
+                        <form action="Delete" method="post" onsubmit="return confirm('Are you sure you want to delete this user?')" style="display:inline-block;">
+                            <input type="hidden" value="@user.Id" name="id" />
+                            <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <a class="btn btn-primary" asp-controller="Account" asp-action="Create">Create User</a>
+</body>
+</html>

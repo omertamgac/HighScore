@@ -18,11 +18,53 @@ namespace HightScore.Controllers
         }
 
 
-        public IActionResult Users()
+        public async Task<IActionResult> Users(IEnumerable<string> selectedRoles = null)
         {
+            // Rolleri al
+            var roles = await _roleManager.Roles.ToListAsync();
+            var roleNames = roles.Select(r => r.Name).ToList();
 
-            return View(_userManager.Users);
+            // Kullanıcıları filtrele
+            IQueryable<MetaUser> usersQuery = _userManager.Users;
+
+            if (selectedRoles != null && selectedRoles.Any())
+            {
+                // Seçilen rollere göre kullanıcıları filtrele
+                var allUsersInRoles = new List<MetaUser>();
+
+                foreach (var roleName in selectedRoles)
+                {
+                    var usersInRole = await _userManager.GetUsersInRoleAsync(roleName);
+                    allUsersInRoles.AddRange(usersInRole);
+                }
+
+                // Kullanıcıları birleştir ve benzersiz hale getir
+                var distinctUsers = allUsersInRoles.Distinct();
+                usersQuery = usersQuery.Where(user => distinctUsers.Contains(user));
+            }
+
+            var users = await usersQuery.ToListAsync();
+
+            // Kullanıcı rollerini al
+            var userRoles = new Dictionary<string, List<string>>();
+            foreach (var user in users)
+            {
+                var rolesForUser = await _userManager.GetRolesAsync(user);
+                userRoles[user.Id] = rolesForUser.ToList();
+            }
+
+            var model = new UserListViewModel
+            {
+                Users = users,
+                Roles = roles,
+                SelectedRoles = selectedRoles,
+                UserRoles = userRoles
+            };
+
+            return View(model);
         }
+
+
 
         public async Task<IActionResult> Edit(string id)
         {
