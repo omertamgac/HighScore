@@ -48,16 +48,6 @@ namespace HightScore.Controllers
 
 
 
-
-
-
-
-
-
-
-
-
-
         public IActionResult Privacy()
         {
             return View();

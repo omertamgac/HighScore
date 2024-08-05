@@ -3,6 +3,7 @@ using HightScore.Entities.Model.Concrete;
 using HightScore.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 
 namespace HightScore.Controllers
 {
@@ -14,11 +15,17 @@ namespace HightScore.Controllers
         private readonly IPlatformManager _platformManager;
         private readonly IitemPlatformManager _itemPlatformManager;
         private readonly IitemCategoryManager _itemCategoryManager;
-        public ItemsController(IitemManager itemManager,
+        private readonly IMediaReviewManager _mediaReviewManager;
+        private readonly IUserReviewManager _userReviewManager;
+
+        public ItemsController(
+            IitemManager itemManager,
         ICategoryManager categoryManager,
         IPlatformManager platformManager,
         IitemPlatformManager itemPlatformManager,
-        IitemCategoryManager itemCategoryManager
+        IitemCategoryManager itemCategoryManager,
+        IMediaReviewManager mediaReviewManager,
+        IUserReviewManager userReviewManager
         )
         {
             _itemManager = itemManager;
@@ -26,6 +33,8 @@ namespace HightScore.Controllers
             _platformManager = platformManager;
             _itemPlatformManager = itemPlatformManager;
             _itemCategoryManager = itemCategoryManager;
+            _mediaReviewManager = mediaReviewManager;
+            _userReviewManager = userReviewManager;
         }
 
 
@@ -93,6 +102,8 @@ namespace HightScore.Controllers
             var game = await _itemManager.GetGameByIdAsync(id);
             var categories = await _itemCategoryManager.GetByIdAsync(id);
             var platforms = await _itemPlatformManager.GetByIdAsync(id);
+            var mediaReviews = await _mediaReviewManager.GetReviewsByItemIdAsync(id);
+            var userReviews = await _userReviewManager.GetReviewsByItemIdAsync(id);
 
             if (game == null)
             {
@@ -108,10 +119,14 @@ namespace HightScore.Controllers
                 photo = game.photo,
                 Categories = categories.Select(c => c.category.CategoryName).ToList(),
                 Platforms = platforms.Select(p => p.platform.PlatformName).ToList(),
+                MediaReviews = mediaReviews.ToList(),
+                UserReviews = userReviews.ToList(),
+                ItemId = id,
             };
 
             return View(viewModel);
         }
+
 
         [HttpPost]
         public async Task<IActionResult> GameDelete(int id)
@@ -232,7 +247,22 @@ namespace HightScore.Controllers
         }
 
 
+        public async Task<IActionResult> CreateComment(int itemId, int rating, string comment)
+        {
+            var userId = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
 
+            var result = await _userReviewManager.CreateComment(itemId, userId, rating, comment);
+
+            if (result)
+            {
+                return RedirectToAction("Details", new { id = itemId });
+            }
+            else
+            {
+                ModelState.AddModelError(string.Empty, "You have already submitted a review for this item.");
+                return RedirectToAction("Details", new { id = itemId });
+            }
+        }
 
 
     }

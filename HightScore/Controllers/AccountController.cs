@@ -73,7 +73,6 @@ namespace HightScore.Controllers
         }
 
 
-
         public IActionResult Create()
         {
             return View();
@@ -89,6 +88,21 @@ namespace HightScore.Controllers
 
                 if (result.Succeeded)
                 {
+                    // Kullanıcı oluşturulduktan sonra "User" rolünü ekleyin
+                    var roleExists = await _roleManager.RoleExistsAsync("User");
+                    if (!roleExists)
+                    {
+                        // Eğer "User" rolü mevcut değilse oluşturun
+                        var roleResult = await _roleManager.CreateAsync(new Role { Name = "User" });
+                        if (!roleResult.Succeeded)
+                        {
+                            ModelState.AddModelError("", "Could not create 'User' role");
+                            return View(model);
+                        }
+                    }
+
+                    await _userManager.AddToRoleAsync(user, "User");
+
                     var token = await _userManager.GenerateEmailConfirmationTokenAsync(user);
                     var url = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, token = token }, protocol: Request.Scheme);
 
@@ -98,7 +112,6 @@ namespace HightScore.Controllers
                     return RedirectToAction("Login", "Account");
                 }
 
-
                 foreach (var item in result.Errors)
                 {
                     ModelState.AddModelError("", item.Description);
@@ -106,6 +119,7 @@ namespace HightScore.Controllers
             }
             return View();
         }
+
 
 
 

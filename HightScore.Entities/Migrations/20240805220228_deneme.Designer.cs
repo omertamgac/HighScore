@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HightScore.Entities.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20240722182307_deneme")]
+    [Migration("20240805220228_deneme")]
     partial class deneme
     {
         /// <inheritdoc />
@@ -362,9 +362,6 @@ namespace HightScore.Entities.Migrations
                     b.Property<string>("Iframe")
                         .HasColumnType("longtext");
 
-                    b.Property<decimal>("MediaAverageRating")
-                        .HasColumnType("decimal(18,2)");
-
                     b.Property<DateTime>("RelaseDate")
                         .HasColumnType("datetime(6)");
 
@@ -375,9 +372,6 @@ namespace HightScore.Entities.Migrations
 
                     b.Property<DateTime?>("UpdatedAt")
                         .HasColumnType("datetime(6)");
-
-                    b.Property<decimal>("UserAverageRating")
-                        .HasColumnType("decimal(18,2)");
 
                     b.Property<string>("photo")
                         .HasColumnType("longtext");
@@ -391,363 +385,330 @@ namespace HightScore.Entities.Migrations
                         {
                             Id = 1,
                             Description = "An action-adventure game developed and published by Nintendo.",
-                            MediaAverageRating = 9.8m,
+                            Iframe = "<iframe width=\"853\" height=\"480\" src=\"https://www.youtube.com/embed/zw47_q9wbBE\" title=\"The Legend of Zelda: Breath of the Wild - Nintendo Switch Presentation 2017 Trailer\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" referrerpolicy=\"strict-origin-when-cross-origin\" allowfullscreen></iframe>",
                             RelaseDate = new DateTime(2017, 3, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "The Legend of Zelda: Breath of the Wild",
-                            UpdatedAt = new DateTime(2024, 7, 22, 21, 23, 6, 561, DateTimeKind.Local).AddTicks(7799),
-                            UserAverageRating = 9.5m,
+                            UpdatedAt = new DateTime(2024, 8, 6, 1, 2, 25, 736, DateTimeKind.Local).AddTicks(990),
                             photo = "1.jpg"
                         },
                         new
                         {
                             Id = 2,
                             Description = "A platform game developed and published by Nintendo for the Nintendo Switch.",
-                            MediaAverageRating = 9.7m,
+                            Iframe = "<iframe width=\"853\" height=\"480\" src=\"https://www.youtube.com/embed/5kcdRBHM7kM\" title=\"Super Mario Odyssey - Nintendo Switch Presentation 2017 Trailer\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" referrerpolicy=\"strict-origin-when-cross-origin\" allowfullscreen></iframe>",
                             RelaseDate = new DateTime(2017, 10, 27, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Super Mario Odyssey",
-                            UpdatedAt = new DateTime(2024, 7, 22, 21, 23, 6, 561, DateTimeKind.Local).AddTicks(7821),
-                            UserAverageRating = 9.3m,
+                            UpdatedAt = new DateTime(2024, 8, 6, 1, 2, 25, 736, DateTimeKind.Local).AddTicks(1008),
                             photo = "2.webp"
                         },
                         new
                         {
                             Id = 3,
                             Description = "An action-adventure game developed and published by Rockstar Games.",
-                            MediaAverageRating = 9.8m,
+                            Iframe = "<iframe width=\"853\" height=\"480\" src=\"https://www.youtube.com/embed/HVRzx17WHVk\" title=\"Red Dead Redemption 2 Launch Trailer\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" referrerpolicy=\"strict-origin-when-cross-origin\" allowfullscreen></iframe>",
                             RelaseDate = new DateTime(2018, 10, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Red Dead Redemption 2",
-                            UpdatedAt = new DateTime(2024, 7, 22, 21, 23, 6, 561, DateTimeKind.Local).AddTicks(7824),
-                            UserAverageRating = 9.6m,
+                            UpdatedAt = new DateTime(2024, 8, 6, 1, 2, 25, 736, DateTimeKind.Local).AddTicks(1011),
                             photo = "3.jpg"
                         },
                         new
                         {
                             Id = 4,
                             Description = "An action-adventure game developed by Santa Monica Studio and published by Sony Interactive Entertainment.",
-                            MediaAverageRating = 9.6m,
+                            Iframe = "<iframe width=\"853\" height=\"480\" src=\"https://www.youtube.com/embed/Ty7WudwSKMA\" title=\"God of War: Ragnarok - Teaser Trailer | PS5 Showcase\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" referrerpolicy=\"strict-origin-when-cross-origin\" allowfullscreen></iframe>",
                             RelaseDate = new DateTime(2018, 4, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "God of War",
-                            UpdatedAt = new DateTime(2024, 7, 22, 21, 23, 6, 561, DateTimeKind.Local).AddTicks(7827),
-                            UserAverageRating = 9.4m,
+                            UpdatedAt = new DateTime(2024, 8, 6, 1, 2, 25, 736, DateTimeKind.Local).AddTicks(1013),
                             photo = "4.jpg"
                         },
                         new
                         {
                             Id = 5,
                             Description = "An action role-playing game developed and published by CD Projekt.",
-                            MediaAverageRating = 9.9m,
+                            Iframe = "<iframe width=\"853\" height=\"480\" src=\"https://www.youtube.com/embed/c0i88t0Kacs\" title=\"The Witcher 3: Wild Hunt - Killing Monsters Cinematic Trailer\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" referrerpolicy=\"strict-origin-when-cross-origin\" allowfullscreen></iframe>",
                             RelaseDate = new DateTime(2015, 5, 19, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "The Witcher 3: Wild Hunt",
-                            UpdatedAt = new DateTime(2024, 7, 22, 21, 23, 6, 561, DateTimeKind.Local).AddTicks(7829),
-                            UserAverageRating = 9.7m,
+                            UpdatedAt = new DateTime(2024, 8, 6, 1, 2, 25, 736, DateTimeKind.Local).AddTicks(1015),
                             photo = "5.jpg"
                         },
                         new
                         {
                             Id = 6,
                             Description = "An action role-playing game developed and published by CD Projekt.",
-                            MediaAverageRating = 8.9m,
+                            Iframe = "<iframe width=\"930\" height=\"388\" src=\"https://www.youtube.com/embed/P99qJGrPNLs\" title=\"Cyberpunk 2077 Teaser Trailer\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" referrerpolicy=\"strict-origin-when-cross-origin\" allowfullscreen></iframe>",
                             RelaseDate = new DateTime(2020, 12, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Cyberpunk 2077",
-                            UpdatedAt = new DateTime(2024, 7, 22, 21, 23, 6, 561, DateTimeKind.Local).AddTicks(7836),
-                            UserAverageRating = 8.5m,
+                            UpdatedAt = new DateTime(2024, 8, 6, 1, 2, 25, 736, DateTimeKind.Local).AddTicks(1019),
                             photo = "6.jpg"
                         },
                         new
                         {
                             Id = 7,
                             Description = "A sandbox video game developed by Mojang.",
-                            MediaAverageRating = 9.5m,
+                            Iframe = "<iframe width=\"853\" height=\"480\" src=\"https://www.youtube.com/embed/MmB9b5njVbA\" title=\"Official Minecraft Trailer\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" referrerpolicy=\"strict-origin-when-cross-origin\" allowfullscreen></iframe>",
                             RelaseDate = new DateTime(2011, 11, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Minecraft",
-                            UpdatedAt = new DateTime(2024, 7, 22, 21, 23, 6, 561, DateTimeKind.Local).AddTicks(7838),
-                            UserAverageRating = 9.2m,
+                            UpdatedAt = new DateTime(2024, 8, 6, 1, 2, 25, 736, DateTimeKind.Local).AddTicks(1021),
                             photo = "7.jpg"
                         },
                         new
                         {
                             Id = 8,
                             Description = "An online video game developed by Epic Games.",
-                            MediaAverageRating = 9.0m,
+                            Iframe = "<iframe width=\"853\" height=\"480\" src=\"https://www.youtube.com/embed/hHTE5xg9E-g\" title=\"Fortnite Teaser Trailer\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" referrerpolicy=\"strict-origin-when-cross-origin\" allowfullscreen></iframe>",
                             RelaseDate = new DateTime(2017, 7, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Fortnite",
-                            UpdatedAt = new DateTime(2024, 7, 22, 21, 23, 6, 561, DateTimeKind.Local).AddTicks(7841),
-                            UserAverageRating = 8.8m,
+                            UpdatedAt = new DateTime(2024, 8, 6, 1, 2, 25, 736, DateTimeKind.Local).AddTicks(1023),
                             photo = "8.png"
                         },
                         new
                         {
                             Id = 9,
                             Description = "An action role-playing game developed by Bethesda Game Studios and published by Bethesda Softworks.",
-                            MediaAverageRating = 9.7m,
+                            Iframe = "<iframe width=\"853\" height=\"480\" src=\"https://www.youtube.com/embed/JSRtYpNRoN0\" title=\"The Elder Scrolls V: Skyrim - Official Trailer\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" referrerpolicy=\"strict-origin-when-cross-origin\" allowfullscreen></iframe>",
                             RelaseDate = new DateTime(2011, 11, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "The Elder Scrolls V: Skyrim",
-                            UpdatedAt = new DateTime(2024, 7, 22, 21, 23, 6, 561, DateTimeKind.Local).AddTicks(7844),
-                            UserAverageRating = 9.4m,
+                            UpdatedAt = new DateTime(2024, 8, 6, 1, 2, 25, 736, DateTimeKind.Local).AddTicks(1025),
                             photo = "9.jpg"
                         },
                         new
                         {
                             Id = 10,
                             Description = "An action role-playing game developed by Guerrilla Games and published by Sony Interactive Entertainment.",
-                            MediaAverageRating = 9.5m,
+                            Iframe = "<iframe width=\"853\" height=\"480\" src=\"https://www.youtube.com/embed/u4-FCsiF5x4\" title=\"Horizon Zero Dawn - E3 2016 Trailer I PS4\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" referrerpolicy=\"strict-origin-when-cross-origin\" allowfullscreen></iframe>",
                             RelaseDate = new DateTime(2017, 2, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Horizon Zero Dawn",
-                            UpdatedAt = new DateTime(2024, 7, 22, 21, 23, 6, 561, DateTimeKind.Local).AddTicks(7847),
-                            UserAverageRating = 9.3m,
+                            UpdatedAt = new DateTime(2024, 8, 6, 1, 2, 25, 736, DateTimeKind.Local).AddTicks(1028),
                             photo = "10.jpg"
                         },
                         new
                         {
                             Id = 11,
                             Description = "An action role-playing game developed and published by Square Enix.",
-                            MediaAverageRating = 8.8m,
+                            Iframe = "<iframe width=\"853\" height=\"480\" src=\"https://www.youtube.com/embed/CNM6o9um1dc\" title=\"FINAL FANTASY XV - Omen Trailer | PS4\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" referrerpolicy=\"strict-origin-when-cross-origin\" allowfullscreen></iframe>",
                             RelaseDate = new DateTime(2016, 11, 29, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Final Fantasy XV",
-                            UpdatedAt = new DateTime(2024, 7, 22, 21, 23, 6, 561, DateTimeKind.Local).AddTicks(7850),
-                            UserAverageRating = 8.6m,
+                            UpdatedAt = new DateTime(2024, 8, 6, 1, 2, 25, 736, DateTimeKind.Local).AddTicks(1030),
                             photo = "11.jpg"
                         },
                         new
                         {
                             Id = 12,
                             Description = "A role-playing video game developed by Atlus.",
-                            MediaAverageRating = 9.6m,
+                            Iframe = "<iframe width=\"853\" height=\"480\" src=\"https://www.youtube.com/embed/QnDzJ9KzuV4\" title=\"Persona 5 | Launch Trailer | PS4\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" referrerpolicy=\"strict-origin-when-cross-origin\" allowfullscreen></iframe>",
                             RelaseDate = new DateTime(2016, 9, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Persona 5",
-                            UpdatedAt = new DateTime(2024, 7, 22, 21, 23, 6, 561, DateTimeKind.Local).AddTicks(7853),
-                            UserAverageRating = 9.5m,
+                            UpdatedAt = new DateTime(2024, 8, 6, 1, 2, 25, 736, DateTimeKind.Local).AddTicks(1033),
                             photo = "12.png"
                         },
                         new
                         {
                             Id = 13,
                             Description = "An action role-playing game developed by FromSoftware and published by Bandai Namco Entertainment.",
-                            MediaAverageRating = 9.3m,
+                            Iframe = "<iframe width=\"853\" height=\"480\" src=\"https://www.youtube.com/embed/cWBwFhUv1-8\" title=\"Dark Souls III – Launch Trailer | PS4\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" referrerpolicy=\"strict-origin-when-cross-origin\" allowfullscreen></iframe>",
                             RelaseDate = new DateTime(2016, 3, 24, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Dark Souls III",
-                            UpdatedAt = new DateTime(2024, 7, 22, 21, 23, 6, 561, DateTimeKind.Local).AddTicks(7857),
-                            UserAverageRating = 9.1m,
+                            UpdatedAt = new DateTime(2024, 8, 6, 1, 2, 25, 736, DateTimeKind.Local).AddTicks(1036),
                             photo = "13.jpg"
                         },
                         new
                         {
                             Id = 14,
                             Description = "An action role-playing game developed by FromSoftware and published by Sony Computer Entertainment.",
-                            MediaAverageRating = 9.4m,
+                            Iframe = "<iframe width=\"853\" height=\"480\" src=\"https://www.youtube.com/embed/G203e1HhixY\" title=\"Bloodborne Debut Trailer | Face Your Fears | PlayStation 4 Action RPG\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" referrerpolicy=\"strict-origin-when-cross-origin\" allowfullscreen></iframe>",
                             RelaseDate = new DateTime(2015, 3, 24, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Bloodborne",
-                            UpdatedAt = new DateTime(2024, 7, 22, 21, 23, 6, 561, DateTimeKind.Local).AddTicks(7859),
-                            UserAverageRating = 9.3m,
+                            UpdatedAt = new DateTime(2024, 8, 6, 1, 2, 25, 736, DateTimeKind.Local).AddTicks(1038),
                             photo = "14.jpg"
                         },
                         new
                         {
                             Id = 15,
                             Description = "A team-based multiplayer first-person shooter developed and published by Blizzard Entertainment.",
-                            MediaAverageRating = 9.1m,
+                            Iframe = "<iframe width=\"853\" height=\"480\" src=\"https://www.youtube.com/embed/IBIwGKDwnWY\" title=\"Overwatch Theatrical Teaser | &quot;We Are Overwatch&quot;\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" referrerpolicy=\"strict-origin-when-cross-origin\" allowfullscreen></iframe>",
                             RelaseDate = new DateTime(2016, 5, 24, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Overwatch",
-                            UpdatedAt = new DateTime(2024, 7, 22, 21, 23, 6, 561, DateTimeKind.Local).AddTicks(7862),
-                            UserAverageRating = 8.9m,
+                            UpdatedAt = new DateTime(2024, 8, 6, 1, 2, 25, 736, DateTimeKind.Local).AddTicks(1040),
                             photo = "15.jpg"
                         },
                         new
                         {
                             Id = 16,
                             Description = "An action-adventure game developed by FromSoftware and published by Activision.",
-                            MediaAverageRating = 9.5m,
+                            Iframe = "",
                             RelaseDate = new DateTime(2019, 3, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Sekiro: Shadows Die Twice",
-                            UpdatedAt = new DateTime(2024, 7, 22, 21, 23, 6, 561, DateTimeKind.Local).AddTicks(7882),
-                            UserAverageRating = 9.2m,
+                            UpdatedAt = new DateTime(2024, 8, 6, 1, 2, 25, 736, DateTimeKind.Local).AddTicks(1042),
                             photo = "16.jpg"
                         },
                         new
                         {
                             Id = 17,
                             Description = "An action role-playing game developed by Team Ninja and published by Koei Tecmo.",
-                            MediaAverageRating = 8.9m,
+                            Iframe = "<iframe width=\"853\" height=\"480\" src=\"https://www.youtube.com/embed/cHTtNdkDduQ\" title=\"Nioh 2 Reveal Teaser Trailer - E3 2018\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" referrerpolicy=\"strict-origin-when-cross-origin\" allowfullscreen></iframe>",
                             RelaseDate = new DateTime(2017, 2, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Nioh",
-                            UpdatedAt = new DateTime(2024, 7, 22, 21, 23, 6, 561, DateTimeKind.Local).AddTicks(7885),
-                            UserAverageRating = 8.7m,
+                            UpdatedAt = new DateTime(2024, 8, 6, 1, 2, 25, 736, DateTimeKind.Local).AddTicks(1045),
                             photo = "17.jpg"
                         },
                         new
                         {
                             Id = 18,
                             Description = "An action role-playing game developed and published by Capcom.",
-                            MediaAverageRating = 9.2m,
+                            Iframe = "<iframe width=\"853\" height=\"480\" src=\"https://www.youtube.com/embed/xtxJtQa6VSw\" title=\"Resident Evil 2 – E3 2018 Announcement Trailer | PS4\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" referrerpolicy=\"strict-origin-when-cross-origin\" allowfullscreen></iframe>",
                             RelaseDate = new DateTime(2018, 1, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Monster Hunter: World",
-                            UpdatedAt = new DateTime(2024, 7, 22, 21, 23, 6, 561, DateTimeKind.Local).AddTicks(7887),
-                            UserAverageRating = 9.0m,
+                            UpdatedAt = new DateTime(2024, 8, 6, 1, 2, 25, 736, DateTimeKind.Local).AddTicks(1047),
                             photo = "18.png"
                         },
                         new
                         {
                             Id = 19,
                             Description = "A survival horror game developed and published by Capcom.",
-                            MediaAverageRating = 9.5m,
+                            Iframe = "<iframe width=\"853\" height=\"480\" src=\"https://www.youtube.com/embed/xtxJtQa6VSw\" title=\"Resident Evil 2 – E3 2018 Announcement Trailer | PS4\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" referrerpolicy=\"strict-origin-when-cross-origin\" allowfullscreen></iframe>",
                             RelaseDate = new DateTime(2019, 1, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Resident Evil 2",
-                            UpdatedAt = new DateTime(2024, 7, 22, 21, 23, 6, 561, DateTimeKind.Local).AddTicks(7890),
-                            UserAverageRating = 9.3m,
+                            UpdatedAt = new DateTime(2024, 8, 6, 1, 2, 25, 736, DateTimeKind.Local).AddTicks(1049),
                             photo = "19.jpg"
                         },
                         new
                         {
                             Id = 20,
                             Description = "An action-adventure game developed by Sucker Punch Productions and published by Sony Interactive Entertainment.",
-                            MediaAverageRating = 9.5m,
+                            Iframe = "<iframe width=\"853\" height=\"480\" src=\"https://www.youtube.com/embed/RcWk08PBe7k\" title=\"Ghost of Tsushima - A Storm is Coming Trailer | PS4\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" referrerpolicy=\"strict-origin-when-cross-origin\" allowfullscreen></iframe>",
                             RelaseDate = new DateTime(2020, 7, 17, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Ghost of Tsushima",
-                            UpdatedAt = new DateTime(2024, 7, 22, 21, 23, 6, 561, DateTimeKind.Local).AddTicks(7893),
-                            UserAverageRating = 9.4m,
+                            UpdatedAt = new DateTime(2024, 8, 6, 1, 2, 25, 736, DateTimeKind.Local).AddTicks(1051),
                             photo = "20.jpg"
                         },
                         new
                         {
                             Id = 21,
                             Description = "An action role-playing video game developed by Ubisoft Montreal and published by Ubisoft.",
-                            MediaAverageRating = 9.0m,
+                            Iframe = "<iframe width=\"930\" height=\"390\" src=\"https://www.youtube.com/embed/rKjUAWlbTJk\" title=\"Assassin’s Creed Valhalla: Cinematic World Premiere Trailer\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" referrerpolicy=\"strict-origin-when-cross-origin\" allowfullscreen></iframe>",
                             RelaseDate = new DateTime(2020, 11, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Assassin's Creed Valhalla",
-                            UpdatedAt = new DateTime(2024, 7, 22, 21, 23, 6, 561, DateTimeKind.Local).AddTicks(7897),
-                            UserAverageRating = 8.8m,
+                            UpdatedAt = new DateTime(2024, 8, 6, 1, 2, 25, 736, DateTimeKind.Local).AddTicks(1053),
                             photo = "21.jpg"
                         },
                         new
                         {
                             Id = 22,
                             Description = "An action-adventure game developed by Naughty Dog and published by Sony Interactive Entertainment.",
-                            MediaAverageRating = 9.8m,
+                            Iframe = "<iframe width=\"853\" height=\"480\" src=\"https://www.youtube.com/embed/W2Wnvvj33Wo\" title=\"The Last of Us Part II - PlayStation Experience 2016: Reveal Trailer | PS4\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" referrerpolicy=\"strict-origin-when-cross-origin\" allowfullscreen></iframe>",
                             RelaseDate = new DateTime(2020, 6, 19, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "The Last of Us Part II",
-                            UpdatedAt = new DateTime(2024, 7, 22, 21, 23, 6, 561, DateTimeKind.Local).AddTicks(7899),
-                            UserAverageRating = 9.6m,
+                            UpdatedAt = new DateTime(2024, 8, 6, 1, 2, 25, 736, DateTimeKind.Local).AddTicks(1055),
                             photo = "22.jpg"
                         },
                         new
                         {
                             Id = 23,
                             Description = "An action-adventure game developed by Remedy Entertainment and published by 505 Games.",
-                            MediaAverageRating = 9.1m,
+                            Iframe = "<iframe width=\"853\" height=\"480\" src=\"https://www.youtube.com/embed/w6bE11FrSFM\" title=\"Control - Ultimate Edition Announcement Trailer\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" referrerpolicy=\"strict-origin-when-cross-origin\" allowfullscreen></iframe>",
                             RelaseDate = new DateTime(2019, 8, 27, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Control",
-                            UpdatedAt = new DateTime(2024, 7, 22, 21, 23, 6, 561, DateTimeKind.Local).AddTicks(7902),
-                            UserAverageRating = 8.9m,
+                            UpdatedAt = new DateTime(2024, 8, 6, 1, 2, 25, 736, DateTimeKind.Local).AddTicks(1058),
                             photo = "23.jpg"
                         },
                         new
                         {
                             Id = 24,
                             Description = "A roguelike action dungeon crawler video game developed and published by Supergiant Games.",
-                            MediaAverageRating = 9.7m,
+                            Iframe = "<iframe width=\"853\" height=\"480\" src=\"https://www.youtube.com/embed/91t0ha9x0AE\" title=\"Hades - Official Animated Trailer\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" referrerpolicy=\"strict-origin-when-cross-origin\" allowfullscreen></iframe>",
                             RelaseDate = new DateTime(2020, 9, 17, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Hades",
-                            UpdatedAt = new DateTime(2024, 7, 22, 21, 23, 6, 561, DateTimeKind.Local).AddTicks(7905),
-                            UserAverageRating = 9.5m,
+                            UpdatedAt = new DateTime(2024, 8, 6, 1, 2, 25, 736, DateTimeKind.Local).AddTicks(1060),
                             photo = "24.png"
                         },
                         new
                         {
                             Id = 25,
                             Description = "A first-person shooter game developed by id Software and published by Bethesda Softworks.",
-                            MediaAverageRating = 9.3m,
+                            Iframe = "<iframe width=\"853\" height=\"480\" src=\"https://www.youtube.com/embed/_oVwrpfo_QA\" title=\"DOOM Eternal – Official E3 Teaser\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" referrerpolicy=\"strict-origin-when-cross-origin\" allowfullscreen></iframe>",
                             RelaseDate = new DateTime(2020, 3, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Doom Eternal",
-                            UpdatedAt = new DateTime(2024, 7, 22, 21, 23, 6, 561, DateTimeKind.Local).AddTicks(7907),
-                            UserAverageRating = 9.1m,
+                            UpdatedAt = new DateTime(2024, 8, 6, 1, 2, 25, 736, DateTimeKind.Local).AddTicks(1063),
                             photo = "25.jpg"
                         },
                         new
                         {
                             Id = 26,
                             Description = "An action role-playing game developed and published by miHoYo.",
-                            MediaAverageRating = 8.8m,
+                            Iframe = "<iframe width=\"853\" height=\"480\" src=\"https://www.youtube.com/embed/HLUY1nICQRY\" title=\"Genshin Impact - Official Launch Trailer\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" referrerpolicy=\"strict-origin-when-cross-origin\" allowfullscreen></iframe>",
                             RelaseDate = new DateTime(2020, 9, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Genshin Impact",
-                            UpdatedAt = new DateTime(2024, 7, 22, 21, 23, 6, 561, DateTimeKind.Local).AddTicks(7910),
-                            UserAverageRating = 8.6m,
+                            UpdatedAt = new DateTime(2024, 8, 6, 1, 2, 25, 736, DateTimeKind.Local).AddTicks(1065),
                             photo = "26.jpg"
                         },
                         new
                         {
                             Id = 27,
                             Description = "An action game developed by Kojima Productions and published by Sony Interactive Entertainment.",
-                            MediaAverageRating = 8.9m,
+                            Iframe = "<iframe width=\"853\" height=\"480\" src=\"https://www.youtube.com/embed/H2Hy96sOnq8\" title=\"Death Stranding - Teaser Trailer - TGA 2016 - 4K\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" referrerpolicy=\"strict-origin-when-cross-origin\" allowfullscreen></iframe>",
                             RelaseDate = new DateTime(2019, 11, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Death Stranding",
-                            UpdatedAt = new DateTime(2024, 7, 22, 21, 23, 6, 561, DateTimeKind.Local).AddTicks(7913),
-                            UserAverageRating = 8.7m,
+                            UpdatedAt = new DateTime(2024, 8, 6, 1, 2, 25, 736, DateTimeKind.Local).AddTicks(1073),
                             photo = "27.jpg"
                         },
                         new
                         {
                             Id = 28,
                             Description = "An action-adventure game developed by Insomniac Games and published by Sony Interactive Entertainment.",
-                            MediaAverageRating = 9.3m,
+                            Iframe = "<iframe width=\"853\" height=\"480\" src=\"https://www.youtube.com/embed/q4GdJVvdxss\" title=\"Marvel’s Spider-Man – Be Greater Extended Trailer | PS4\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" referrerpolicy=\"strict-origin-when-cross-origin\" allowfullscreen></iframe>",
                             RelaseDate = new DateTime(2018, 9, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Marvel's Spider-Man",
-                            UpdatedAt = new DateTime(2024, 7, 22, 21, 23, 6, 561, DateTimeKind.Local).AddTicks(7916),
-                            UserAverageRating = 9.2m,
+                            UpdatedAt = new DateTime(2024, 8, 6, 1, 2, 25, 736, DateTimeKind.Local).AddTicks(1075),
                             photo = "28.jpg"
                         },
                         new
                         {
                             Id = 29,
                             Description = "A virtual reality first-person shooter developed and published by Valve.",
-                            MediaAverageRating = 9.6m,
+                            Iframe = "<iframe width=\"853\" height=\"480\" src=\"https://www.youtube.com/embed/O2W0N3uKXmo\" title=\"Half-Life: Alyx Announcement Trailer\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" referrerpolicy=\"strict-origin-when-cross-origin\" allowfullscreen></iframe>",
                             RelaseDate = new DateTime(2020, 3, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Half-Life: Alyx",
-                            UpdatedAt = new DateTime(2024, 7, 22, 21, 23, 6, 561, DateTimeKind.Local).AddTicks(7922),
-                            UserAverageRating = 9.4m,
+                            UpdatedAt = new DateTime(2024, 8, 6, 1, 2, 25, 736, DateTimeKind.Local).AddTicks(1077),
                             photo = "29.webp"
                         },
                         new
                         {
                             Id = 30,
                             Description = "An action role-playing game developed and published by TaleWorlds Entertainment. Bannerlord is a prequel to Mount & Blade: Warband, a stand-alone expansion pack for the 2008 game Mount & Blade.",
-                            MediaAverageRating = 8.7m,
+                            Iframe = "<iframe width=\"853\" height=\"480\" src=\"https://www.youtube.com/embed/yCk6Jk7DvrA\" title=\"Mount &amp; Blade II: Bannerlord Early Access Announcement\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" referrerpolicy=\"strict-origin-when-cross-origin\" allowfullscreen></iframe>",
                             RelaseDate = new DateTime(2020, 3, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Mount and Blade II: Bannerlord",
-                            UpdatedAt = new DateTime(2024, 7, 22, 21, 23, 6, 561, DateTimeKind.Local).AddTicks(7924),
-                            UserAverageRating = 8.5m,
+                            UpdatedAt = new DateTime(2024, 8, 6, 1, 2, 25, 736, DateTimeKind.Local).AddTicks(1089),
                             photo = "30.jpg"
                         },
                         new
                         {
                             Id = 31,
                             Description = "Explore the depths of Arkham Asylum as Batman, unraveling a sinister plot orchestrated by his arch-nemesis, the Joker.",
-                            MediaAverageRating = 9.2m,
+                            Iframe = "<iframe width=\"853\" height=\"480\" src=\"https://www.youtube.com/embed/bVk9jW9EzD0\" title=\"Batman: Arkham Asylum Teaser Trailer\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" referrerpolicy=\"strict-origin-when-cross-origin\" allowfullscreen></iframe>",
                             RelaseDate = new DateTime(2009, 8, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Batman: Arkham Asylum",
-                            UpdatedAt = new DateTime(2024, 7, 22, 21, 23, 6, 561, DateTimeKind.Local).AddTicks(7929),
-                            UserAverageRating = 9.0m,
+                            UpdatedAt = new DateTime(2024, 8, 6, 1, 2, 25, 736, DateTimeKind.Local).AddTicks(1108),
                             photo = "31.jpg"
                         },
                         new
                         {
                             Id = 32,
                             Description = "Gotham City is transformed into a sprawling prison, and Batman must navigate its dangerous streets to uncover a new threat.",
-                            MediaAverageRating = 9.3m,
+                            Iframe = "<iframe width=\"853\" height=\"480\" src=\"https://www.youtube.com/embed/pcaFdTCiz4U\" title=\"Batman: Arkham City - Teaser\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" referrerpolicy=\"strict-origin-when-cross-origin\" allowfullscreen></iframe>",
                             RelaseDate = new DateTime(2011, 10, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Batman: Arkham City",
-                            UpdatedAt = new DateTime(2024, 7, 22, 21, 23, 6, 561, DateTimeKind.Local).AddTicks(7933),
-                            UserAverageRating = 9.1m,
+                            UpdatedAt = new DateTime(2024, 8, 6, 1, 2, 25, 736, DateTimeKind.Local).AddTicks(1110),
                             photo = "32.jpg"
                         },
                         new
                         {
                             Id = 33,
                             Description = "The Dark Knight faces the ultimate threat to Gotham City as the Scarecrow unites Batman's foes to destroy him once and for all.",
-                            MediaAverageRating = 9.0m,
+                            Iframe = "<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/wsf78BS9VE0\" title=\"YouTube video player\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" allowfullscreen></iframe>\r\n",
                             RelaseDate = new DateTime(2015, 6, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Batman: Arkham Knight",
-                            UpdatedAt = new DateTime(2024, 7, 22, 21, 23, 6, 561, DateTimeKind.Local).AddTicks(7935),
-                            UserAverageRating = 8.9m,
+                            UpdatedAt = new DateTime(2024, 8, 6, 1, 2, 25, 736, DateTimeKind.Local).AddTicks(1112),
                             photo = "33.jpg"
                         });
                 });
@@ -1497,6 +1458,7 @@ namespace HightScore.Entities.Migrations
                         .HasColumnType("tinyint(1)");
 
                     b.Property<string>("UserName")
+                        .IsRequired()
                         .HasMaxLength(256)
                         .HasColumnType("varchar(256)");
 
@@ -1516,19 +1478,339 @@ namespace HightScore.Entities.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "00000000-0000-0000-0000-000000000000",
+                            Id = "0",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "d4a7ff6f-2000-44ea-8b82-9c191c2f87c1",
-                            Email = "admin@hotmail.com",
+                            ConcurrencyStamp = "af9866ad-9d55-48fb-bf90-16469da3ba15",
+                            Email = "admin@example.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
-                            NormalizedEmail = "ADMIN@HOTMAIL.COM",
+                            NormalizedEmail = "ADMIN@EXAMPLE.COM",
                             NormalizedUserName = "ADMIN",
-                            PasswordHash = "asd123.",
+                            PasswordHash = "AQAAAAIAAYagAAAAEITp4dNQLJyxHcv66Z9FHYvUMWtdkJxz3rrODJSnRpMWGQsJ1B1Tqzgn1eyYARXjGw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "JZTQQKJ3CQCXYN4AWFLARBLI4NXY2FYW",
+                            SecurityStamp = "29df0a62-deae-4aeb-b9c3-eed6aa0b81e4",
                             TwoFactorEnabled = false,
                             UserName = "admin"
+                        },
+                        new
+                        {
+                            Id = "1",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "58eb160b-b355-45b8-83bd-38c2df4a10e9",
+                            Email = "user1@example.com",
+                            EmailConfirmed = true,
+                            LockoutEnabled = false,
+                            NormalizedEmail = "USER1@EXAMPLE.COM",
+                            NormalizedUserName = "USER1",
+                            PasswordHash = "AQAAAAIAAYagAAAAENoCkDIOj2tBrf8C9N6Z6kHCcugeBzkfWi/jHqbVQmGSrVLehrdYcBn7l+nC//8Eig==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "3a32ea92-99aa-4f10-abde-74ffb55a47bf",
+                            TwoFactorEnabled = false,
+                            UserName = "user1"
+                        },
+                        new
+                        {
+                            Id = "2",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "f353bb66-602e-4acb-8752-f14892c76c94",
+                            Email = "user2@example.com",
+                            EmailConfirmed = true,
+                            LockoutEnabled = false,
+                            NormalizedEmail = "USER2@EXAMPLE.COM",
+                            NormalizedUserName = "USER2",
+                            PasswordHash = "AQAAAAIAAYagAAAAEFoOKVNJ8TTuz5HLOZD0IAa1ILsnZyI2AxfztzC9k7H7QazC8Igy+cXaPVmGxV4V6w==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "905bbbad-2019-4cdf-a9a2-9042285bdd38",
+                            TwoFactorEnabled = false,
+                            UserName = "user2"
+                        },
+                        new
+                        {
+                            Id = "3",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "01b5e1db-a7be-4ff6-959a-a7d01335efd0",
+                            Email = "user3@example.com",
+                            EmailConfirmed = true,
+                            LockoutEnabled = false,
+                            NormalizedEmail = "USER3@EXAMPLE.COM",
+                            NormalizedUserName = "USER3",
+                            PasswordHash = "AQAAAAIAAYagAAAAELt8wWlkqrt9iPj3ao8PMgQnVejYjQF0m/4g5mzWBvVolOKur8IHofh2URI4ngrCNA==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "bf954401-306d-4d8f-84a9-3b408d33ac3a",
+                            TwoFactorEnabled = false,
+                            UserName = "user3"
+                        },
+                        new
+                        {
+                            Id = "4",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "2443c989-bb45-49e1-86ce-ba8c584e26d9",
+                            Email = "user4@example.com",
+                            EmailConfirmed = true,
+                            LockoutEnabled = false,
+                            NormalizedEmail = "USER4@EXAMPLE.COM",
+                            NormalizedUserName = "USER4",
+                            PasswordHash = "AQAAAAIAAYagAAAAEJrv8NWMxp3x3y4+XtBb4olwgZ4YFgQCR9Bw/A7C/VomHLeEptvzTTZHmqX1RGuibA==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "3e54c8a6-09de-4805-b835-09d8fb975be1",
+                            TwoFactorEnabled = false,
+                            UserName = "user4"
+                        },
+                        new
+                        {
+                            Id = "5",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "14e5adbb-2f86-4717-918b-1e205efda3e5",
+                            Email = "user5@example.com",
+                            EmailConfirmed = true,
+                            LockoutEnabled = false,
+                            NormalizedEmail = "USER5@EXAMPLE.COM",
+                            NormalizedUserName = "USER5",
+                            PasswordHash = "AQAAAAIAAYagAAAAEPKo2Mp/UKzA1Fq7+ZIVu7fLSlcokJera7Ptv4dAcaS3s06Zjg/hEAB97+oMvHiZ6Q==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "43ca30b4-bcb7-44c5-84db-61931cb556c7",
+                            TwoFactorEnabled = false,
+                            UserName = "user5"
+                        },
+                        new
+                        {
+                            Id = "6",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "85fa094d-8f61-4e25-adaa-fc27851f6197",
+                            Email = "user6@example.com",
+                            EmailConfirmed = true,
+                            LockoutEnabled = false,
+                            NormalizedEmail = "USER6@EXAMPLE.COM",
+                            NormalizedUserName = "USER6",
+                            PasswordHash = "AQAAAAIAAYagAAAAEG1H+zbQEGU/iag0sZrpH3QJ3n6k3tIUZMV8iBBcodzVskT8l3sdaaruCc2xaULe7w==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "895a3909-7fb1-4418-b727-90bee9fb957c",
+                            TwoFactorEnabled = false,
+                            UserName = "user6"
+                        },
+                        new
+                        {
+                            Id = "7",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "1be5cbb8-8956-4e98-9a71-f21d22f07fe8",
+                            Email = "user7@example.com",
+                            EmailConfirmed = true,
+                            LockoutEnabled = false,
+                            NormalizedEmail = "USER7@EXAMPLE.COM",
+                            NormalizedUserName = "USER7",
+                            PasswordHash = "AQAAAAIAAYagAAAAEBDMmUPPsmQerIHbt5QhGgTGsr/u6CWAJcqYOe3W51TSA/eNO4N0vdYUgAZu+pO/Bg==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "a0dba4cf-6389-42b4-9321-be76a2cfc718",
+                            TwoFactorEnabled = false,
+                            UserName = "user7"
+                        },
+                        new
+                        {
+                            Id = "8",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "106328ec-c6b4-4f8b-b492-21ed9adc0c3c",
+                            Email = "user8@example.com",
+                            EmailConfirmed = true,
+                            LockoutEnabled = false,
+                            NormalizedEmail = "USER8@EXAMPLE.COM",
+                            NormalizedUserName = "USER8",
+                            PasswordHash = "AQAAAAIAAYagAAAAEExKhAz/Ls1TWvTcqF5D3G+1N/C+owPt4YyqtOL505iJOo9Wab0ntdfTlFE7DGEfCQ==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "6c781dab-3aee-4fe9-b287-620031bf4313",
+                            TwoFactorEnabled = false,
+                            UserName = "user8"
+                        },
+                        new
+                        {
+                            Id = "9",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "5192ef40-2c59-4eb1-8fb2-caabf8b106fb",
+                            Email = "user9@example.com",
+                            EmailConfirmed = true,
+                            LockoutEnabled = false,
+                            NormalizedEmail = "USER9@EXAMPLE.COM",
+                            NormalizedUserName = "USER9",
+                            PasswordHash = "AQAAAAIAAYagAAAAEKKGV1/WCO2m2aiPVmEGr4fTNJCN4v8AflsmFFobMG9vhNjbxuOpzcbEJcxSB5jLjg==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "92acc107-a3b3-4be8-a02e-6115a99c2756",
+                            TwoFactorEnabled = false,
+                            UserName = "user9"
+                        },
+                        new
+                        {
+                            Id = "10",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "46c87f59-a1d5-4b77-93c2-cda98ced7ff3",
+                            Email = "user10@example.com",
+                            EmailConfirmed = true,
+                            LockoutEnabled = false,
+                            NormalizedEmail = "USER10@EXAMPLE.COM",
+                            NormalizedUserName = "USER10",
+                            PasswordHash = "AQAAAAIAAYagAAAAEKbtdjNOKj+8XOM8V0qOQwaZUqJcvtqWsJN1FCuMALW+b1bGXAkOv4f+qRHDJWDPeA==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "48cf6098-fc73-4727-8ea2-c9be079cc0ab",
+                            TwoFactorEnabled = false,
+                            UserName = "user10"
+                        },
+                        new
+                        {
+                            Id = "11",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "0310ca5c-32ae-4fbf-af65-04923317c249",
+                            Email = "user11@example.com",
+                            EmailConfirmed = true,
+                            LockoutEnabled = false,
+                            NormalizedEmail = "USER11@EXAMPLE.COM",
+                            NormalizedUserName = "USER11",
+                            PasswordHash = "AQAAAAIAAYagAAAAEGR7X6TFp0xNkrQqAIe74dJ9WeC5u+t9GZwGlsz44mm9uJ+q6u6aHLk6DEOEPsiP3A==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "68476179-e8eb-433a-a604-4b94fd5b5bcf",
+                            TwoFactorEnabled = false,
+                            UserName = "user11"
+                        },
+                        new
+                        {
+                            Id = "12",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "b7b7d835-41de-47db-8306-1bcd4ed51ebd",
+                            Email = "user12@example.com",
+                            EmailConfirmed = true,
+                            LockoutEnabled = false,
+                            NormalizedEmail = "USER12@EXAMPLE.COM",
+                            NormalizedUserName = "USER12",
+                            PasswordHash = "AQAAAAIAAYagAAAAEMnxmbOC5X5ZqBAXlzglf5ihyTNB/eRGGcxaS5V5bA+U1lsfmPke0qXGAIkBIHtvvQ==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "298c2680-f7cc-4cf8-b3bf-9611245fa168",
+                            TwoFactorEnabled = false,
+                            UserName = "user12"
+                        },
+                        new
+                        {
+                            Id = "13",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "174bdf69-4eed-485d-98ed-8eacaa2a1539",
+                            Email = "user13@example.com",
+                            EmailConfirmed = true,
+                            LockoutEnabled = false,
+                            NormalizedEmail = "USER13@EXAMPLE.COM",
+                            NormalizedUserName = "USER13",
+                            PasswordHash = "AQAAAAIAAYagAAAAELHmeCKafY56IqQ45t613pnf4t18tcgeAbz6tJLIAEqtjwpQBcD/Im8BXip/nQOT4w==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "a41d53f2-63fb-4859-a3ad-a6c9200b909a",
+                            TwoFactorEnabled = false,
+                            UserName = "user13"
+                        },
+                        new
+                        {
+                            Id = "14",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "00d16410-f8cc-4179-89d3-9b4ad315e1c6",
+                            Email = "user14@example.com",
+                            EmailConfirmed = true,
+                            LockoutEnabled = false,
+                            NormalizedEmail = "USER14@EXAMPLE.COM",
+                            NormalizedUserName = "USER14",
+                            PasswordHash = "AQAAAAIAAYagAAAAEHgI5OB/FlAqT0aGjhVdh/GVSHcA9F5ldOGcJJX9oYlwmPyhefaK8ntZH9u8Bi/Khw==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "ef7f1d81-2d34-4f09-98a1-de241fb4e7ce",
+                            TwoFactorEnabled = false,
+                            UserName = "user14"
+                        },
+                        new
+                        {
+                            Id = "15",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "8ab7a617-0f80-4dc2-8902-c6c71cdba23e",
+                            Email = "user15@example.com",
+                            EmailConfirmed = true,
+                            LockoutEnabled = false,
+                            NormalizedEmail = "USER15@EXAMPLE.COM",
+                            NormalizedUserName = "USER15",
+                            PasswordHash = "AQAAAAIAAYagAAAAEHcE9UI3X9NhRiFvTl/aVD5eCa5pCXy0P2MzUy18ADOO3ALbsyhpy5rbRm1u45WZow==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "857db488-097d-4e91-a06a-9c940470776e",
+                            TwoFactorEnabled = false,
+                            UserName = "user15"
+                        },
+                        new
+                        {
+                            Id = "16",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "9187b4b5-35fa-40d7-a58f-40cf3e3bf6f5",
+                            Email = "user16@example.com",
+                            EmailConfirmed = true,
+                            LockoutEnabled = false,
+                            NormalizedEmail = "USER16@EXAMPLE.COM",
+                            NormalizedUserName = "USER16",
+                            PasswordHash = "AQAAAAIAAYagAAAAEAETWx7Pwmx5mdbvV8xbntI3ybMMgDi9IiPk5PORAlg3UOhWWHPqL3TbJTZP/gJpZA==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "dd946c1c-ce53-4bcf-9bb3-6116fe68a232",
+                            TwoFactorEnabled = false,
+                            UserName = "user16"
+                        },
+                        new
+                        {
+                            Id = "17",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "d6cd4893-b1e2-4842-aff0-f18eacc6b552",
+                            Email = "user17@example.com",
+                            EmailConfirmed = true,
+                            LockoutEnabled = false,
+                            NormalizedEmail = "USER17@EXAMPLE.COM",
+                            NormalizedUserName = "USER17",
+                            PasswordHash = "AQAAAAIAAYagAAAAEAP8CcgtIxXvD6breITiXGXoQmfG+JUrnxYWi8zcq+LyadU8fQRWceTeIOvFwNVBRw==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "d0689acb-1d01-4e58-a8cb-4f7db1f36137",
+                            TwoFactorEnabled = false,
+                            UserName = "user17"
+                        },
+                        new
+                        {
+                            Id = "18",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "0af4914b-266d-42d7-aead-3627992261ed",
+                            Email = "user18@example.com",
+                            EmailConfirmed = true,
+                            LockoutEnabled = false,
+                            NormalizedEmail = "USER18@EXAMPLE.COM",
+                            NormalizedUserName = "USER18",
+                            PasswordHash = "AQAAAAIAAYagAAAAEBTfFJLlZ6Sycp0yj6qnrQpHaTTbkA0nhdEq3pkB63brNAxUL6TgHbYAyu9sEodjVQ==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "250dfbea-d830-43ab-bb59-ee7639aa9f2b",
+                            TwoFactorEnabled = false,
+                            UserName = "user18"
+                        },
+                        new
+                        {
+                            Id = "19",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "7f6fd9c3-c9a3-4ec3-b65a-c155b1ed5b79",
+                            Email = "user19@example.com",
+                            EmailConfirmed = true,
+                            LockoutEnabled = false,
+                            NormalizedEmail = "USER19@EXAMPLE.COM",
+                            NormalizedUserName = "USER19",
+                            PasswordHash = "AQAAAAIAAYagAAAAEPNbu1+19MFSHEcKy+82S1EP6lOpqFHYnVb+E3CcIcDFDcJ+evG/vPgcHAVePr18NQ==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "5fc00def-daaa-4785-a594-b3f337e63795",
+                            TwoFactorEnabled = false,
+                            UserName = "user19"
+                        },
+                        new
+                        {
+                            Id = "20",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "c9af8435-3976-47a6-bfac-a65ae5a04a40",
+                            Email = "user20@example.com",
+                            EmailConfirmed = true,
+                            LockoutEnabled = false,
+                            NormalizedEmail = "USER20@EXAMPLE.COM",
+                            NormalizedUserName = "USER20",
+                            PasswordHash = "AQAAAAIAAYagAAAAEHLrF/ypksJRslof8v+/NFVDOZbqpevqFN+8viqAUS90XipORUNEF4JJeZhYHakivA==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "335e2e09-d78a-4d3b-9310-aa03660ff31f",
+                            TwoFactorEnabled = false,
+                            UserName = "user20"
                         });
                 });
 
@@ -1538,8 +1820,8 @@ namespace HightScore.Entities.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<byte?>("Logo")
-                        .HasColumnType("tinyint unsigned");
+                    b.Property<string>("Logo")
+                        .HasColumnType("longtext");
 
                     b.Property<string>("PlatformName")
                         .IsRequired()
@@ -1690,6 +1972,20 @@ namespace HightScore.Entities.Migrations
                         .HasDatabaseName("RoleNameIndex");
 
                     b.ToTable("AspNetRoles", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "1",
+                            Name = "Admin",
+                            NormalizedName = "ADMIN"
+                        },
+                        new
+                        {
+                            Id = "2",
+                            Name = "User",
+                            NormalizedName = "USER"
+                        });
                 });
 
             modelBuilder.Entity("HightScore.Entities.Model.Concrete.UserReview", b =>
@@ -1709,6 +2005,9 @@ namespace HightScore.Entities.Migrations
                     b.Property<int>("UserId")
                         .HasColumnType("int");
 
+                    b.Property<string>("UserId1")
+                        .HasColumnType("varchar(255)");
+
                     b.Property<int>("UserRating")
                         .HasColumnType("int");
 
@@ -1716,7 +2015,803 @@ namespace HightScore.Entities.Migrations
 
                     b.HasIndex("ItemId");
 
+                    b.HasIndex("UserId1");
+
                     b.ToTable("UserReviews");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 3,
+                            Comment = "Not bad, could be better.",
+                            ItemId = 1,
+                            UserId = 9,
+                            UserRating = 3
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Comment = "Great game, really enjoyed it!",
+                            ItemId = 1,
+                            UserId = 6,
+                            UserRating = 5
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Comment = "A must-play for all gamers!",
+                            ItemId = 1,
+                            UserId = 8,
+                            UserRating = 8
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Comment = "Loved the graphics and storyline.",
+                            ItemId = 2,
+                            UserId = 2,
+                            UserRating = 2
+                        },
+                        new
+                        {
+                            Id = 7,
+                            Comment = "Disappointing, had high expectations.",
+                            ItemId = 2,
+                            UserId = 9,
+                            UserRating = 8
+                        },
+                        new
+                        {
+                            Id = 8,
+                            Comment = "I didn't like this game much.",
+                            ItemId = 2,
+                            UserId = 16,
+                            UserRating = 3
+                        },
+                        new
+                        {
+                            Id = 9,
+                            Comment = "Not bad, could be better.",
+                            ItemId = 3,
+                            UserId = 6,
+                            UserRating = 9
+                        },
+                        new
+                        {
+                            Id = 10,
+                            Comment = "I didn't like this game much.",
+                            ItemId = 3,
+                            UserId = 16,
+                            UserRating = 2
+                        },
+                        new
+                        {
+                            Id = 11,
+                            Comment = "Loved the graphics and storyline.",
+                            ItemId = 3,
+                            UserId = 11,
+                            UserRating = 1
+                        },
+                        new
+                        {
+                            Id = 12,
+                            Comment = "Quite boring and repetitive.",
+                            ItemId = 4,
+                            UserId = 5,
+                            UserRating = 9
+                        },
+                        new
+                        {
+                            Id = 13,
+                            Comment = "Quite boring and repetitive.",
+                            ItemId = 4,
+                            UserId = 7,
+                            UserRating = 4
+                        },
+                        new
+                        {
+                            Id = 14,
+                            Comment = "Great game, really enjoyed it!",
+                            ItemId = 4,
+                            UserId = 11,
+                            UserRating = 2
+                        },
+                        new
+                        {
+                            Id = 15,
+                            Comment = "Loved the graphics and storyline.",
+                            ItemId = 5,
+                            UserId = 6,
+                            UserRating = 2
+                        },
+                        new
+                        {
+                            Id = 16,
+                            Comment = "A must-play for all gamers!",
+                            ItemId = 5,
+                            UserId = 10,
+                            UserRating = 8
+                        },
+                        new
+                        {
+                            Id = 17,
+                            Comment = "Not bad, could be better.",
+                            ItemId = 5,
+                            UserId = 20,
+                            UserRating = 4
+                        },
+                        new
+                        {
+                            Id = 18,
+                            Comment = "Not bad, could be better.",
+                            ItemId = 6,
+                            UserId = 11,
+                            UserRating = 4
+                        },
+                        new
+                        {
+                            Id = 19,
+                            Comment = "I didn't like this game much.",
+                            ItemId = 6,
+                            UserId = 6,
+                            UserRating = 5
+                        },
+                        new
+                        {
+                            Id = 20,
+                            Comment = "A must-play for all gamers!",
+                            ItemId = 6,
+                            UserId = 8,
+                            UserRating = 10
+                        },
+                        new
+                        {
+                            Id = 21,
+                            Comment = "I didn't like this game much.",
+                            ItemId = 7,
+                            UserId = 19,
+                            UserRating = 10
+                        },
+                        new
+                        {
+                            Id = 22,
+                            Comment = "Not bad, could be better.",
+                            ItemId = 7,
+                            UserId = 6,
+                            UserRating = 5
+                        },
+                        new
+                        {
+                            Id = 23,
+                            Comment = "Fantastic experience, highly recommend!",
+                            ItemId = 7,
+                            UserId = 5,
+                            UserRating = 7
+                        },
+                        new
+                        {
+                            Id = 24,
+                            Comment = "I didn't like this game much.",
+                            ItemId = 8,
+                            UserId = 20,
+                            UserRating = 10
+                        },
+                        new
+                        {
+                            Id = 25,
+                            Comment = "Disappointing, had high expectations.",
+                            ItemId = 8,
+                            UserId = 11,
+                            UserRating = 2
+                        },
+                        new
+                        {
+                            Id = 26,
+                            Comment = "Great game, really enjoyed it!",
+                            ItemId = 8,
+                            UserId = 10,
+                            UserRating = 2
+                        },
+                        new
+                        {
+                            Id = 27,
+                            Comment = "Disappointing, had high expectations.",
+                            ItemId = 9,
+                            UserId = 17,
+                            UserRating = 10
+                        },
+                        new
+                        {
+                            Id = 28,
+                            Comment = "Not bad, could be better.",
+                            ItemId = 9,
+                            UserId = 1,
+                            UserRating = 7
+                        },
+                        new
+                        {
+                            Id = 29,
+                            Comment = "Great game, really enjoyed it!",
+                            ItemId = 9,
+                            UserId = 12,
+                            UserRating = 2
+                        },
+                        new
+                        {
+                            Id = 30,
+                            Comment = "A must-play for all gamers!",
+                            ItemId = 10,
+                            UserId = 9,
+                            UserRating = 5
+                        },
+                        new
+                        {
+                            Id = 31,
+                            Comment = "Great game, really enjoyed it!",
+                            ItemId = 10,
+                            UserId = 19,
+                            UserRating = 3
+                        },
+                        new
+                        {
+                            Id = 32,
+                            Comment = "Not bad, could be better.",
+                            ItemId = 10,
+                            UserId = 6,
+                            UserRating = 1
+                        },
+                        new
+                        {
+                            Id = 33,
+                            Comment = "Average game, nothing special.",
+                            ItemId = 11,
+                            UserId = 5,
+                            UserRating = 2
+                        },
+                        new
+                        {
+                            Id = 34,
+                            Comment = "Quite boring and repetitive.",
+                            ItemId = 11,
+                            UserId = 9,
+                            UserRating = 2
+                        },
+                        new
+                        {
+                            Id = 35,
+                            Comment = "Loved the graphics and storyline.",
+                            ItemId = 11,
+                            UserId = 2,
+                            UserRating = 2
+                        },
+                        new
+                        {
+                            Id = 36,
+                            Comment = "Gameplay was not very engaging.",
+                            ItemId = 12,
+                            UserId = 7,
+                            UserRating = 3
+                        },
+                        new
+                        {
+                            Id = 37,
+                            Comment = "Average game, nothing special.",
+                            ItemId = 12,
+                            UserId = 9,
+                            UserRating = 3
+                        },
+                        new
+                        {
+                            Id = 38,
+                            Comment = "Average game, nothing special.",
+                            ItemId = 12,
+                            UserId = 4,
+                            UserRating = 5
+                        },
+                        new
+                        {
+                            Id = 39,
+                            Comment = "A must-play for all gamers!",
+                            ItemId = 13,
+                            UserId = 11,
+                            UserRating = 10
+                        },
+                        new
+                        {
+                            Id = 40,
+                            Comment = "Gameplay was not very engaging.",
+                            ItemId = 13,
+                            UserId = 19,
+                            UserRating = 5
+                        },
+                        new
+                        {
+                            Id = 41,
+                            Comment = "Quite boring and repetitive.",
+                            ItemId = 13,
+                            UserId = 20,
+                            UserRating = 10
+                        },
+                        new
+                        {
+                            Id = 42,
+                            Comment = "Average game, nothing special.",
+                            ItemId = 14,
+                            UserId = 15,
+                            UserRating = 2
+                        },
+                        new
+                        {
+                            Id = 43,
+                            Comment = "Quite boring and repetitive.",
+                            ItemId = 14,
+                            UserId = 1,
+                            UserRating = 2
+                        },
+                        new
+                        {
+                            Id = 44,
+                            Comment = "A must-play for all gamers!",
+                            ItemId = 14,
+                            UserId = 17,
+                            UserRating = 6
+                        },
+                        new
+                        {
+                            Id = 45,
+                            Comment = "Great game, really enjoyed it!",
+                            ItemId = 15,
+                            UserId = 16,
+                            UserRating = 8
+                        },
+                        new
+                        {
+                            Id = 46,
+                            Comment = "Disappointing, had high expectations.",
+                            ItemId = 15,
+                            UserId = 2,
+                            UserRating = 9
+                        },
+                        new
+                        {
+                            Id = 47,
+                            Comment = "Disappointing, had high expectations.",
+                            ItemId = 15,
+                            UserId = 17,
+                            UserRating = 7
+                        },
+                        new
+                        {
+                            Id = 48,
+                            Comment = "Fantastic experience, highly recommend!",
+                            ItemId = 16,
+                            UserId = 14,
+                            UserRating = 8
+                        },
+                        new
+                        {
+                            Id = 49,
+                            Comment = "Great game, really enjoyed it!",
+                            ItemId = 16,
+                            UserId = 12,
+                            UserRating = 3
+                        },
+                        new
+                        {
+                            Id = 50,
+                            Comment = "Great game, really enjoyed it!",
+                            ItemId = 16,
+                            UserId = 15,
+                            UserRating = 6
+                        },
+                        new
+                        {
+                            Id = 51,
+                            Comment = "Fantastic experience, highly recommend!",
+                            ItemId = 17,
+                            UserId = 6,
+                            UserRating = 3
+                        },
+                        new
+                        {
+                            Id = 52,
+                            Comment = "Quite boring and repetitive.",
+                            ItemId = 17,
+                            UserId = 11,
+                            UserRating = 9
+                        },
+                        new
+                        {
+                            Id = 53,
+                            Comment = "Great game, really enjoyed it!",
+                            ItemId = 17,
+                            UserId = 16,
+                            UserRating = 6
+                        },
+                        new
+                        {
+                            Id = 54,
+                            Comment = "Not bad, could be better.",
+                            ItemId = 18,
+                            UserId = 20,
+                            UserRating = 9
+                        },
+                        new
+                        {
+                            Id = 55,
+                            Comment = "Loved the graphics and storyline.",
+                            ItemId = 18,
+                            UserId = 4,
+                            UserRating = 9
+                        },
+                        new
+                        {
+                            Id = 56,
+                            Comment = "Average game, nothing special.",
+                            ItemId = 18,
+                            UserId = 15,
+                            UserRating = 10
+                        },
+                        new
+                        {
+                            Id = 57,
+                            Comment = "Great game, really enjoyed it!",
+                            ItemId = 19,
+                            UserId = 8,
+                            UserRating = 5
+                        },
+                        new
+                        {
+                            Id = 58,
+                            Comment = "Average game, nothing special.",
+                            ItemId = 19,
+                            UserId = 5,
+                            UserRating = 5
+                        },
+                        new
+                        {
+                            Id = 59,
+                            Comment = "I didn't like this game much.",
+                            ItemId = 19,
+                            UserId = 12,
+                            UserRating = 10
+                        },
+                        new
+                        {
+                            Id = 60,
+                            Comment = "Disappointing, had high expectations.",
+                            ItemId = 20,
+                            UserId = 4,
+                            UserRating = 10
+                        },
+                        new
+                        {
+                            Id = 61,
+                            Comment = "Disappointing, had high expectations.",
+                            ItemId = 20,
+                            UserId = 7,
+                            UserRating = 6
+                        },
+                        new
+                        {
+                            Id = 62,
+                            Comment = "Not bad, could be better.",
+                            ItemId = 20,
+                            UserId = 1,
+                            UserRating = 10
+                        },
+                        new
+                        {
+                            Id = 63,
+                            Comment = "Average game, nothing special.",
+                            ItemId = 21,
+                            UserId = 6,
+                            UserRating = 5
+                        },
+                        new
+                        {
+                            Id = 64,
+                            Comment = "Not bad, could be better.",
+                            ItemId = 21,
+                            UserId = 17,
+                            UserRating = 8
+                        },
+                        new
+                        {
+                            Id = 65,
+                            Comment = "Not bad, could be better.",
+                            ItemId = 21,
+                            UserId = 12,
+                            UserRating = 4
+                        },
+                        new
+                        {
+                            Id = 66,
+                            Comment = "I didn't like this game much.",
+                            ItemId = 22,
+                            UserId = 13,
+                            UserRating = 7
+                        },
+                        new
+                        {
+                            Id = 67,
+                            Comment = "Great game, really enjoyed it!",
+                            ItemId = 22,
+                            UserId = 5,
+                            UserRating = 8
+                        },
+                        new
+                        {
+                            Id = 68,
+                            Comment = "Disappointing, had high expectations.",
+                            ItemId = 22,
+                            UserId = 12,
+                            UserRating = 7
+                        },
+                        new
+                        {
+                            Id = 69,
+                            Comment = "Loved the graphics and storyline.",
+                            ItemId = 23,
+                            UserId = 5,
+                            UserRating = 4
+                        },
+                        new
+                        {
+                            Id = 70,
+                            Comment = "Average game, nothing special.",
+                            ItemId = 23,
+                            UserId = 14,
+                            UserRating = 10
+                        },
+                        new
+                        {
+                            Id = 71,
+                            Comment = "Fantastic experience, highly recommend!",
+                            ItemId = 23,
+                            UserId = 4,
+                            UserRating = 5
+                        },
+                        new
+                        {
+                            Id = 72,
+                            Comment = "A must-play for all gamers!",
+                            ItemId = 24,
+                            UserId = 2,
+                            UserRating = 9
+                        },
+                        new
+                        {
+                            Id = 73,
+                            Comment = "A must-play for all gamers!",
+                            ItemId = 24,
+                            UserId = 20,
+                            UserRating = 6
+                        },
+                        new
+                        {
+                            Id = 74,
+                            Comment = "Average game, nothing special.",
+                            ItemId = 24,
+                            UserId = 12,
+                            UserRating = 2
+                        },
+                        new
+                        {
+                            Id = 75,
+                            Comment = "Not bad, could be better.",
+                            ItemId = 25,
+                            UserId = 20,
+                            UserRating = 9
+                        },
+                        new
+                        {
+                            Id = 76,
+                            Comment = "Loved the graphics and storyline.",
+                            ItemId = 25,
+                            UserId = 16,
+                            UserRating = 4
+                        },
+                        new
+                        {
+                            Id = 77,
+                            Comment = "Average game, nothing special.",
+                            ItemId = 25,
+                            UserId = 18,
+                            UserRating = 10
+                        },
+                        new
+                        {
+                            Id = 78,
+                            Comment = "Fantastic experience, highly recommend!",
+                            ItemId = 26,
+                            UserId = 3,
+                            UserRating = 9
+                        },
+                        new
+                        {
+                            Id = 79,
+                            Comment = "Gameplay was not very engaging.",
+                            ItemId = 26,
+                            UserId = 15,
+                            UserRating = 3
+                        },
+                        new
+                        {
+                            Id = 80,
+                            Comment = "Loved the graphics and storyline.",
+                            ItemId = 26,
+                            UserId = 11,
+                            UserRating = 1
+                        },
+                        new
+                        {
+                            Id = 81,
+                            Comment = "Average game, nothing special.",
+                            ItemId = 27,
+                            UserId = 19,
+                            UserRating = 10
+                        },
+                        new
+                        {
+                            Id = 82,
+                            Comment = "Not bad, could be better.",
+                            ItemId = 27,
+                            UserId = 13,
+                            UserRating = 5
+                        },
+                        new
+                        {
+                            Id = 83,
+                            Comment = "Disappointing, had high expectations.",
+                            ItemId = 27,
+                            UserId = 7,
+                            UserRating = 4
+                        },
+                        new
+                        {
+                            Id = 84,
+                            Comment = "Loved the graphics and storyline.",
+                            ItemId = 28,
+                            UserId = 11,
+                            UserRating = 10
+                        },
+                        new
+                        {
+                            Id = 85,
+                            Comment = "I didn't like this game much.",
+                            ItemId = 28,
+                            UserId = 11,
+                            UserRating = 5
+                        },
+                        new
+                        {
+                            Id = 86,
+                            Comment = "Great game, really enjoyed it!",
+                            ItemId = 28,
+                            UserId = 2,
+                            UserRating = 7
+                        },
+                        new
+                        {
+                            Id = 87,
+                            Comment = "I didn't like this game much.",
+                            ItemId = 29,
+                            UserId = 11,
+                            UserRating = 2
+                        },
+                        new
+                        {
+                            Id = 88,
+                            Comment = "Quite boring and repetitive.",
+                            ItemId = 29,
+                            UserId = 16,
+                            UserRating = 4
+                        },
+                        new
+                        {
+                            Id = 89,
+                            Comment = "Quite boring and repetitive.",
+                            ItemId = 29,
+                            UserId = 1,
+                            UserRating = 7
+                        },
+                        new
+                        {
+                            Id = 90,
+                            Comment = "Quite boring and repetitive.",
+                            ItemId = 30,
+                            UserId = 13,
+                            UserRating = 1
+                        },
+                        new
+                        {
+                            Id = 91,
+                            Comment = "A must-play for all gamers!",
+                            ItemId = 30,
+                            UserId = 20,
+                            UserRating = 2
+                        },
+                        new
+                        {
+                            Id = 92,
+                            Comment = "I didn't like this game much.",
+                            ItemId = 30,
+                            UserId = 12,
+                            UserRating = 10
+                        },
+                        new
+                        {
+                            Id = 93,
+                            Comment = "Average game, nothing special.",
+                            ItemId = 31,
+                            UserId = 3,
+                            UserRating = 9
+                        },
+                        new
+                        {
+                            Id = 94,
+                            Comment = "Loved the graphics and storyline.",
+                            ItemId = 31,
+                            UserId = 19,
+                            UserRating = 8
+                        },
+                        new
+                        {
+                            Id = 95,
+                            Comment = "Loved the graphics and storyline.",
+                            ItemId = 31,
+                            UserId = 8,
+                            UserRating = 5
+                        },
+                        new
+                        {
+                            Id = 96,
+                            Comment = "Disappointing, had high expectations.",
+                            ItemId = 32,
+                            UserId = 20,
+                            UserRating = 7
+                        },
+                        new
+                        {
+                            Id = 97,
+                            Comment = "Loved the graphics and storyline.",
+                            ItemId = 32,
+                            UserId = 11,
+                            UserRating = 6
+                        },
+                        new
+                        {
+                            Id = 98,
+                            Comment = "Not bad, could be better.",
+                            ItemId = 32,
+                            UserId = 15,
+                            UserRating = 3
+                        },
+                        new
+                        {
+                            Id = 99,
+                            Comment = "A must-play for all gamers!",
+                            ItemId = 33,
+                            UserId = 13,
+                            UserRating = 9
+                        },
+                        new
+                        {
+                            Id = 100,
+                            Comment = "Disappointing, had high expectations.",
+                            ItemId = 33,
+                            UserId = 10,
+                            UserRating = 3
+                        },
+                        new
+                        {
+                            Id = 101,
+                            Comment = "Average game, nothing special.",
+                            ItemId = 33,
+                            UserId = 7,
+                            UserRating = 4
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -1800,6 +2895,113 @@ namespace HightScore.Entities.Migrations
                     b.HasIndex("RoleId");
 
                     b.ToTable("AspNetUserRoles", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            UserId = "0",
+                            RoleId = "1"
+                        },
+                        new
+                        {
+                            UserId = "1",
+                            RoleId = "2"
+                        },
+                        new
+                        {
+                            UserId = "2",
+                            RoleId = "2"
+                        },
+                        new
+                        {
+                            UserId = "3",
+                            RoleId = "2"
+                        },
+                        new
+                        {
+                            UserId = "4",
+                            RoleId = "2"
+                        },
+                        new
+                        {
+                            UserId = "5",
+                            RoleId = "2"
+                        },
+                        new
+                        {
+                            UserId = "6",
+                            RoleId = "2"
+                        },
+                        new
+                        {
+                            UserId = "7",
+                            RoleId = "2"
+                        },
+                        new
+                        {
+                            UserId = "8",
+                            RoleId = "2"
+                        },
+                        new
+                        {
+                            UserId = "9",
+                            RoleId = "2"
+                        },
+                        new
+                        {
+                            UserId = "10",
+                            RoleId = "2"
+                        },
+                        new
+                        {
+                            UserId = "11",
+                            RoleId = "2"
+                        },
+                        new
+                        {
+                            UserId = "12",
+                            RoleId = "2"
+                        },
+                        new
+                        {
+                            UserId = "13",
+                            RoleId = "2"
+                        },
+                        new
+                        {
+                            UserId = "14",
+                            RoleId = "2"
+                        },
+                        new
+                        {
+                            UserId = "15",
+                            RoleId = "2"
+                        },
+                        new
+                        {
+                            UserId = "16",
+                            RoleId = "2"
+                        },
+                        new
+                        {
+                            UserId = "17",
+                            RoleId = "2"
+                        },
+                        new
+                        {
+                            UserId = "18",
+                            RoleId = "2"
+                        },
+                        new
+                        {
+                            UserId = "19",
+                            RoleId = "2"
+                        },
+                        new
+                        {
+                            UserId = "20",
+                            RoleId = "2"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
@@ -1880,13 +3082,19 @@ namespace HightScore.Entities.Migrations
 
             modelBuilder.Entity("HightScore.Entities.Model.Concrete.UserReview", b =>
                 {
-                    b.HasOne("HightScore.Entities.Model.Concrete.Item", "itemId")
+                    b.HasOne("HightScore.Entities.Model.Concrete.Item", "Item")
                         .WithMany()
                         .HasForeignKey("ItemId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("itemId");
+                    b.HasOne("HightScore.Entities.Model.Concrete.MetaUser", "User")
+                        .WithMany("UserReviews")
+                        .HasForeignKey("UserId1");
+
+                    b.Navigation("Item");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -1950,6 +3158,11 @@ namespace HightScore.Entities.Migrations
                     b.Navigation("ItemCategories");
 
                     b.Navigation("ItemPlatforms");
+                });
+
+            modelBuilder.Entity("HightScore.Entities.Model.Concrete.MetaUser", b =>
+                {
+                    b.Navigation("UserReviews");
                 });
 
             modelBuilder.Entity("HightScore.Entities.Model.Concrete.Platform", b =>

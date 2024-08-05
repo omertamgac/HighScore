@@ -9,25 +9,6 @@ namespace HightScore.Entities.EntityConfig.Concrete
         public void Configure(EntityTypeBuilder<MetaUser> builder)
         {
 
-
-
-
-
-            builder.HasData(
-                new MetaUser
-                {
-                    Id = new Guid().ToString(),
-                    UserName = "admin",
-                    NormalizedUserName = "ADMIN",
-                    Email = "admin@hotmail.com",
-                    NormalizedEmail = "ADMIN@HOTMAIL.COM",
-                    EmailConfirmed = true,
-                    PasswordHash = "AQAAAAEAACcQAAAAEFj6FZQ6ew2o4PjB5HbjZc2P6A0EHkD3OXizZrj0LxG8B8el1omRZcU/lY8qdJWpWw==",
-                    SecurityStamp = "JZTQQKJ3CQCXYN4AWFLARBLI4NXY2FYW",
-                    ConcurrencyStamp = "d4a7ff6f-2000-44ea-8b82-9c191c2f87c1"
-                }
-
-            );
         }
     }
 }
