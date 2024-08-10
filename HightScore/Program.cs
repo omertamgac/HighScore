@@ -60,7 +60,6 @@ builder.Services.AddScoped<ICategoryManager, CategoryManager>();
 builder.Services.AddScoped<IPlatformManager, PlatformManager>();
 builder.Services.AddScoped<IitemCategoryManager, ItemCategoryManager>();
 builder.Services.AddScoped<IitemPlatformManager, itemPlatformManager>();
-builder.Services.AddScoped<IMediaReviewManager, MediaReviewManager>();
 builder.Services.AddScoped<IUserReviewManager, UserReviewManager>();
 
 var app = builder.Build();

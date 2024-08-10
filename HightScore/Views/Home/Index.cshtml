@@ -106,7 +106,7 @@
                         <h5 class="card-title">
                             <a asp-controller="Items" asp-action="Details" asp-route-id="@game.Id">@game.name</a>
                         </h5>
-                        <p class="card-text">Puan: @game.Score</p>
+                        <p class="card-text">Puan: @game.AverageRating</p>
                         @if (User.IsInRole("Admin"))
                         {
                             <form asp-controller=Items asp-action="GameDelete" method="post">

@@ -10,9 +10,14 @@ namespace HightScore.Entities.EntityConfig.Concrete
         {
             base.Configure(builder);
 
-            builder.Property(i => i.ItemId).IsRequired();
+            // builder.Property(i => i.ItemId).IsRequired();
             builder.Property(i => i.UserRating).IsRequired();
             builder.Property(i => i.Comment).IsRequired().HasMaxLength(800);
+
+            builder.HasKey(p => new { p.ItemId, p.UserId });
+            builder.HasOne(p => p.user).WithMany(p => p.UserReviews).HasForeignKey(p => p.UserId);
+            builder.HasOne(p => p.Item).WithMany(p => p.userReviews).HasForeignKey(p => p.ItemId);
+
 
             // Seed data
             var comments = new[]
@@ -31,13 +36,19 @@ namespace HightScore.Entities.EntityConfig.Concrete
 
             var random = new Random();
             var userReviews = new List<UserReview>();
+            var uniqueCombinations = new HashSet<(int ItemId, string UserId)>();
 
             for (int itemId = 1; itemId <= 33; itemId++)
             {
-                for (int i = 0; i < 3; i++)
+                for (int i = 0; i < 10; i++)
                 {
-                    var userId = random.Next(1, 21);
-                    var userRating = random.Next(1, 11);
+                    string userId;
+                    do
+                    {
+                        userId = random.Next(1, 21).ToString();
+                    } while (!uniqueCombinations.Add((itemId, userId)));
+
+                    var userRating = random.Next(1, 101);
                     var comment = comments[random.Next(comments.Length)];
 
                     userReviews.Add(new UserReview
@@ -52,6 +63,7 @@ namespace HightScore.Entities.EntityConfig.Concrete
             }
 
             builder.HasData(userReviews);
+
         }
     }
 }

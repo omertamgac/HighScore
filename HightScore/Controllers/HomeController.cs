@@ -28,13 +28,21 @@ namespace HightScore.Controllers
         public async Task<IActionResult> Index(string searchQuery, int page = 1)
         {
             var items = await _itemManager.GetAllGamesAsync();
-            var games = items.Select(item => new CardVM
+
+            var games = new List<CardVM>();
+
+            foreach (var item in items)
             {
-                Id = item.Id,
-                photo = item.photo,
-                name = item.Title,
-                Score = 9
-            }).ToList();
+                var averageRating = await _itemManager.GetAverageRatingAsync(item.Id);
+
+                games.Add(new CardVM
+                {
+                    Id = item.Id,
+                    photo = item.photo,
+                    name = item.Title,
+                    AverageRating = averageRating
+                });
+            }
 
             if (!string.IsNullOrEmpty(searchQuery))
             {
@@ -45,6 +53,7 @@ namespace HightScore.Controllers
 
             return View(pagedGames);
         }
+
 
 
 

@@ -73,6 +73,30 @@ namespace HightScore.BL.Managers.Concrete
         }
 
 
+
+        public async Task<double> GetAverageRatingAsync(int itemId)
+        {
+            var reviews = await _context.UserReviews
+                .Where(r => r.ItemId == itemId)
+                .ToListAsync();
+
+            if (reviews.Count == 0)
+            {
+                return 0; // Eğer hiç değerlendirme yoksa 0 döner
+            }
+
+            // Puanların ortalamasını alıyoruz ve sonucu iki ondalık basamağa yuvarlıyoruz
+            double averageRating = Math.Round(reviews.Average(r => r.UserRating), 1);
+
+            return averageRating;
+        }
+
+
+
+
+
+
+
     }
 
 }

@@ -16,16 +16,16 @@ namespace HightScore.BL.Managers.Concrete
         public async Task<IEnumerable<UserReview>> GetReviewsByItemIdAsync(int itemId)
         {
             return await _context.UserReviews
-                                 .Include(ur => ur.User)
-                                 .Where(ur => ur.ItemId == itemId)
-                                 .ToListAsync();
+                         .Include(ur => ur.user)
+                         .Where(ur => ur.ItemId == itemId)
+                         .ToListAsync();
         }
 
         public async Task<bool> CreateComment(int itemId, int userId, int userRating, string comment)
         {
             // Kullanıcının daha önce bu item için yorum yapıp yapmadığını kontrol et
             var existingReview = await _context.UserReviews
-                                               .FirstOrDefaultAsync(ur => ur.ItemId == itemId && ur.UserId == userId);
+                                               .FirstOrDefaultAsync(ur => ur.ItemId == itemId && ur.UserId == userId.ToString());
 
             if (existingReview != null)
             {
@@ -37,7 +37,7 @@ namespace HightScore.BL.Managers.Concrete
             var userReview = new UserReview
             {
                 ItemId = itemId,
-                UserId = userId,
+                UserId = userId.ToString(),
                 UserRating = userRating,
                 Comment = comment
             };

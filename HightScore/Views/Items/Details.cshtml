@@ -1,4 +1,5 @@
-﻿@model GameVM
+﻿@using System.Security.Claims
+@model GameVM
 
 @{
     ViewData["Title"] = Model.Title;
@@ -17,8 +18,7 @@
                     @Html.Raw(Model.Iframe)
                 </div>
             }
-            <p><strong>User Average Rating:</strong> @Model.UserAverageRating</p>
-            <p><strong>Media Average Rating:</strong> @Model.MediaAverageRating</p>
+            <p><strong>User Average Rating:</strong> @Model.AverageRating</p>
 
             <h4>Categories</h4>
             <ul>
@@ -36,29 +36,6 @@
                 }
             </ul>
 
-            <h4>Media Reviews</h4>
-            @if (Model.MediaReviews != null && Model.MediaReviews.Count > 0)
-            {
-                <div class="row">
-                    @foreach (var review in Model.MediaReviews)
-                    {
-                        <div class="col-md-4 mb-4">
-                            <div class="card h-100">
-                                <div class="card-body">
-                                    <h5 class="card-title">@review.mediaId.MediaName</h5>
-                                    <p class="card-text"><strong>Rating:</strong> @review.Rating</p>
-                                    <p class="card-text">@review.Comment</p>
-                                </div>
-                            </div>
-                        </div>
-                    }
-                </div>
-            }
-            else
-            {
-                <p>There are no reviews yet.</p>
-            }
-
             <h4>User Reviews</h4>
             @if (Model.UserReviews != null && Model.UserReviews.Count > 0)
             {
@@ -68,9 +45,19 @@
                         <div class="col-md-4 mb-4">
                             <div class="card h-100">
                                 <div class="card-body">
-                                    <h5 class="card-title">@review.User?.UserName ?? "Unknown User"</h5>
+                                    <h5 class="card-title">@review.user.UserName</h5>
                                     <p class="card-text"><strong>Rating:</strong> @review.UserRating</p>
                                     <p class="card-text">@review.Comment</p>
+
+                                    @if (User.IsInRole("Admin") || review.UserId == User.FindFirstValue(ClaimTypes.NameIdentifier))
+                                    {
+                                        <form asp-action="DeleteReview" method="post">
+                                            <input type="hidden" name="itemId" value="@Model.ItemId" />
+                                            <input type="hidden" name="userId" value="@review.user.Id" />
+                                            <button type="submit" class="btn btn-danger">Delete</button>
+                                        </form>
+
+                                    }
                                 </div>
                             </div>
                         </div>
@@ -93,8 +80,8 @@
                     <textarea class="form-control" id="comment" name="comment" rows="3" required></textarea>
                 </div>
                 <div class="form-group">
-                    <label for="rating">Rating (1-10):</label>
-                    <input type="number" class="form-control" id="rating" name="rating" min="1" max="10" required />
+                    <label for="rating">Rating (1-100):</label>
+                    <input type="number" class="form-control" id="rating" name="rating" min="1" max="100" required />
                 </div>
                 <input type="hidden" name="itemId" value="@Model.ItemId" />
                 <button type="submit" class="btn btn-primary mt-2">Submit</button>

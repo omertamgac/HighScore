@@ -13,13 +13,9 @@ namespace HightScore.Entities.EntityConfig.Concrete
             builder.HasData(
                 new Role { Id = "1", Name = "Admin", NormalizedName = "ADMIN" },
                 new Role { Id = "2", Name = "User", NormalizedName = "USER" }
-
             );
         }
 
 
     }
-
-
-
 }

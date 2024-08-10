@@ -5,6 +5,6 @@
         public int Id;
         public string? photo;
         public string name;
-        public decimal Score;
+        public double AverageRating { get; set; }
     }
 }

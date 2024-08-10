@@ -12,5 +12,7 @@ namespace HightScore.Entities.Model.Concrete
         public string? photo { get; set; }
         public ICollection<ItemCategory> ItemCategories { get; set; } = new List<ItemCategory>();
         public ICollection<ItemPlatform> ItemPlatforms { get; set; }
+        public ICollection<UserReview> userReviews { get; set; }
+
     }
 }

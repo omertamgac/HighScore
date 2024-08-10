@@ -10,6 +10,7 @@ namespace HightScore.BL.Managers.Abstract
         Task DeleteAsync(Item item);
         public int Update(Item item);
         public Task<int> UpdateAsync(Item item);
+        public Task<double> GetAverageRatingAsync(int itemId);
 
     }
 }

@@ -1,13 +1,14 @@
 ﻿using HightScore.BL.Managers.Abstract;
+using HightScore.Entities.DbContexts;
 using HightScore.Entities.Model.Concrete;
 using HightScore.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Security.Claims;
 
 namespace HightScore.Controllers
 {
-    [Authorize(Roles = "Admin")]
     public class ItemsController : Controller
     {
         private readonly IitemManager _itemManager;
@@ -15,8 +16,8 @@ namespace HightScore.Controllers
         private readonly IPlatformManager _platformManager;
         private readonly IitemPlatformManager _itemPlatformManager;
         private readonly IitemCategoryManager _itemCategoryManager;
-        private readonly IMediaReviewManager _mediaReviewManager;
         private readonly IUserReviewManager _userReviewManager;
+        private readonly AppDbContext _context;
 
         public ItemsController(
             IitemManager itemManager,
@@ -24,8 +25,9 @@ namespace HightScore.Controllers
         IPlatformManager platformManager,
         IitemPlatformManager itemPlatformManager,
         IitemCategoryManager itemCategoryManager,
-        IMediaReviewManager mediaReviewManager,
-        IUserReviewManager userReviewManager
+        IUserReviewManager userReviewManager,
+               AppDbContext context
+
         )
         {
             _itemManager = itemManager;
@@ -33,11 +35,11 @@ namespace HightScore.Controllers
             _platformManager = platformManager;
             _itemPlatformManager = itemPlatformManager;
             _itemCategoryManager = itemCategoryManager;
-            _mediaReviewManager = mediaReviewManager;
             _userReviewManager = userReviewManager;
+            _context = context;
         }
 
-
+        [Authorize(Roles = "Admin")]
         [HttpGet]
         public IActionResult CreateGame()
         {
@@ -45,7 +47,7 @@ namespace HightScore.Controllers
             ViewBag.Platforms = _platformManager.GetAll();
             return View();
         }
-
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public async Task<IActionResult> CreateGame(GameVM model, List<int> Categories, List<int> Platforms, IFormFile photo)
         {
@@ -96,19 +98,22 @@ namespace HightScore.Controllers
 
 
 
-        [AllowAnonymous]
+
         public async Task<IActionResult> Details(int id)
         {
             var game = await _itemManager.GetGameByIdAsync(id);
             var categories = await _itemCategoryManager.GetByIdAsync(id);
             var platforms = await _itemPlatformManager.GetByIdAsync(id);
-            var mediaReviews = await _mediaReviewManager.GetReviewsByItemIdAsync(id);
-            var userReviews = await _userReviewManager.GetReviewsByItemIdAsync(id);
+            var userName = _context.UserReviews.Include(p => p.user).ToList();
+            var userReviews = await _userReviewManager.GetReviewsByItemIdAsync(id) ?? new List<UserReview>();
 
             if (game == null)
             {
                 return NotFound();
             }
+
+            double averageRating = await _itemManager.GetAverageRatingAsync(id);
+
 
             var viewModel = new GameVM
             {
@@ -119,8 +124,9 @@ namespace HightScore.Controllers
                 photo = game.photo,
                 Categories = categories.Select(c => c.category.CategoryName).ToList(),
                 Platforms = platforms.Select(p => p.platform.PlatformName).ToList(),
-                MediaReviews = mediaReviews.ToList(),
                 UserReviews = userReviews.ToList(),
+                AverageRating = averageRating,
+
                 ItemId = id,
             };
 
@@ -128,6 +134,7 @@ namespace HightScore.Controllers
         }
 
 
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public async Task<IActionResult> GameDelete(int id)
         {
@@ -141,7 +148,7 @@ namespace HightScore.Controllers
             return RedirectToAction("Index", "Home");
         }
 
-
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> EditGame(int id)
         {
             var game = await _itemManager.FindByIdAsync(id);
@@ -174,7 +181,7 @@ namespace HightScore.Controllers
 
 
 
-
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public async Task<IActionResult> EditGame(GameEditVM model, IFormFile? photo)
         {
@@ -246,7 +253,7 @@ namespace HightScore.Controllers
             return View(model);
         }
 
-
+        [Authorize(Roles = "User, Admin")]
         public async Task<IActionResult> CreateComment(int itemId, int rating, string comment)
         {
             var userId = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
@@ -263,6 +270,31 @@ namespace HightScore.Controllers
                 return RedirectToAction("Details", new { id = itemId });
             }
         }
+
+
+
+        [Authorize(Roles = "Admin, User")]
+        [HttpPost]
+        public async Task<IActionResult> DeleteReview(int itemId, string userId)
+        {
+            // Bileşik anahtarları kullanarak `FindAsync` ile arama yapın
+            var review = await _context.UserReviews
+                                       .FindAsync(itemId, userId);
+
+            if (review == null)
+            {
+                return NotFound();
+            }
+
+            _context.UserReviews.Remove(review);
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction("Details", new { id = itemId });
+        }
+
+
+
+
 
 
     }

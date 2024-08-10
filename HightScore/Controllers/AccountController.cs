@@ -1,4 +1,5 @@
-﻿using HightScore.Entities.Model.Concrete;
+﻿using HightScore.Entities.DbContexts;
+using HightScore.Entities.Model.Concrete;
 using HightScore.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -11,14 +12,23 @@ namespace HightScore.Controllers
         private RoleManager<Role> _roleManager;
         private SignInManager<MetaUser> _signInManager;
         private IEmailSender _emailSender;
+        private readonly AppDbContext _context;
+
         public AccountController(UserManager<MetaUser> userManager, RoleManager<Role> roleManager,
-            SignInManager<MetaUser> signInManager, IEmailSender emailSender)
+            SignInManager<MetaUser> signInManager, IEmailSender emailSender, AppDbContext context)
         {
 
             _userManager = userManager;
             _roleManager = roleManager;
             _signInManager = signInManager;
             _emailSender = emailSender;
+            _context = context;
+        }
+
+
+        public IActionResult MediaLogin()
+        {
+            return View();
         }
 
 

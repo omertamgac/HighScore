@@ -10,8 +10,6 @@ namespace HightScore.Entities.DbContexts
     {
         public DbSet<Category> Categories { get; set; }
         public DbSet<Item> Items { get; set; }
-        public DbSet<Media> Medias { get; set; }
-        public DbSet<MediaReview> MediaReviews { get; set; }
         public DbSet<Platform> Platforms { get; set; }
         public DbSet<UserReview> UserReviews { get; set; }
         public DbSet<ItemCategory> ItemCategories { get; set; }
@@ -25,13 +23,11 @@ namespace HightScore.Entities.DbContexts
         {
         }
 
-        // Bu metod sayesinde migration ve database'e update işlemi yapıyoruz.
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseMySQL(@"server=localhost;port=3306;user=root;password=asd123;database=HightScoreDb;");
         }
 
-        // Seed dataların database'e işlenmesini sağlayan metod
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
@@ -58,7 +54,6 @@ namespace HightScore.Entities.DbContexts
 
             modelBuilder.Entity<MetaUser>().HasData(adminUser);
 
-            // 20 adet seed kullanıcı oluşturma
             var users = new List<MetaUser>();
             for (int i = 1; i <= 20; i++)
             {
@@ -78,22 +73,21 @@ namespace HightScore.Entities.DbContexts
 
             modelBuilder.Entity<MetaUser>().HasData(users);
 
-            // Admin rolü atama
+
             modelBuilder.Entity<IdentityUserRole<string>>().HasData(
                 new IdentityUserRole<string>
                 {
-                    RoleId = "1", // Admin rolü
+                    RoleId = "1",
                     UserId = "0"
                 }
             );
 
-            // Kullanıcılar için "User" rolü atama
             foreach (var user in users)
             {
                 modelBuilder.Entity<IdentityUserRole<string>>().HasData(
                     new IdentityUserRole<string>
                     {
-                        RoleId = "2", // User rolü
+                        RoleId = "2",
                         UserId = user.Id
                     }
                 );
