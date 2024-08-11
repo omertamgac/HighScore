@@ -20,18 +20,26 @@ namespace HightScore.Entities.EntityConfig.Concrete
                 .WithMany(x => x.ItemPlatforms)
                 .HasForeignKey(x => x.itemId);
 
-            builder.HasData
-                (
-                new ItemPlatform { Id = 1, itemId = 1, platformId = 3 },
-                new ItemPlatform { Id = 2, itemId = 1, platformId = 11 },
-                new ItemPlatform { Id = 3, itemId = 6, platformId = 1 },
-                new ItemPlatform { Id = 4, itemId = 6, platformId = 2 },
-                new ItemPlatform { Id = 5, itemId = 6, platformId = 4 },
-                new ItemPlatform { Id = 6, itemId = 6, platformId = 5 },
-                new ItemPlatform { Id = 7, itemId = 6, platformId = 6 }
-                );
+            var random = new Random();
+            var itemPlatforms = new List<ItemPlatform>();
+            int idCounter = 1;
 
+            for (int itemId = 1; itemId <= 33; itemId++)
+            {
+                var platformIds = Enumerable.Range(1, 22).OrderBy(x => random.Next()).Take(4).ToList();
 
+                foreach (var platformId in platformIds)
+                {
+                    itemPlatforms.Add(new ItemPlatform
+                    {
+                        Id = idCounter++,
+                        itemId = itemId,
+                        platformId = platformId,
+                    });
+                }
+            }
+
+            builder.HasData(itemPlatforms);
         }
     }
 }

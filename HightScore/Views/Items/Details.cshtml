@@ -46,17 +46,40 @@
                             <div class="card h-100">
                                 <div class="card-body">
                                     <h5 class="card-title">@review.user.UserName</h5>
-                                    <p class="card-text"><strong>Rating:</strong> @review.UserRating</p>
-                                    <p class="card-text">@review.Comment</p>
+
+                                    <div class="review-content">
+                                        <p class="card-text">
+                                            <strong>Rating:</strong>
+                                            <span class="review-rating">@review.UserRating</span>
+                                            <input type="number" class="edit-rating form-control d-none" value="@review.UserRating" min="1" max="100" />
+                                        </p>
+                                        <p class="card-text">
+                                            <span class="review-comment">@review.Comment</span>
+                                            <textarea class="edit-comment form-control d-none">@review.Comment</textarea>
+                                        </p>
+                                    </div>
 
                                     @if (User.IsInRole("Admin") || review.UserId == User.FindFirstValue(ClaimTypes.NameIdentifier))
                                     {
-                                        <form asp-action="DeleteReview" method="post">
-                                            <input type="hidden" name="itemId" value="@Model.ItemId" />
-                                            <input type="hidden" name="userId" value="@review.user.Id" />
-                                            <button type="submit" class="btn btn-danger">Delete</button>
-                                        </form>
-
+                                        @if (User.IsInRole("Admin"))
+                                        {
+                                            <form asp-action="DeleteReview" method="post" class="d-inline">
+                                                <input type="hidden" name="itemId" value="@Model.ItemId" />
+                                                <input type="hidden" name="userId" value="@review.user.Id" />
+                                                <button type="submit" class="btn btn-danger">Delete</button>
+                                            </form>
+                                        }
+                                        else
+                                        {
+                                            <button class="btn btn-warning edit-button">Edit</button>
+                                            <button class="btn btn-success save-button d-none">Save</button>
+                                            <button class="btn btn-secondary cancel-button d-none">Cancel</button>
+                                            <form asp-action="DeleteReview" method="post" class="d-inline">
+                                                <input type="hidden" name="itemId" value="@Model.ItemId" />
+                                                <input type="hidden" name="userId" value="@review.UserId" />
+                                                <button type="submit" class="btn btn-danger">Delete</button>
+                                            </form>
+                                        }
                                     }
                                 </div>
                             </div>
@@ -70,22 +93,107 @@
             }
         </div>
     </div>
-
-    <div class="row mt-4">
-        <div class="col-md-8">
-            <h4>Add a Review</h4>
-            <form asp-action="CreateComment" method="post">
-                <div class="form-group">
-                    <label for="comment">Comment:</label>
-                    <textarea class="form-control" id="comment" name="comment" rows="3" required></textarea>
-                </div>
-                <div class="form-group">
-                    <label for="rating">Rating (1-100):</label>
-                    <input type="number" class="form-control" id="rating" name="rating" min="1" max="100" required />
-                </div>
-                <input type="hidden" name="itemId" value="@Model.ItemId" />
-                <button type="submit" class="btn btn-primary mt-2">Submit</button>
-            </form>
+    @if (User.IsInRole("User"))
+    {
+        <div class="row mt-4">
+            <div class="col-md-8">
+                <h4>Add a Review</h4>
+                <form asp-action="CreateComment" method="post">
+                    <div class="form-group">
+                        <label for="comment">Comment:</label>
+                        <textarea class="form-control" id="comment" name="comment" rows="3" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="rating">Rating (1-100):</label>
+                        <input type="number" class="form-control" id="rating" name="rating" min="1" max="100" required />
+                    </div>
+                    <input type="hidden" name="itemId" value="@Model.ItemId" />
+                    <button type="submit" class="btn btn-primary mt-2">Submit</button>
+                </form>
+            </div>
         </div>
-    </div>
+    }
+
 </div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // Edit butonuna tıklanıldığında
+        document.querySelectorAll('.edit-button').forEach(button => {
+            button.addEventListener('click', function () {
+                let cardBody = this.closest('.card-body');
+                cardBody.querySelector('.review-rating').classList.add('d-none');
+                cardBody.querySelector('.edit-rating').classList.remove('d-none');
+                cardBody.querySelector('.review-comment').classList.add('d-none');
+                cardBody.querySelector('.edit-comment').classList.remove('d-none');
+                this.classList.add('d-none');
+                cardBody.querySelector('.save-button').classList.remove('d-none');
+                cardBody.querySelector('.cancel-button').classList.remove('d-none');
+            });
+        });
+
+        // Save butonuna tıklanıldığında
+        document.querySelectorAll('.save-button').forEach(button => {
+            button.addEventListener('click', function () {
+                let cardBody = this.closest('.card-body');
+                let itemId = @Model.ItemId;
+                let userId = '@User.FindFirstValue(ClaimTypes.NameIdentifier)';
+                let newRating = cardBody.querySelector('.edit-rating').value;
+                let newComment = cardBody.querySelector('.edit-comment').value;
+
+                // Puanın 100'den büyük olmadığını kontrol edin
+                if (newRating > 100) {
+                    alert('Rating cannot be more than 100.');
+                    return; // İşlemi durdur
+                }
+
+                // AJAX isteği
+                fetch('@Url.Action("EditReview", "Items")', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'RequestVerificationToken': '@Html.AntiForgeryToken()'
+                    },
+                    body: JSON.stringify({
+                        ItemId: itemId,
+                        UserId: userId,
+                        UserRating: newRating,
+                        Comment: newComment
+                    })
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            // Başarılı olursa yeni değerleri göster
+                            cardBody.querySelector('.review-rating').textContent = newRating;
+                            cardBody.querySelector('.review-comment').textContent = newComment;
+                            cardBody.querySelector('.review-rating').classList.remove('d-none');
+                            cardBody.querySelector('.edit-rating').classList.add('d-none');
+                            cardBody.querySelector('.review-comment').classList.remove('d-none');
+                            cardBody.querySelector('.edit-comment').classList.add('d-none');
+                            this.classList.add('d-none');
+                            cardBody.querySelector('.edit-button').classList.remove('d-none');
+                            cardBody.querySelector('.cancel-button').classList.add('d-none');
+                        } else {
+                            alert(data.message || 'Error updating review.');
+                        }
+                    });
+
+            });
+        });
+
+        // Cancel butonuna tıklanıldığında
+        document.querySelectorAll('.cancel-button').forEach(button => {
+            button.addEventListener('click', function () {
+                let cardBody = this.closest('.card-body');
+                cardBody.querySelector('.review-rating').classList.remove('d-none');
+                cardBody.querySelector('.edit-rating').classList.add('d-none');
+                cardBody.querySelector('.review-comment').classList.remove('d-none');
+                cardBody.querySelector('.edit-comment').classList.add('d-none');
+                this.classList.add('d-none');
+                cardBody.querySelector('.save-button').classList.add('d-none');
+                cardBody.querySelector('.edit-button').classList.remove('d-none');
+            });
+        });
+    });
+</script>

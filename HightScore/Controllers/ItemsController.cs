@@ -253,7 +253,7 @@ namespace HightScore.Controllers
             return View(model);
         }
 
-        [Authorize(Roles = "User, Admin")]
+        [Authorize(Roles = "User")]
         public async Task<IActionResult> CreateComment(int itemId, int rating, string comment)
         {
             var userId = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
@@ -291,6 +291,40 @@ namespace HightScore.Controllers
 
             return RedirectToAction("Details", new { id = itemId });
         }
+
+        [HttpPost]
+        public async Task<IActionResult> EditReview(EditReviewVM model)
+        {
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+            // Kullanıcının kendi yorumunu düzenleyip düzenlemediğini kontrol et
+            var review = await _context.UserReviews
+                .FirstOrDefaultAsync(r => r.ItemId == model.ItemId && r.UserId == model.UserId);
+
+            // Eğer yorum bulunamazsa hata döndür
+            if (review == null)
+            {
+                return Json(new { success = false, message = "Review not found." });
+            }
+
+            // Kullanıcı ya da admin kontrolü yapılır
+            if (review.UserId == userId || User.IsInRole("Admin"))
+            {
+                review.UserRating = model.UserRating;
+                review.Comment = model.Comment;
+
+                _context.UserReviews.Update(review);
+                await _context.SaveChangesAsync();
+
+                return Json(new { success = true });
+            }
+            else
+            {
+                return Json(new { success = false, message = "Unauthorized." });
+            }
+        }
+
+
 
 
 
