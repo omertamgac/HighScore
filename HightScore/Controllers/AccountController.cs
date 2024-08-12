@@ -26,11 +26,6 @@ namespace HightScore.Controllers
         }
 
 
-        public IActionResult MediaLogin()
-        {
-            return View();
-        }
-
 
         public IActionResult Login()
         {
@@ -45,42 +40,50 @@ namespace HightScore.Controllers
                 var user = await _userManager.FindByEmailAsync(model.Email);
                 if (user != null)
                 {
-                    await _signInManager.SignOutAsync();
-                    var result = await _signInManager.PasswordSignInAsync(user, model.Password, model.RememberMe, true);
-
-                    if (!await _userManager.IsEmailConfirmedAsync(user))
+                    // Kullanıcının kilitlenip kilitlenmediğini kontrol et
+                    if (!await _userManager.IsLockedOutAsync(user) && !await _userManager.GetLockoutEnabledAsync(user))
                     {
-                        ModelState.AddModelError("", "Please confirm your account");
-                        return View(model);
-                    }
+                        await _signInManager.SignOutAsync();
+                        var result = await _signInManager.PasswordSignInAsync(user, model.Password, model.RememberMe, lockoutOnFailure: true);
 
+                        if (!await _userManager.IsEmailConfirmedAsync(user))
+                        {
+                            ModelState.AddModelError("", "Please confirm your account");
+                            return View(model);
+                        }
 
-                    if (result.Succeeded)
-                    {
-                        await _userManager.ResetAccessFailedCountAsync(user);
-                        await _userManager.SetLockoutEndDateAsync(user, null);
+                        if (result.Succeeded)
+                        {
+                            await _userManager.ResetAccessFailedCountAsync(user);
+                            await _userManager.SetLockoutEndDateAsync(user, null);
 
-                        return RedirectToAction("Index", "Home");
-                    }
-
-                    else if (result.IsLockedOut)
-                    {
-                        var lockoutDate = await _userManager.GetLockoutEndDateAsync(user);
-                        var timeLeft = lockoutDate.Value - DateTime.UtcNow;
-                        ModelState.AddModelError("", $"Your account is locked, Please try again  {timeLeft.Minutes} minute later ");
+                            return RedirectToAction("Index", "Home");
+                        }
+                        else if (result.IsLockedOut)
+                        {
+                            var lockoutDate = await _userManager.GetLockoutEndDateAsync(user);
+                            var timeLeft = lockoutDate.Value - DateTime.UtcNow;
+                            ModelState.AddModelError("", $"Your account is locked. Please try again in {timeLeft.Minutes} minute(s).");
+                        }
+                        else
+                        {
+                            ModelState.AddModelError("", "Invalid email or password.");
+                        }
                     }
                     else
                     {
-                        ModelState.AddModelError("", "E-mail or password is wrong");
+
+                        ModelState.AddModelError("", "Your account is locked. Please contact support.");
                     }
                 }
                 else
                 {
-                    ModelState.AddModelError("", "No account found for this email address");
+                    ModelState.AddModelError("", "No account found for this email address.");
                 }
             }
             return View(model);
         }
+
 
 
         public IActionResult Create()

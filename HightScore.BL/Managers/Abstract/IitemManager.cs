@@ -11,6 +11,6 @@ namespace HightScore.BL.Managers.Abstract
         public int Update(Item item);
         public Task<int> UpdateAsync(Item item);
         public Task<double> GetAverageRatingAsync(int itemId);
-
+        IQueryable<Item> GetAllGamesQuery();
     }
 }

@@ -10,22 +10,22 @@
         body {
             font-family: Arial, sans-serif;
             margin: 20px;
-            color: #333;
+            color: #ffffff;
+            background-color: #272937;
+        }
+
+        h2, h4, label {
+            color: #ffffff;
         }
 
         .filter-container {
             border: 1px solid #ddd;
             padding: 15px;
             border-radius: 5px;
-            background-color: #f9f9f9;
+            background-color: #272937;
             margin-bottom: 20px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
-
-            .filter-container h4 {
-                margin-bottom: 15px;
-                color: #007bff;
-            }
 
         .filter-option {
             margin-bottom: 10px;
@@ -73,10 +73,32 @@
                 border-color: #bd2130;
             }
 
+        .btn-success {
+            color: #fff;
+            background-color: #28a745;
+            border-color: #28a745;
+        }
+
+            .btn-success:hover {
+                background-color: #218838;
+                border-color: #1e7e34;
+            }
+
+        .btn-warning {
+            color: #fff;
+            background-color: #ffc107;
+            border-color: #ffc107;
+        }
+
+            .btn-warning:hover {
+                background-color: #ffc107; /* Hover efektsiz, sabit kalacak */
+                border-color: #ffc107;
+            }
+
         .table {
             width: 100%;
             margin-bottom: 1rem;
-            color: #212529;
+            color: #ffffff;
             border-collapse: collapse;
         }
 
@@ -89,7 +111,8 @@
 
             .table thead th {
                 vertical-align: bottom;
-                background-color: #f8f9fa;
+                background-color: #272937;
+                color: #ffffff;
             }
 
             .table tbody + tbody {
@@ -98,6 +121,11 @@
 
         .text-center {
             text-align: center;
+        }
+
+        .create-button-container {
+            text-align: right; /* Butonu sağa hizalayın */
+            margin-top: 20px; /* Üstten boşluk bırakın */
         }
     </style>
 </head>
@@ -115,7 +143,8 @@
                 </div>
             }
         </div>
-        <button type="submit" class="btn btn-primary">Filter</button>
+        <button type="submit" class="btn btn-warning">Filter</button>
+        <a class="btn btn-success" asp-controller="Account" asp-action="Create">Create User</a>
     </form>
 
     <table class="table table-sm table-bordered">
@@ -130,7 +159,7 @@
             </tr>
         </thead>
         <tbody>
-            @if (Model.Users.Count() == 0)
+            @if (!Model.Users.Any())
             {
                 <tr>
                     <td colspan="6" class="text-center">No users found...</td>
@@ -160,12 +189,26 @@
                             <input type="hidden" value="@user.Id" name="id" />
                             <button type="submit" class="btn btn-danger btn-sm">Delete</button>
                         </form>
+                        @if (user.LockoutEnabled != null && user.LockoutEnabled == true)
+                        {
+                            <form action="Unban" method="post" onsubmit="return confirm('Are you sure you want to unban this user?')" style="display:inline-block;">
+                                <input type="hidden" value="@user.Id" name="id" />
+                                <button type="submit" class="btn btn-success btn-sm">Unban</button>
+                            </form>
+                        }
+                        else
+                        {
+                            <form action="Ban" method="post" onsubmit="return confirm('Are you sure you want to ban this user?')" style="display:inline-block;">
+                                <input type="hidden" value="@user.Id" name="id" />
+                                <button type="submit" class="btn btn-warning btn-sm">Ban</button>
+                            </form>
+                        }
                     </td>
                 </tr>
             }
         </tbody>
     </table>
 
-    <a class="btn btn-primary" asp-controller="Account" asp-action="Create">Create User</a>
 </body>
 </html>
+l

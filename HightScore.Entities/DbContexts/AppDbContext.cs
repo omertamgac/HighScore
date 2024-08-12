@@ -48,6 +48,7 @@ namespace HightScore.Entities.DbContexts
                 Email = "admin@example.com",
                 NormalizedEmail = "ADMIN@EXAMPLE.COM",
                 EmailConfirmed = true,
+                PhoneNumber = "555-666-777",
                 SecurityStamp = Guid.NewGuid().ToString("D")
             };
             adminUser.PasswordHash = hasher.HashPassword(adminUser, "asd123.");

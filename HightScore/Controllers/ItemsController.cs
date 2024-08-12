@@ -293,22 +293,20 @@ namespace HightScore.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> EditReview(EditReviewVM model)
+        public async Task<IActionResult> EditReview(EditReviewVM model, int itemId)
         {
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
 
-            // Kullanıcının kendi yorumunu düzenleyip düzenlemediğini kontrol et
             var review = await _context.UserReviews
-                .FirstOrDefaultAsync(r => r.ItemId == model.ItemId && r.UserId == model.UserId);
+                           .FirstOrDefaultAsync(r => r.ItemId == itemId && r.UserId == userId);
 
-            // Eğer yorum bulunamazsa hata döndür
             if (review == null)
             {
                 return Json(new { success = false, message = "Review not found." });
             }
 
             // Kullanıcı ya da admin kontrolü yapılır
-            if (review.UserId == userId || User.IsInRole("Admin"))
+            if (review.UserId == userId)
             {
                 review.UserRating = model.UserRating;
                 review.Comment = model.Comment;
@@ -323,6 +321,7 @@ namespace HightScore.Controllers
                 return Json(new { success = false, message = "Unauthorized." });
             }
         }
+
 
 
 

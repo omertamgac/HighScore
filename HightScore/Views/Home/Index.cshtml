@@ -8,9 +8,6 @@
 }
 
 <style>
-
-
-
     .card-img-top {
         width: 100%;
         height: 400px;
@@ -23,7 +20,6 @@
         justify-content: center;
         text-align: center;
         padding: 1rem;
-        border-radius: 15px;
     }
 
     .card {
@@ -31,7 +27,26 @@
         flex-direction: column;
         height: 100%;
         position: relative;
+        border-radius: 15px;
+        background-color: #1d1f29;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
+
+        .card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 15px 10px rgba(255, 255, 255, 0.7); /* Beyaz parlama */
+        }
+
+
+    .card-title a {
+        transition: color 0.3s ease, text-shadow 0.3s ease;
+    }
+
+        .card-title a:hover {
+            color: #ffffff; /* Beyaz renk */
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 20px rgba(255, 255, 255, 0.6), 0 0 30px rgba(255, 255, 255, 0.4); /* Beyaz parlama efekti */
+        }
+
 
     .edit-button {
         background-color: cornflowerblue;
@@ -82,14 +97,37 @@
         justify-content: center;
         padding: 1rem 0;
     }
+
+        .pagination .page-item .page-link {
+            background-color: #222431;
+            color: #e0e0e0;
+            border: none;
+        }
+
+        .pagination .page-item.active .page-link {
+            background-color: #28a745;
+            color: white;
+        }
+
+        .pagination .page-item .page-link:hover {
+            background-color: #36384a;
+            color: white;
+            border: none;
+        }
+
+    .input-group .form-control:focus {
+        border-color: #28a745;
+        box-shadow: 0 0 20px 8px rgba(40, 167, 69, 0.8), 0 0 40px 16px rgba(40, 167, 69, 0.5);
+    }
 </style>
+
 
 
 <div class="container mt-5">
     <form method="get" asp-action="Index" class="d-flex justify-content-center">
         <div class="input-group mb-5 w-30">
             <input type="text" class="form-control" placeholder="Search for games" name="searchQuery" value="@ViewContext.HttpContext.Request.Query["searchQuery"]">
-            <button class="btn btn-primary" type="submit">Search</button>
+            <button class="btn btn-success" type="submit">Search</button>
         </div>
     </form>
 
@@ -102,17 +140,34 @@
             <div class="col-md-4 mb-4 d-flex">
                 <div class="card w-100">
                     <img src="/images/@game.photo" class="card-img-top" alt="@game.name">
-                    <div class="card-body">
+                    <div class="card-body ">
                         <h5 class="card-title">
-                            <a asp-controller="Items" asp-action="Details" asp-route-id="@game.Id">@game.name</a>
+                            <a style="text-decoration:none; color:#a7b1c1" asp-controller="Items" asp-action="Details" asp-route-id="@game.Id">@game.name</a>
                         </h5>
-                        <p class="card-text">Puan: @game.AverageRating</p>
+                        @if (game.AverageRating != null)
+                        {
+                            @if (game.AverageRating >= 50 && game.AverageRating <= 69.9)
+                        {
+                            <p class="card-text text-warning">Point: @game.AverageRating</p>
+
+                        } @if ( game.AverageRating >= 70)
+                        {
+                            <p class="card-text text-success">Point: @game.AverageRating</p>
+
+                        }
+                         @if (game.AverageRating < 49.9 )
+                        {
+                            <p class="card-text text-danger">Point: @game.AverageRating</p>
+
+                        }
+                        }
                         @if (User.IsInRole("Admin"))
                         {
-                            <form asp-controller=Items asp-action="GameDelete" method="post">
+                            <form asp-controller="Items" asp-action="GameDelete" method="post" onsubmit="return confirm('Are you sure you want to delete this game?');">
                                 <input type="hidden" name="id" value="@game.Id" />
                                 <button type="submit" class="delete-button">X</button>
                             </form>
+
                             <form asp-controller=Items asp-action="EditGame" method="get">
                                 <input type="hidden" name="id" value="@game.Id" />
                                 <button type="submit" class="edit-button">Edit</button>

@@ -157,6 +157,36 @@ namespace HightScore.Controllers
         }
 
 
+        [HttpPost]
+        public async Task<IActionResult> Ban(string id)
+        {
+            var user = await _userManager.FindByIdAsync(id);
+
+            if (user != null)
+            {
+                // Kullanıcının hesabını kilitle (banla)
+                var lockoutEndDate = DateTimeOffset.MaxValue; // Hesabı süresiz kilitle
+                await _userManager.SetLockoutEndDateAsync(user, lockoutEndDate);
+                await _userManager.SetLockoutEnabledAsync(user, true);
+            }
+
+            return RedirectToAction("Users");
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Unban(string id)
+        {
+            var user = await _userManager.FindByIdAsync(id);
+
+            if (user != null)
+            {
+                await _userManager.SetLockoutEnabledAsync(user, false);
+                await _userManager.SetLockoutEndDateAsync(user, null);
+            }
+
+            return RedirectToAction("Users");
+        }
+
 
 
     }

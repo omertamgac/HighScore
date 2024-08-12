@@ -82,21 +82,18 @@ namespace HightScore.BL.Managers.Concrete
 
             if (reviews.Count == 0)
             {
-                return 0; // Eğer hiç değerlendirme yoksa 0 döner
+                return 0;
             }
 
-            // Puanların ortalamasını alıyoruz ve sonucu iki ondalık basamağa yuvarlıyoruz
             double averageRating = Math.Round(reviews.Average(r => r.UserRating), 1);
 
             return averageRating;
         }
 
-
-
-
-
-
-
+        public IQueryable<Item> GetAllGamesQuery()
+        {
+            return _context.Items.AsQueryable();
+        }
     }
 
 }

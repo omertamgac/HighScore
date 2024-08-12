@@ -1,7 +1,10 @@
 using HightScore.BL.Managers.Abstract;
+using HightScore.Entities.Model.Concrete;
 using HightScore.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
+using X.PagedList;
 using X.PagedList.Extensions;
 namespace HightScore.Controllers
 {
@@ -27,32 +30,32 @@ namespace HightScore.Controllers
 
         public async Task<IActionResult> Index(string searchQuery, int page = 1)
         {
-            var items = await _itemManager.GetAllGamesAsync();
-
-            var games = new List<CardVM>();
-
-            foreach (var item in items)
-            {
-                var averageRating = await _itemManager.GetAverageRatingAsync(item.Id);
-
-                games.Add(new CardVM
-                {
-                    Id = item.Id,
-                    photo = item.photo,
-                    name = item.Title,
-                    AverageRating = averageRating
-                });
-            }
+            IQueryable<Item> query = _itemManager.GetAllGamesQuery();
 
             if (!string.IsNullOrEmpty(searchQuery))
             {
-                games = games.Where(g => g.name.Contains(searchQuery, StringComparison.OrdinalIgnoreCase)).ToList();
+                query = query.Where(g => g.Title.Contains(searchQuery, StringComparison.OrdinalIgnoreCase));
             }
 
-            var pagedGames = games.OrderByDescending(game => game.Id).ToPagedList(page, 9);
+            var items = await query
+                .OrderByDescending(game => game.Id)
+                .Skip((page - 1) * 9)
+                .Take(9)
+                .ToListAsync();
+
+            var games = items.Select(item => new CardVM
+            {
+                Id = item.Id,
+                photo = item.photo,
+                name = item.Title,
+                AverageRating = _itemManager.GetAverageRatingAsync(item.Id).Result
+            }).ToList();
+
+            var pagedGames = new StaticPagedList<CardVM>(games, page, 9, query.Count());
 
             return View(pagedGames);
         }
+
 
 
 
