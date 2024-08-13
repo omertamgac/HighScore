@@ -3,6 +3,9 @@
 
 @{
     ViewData["Title"] = Model.Title;
+    var ratingColor = Model.AverageRating < 50 ? "#dc3545" :
+                      Model.AverageRating < 70 ? "#ffc107" : "#28a745";
+
 }
 
 <style>
@@ -10,31 +13,75 @@
         display: flex;
         flex-direction: row;
         margin-top: 20px;
+        gap: 20px;
     }
 
     .game-image {
         flex: 1;
-        max-width: 100%;
-        margin-right: 20px;
+        max-width: 300px;
     }
 
     .game-info {
         flex: 2;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
     }
 
-    .rating {
-        font-size: 2rem;
+    .rating-box {
+        font-size: 4rem; /* Daha küçük bir font boyutu */
         font-weight: bold;
-        color: #28a745; /* Yeşil */
+        color: #fff;
+        background-color: @ratingColor;
+        padding: 5px 10px; /* Daha küçük padding */
+        border-radius: 10px;
+        display: inline-block;
+        width: 150px; /* Daha küçük bir kutu */
+        text-align: center;
         margin-bottom: 20px;
     }
 
-    .game-description, .game-details {
+    .iframe-container {
+        margin-top: 20px;
         margin-bottom: 20px;
     }
+
+    .game-description {
+        font-size: 1.2rem; 
+        margin-bottom: 20px;
+        line-height: 1.5; /* Daha iyi okunabilirlik için */
+        background-color: rgba(0, 0, 0, 0.5); /* Arka plan rengini belirginleştirme */
+        padding: 10px;
+        border-radius: 8px;
+        color: #b9bdc0;
+    }
+
+    .game-details {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+        .game-details h4 {
+            font-size: 1.25rem;
+            margin-bottom: 10px;
+            color: white;
+        }
+
+        .game-details ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .game-details li {
+            background: transparent;
+            padding: 5px 10px;
+            border-radius: 5px;
+            color: white;
+        }
 
     .user-reviews {
-        margin-top: 20px;
+        margin-top: 40px;
     }
 
     .review-card {
@@ -42,48 +89,48 @@
         border-radius: 8px;
         padding: 15px;
         margin-bottom: 15px;
-        position: relative;
+        background-color: transparent;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     }
 
-    .review-card:hover {
-        background-color: #f9f9f9;
-    }
+        .review-card:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
 
-    .review-card .review-rating {
+    .review-rating {
         font-size: 1.25rem;
-        color: #28a745;
     }
 
-    .review-card .review-comment {
+    .review-comment {
         margin-top: 10px;
+        color: white;
     }
 
     .edit-button, .save-button, .cancel-button {
         margin-right: 5px;
-    }
-
-    .edit-button, .save-button, .cancel-button {
         cursor: pointer;
     }
+
+    .add-review-container {
+        margin-top: 40px;
+    }
+
+        .add-review-container h4 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        .add-review-container label {
+            color: white;
+        }
 </style>
 
 <div class="container mt-4">
     <div class="detail-container">
         <div class="game-image">
             <img src="/images/@Model.photo" alt="@Model.Title" class="img-fluid" />
-        </div>
-        <div class="game-info">
-            <h1>@Model.Title</h1>
-            <div class="rating">Average Rating: @Model.AverageRating</div>
-            <p>@Model.Description</p>
-            <p><strong>Release Date:</strong> @Model.RelaseDate.ToShortDateString()</p>
-            @if (Model.Iframe != null)
-            {
-                <div>
-                    @Html.Raw(Model.Iframe)
-                </div>
-            }
-            <div class="game-details">
+            <div class="game-details mt-4">
                 <h4>Categories</h4>
                 <ul>
                     @foreach (var category in Model.Categories)
@@ -101,81 +148,109 @@
                 </ul>
             </div>
         </div>
+        <div class="game-info">
+            <h1>@Model.Title</h1>
+            <div class="rating-box">@Model.AverageRating</div>
+            <div class="iframe-container">
+                @if (Model.Iframe != null)
+                {
+                    @Html.Raw(Model.Iframe)
+                }
+            </div>
+            <p class="game-description">@Model.Description</p>
+            <p class="game-description"><strong>Release Date:</strong> @Model.RelaseDate.ToShortDateString()</p>
+        </div>
     </div>
 
     @if (User.IsInRole("User"))
     {
-        <div class="row mt-4">
-            <div class="col-md-8">
-                <h4>Add a Review</h4>
-                <form asp-action="CreateComment" method="post">
-                    <div class="form-group">
-                        <label for="comment">Comment:</label>
-                        <textarea class="form-control" id="comment" name="comment" rows="3" required></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label for="rating">Rating (1-100):</label>
-                        <input type="number" class="form-control" id="rating" name="rating" min="1" max="100" required />
-                    </div>
-                    <input type="hidden" name="itemId" value="@Model.ItemId" />
-                    <button type="submit" class="btn btn-primary mt-2">Submit</button>
-                </form>
-            </div>
+        <div class="add-review-container">
+            <h4>Add a Review</h4>
+            <form asp-action="CreateComment" method="post">
+                <div class="form-group">
+                    <label for="comment">Comment:</label>
+                    <textarea class="form-control" id="comment" name="comment" rows="3" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="rating">Rating (1-100):</label>
+                    <input type="number" class="form-control" id="rating" name="rating" min="1" max="100" required />
+                </div>
+                <input type="hidden" name="itemId" value="@Model.ItemId" />
+                <button type="submit" class="btn btn-success mt-2">Submit</button>
+            </form>
         </div>
     }
 
-    <div class="user-reviews mt-4">
+    <div class="user-reviews">
         <h4>User Reviews</h4>
         @if (Model.UserReviews != null && Model.UserReviews.Count > 0)
         {
             @foreach (var review in Model.UserReviews)
             {
                 <div class="review-card">
-                    <div class="review-rating">
-                        <strong>Rating:</strong> @review.UserRating
+                    <input type="hidden" class="item-id" value="@Model.ItemId" />
+                    <div class="review-rating" style="color: @ratingColor;">
+                        <strong style="color:white">Rating:</strong>
+                       @if (review.UserRating<=49.9)
+                       {
+                           <span class="text-danger">@review.UserRating</span>
+                       }
+                        @if (review.UserRating >= 50 && review.UserRating <= 69.9)
+                        {
+                            <span class="text-warning">@review.UserRating</span>
+                        }
+                        @if (review.UserRating >= 70)
+                        {
+                            <span class="text-success">@review.UserRating</span>
+                        }
+                           
                     </div>
                     <div class="review-comment">
-                        <p><strong>@review.user.UserName</strong>: @review.Comment</p>
+                        <p><strong>@review.user.UserName</strong>: <span class="comment-value">@review.Comment</span></p>
                     </div>
 
                     @if (User.IsInRole("Admin") || review.UserId == User.FindFirstValue(ClaimTypes.NameIdentifier))
                     {
-                        @if (User.IsInRole("Admin"))
+                        @if (review.UserId == User.FindFirstValue(ClaimTypes.NameIdentifier))
                         {
-                            <form asp-action="DeleteReview" method="post" class="d-inline">
-                                <input type="hidden" name="itemId" value="@Model.ItemId" />
-                                <input type="hidden" name="userId" value="@review.user.Id" />
-                                <button type="submit" class="btn btn-danger">Delete</button>
-                            </form>
-                        }
-                        else
-                        {
-                            <button class="btn btn-warning edit-button">Edit</button>
-                            <button class="btn btn-success save-button d-none">Save</button>
-                            <button class="btn btn-secondary cancel-button d-none">Cancel</button>
+                            <!-- Kullanıcının kendi yorumunu silme işlemi -->
                             <form asp-action="DeleteReview" method="post" class="d-inline">
                                 <input type="hidden" name="itemId" value="@Model.ItemId" />
                                 <input type="hidden" name="userId" value="@review.UserId" />
                                 <button type="submit" class="btn btn-danger">Delete</button>
                             </form>
                         }
+
+                        <!-- Edit butonu -->
+                        <button class="btn btn-warning edit-button">Edit</button>
+
+                        <!-- Gizli düzenleme alanları -->
+                        <textarea class="form-control edit-comment d-none" rows="3">@review.Comment</textarea>
+                        <input type="number" class="form-control edit-rating d-none" min="1" max="100" value="@review.UserRating" />
+
+                        <!-- Save ve Cancel butonları -->
+                        <button class="btn btn-success save-button d-none">Save</button>
+                        <button class="btn btn-secondary cancel-button d-none">Cancel</button>
                     }
                 </div>
             }
         }
         else
         {
-            <p>There are no reviews yet.</p>
+            <p style="color:white;">There are no reviews yet.</p>
         }
     </div>
+
+
 </div>
+
 
 <script>
     document.addEventListener('DOMContentLoaded', function () {
         // Edit butonuna tıklanıldığında
         document.querySelectorAll('.edit-button').forEach(button => {
             button.addEventListener('click', function () {
-                let cardBody = this.closest('.review-card');
+                let cardBody = this.closest('.review-card'); // `.card-body` yerine `.review-card`
                 cardBody.querySelector('.review-rating').classList.add('d-none');
                 cardBody.querySelector('.edit-rating').classList.remove('d-none');
                 cardBody.querySelector('.review-comment').classList.add('d-none');
@@ -189,13 +264,12 @@
         // Save butonuna tıklanıldığında
         document.querySelectorAll('.save-button').forEach(button => {
             button.addEventListener('click', function () {
-                let cardBody = this.closest('.review-card');
-                let itemId = @Model.ItemId;
-                let userId = '@User.FindFirstValue(ClaimTypes.NameIdentifier)';
+                let cardBody = this.closest('.review-card'); // `.card-body` yerine `.review-card`
+                let itemId = cardBody.querySelector('.item-id').value;
                 let newRating = cardBody.querySelector('.edit-rating').value;
                 let newComment = cardBody.querySelector('.edit-comment').value;
 
-                // Puanın 100'den büyük olmadığını kontrol edin
+                // Puanın 100'den büyük olmadığını kontrol et
                 if (newRating > 100) {
                     alert('Rating cannot be more than 100.');
                     return; // İşlemi durdur
@@ -210,7 +284,6 @@
                     },
                     body: JSON.stringify({
                         ItemId: itemId,
-                        UserId: userId,
                         UserRating: newRating,
                         Comment: newComment
                     })
@@ -219,8 +292,8 @@
                     .then(data => {
                         if (data.success) {
                             // Başarılı olursa yeni değerleri göster
-                            cardBody.querySelector('.review-rating').textContent = newRating;
-                            cardBody.querySelector('.review-comment').textContent = newComment;
+                            cardBody.querySelector('.rating-value').textContent = newRating;
+                            cardBody.querySelector('.comment-value').textContent = newComment;
                             cardBody.querySelector('.review-rating').classList.remove('d-none');
                             cardBody.querySelector('.edit-rating').classList.add('d-none');
                             cardBody.querySelector('.review-comment').classList.remove('d-none');
@@ -231,15 +304,18 @@
                         } else {
                             alert(data.message || 'Error updating review.');
                         }
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                        alert('There was an error processing your request.');
                     });
-
             });
         });
 
         // Cancel butonuna tıklanıldığında
         document.querySelectorAll('.cancel-button').forEach(button => {
             button.addEventListener('click', function () {
-                let cardBody = this.closest('.review-card');
+                let cardBody = this.closest('.review-card'); // `.card-body` yerine `.review-card`
                 cardBody.querySelector('.review-rating').classList.remove('d-none');
                 cardBody.querySelector('.edit-rating').classList.add('d-none');
                 cardBody.querySelector('.review-comment').classList.remove('d-none');
@@ -250,4 +326,6 @@
             });
         });
     });
+
+
 </script>

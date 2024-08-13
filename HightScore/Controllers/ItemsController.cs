@@ -21,13 +21,12 @@ namespace HightScore.Controllers
 
         public ItemsController(
             IitemManager itemManager,
-        ICategoryManager categoryManager,
-        IPlatformManager platformManager,
-        IitemPlatformManager itemPlatformManager,
-        IitemCategoryManager itemCategoryManager,
-        IUserReviewManager userReviewManager,
-               AppDbContext context
-
+            ICategoryManager categoryManager,
+            IPlatformManager platformManager,
+            IitemPlatformManager itemPlatformManager,
+            IitemCategoryManager itemCategoryManager,
+            IUserReviewManager userReviewManager,
+            AppDbContext context
         )
         {
             _itemManager = itemManager;
@@ -47,6 +46,7 @@ namespace HightScore.Controllers
             ViewBag.Platforms = _platformManager.GetAll();
             return View();
         }
+
         [Authorize(Roles = "Admin")]
         [HttpPost]
         public async Task<IActionResult> CreateGame(GameVM model, List<int> Categories, List<int> Platforms, IFormFile photo)
@@ -57,7 +57,6 @@ namespace HightScore.Controllers
 
                 if (photo != null && photo.Length > 0)
                 {
-
                     photoFileName = Guid.NewGuid().ToString() + Path.GetExtension(photo.FileName);
                     var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images", photoFileName);
 
@@ -74,7 +73,6 @@ namespace HightScore.Controllers
                     RelaseDate = model.RelaseDate,
                     Iframe = model.Iframe,
                     photo = photoFileName,
-
                     ItemCategories = Categories.Select(c => new ItemCategory { categoryId = c }).ToList(),
                     ItemPlatforms = Platforms.Select(p => new ItemPlatform { platformId = p }).ToList(),
                 };
@@ -96,9 +94,6 @@ namespace HightScore.Controllers
             return View(model);
         }
 
-
-
-
         public async Task<IActionResult> Details(int id)
         {
             var game = await _itemManager.GetGameByIdAsync(id);
@@ -114,7 +109,6 @@ namespace HightScore.Controllers
 
             double averageRating = await _itemManager.GetAverageRatingAsync(id);
 
-
             var viewModel = new GameVM
             {
                 Title = game.Title,
@@ -126,13 +120,11 @@ namespace HightScore.Controllers
                 Platforms = platforms.Select(p => p.platform.PlatformName).ToList(),
                 UserReviews = userReviews.ToList(),
                 AverageRating = averageRating,
-
                 ItemId = id,
             };
 
             return View(viewModel);
         }
-
 
         [Authorize(Roles = "Admin")]
         [HttpPost]
@@ -178,9 +170,6 @@ namespace HightScore.Controllers
             return View(model);
         }
 
-
-
-
         [Authorize(Roles = "Admin")]
         [HttpPost]
         public async Task<IActionResult> EditGame(GameEditVM model, IFormFile? photo)
@@ -195,7 +184,6 @@ namespace HightScore.Controllers
                     game.RelaseDate = model.RelaseDate;
                     game.Iframe = model.Iframe;
 
-
                     if (photo != null && photo.Length > 0)
                     {
                         string photoFileName = Guid.NewGuid().ToString() + Path.GetExtension(photo.FileName);
@@ -208,7 +196,6 @@ namespace HightScore.Controllers
 
                         game.photo = photoFileName;
                     }
-
                     else
                     {
                         game.photo = model.ExistingPhoto;
@@ -271,15 +258,11 @@ namespace HightScore.Controllers
             }
         }
 
-
-
         [Authorize(Roles = "Admin, User")]
         [HttpPost]
         public async Task<IActionResult> DeleteReview(int itemId, string userId)
         {
-            // Bileşik anahtarları kullanarak `FindAsync` ile arama yapın
-            var review = await _context.UserReviews
-                                       .FindAsync(itemId, userId);
+            var review = await _context.UserReviews.FindAsync(itemId, userId);
 
             if (review == null)
             {
@@ -293,12 +276,12 @@ namespace HightScore.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> EditReview(EditReviewVM model, int itemId)
+        public async Task<IActionResult> EditReview([FromBody] EditReviewVM model)
         {
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
 
             var review = await _context.UserReviews
-                           .FirstOrDefaultAsync(r => r.ItemId == itemId && r.UserId == userId);
+                           .FirstOrDefaultAsync(r => r.ItemId.ToString() == model.ItemId && r.UserId == userId);
 
             if (review == null)
             {
@@ -321,14 +304,6 @@ namespace HightScore.Controllers
                 return Json(new { success = false, message = "Unauthorized." });
             }
         }
-
-
-
-
-
-
-
-
 
     }
 }
