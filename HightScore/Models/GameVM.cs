@@ -10,10 +10,10 @@ namespace HightScore.Models
         public DateTime RelaseDate { get; set; }
         public string? Iframe { get; set; }
         public string? photo { get; set; }
-        public double AverageRating { get; set; }
+        public double? AverageRating { get; set; }
         public List<string>? Categories { get; set; }
         public List<string>? Platforms { get; set; }
-        public List<UserReview> UserReviews { get; set; }
+        public List<UserReview>? UserReviews { get; set; }
 
     }
 }

@@ -1,0 +1,110 @@
+﻿body {
+
+}
+
+
+.detail-container {
+    display: flex;
+    flex-direction: row;
+    margin-top: 20px;
+    gap: 20px;
+}
+
+.game-image {
+    flex: 1;
+    max-width: 300px;
+}
+
+.game-info {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+
+
+.iframe-container {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.game-description {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    line-height: 1.5; /* Daha iyi okunabilirlik için */
+    background-color: rgba(0, 0, 0, 0.5); /* Arka plan rengini belirginleştirme */
+    padding: 10px;
+    border-radius: 8px;
+    color: #b9bdc0;
+}
+
+.game-details {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+    .game-details h4 {
+        font-size: 1.25rem;
+        margin-bottom: 10px;
+        color: white;
+    }
+
+    .game-details ul {
+        list-style-type: none;
+        padding-left: 0;
+    }
+
+    .game-details li {
+        background: transparent;
+        padding: 5px 10px;
+        border-radius: 5px;
+        color: white;
+    }
+
+.user-reviews {
+    margin-top: 40px;
+}
+
+.review-card {
+    border: 1px solid #585858;
+    border-radius: 15px;
+    padding: 15px;
+    margin-bottom: 15px;
+    background-color: #1c1e27;
+    box-shadow: 0 0 10pxrgba(121, 95, 172, 0.8);
+}
+
+    .review-card:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+    }
+
+.review-rating {
+    font-size: 1.25rem;
+}
+
+.review-comment {
+    margin-top: 10px;
+    color: white;
+}
+
+.edit-button, .save-button, .cancel-button {
+    margin-right: 5px;
+    cursor: pointer;
+}
+
+.add-review-container {
+    margin-top: 40px;
+}
+
+    .add-review-container h4 {
+        font-size: 1.5rem;
+        margin-bottom: 20px;
+        color: white;
+    }
+
+    .add-review-container label {
+        color: white;
+    }
+

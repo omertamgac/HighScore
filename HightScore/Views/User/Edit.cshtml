@@ -1,56 +1,58 @@
 ﻿@model EditVM
 
-
-<div class="container">
-    <h2 class="mb-4">Edit User</h2>
+<div class="container mt-3">
     <form asp-controller="User" asp-action="Edit" method="post">
-        <div asp-validation-summary="All" class="text-danger"></div>
         <input type="hidden" name="Id" value="@Model.Id" />
-        <div class="mb-3">
-            <label asp-for="UserName" >Username</label>
-            <input asp-for="UserName" class="form-control"></input>
-        </div>
-        <div class="mb-3">
-            <label asp-for="Email" >Email Address</label>
-            <input asp-for="Email" class="form-control"></input>
-        </div>
-        <div class="mb-3">
-            <label asp-for="Phone" class="form-label">Phone Number</label>
-            <input asp-for="Phone" type="tel" class="form-control">
+
+        <div class="mb-3 p-3" style="background-color: #2a2d3a; border-radius: 8px;">
+            <label asp-for="UserName" class="form-label text-white">Username</label>
+            <input asp-for="UserName" class="form-control bg-white text-dark" placeholder="Enter username" />
         </div>
 
-        <div class="card">
-            <div class="card-header">
+        <div class="mb-3 p-3" style="background-color: #2a2d3a; border-radius: 8px;">
+            <label asp-for="Email" class="form-label text-white">Email Address</label>
+            <input asp-for="Email" class="form-control bg-white text-dark" type="email" placeholder="Enter email address" />
+        </div>
+
+        <div class="mb-3 p-3" style="background-color: #2a2d3a; border-radius: 8px;">
+            <label asp-for="Phone" class="form-label text-white">Phone Number</label>
+            <input asp-for="Phone" type="tel" class="form-control bg-white text-dark" placeholder="Enter phone number" />
+        </div>
+
+        <div class="card mb-3" style="background-color: #2a2d3a; border-radius: 8px;">
+            <div class="card-header text-white bg-success">
                 Update Password
             </div>
             <div class="card-body">
-                <div class="mb-3">
-                    <label asp-for="Password" class="form-label">Password</label>
-                    <input asp-for="Password" class="form-control"></input>
+                <div class="mb-2">
+                    <label asp-for="Password" class="form-label text-white">Password</label>
+                    <input asp-for="Password" class="form-control bg-white text-dark" type="password" placeholder="Enter new password" />
                 </div>
-                <div class="mb-3">
-                    <label asp-for="ConfirmPassword" class="form-label">Confirm Password</label>
-                    <input asp-for="ConfirmPassword" class="form-control"></input>
+                <div class="mb-2">
+                    <label asp-for="ConfirmPassword" class="form-label text-white">Confirm Password</label>
+                    <input asp-for="ConfirmPassword" class="form-control bg-white text-dark" type="password" placeholder="Confirm new password" />
                 </div>
             </div>
         </div>
 
-       <div class="card">
-           <div class="card-header">
-               Rols
-           </div>
-           <div class="card-body">
-               @foreach (var role in ViewBag.Roles)
+        <div class="card mb-3" style="background-color: #2a2d3a; border-radius: 8px;">
+            <div class="card-header text-white bg-success">
+                Roles
+            </div>
+            <div class="card-body">
+                @foreach (var role in ViewBag.Roles)
                 {
-                    <div class="form-check">
+                    <div class="form-check mb-1">
                         <input type="checkbox" class="form-check-input" value="@role" name="SelectedRoles" id="@role"
-                        @(Model.SelectedRoles.Any(i => i  == role) ? "checked" : "" )  />
-                        <label for="@role" class="form-check-label">@role</label>
+                        @(Model.SelectedRoles.Any(i => i == role) ? "checked" : "") />
+                        <label for="@role" class="form-check-label text-white">@role</label>
                     </div>
                 }
-           </div>
-       </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+        </div>
+
+        <div class="text-center">
+            <button type="submit" class="btn btn-success btn-lg">Submit</button>
+        </div>
     </form>
 </div>
-

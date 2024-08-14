@@ -94,6 +94,8 @@ namespace HightScore.Controllers
             return View(model);
         }
 
+
+
         public async Task<IActionResult> Details(int id)
         {
             var game = await _itemManager.GetGameByIdAsync(id);
