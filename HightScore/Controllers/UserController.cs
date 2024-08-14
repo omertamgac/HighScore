@@ -1,4 +1,5 @@
-﻿using HightScore.Entities.Model.Concrete;
+﻿using HightScore.Entities.DbContexts;
+using HightScore.Entities.Model.Concrete;
 using HightScore.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -10,59 +11,67 @@ namespace HightScore.Controllers
     {
         private UserManager<MetaUser> _userManager;
         private RoleManager<Role> _roleManager;
+        private readonly AppDbContext _context;
         public UserController(UserManager<MetaUser> userManager,
-            RoleManager<Role> roleManager)
+            RoleManager<Role> roleManager, AppDbContext context)
         {
             _userManager = userManager;
             _roleManager = roleManager;
+            _context = context;
         }
 
 
-        public async Task<IActionResult> Users(IEnumerable<string> selectedRoles = null)
+        public IActionResult Users(string selectedRole, int pageNumber = 1)
         {
-            // Rolleri al
-            var roles = await _roleManager.Roles.ToListAsync();
-            var roleNames = roles.Select(r => r.Name).ToList();
+            int pageSize = 10;
 
-            // Kullanıcıları filtrele
-            IQueryable<MetaUser> usersQuery = _userManager.Users;
+            var usersQuery = _userManager.Users.AsQueryable();
 
-            if (selectedRoles != null && selectedRoles.Any())
+            if (!string.IsNullOrEmpty(selectedRole))
             {
-                // Seçilen rollere göre kullanıcıları filtrele
-                var allUsersInRoles = new List<MetaUser>();
+                var roleIds = _context.Roles
+                    .Where(r => r.Name == selectedRole)
+                    .Select(r => r.Id)
+                    .ToList();
 
-                foreach (var roleName in selectedRoles)
-                {
-                    var usersInRole = await _userManager.GetUsersInRoleAsync(roleName);
-                    allUsersInRoles.AddRange(usersInRole);
-                }
+                var userIds = _context.UserRoles
+                    .Where(ur => roleIds.Contains(ur.RoleId))
+                    .Select(ur => ur.UserId)
+                    .ToList();
 
-                // Kullanıcıları birleştir ve benzersiz hale getir
-                var distinctUsers = allUsersInRoles.Distinct();
-                usersQuery = usersQuery.Where(user => distinctUsers.Contains(user));
+                usersQuery = usersQuery.Where(u => userIds.Contains(u.Id));
             }
 
-            var users = await usersQuery.ToListAsync();
+            var users = usersQuery
+                .Skip((pageNumber - 1) * pageSize)
+                .Take(pageSize)
+                .ToList();
 
-            // Kullanıcı rollerini al
             var userRoles = new Dictionary<string, List<string>>();
             foreach (var user in users)
             {
-                var rolesForUser = await _userManager.GetRolesAsync(user);
-                userRoles[user.Id] = rolesForUser.ToList();
+                var roles = _userManager.GetRolesAsync(user).Result;
+                userRoles[user.Id] = roles.ToList();
             }
+
+            var totalUsers = usersQuery.Count();
 
             var model = new UserListViewModel
             {
                 Users = users,
-                Roles = roles,
-                SelectedRoles = selectedRoles,
-                UserRoles = userRoles
+                UserRoles = userRoles,
+                Roles = _context.Roles.ToList(),
+                SelectedRoles = new List<string> { selectedRole },
             };
+
+            ViewBag.TotalPages = (int)Math.Ceiling(totalUsers / (double)pageSize);
+            ViewBag.CurrentPage = pageNumber;
 
             return View(model);
         }
+
+
+
 
 
 

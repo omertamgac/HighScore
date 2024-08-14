@@ -96,12 +96,11 @@ namespace HightScore.Controllers
 
 
 
-        public async Task<IActionResult> Details(int id)
+        public async Task<IActionResult> Details(int id, int pageNumber = 1, int pageSize = 5)
         {
             var game = await _itemManager.GetGameByIdAsync(id);
             var categories = await _itemCategoryManager.GetByIdAsync(id);
             var platforms = await _itemPlatformManager.GetByIdAsync(id);
-            var userName = _context.UserReviews.Include(p => p.user).ToList();
             var userReviews = await _userReviewManager.GetReviewsByItemIdAsync(id) ?? new List<UserReview>();
 
             if (game == null)
@@ -110,6 +109,14 @@ namespace HightScore.Controllers
             }
 
             double averageRating = await _itemManager.GetAverageRatingAsync(id);
+
+            int totalReviews = userReviews.Count();
+            int totalPages = (int)Math.Ceiling(totalReviews / (double)pageSize);
+
+            var paginatedReviews = userReviews
+                                    .Skip((pageNumber - 1) * pageSize)
+                                    .Take(pageSize)
+                                    .ToList();
 
             var viewModel = new GameVM
             {
@@ -120,13 +127,20 @@ namespace HightScore.Controllers
                 photo = game.photo,
                 Categories = categories.Select(c => c.category.CategoryName).ToList(),
                 Platforms = platforms.Select(p => p.platform.PlatformName).ToList(),
-                UserReviews = userReviews.ToList(),
+                UserReviews = paginatedReviews,
                 AverageRating = averageRating,
                 ItemId = id,
+                CurrentPage = pageNumber,
+                TotalPages = totalPages
             };
 
             return View(viewModel);
         }
+
+
+
+
+
 
         [Authorize(Roles = "Admin")]
         [HttpPost]

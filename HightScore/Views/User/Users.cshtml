@@ -31,7 +31,7 @@
             margin-bottom: 10px;
         }
 
-            .filter-option input[type="checkbox"] {
+            .filter-option input[type="radio"] {
                 margin-right: 10px;
             }
 
@@ -91,7 +91,7 @@
         }
 
             .btn-warning:hover {
-                background-color: #ffc107; /* Hover efektsiz, sabit kalacak */
+                background-color: #ffc107;
                 border-color: #ffc107;
             }
 
@@ -124,10 +124,45 @@
         }
 
         .create-button-container {
-            text-align: right; /* Butonu sağa hizalayın */
-            margin-top: 20px; /* Üstten boşluk bırakın */
+            text-align: right;
+            margin-top: 20px;
         }
+
+        .pagination {
+            display: flex;
+            justify-content: center;
+            padding: 10px 0;
+            overflow: hidden; 
+        }
+
+            .pagination .page-item {
+                margin: 0 5px;
+                display: inline-flex; 
+            }
+
+                .pagination .page-item a {
+                    color: #ffffff;
+                    background-color: #272937;
+                    border: 1px solid #ddd;
+                    padding: 5px 10px;
+                    text-decoration: none;
+                    border-radius: 5px;
+                    display: block; 
+                    width: 100%; 
+                    box-sizing: border-box; 
+                    z-index:1;
+                }
+
+                .pagination .page-item.active a {
+                    background-color: #28a745; 
+                    color: #ffffff; 
+                }
+
+                .pagination .page-item a:hover {
+                    background-color: #218838; 
+                }
     </style>
+
 </head>
 <body>
     <h2>Users</h2>
@@ -138,7 +173,7 @@
             @foreach (var role in Model.Roles)
             {
                 <div class="filter-option">
-                    <input type="checkbox" name="selectedRoles" value="@role.Name" @(Model.SelectedRoles != null && Model.SelectedRoles.Contains(role.Name) ? "checked" : "") />
+                    <input type="radio" name="selectedRole" value="@role.Name" @(Model.SelectedRoles != null && Model.SelectedRoles.Contains(role.Name) ? "checked" : "") />
                     <label>@role.Name</label>
                 </div>
             }
@@ -209,6 +244,31 @@
         </tbody>
     </table>
 
+    <div>
+        <nav aria-label="Page navigation">
+            <ul class="pagination">
+                @for (int i = 1; i <= ViewBag.TotalPages; i++)
+                {
+                    <li class="page-item @(i == ViewBag.CurrentPage ? "active" : "")">
+                        <a class="page-link" href="?pageNumber=@i&selectedRole=@Model.SelectedRoles?.FirstOrDefault()">@i</a>
+                    </li>
+                }
+            </ul>
+        </nav>
+    </div>
+
 </body>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function () {
+        var selectedRole = $('input[name="selectedRole"]:checked').val();
+        if (!selectedRole) {
+            $('input[name="selectedRole"][value="User"]').prop("checked", true);
+        }
+
+        $('input[name="selectedRole"]').change(function () {
+            $(this).closest('form').submit();
+        });
+    });
+</script>
 </html>
-l
