@@ -64,5 +64,53 @@ namespace HightScore.Controllers
             }
             return RedirectToAction("Index");
         }
+
+
+        public async Task<IActionResult> EditRole(string id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var role = await _roleManager.FindByIdAsync(id);
+            if (role == null)
+            {
+                return NotFound();
+            }
+            return View(role);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> EditRole(IdentityRole role)
+        {
+            if (ModelState.IsValid)
+            {
+                var existingRole = await _roleManager.FindByIdAsync(role.Id);
+                if (existingRole == null)
+                {
+                    return NotFound();
+                }
+
+                existingRole.Name = role.Name;
+                var result = await _roleManager.UpdateAsync(existingRole);
+                if (result.Succeeded)
+                {
+                    return RedirectToAction(nameof(Index));
+                }
+                foreach (var error in result.Errors)
+                {
+                    ModelState.AddModelError(string.Empty, error.Description);
+                }
+            }
+            return View(role);
+        }
+
+
+
+
+
+
     }
 }

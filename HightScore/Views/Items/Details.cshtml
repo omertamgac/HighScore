@@ -5,7 +5,6 @@
     ViewData["Title"] = Model.Title;
     var ratingColor = Model.AverageRating < 50 ? "#dc3545" :
                       Model.AverageRating < 70 ? "#ffc107" : "#28a745";
-
 }
 
 <style>
@@ -85,12 +84,12 @@
     }
 
     .review-card {
-        border: 1px solid #ddd;
-        border-radius: 8px;
+        border: 1px solid #585858;
+        border-radius: 15px;
         padding: 15px;
         margin-bottom: 15px;
-        background-color: transparent;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        background-color: #1c1e27;
+        box-shadow: 0 0 10pxrgba(121, 95, 172, 0.8);
     }
 
         .review-card:hover {
@@ -182,31 +181,21 @@
     }
 
     <div class="user-reviews">
-        <h4>User Reviews</h4>
+        <h4>Reviews</h4>
         @if (Model.UserReviews != null && Model.UserReviews.Count > 0)
         {
             @foreach (var review in Model.UserReviews)
             {
+                var UserRatingColor = review.UserRating < 50 ? "#dc3545" :
+                review.UserRating < 70 ? "#ffc107" : "#28a745";
+
                 <div class="review-card">
                     <input type="hidden" class="item-id" value="@Model.ItemId" />
-                    <div class="review-rating" style="color: @ratingColor;">
-                        <strong style="color:white">Rating:</strong>
-                       @if (review.UserRating<=49.9)
-                       {
-                           <span class="text-danger">@review.UserRating</span>
-                       }
-                        @if (review.UserRating >= 50 && review.UserRating <= 69.9)
-                        {
-                            <span class="text-warning">@review.UserRating</span>
-                        }
-                        @if (review.UserRating >= 70)
-                        {
-                            <span class="text-success">@review.UserRating</span>
-                        }
-                           
+                    <div class="review-rating">
+                        <strong>Rating : </strong> <span style="color:@UserRatingColor" class="rating-value">@review.UserRating</span>
                     </div>
                     <div class="review-comment">
-                        <p><strong>@review.user.UserName</strong>: <span class="comment-value">@review.Comment</span></p>
+                        <p><strong style="font-size:18px;">@review.user.UserName</strong> : <span class="comment-value">@review.Comment</span></p>
                     </div>
 
                     @if (User.IsInRole("Admin") || review.UserId == User.FindFirstValue(ClaimTypes.NameIdentifier))
@@ -250,7 +239,7 @@
         // Edit butonuna tıklanıldığında
         document.querySelectorAll('.edit-button').forEach(button => {
             button.addEventListener('click', function () {
-                let cardBody = this.closest('.review-card'); // `.card-body` yerine `.review-card`
+                let cardBody = this.closest('.review-card');
                 cardBody.querySelector('.review-rating').classList.add('d-none');
                 cardBody.querySelector('.edit-rating').classList.remove('d-none');
                 cardBody.querySelector('.review-comment').classList.add('d-none');
@@ -264,7 +253,7 @@
         // Save butonuna tıklanıldığında
         document.querySelectorAll('.save-button').forEach(button => {
             button.addEventListener('click', function () {
-                let cardBody = this.closest('.review-card'); // `.card-body` yerine `.review-card`
+                let cardBody = this.closest('.review-card');
                 let itemId = cardBody.querySelector('.item-id').value;
                 let newRating = cardBody.querySelector('.edit-rating').value;
                 let newComment = cardBody.querySelector('.edit-comment').value;
@@ -272,7 +261,7 @@
                 // Puanın 100'den büyük olmadığını kontrol et
                 if (newRating > 100) {
                     alert('Rating cannot be more than 100.');
-                    return; // İşlemi durdur
+                    return;
                 }
 
                 // AJAX isteği
@@ -291,18 +280,41 @@
                     .then(response => response.json())
                     .then(data => {
                         if (data.success) {
-                            // Başarılı olursa yeni değerleri göster
-                            cardBody.querySelector('.rating-value').textContent = newRating;
-                            cardBody.querySelector('.comment-value').textContent = newComment;
-                            cardBody.querySelector('.review-rating').classList.remove('d-none');
-                            cardBody.querySelector('.edit-rating').classList.add('d-none');
-                            cardBody.querySelector('.review-comment').classList.remove('d-none');
-                            cardBody.querySelector('.edit-comment').classList.add('d-none');
-                            this.classList.add('d-none');
-                            cardBody.querySelector('.edit-button').classList.remove('d-none');
-                            cardBody.querySelector('.cancel-button').classList.add('d-none');
+                            location.reload(); // Sayfayı yenile
                         } else {
                             alert(data.message || 'Error updating review.');
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                        alert('There was an error processing your request.');
+                    });
+            });
+        });
+
+        // Delete butonuna tıklanıldığında
+        document.querySelectorAll('.delete-button').forEach(button => {
+            button.addEventListener('click', function () {
+                let cardBody = this.closest('.review-card');
+                let itemId = cardBody.querySelector('.item-id').value;
+
+                // Silme işlemi için AJAX isteği
+                fetch('@Url.Action("DeleteReview", "Items")', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'RequestVerificationToken': '@Html.AntiForgeryToken()'
+                    },
+                    body: JSON.stringify({
+                        ItemId: itemId
+                    })
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            location.reload(); // Sayfayı yenile
+                        } else {
+                            alert(data.message || 'Error deleting review.');
                         }
                     })
                     .catch(error => {
@@ -315,7 +327,7 @@
         // Cancel butonuna tıklanıldığında
         document.querySelectorAll('.cancel-button').forEach(button => {
             button.addEventListener('click', function () {
-                let cardBody = this.closest('.review-card'); // `.card-body` yerine `.review-card`
+                let cardBody = this.closest('.review-card');
                 cardBody.querySelector('.review-rating').classList.remove('d-none');
                 cardBody.querySelector('.edit-rating').classList.add('d-none');
                 cardBody.querySelector('.review-comment').classList.remove('d-none');
@@ -326,6 +338,4 @@
             });
         });
     });
-
-
 </script>
