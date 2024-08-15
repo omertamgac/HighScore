@@ -21,7 +21,7 @@ namespace HightScore.BL.Managers.Concrete
                          .ToListAsync();
         }
 
-        public async Task<bool> CreateComment(int itemId, int userId, int userRating, string comment)
+        public async Task<bool> CreateComment(int itemId, string userId, int userRating, string comment)
         {
             // Kullanıcının daha önce bu item için yorum yapıp yapmadığını kontrol et
             var existingReview = await _context.UserReviews

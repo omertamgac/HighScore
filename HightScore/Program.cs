@@ -3,6 +3,7 @@ using HightScore.BL.Managers.Concrete;
 using HightScore.Entities.DbContexts;
 using HightScore.Entities.Model.Concrete;
 using HightScore.Models;
+using HightScore.Models.Abstract;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 

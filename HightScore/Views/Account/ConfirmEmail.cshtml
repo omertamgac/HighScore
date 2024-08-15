@@ -1,37 +1,98 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Account Verified</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title> Congratulations Page Design By WebJourney - Html Template </title>
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Latest compiled and minified CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
-        body {
+        .congratulation-wrapper {
+            max-width: 550px;
+            margin-inline: auto;
+            -webkit-box-shadow: 0 0 20px #f3f3f3;
+            box-shadow: 0 0 20px #f3f3f3;
+            padding: 30px 20px;
+            background-color: #fff;
+            border-radius: 10px;
+        }
+
+        .congratulation-contents.center-text .congratulation-contents-icon {
+            margin-inline: auto;
+        }
+
+        .congratulation-contents-icon {
+            display: -webkit-box;
+            display: -ms-flexbox;
             display: flex;
-            justify-content: center;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
             align-items: center;
-            height: 100vh;
-            background-color: #f8f9fa;
+            -webkit-box-pack: center;
+            -ms-flex-pack: center;
+            justify-content: center;
+            height: 100px;
+            width: 100px;
+            background-color: #29cf6e;
+            color: #fff;
+            font-size: 50px;
+            border-radius: 50%;
+            margin-bottom: 30px;
         }
-        .card {
-            padding: 2rem;
-            border-radius: 1rem;
+
+        .congratulation-contents-title {
+            font-size: 32px;
+            line-height: 36px;
+            margin: -6px 0 0;
         }
-        .card-title {
-            margin-bottom: 1rem;
+
+        .congratulation-contents-para {
+            font-size: 16px;
+            line-height: 24px;
+            margin-top: 15px;
         }
-        .card-text {
-            margin-bottom: 1.5rem;
+
+        .btn-wrapper {
+            display: block;
         }
+
+        .cmn-btn.btn-bg-1 {
+            background: #29cf6e;
+            color: #fff;
+            border: 2px solid transparent;
+            border-radius: 3px;
+            text-decoration: none;
+            padding: 5px;
+        }
+
     </style>
 </head>
-<body>
-    <div class="card text-center shadow">
-        <div class="card-body">
-            <h1 class="card-title text-success">Your Account Has Been Verified!</h1>
-            <p class="card-text">Congratulations! Your account has been successfully verified. You can now enjoy all the features of our platform.</p>
-            <a asp-controller="Account" asp-action="Login" class="btn btn-primary">Go to Login</a>
+
+<body style="background-color: #222431 ;">
+    <!-- Congratulations area start -->
+    <div class="congratulation-area text-center mt-5">
+        <div class="container">
+            <div class="congratulation-wrapper">
+                <div class="congratulation-contents center-text">
+                    <div class="congratulation-contents-icon">
+                        <i class="fas fa-check"></i>
+                    </div>
+                    <h4 class="congratulation-contents-title"> Congratulations! </h4>
+                    <p class="congratulation-contents-para"> Your account is ready to submit proposals and get work. </p>
+                    <div class="btn-wrapper mt-4">
+                        <a class="btn btn-success" asp-controller="Home" asp-action="Index">Go to Home</a>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <!-- Congratulations area end -->
+    <!-- Latest compiled JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

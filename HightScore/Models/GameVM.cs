@@ -16,5 +16,6 @@ namespace HightScore.Models
         public List<UserReview>? UserReviews { get; set; }
         public int CurrentPage { get; set; }
         public int TotalPages { get; set; }
+
     }
 }

@@ -259,7 +259,7 @@ namespace HightScore.Controllers
         [Authorize(Roles = "User")]
         public async Task<IActionResult> CreateComment(int itemId, int rating, string comment)
         {
-            var userId = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier); // userId artık string olacak
 
             var result = await _userReviewManager.CreateComment(itemId, userId, rating, comment);
 
@@ -273,6 +273,7 @@ namespace HightScore.Controllers
                 return RedirectToAction("Details", new { id = itemId });
             }
         }
+
 
         [Authorize(Roles = "Admin, User")]
         [HttpPost]
@@ -291,13 +292,14 @@ namespace HightScore.Controllers
             return RedirectToAction("Details", new { id = itemId });
         }
 
+
         [HttpPost]
         public async Task<IActionResult> EditReview([FromBody] EditReviewVM model)
         {
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
 
             var review = await _context.UserReviews
-                           .FirstOrDefaultAsync(r => r.ItemId.ToString() == model.ItemId && r.UserId == userId);
+                               .FirstOrDefaultAsync(r => r.ItemId.ToString() == model.ItemId && r.UserId == userId);
 
             if (review == null)
             {
@@ -320,6 +322,7 @@ namespace HightScore.Controllers
                 return Json(new { success = false, message = "Unauthorized." });
             }
         }
+
 
     }
 }

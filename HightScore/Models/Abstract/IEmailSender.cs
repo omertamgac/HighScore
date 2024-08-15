@@ -1,4 +1,4 @@
-﻿namespace HightScore.Models
+﻿namespace HightScore.Models.Abstract
 {
     public interface IEmailSender
     {

@@ -1,4 +1,5 @@
-﻿using System.Net;
+﻿using HightScore.Models.Abstract;
+using System.Net;
 using System.Net.Mail;
 
 namespace HightScore.Models
@@ -7,7 +8,7 @@ namespace HightScore.Models
     {
         private string? _host;
         private int _port;
-        private bool _eanbleSSL;
+        private bool _enableSSL;
         private string? _username;
         private string? _password;
 
@@ -15,7 +16,7 @@ namespace HightScore.Models
         {
             _host = host;
             _port = port;
-            _eanbleSSL = enableSSL;
+            _enableSSL = enableSSL;
             _username = username;
             _password = password;
         }
@@ -26,7 +27,7 @@ namespace HightScore.Models
             var client = new SmtpClient(_host, _port)
             {
                 Credentials = new NetworkCredential(_username, _password),
-                EnableSsl = _eanbleSSL
+                EnableSsl = _enableSSL
 
             };
 

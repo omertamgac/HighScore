@@ -1,6 +1,7 @@
 ﻿using HightScore.Entities.DbContexts;
 using HightScore.Entities.Model.Concrete;
 using HightScore.Models;
+using HightScore.Models.Abstract;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
@@ -40,7 +41,6 @@ namespace HightScore.Controllers
                 var user = await _userManager.FindByEmailAsync(model.Email);
                 if (user != null)
                 {
-                    // Kullanıcının kilitlenip kilitlenmediğini kontrol et
                     if (!await _userManager.IsLockedOutAsync(user) && !await _userManager.GetLockoutEnabledAsync(user))
                     {
                         await _signInManager.SignOutAsync();
@@ -101,11 +101,9 @@ namespace HightScore.Controllers
 
                 if (result.Succeeded)
                 {
-                    // Kullanıcı oluşturulduktan sonra "User" rolünü ekleyin
                     var roleExists = await _roleManager.RoleExistsAsync("User");
                     if (!roleExists)
                     {
-                        // Eğer "User" rolü mevcut değilse oluşturun
                         var roleResult = await _roleManager.CreateAsync(new Role { Name = "User" });
                         if (!roleResult.Succeeded)
                         {
@@ -117,9 +115,9 @@ namespace HightScore.Controllers
                     await _userManager.AddToRoleAsync(user, "User");
 
                     var token = await _userManager.GenerateEmailConfirmationTokenAsync(user);
-                    var url = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, token = token }, protocol: Request.Scheme);
+                    var url = Url.Action("ConfirmEmail", "Account", new { user.Id, token });
 
-                    await _emailSender.SendEmailAsync(user.Email, "Account Verify", $"Please <a href='{url}'>click here</a> to confirm your account.");
+                    await _emailSender.SendEmailAsync(user.Email, "Account Verify", $"Please <a href='https://localhost:7228{url}'>click here</a> to confirm your account.");
 
                     TempData["message"] = "Please click on the confirmation link in your email.";
                     return RedirectToAction("Login", "Account");
@@ -138,13 +136,11 @@ namespace HightScore.Controllers
 
         public async Task<IActionResult> ConfirmEmail(string Id, string token)
         {
-
             if (Id == null || token == null)
             {
                 TempData["message"] = "Token is invalid";
                 return View();
             }
-
 
             var user = await _userManager.FindByIdAsync(Id);
 
@@ -154,15 +150,25 @@ namespace HightScore.Controllers
 
                 if (result.Succeeded)
                 {
-                    TempData["message"] = "Your Account Has Been Verified";
+                    user.LockoutEnabled = false;
+                    var updateResult = await _userManager.UpdateAsync(user);
+
+                    if (updateResult.Succeeded)
+                    {
+                        TempData["message"] = "Your Account Has Been Verified";
+                    }
+                    else
+                    {
+                        TempData["message"] = "An error occurred while updating the account";
+                    }
                     return View();
                 }
             }
 
-            TempData["message"] = "Account has not found";
+            TempData["message"] = "Account has not been found";
             return View();
-
         }
+
 
 
         public async Task<IActionResult> Logout()
