@@ -96,7 +96,7 @@ namespace HightScore.Controllers
 
 
 
-        public async Task<IActionResult> Details(int id, int pageNumber = 1, int pageSize = 5)
+        public async Task<IActionResult> Details(int id, int pageNumber = 1, int pageSize = 8)
         {
             var game = await _itemManager.GetGameByIdAsync(id);
             var categories = await _itemCategoryManager.GetByIdAsync(id);

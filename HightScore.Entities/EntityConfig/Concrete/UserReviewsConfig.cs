@@ -40,7 +40,7 @@ namespace HightScore.Entities.EntityConfig.Concrete
 
             for (int itemId = 1; itemId <= 33; itemId++)
             {
-                for (int i = 0; i < 10; i++)
+                for (int i = 0; i < 20; i++)
                 {
                     string userId;
                     do
@@ -48,7 +48,7 @@ namespace HightScore.Entities.EntityConfig.Concrete
                         userId = random.Next(1, 21).ToString();
                     } while (!uniqueCombinations.Add((itemId, userId)));
 
-                    var userRating = random.Next(1, 101);
+                    var userRating = random.Next(30, 101);
                     var comment = comments[random.Next(comments.Length)];
 
                     userReviews.Add(new UserReview

@@ -173,8 +173,7 @@ namespace HightScore.Controllers
 
             if (user != null)
             {
-                // Kullanıcının hesabını kilitle (banla)
-                var lockoutEndDate = DateTimeOffset.MaxValue; // Hesabı süresiz kilitle
+                var lockoutEndDate = DateTimeOffset.MaxValue;
                 await _userManager.SetLockoutEndDateAsync(user, lockoutEndDate);
                 await _userManager.SetLockoutEnabledAsync(user, true);
             }

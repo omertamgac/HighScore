@@ -70,6 +70,10 @@ namespace HightScore.Controllers
                             ModelState.AddModelError("", "Invalid email or password.");
                         }
                     }
+                    else if (user.EmailConfirmed == false)
+                    {
+                        ModelState.AddModelError("", "Please confirm your account");
+                    }
                     else
                     {
 
