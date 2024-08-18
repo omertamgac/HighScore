@@ -65,7 +65,6 @@ namespace HighScore.BL.Managers.Concrete
                 entity.UpdatedAt = item.UpdatedAt;
                 entity.Description = item.Description;
                 entity.RelaseDate = item.RelaseDate;
-
             }
 
             _context.Items.Update(item);

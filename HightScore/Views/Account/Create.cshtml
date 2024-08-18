@@ -5,7 +5,7 @@
     <div class="p-4" style="background-color: #3b3d55; border-radius: 15px; max-width: 600px; margin: auto;">
         <h2 class="mb-4 text-center fs-1">Register</h2>
         <form asp-controller="Account" asp-action="Create" method="post">
-            <div asp-validation-summary="All"></div>
+            <div asp-validation-summary="All" class="text-danger"></div>
 
             <div class="mb-3 text-center">
                 <label asp-for="UserName" class="form-label fs-5">Username</label>

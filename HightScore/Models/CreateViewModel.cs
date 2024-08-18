@@ -17,7 +17,7 @@ namespace HighScore.Models
 
         [Required]
         [DataType(DataType.Password)]
-        [Compare(nameof(Password), ErrorMessage = "Parola Eşleşmiyor")]
+        [Compare(nameof(Password), ErrorMessage = "Passwords are not same")]
         public string ConfirmPassword { get; set; } = string.Empty;
 
         public string? Phone { get; set; } = string.Empty;
