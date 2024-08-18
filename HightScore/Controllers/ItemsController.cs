@@ -1,13 +1,13 @@
-﻿using HightScore.BL.Managers.Abstract;
-using HightScore.Entities.DbContexts;
-using HightScore.Entities.Model.Concrete;
-using HightScore.Models;
+﻿using HighScore.BL.Managers.Abstract;
+using HighScore.Entities.DbContexts;
+using HighScore.Entities.Model.Concrete;
+using HighScore.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Security.Claims;
 
-namespace HightScore.Controllers
+namespace HighScore.Controllers
 {
     public class ItemsController : Controller
     {

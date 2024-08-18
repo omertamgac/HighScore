@@ -48,7 +48,7 @@
     <div class="form-group">
         <label>Categories</label>
         <div style="max-height: 200px; overflow-y: auto;">
-            @foreach (var category in (ViewBag.Categories as IEnumerable<HightScore.Entities.Model.Concrete.Category>))
+            @foreach (var category in (ViewBag.Categories as IEnumerable<HighScore.Entities.Model.Concrete.Category>))
             {
                 <div class="form-check">
                     <input type="checkbox" name="SelectedCategories" value="@category.Id" class="form-check-input"
@@ -64,7 +64,7 @@
     <div class="form-group">
         <label>Platforms</label>
         <div style="max-height: 200px; overflow-y: auto;">
-            @foreach (var platform in (ViewBag.Platforms as IEnumerable<HightScore.Entities.Model.Concrete.Platform>))
+            @foreach (var platform in (ViewBag.Platforms as IEnumerable<HighScore.Entities.Model.Concrete.Platform>))
             {
                 <div class="form-check">
                     <input type="checkbox" name="SelectedPlatforms" value="@platform.Id" class="form-check-input"

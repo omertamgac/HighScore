@@ -1,10 +1,10 @@
-﻿using HightScore.Entities.Model.Concrete;
+﻿using HighScore.Entities.Model.Concrete;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection;
 
-namespace HightScore.Entities.DbContexts
+namespace HighScore.Entities.DbContexts
 {
     public class AppDbContext : IdentityDbContext<MetaUser, Role, string>
     {
@@ -25,7 +25,7 @@ namespace HightScore.Entities.DbContexts
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseMySQL(@"server=localhost;port=3306;user=root;password=asd123;database=HightScoreDb;");
+            optionsBuilder.UseMySQL(@"server=localhost;port=3306;user=root;password=asd123;database=HighScoreDb;");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

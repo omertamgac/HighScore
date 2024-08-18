@@ -1,8 +1,8 @@
-﻿using HightScore.DAL.Repository.Abstract;
-using HightScore.Entities.Model.Concrete;
+﻿using HighScore.DAL.Repository.Abstract;
+using HighScore.Entities.Model.Concrete;
 using Microsoft.AspNetCore.Identity;
 
-namespace HightScore.BL.Managers.Concrete
+namespace HighScore.BL.Managers.Concrete
 {
     public class UserRepository : IUserRepository
     {

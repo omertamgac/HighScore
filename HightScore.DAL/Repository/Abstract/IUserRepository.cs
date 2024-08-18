@@ -1,7 +1,7 @@
-﻿using HightScore.Entities.Model.Concrete;
+﻿using HighScore.Entities.Model.Concrete;
 using Microsoft.AspNetCore.Identity;
 
-namespace HightScore.DAL.Repository.Abstract
+namespace HighScore.DAL.Repository.Abstract
 {
     public interface IUserRepository
     {

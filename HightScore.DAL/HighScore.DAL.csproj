@@ -11,7 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\HightScore.DAL\HightScore.DAL.csproj" />
+    <ProjectReference Include="..\HightScore.Entities\HighScore.Entities.csproj" />
   </ItemGroup>
 
 </Project>

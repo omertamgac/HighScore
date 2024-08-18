@@ -1,7 +1,7 @@
-﻿using HightScore.Entities.Model.Abstract;
+﻿using HighScore.Entities.Model.Abstract;
 using System.Linq.Expressions;
 
-namespace HightScore.DAL.Repository.Abstract
+namespace HighScore.DAL.Repository.Abstract
 {
     public interface IRepository<T> where T : BaseEntity
     {

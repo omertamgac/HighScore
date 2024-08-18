@@ -1,8 +1,8 @@
-﻿using HightScore.Models.Abstract;
+﻿using HighScore.Models.Abstract;
 using System.Net;
 using System.Net.Mail;
 
-namespace HightScore.Models
+namespace HighScore.Models
 {
     public class SmtpEmailSender : IEmailSender
     {

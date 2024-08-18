@@ -1,12 +1,12 @@
-using HightScore.BL.Managers.Abstract;
-using HightScore.Entities.Model.Concrete;
-using HightScore.Models;
+using HighScore.BL.Managers.Abstract;
+using HighScore.Entities.Model.Concrete;
+using HighScore.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
 using X.PagedList;
 using X.PagedList.Extensions;
-namespace HightScore.Controllers
+namespace HighScore.Controllers
 {
     public class HomeController : Controller
     {

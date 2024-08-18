@@ -1,6 +1,6 @@
-﻿using HightScore.Entities.Model.Abstract;
+﻿using HighScore.Entities.Model.Abstract;
 
-namespace HightScore.Entities.Model.Concrete
+namespace HighScore.Entities.Model.Concrete
 {
     public class ItemPlatform : BaseEntity
     {

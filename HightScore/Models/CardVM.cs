@@ -1,4 +1,4 @@
-﻿namespace HightScore.Models
+﻿namespace HighScore.Models
 {
     public class CardVM
     {

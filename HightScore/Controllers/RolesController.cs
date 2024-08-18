@@ -1,9 +1,9 @@
-﻿using HightScore.Entities.Model.Concrete;
+﻿using HighScore.Entities.Model.Concrete;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
-namespace HightScore.Controllers
+namespace HighScore.Controllers
 {
 
     [Authorize(Roles = "Admin")]

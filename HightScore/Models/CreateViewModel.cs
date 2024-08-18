@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace HightScore.Models
+namespace HighScore.Models
 {
     public class CreateViewModel
     {

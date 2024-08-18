@@ -1,11 +1,12 @@
-﻿using HightScore.Entities.DbContexts;
-using HightScore.Entities.Model.Concrete;
-using HightScore.Models;
-using HightScore.Models.Abstract;
+﻿
+using HighScore.Entities.DbContexts;
+using HighScore.Entities.Model.Concrete;
+using HighScore.Models;
+using HighScore.Models.Abstract;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
-namespace HightScore.Controllers
+namespace HighScore.Controllers
 {
     public class AccountController : Controller
     {
@@ -33,10 +34,7 @@ namespace HightScore.Controllers
             return View();
         }
 
-        public IActionResult AccessDenied()
-        {
-            return View();
-        }
+
 
         [HttpPost]
         public async Task<IActionResult> Login(LoginViewModel model)
@@ -185,6 +183,99 @@ namespace HightScore.Controllers
             await _signInManager.SignOutAsync();
             return RedirectToAction("Login");
         }
+
+        [HttpGet]
+        public IActionResult ForgotPassword()
+        {
+            return View();
+        }
+
+
+        [HttpPost]
+        public async Task<IActionResult> ForgotPassword(string Email)
+        {
+
+            if (string.IsNullOrEmpty(Email))
+            {
+                return View();
+            }
+
+
+            var user = await _userManager.FindByEmailAsync(Email);
+
+            if (user == null)
+            {
+                TempData["message"] = "This e-mail address is not registered";
+                return View();
+            }
+
+
+            var token = await _userManager.GeneratePasswordResetTokenAsync(user);
+
+            var url = Url.Action("ResetPassword", "Account", new { user.Id, token });
+            await _emailSender.SendEmailAsync(user.Email, "Password Reset", $"Please <a href='https://localhost:7228{url}'>click here</a> to reset your password.");
+
+            TempData["message"] = "Please check your Email adress";
+
+            return View();
+
+        }
+
+
+
+
+        public IActionResult ResetPassword(string Id, string token)
+        {
+
+            if (Id == null || token == null)
+            {
+                return RedirectToAction("Login");
+            }
+
+            var model = new ResetPasswordVM { Token = token };
+            return View(model);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> ResetPassword(ResetPasswordVM model)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = await _userManager.FindByEmailAsync(model.Email);
+
+                if (user == null)
+                {
+                    TempData["message"] = "This E-mail adress is not registered";
+                    return RedirectToAction("Login");
+                }
+
+                var result = await _userManager.ResetPasswordAsync(user, model.Token, model.Password);
+
+                if (result.Succeeded)
+                {
+                    TempData["message"] = "Password is changed";
+                    return RedirectToAction("Login");
+                }
+
+                foreach (var item in result.Errors)
+                {
+                    ModelState.AddModelError("", item.Description);
+                }
+            }
+
+
+            return View(model);
+        }
+
+
+        public IActionResult AccessDenied()
+        {
+            return View();
+        }
+
+
+
+
     }
 
 

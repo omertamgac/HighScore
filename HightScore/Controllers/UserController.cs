@@ -1,11 +1,11 @@
-﻿using HightScore.Entities.DbContexts;
-using HightScore.Entities.Model.Concrete;
-using HightScore.Models;
+﻿using HighScore.Entities.DbContexts;
+using HighScore.Entities.Model.Concrete;
+using HighScore.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
-namespace HightScore.Controllers
+namespace HighScore.Controllers
 {
     public class UserController : Controller
     {

@@ -1,6 +1,6 @@
-﻿using HightScore.Entities.Model.Concrete;
+﻿using HighScore.Entities.Model.Concrete;
 
-namespace HightScore.Models
+namespace HighScore.Models
 {
     public class UserListViewModel
     {

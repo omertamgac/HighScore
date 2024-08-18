@@ -1,8 +1,8 @@
-﻿using HightScore.Entities.Model.Abstract;
+﻿using HighScore.Entities.Model.Abstract;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace HightScore.Entities.EntityConfig.Abstract
+namespace HighScore.Entities.EntityConfig.Abstract
 {
     public abstract class BaseConfig<T> : IEntityTypeConfiguration<T>
         where T : BaseEntity

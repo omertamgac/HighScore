@@ -1,8 +1,8 @@
-﻿using HightScore.Entities.Model.Concrete;
+﻿using HighScore.Entities.Model.Concrete;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace HightScore.Entities.EntityConfig.Concrete
+namespace HighScore.Entities.EntityConfig.Concrete
 {
     public class RoleConfig : IEntityTypeConfiguration<Role>
     {

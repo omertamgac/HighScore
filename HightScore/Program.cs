@@ -1,9 +1,9 @@
-using HightScore.BL.Managers.Abstract;
-using HightScore.BL.Managers.Concrete;
-using HightScore.Entities.DbContexts;
-using HightScore.Entities.Model.Concrete;
-using HightScore.Models;
-using HightScore.Models.Abstract;
+using HighScore.BL.Managers.Abstract;
+using HighScore.BL.Managers.Concrete;
+using HighScore.Entities.DbContexts;
+using HighScore.Entities.Model.Concrete;
+using HighScore.Models;
+using HighScore.Models.Abstract;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 

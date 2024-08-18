@@ -1,6 +1,6 @@
-﻿using HightScore.Entities.Model.Concrete;
+﻿using HighScore.Entities.Model.Concrete;
 
-namespace HightScore.DAL.Repository.Concrete
+namespace HighScore.DAL.Repository.Concrete
 {
     public class CategoryRepository : Repository<Category>
     {

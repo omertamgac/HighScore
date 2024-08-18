@@ -1,10 +1,10 @@
-﻿using HightScore.DAL.Repository.Abstract;
-using HightScore.Entities.DbContexts;
-using HightScore.Entities.Model.Abstract;
+﻿using HighScore.DAL.Repository.Abstract;
+using HighScore.Entities.DbContexts;
+using HighScore.Entities.Model.Abstract;
 using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
 
-namespace HightScore.DAL.Repository.Concrete
+namespace HighScore.DAL.Repository.Concrete
 {
     public class Repository<T> : IRepository<T> where T : BaseEntity
     {

@@ -1,9 +1,9 @@
-﻿using HightScore.BL.Managers.Abstract;
-using HightScore.Entities.DbContexts;
-using HightScore.Entities.Model.Concrete;
+﻿using HighScore.BL.Managers.Abstract;
+using HighScore.Entities.DbContexts;
+using HighScore.Entities.Model.Concrete;
 using Microsoft.EntityFrameworkCore;
 
-namespace HightScore.BL.Managers.Concrete
+namespace HighScore.BL.Managers.Concrete
 {
     public class UserReviewManager : ManagerBase<UserReview>, IUserReviewManager
     {

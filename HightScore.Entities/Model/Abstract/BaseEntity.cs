@@ -1,4 +1,4 @@
-﻿namespace HightScore.Entities.Model.Abstract
+﻿namespace HighScore.Entities.Model.Abstract
 {
     public abstract class BaseEntity
     {

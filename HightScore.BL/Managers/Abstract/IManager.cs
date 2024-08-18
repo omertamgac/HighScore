@@ -1,7 +1,7 @@
-﻿using HightScore.DAL.Repository.Abstract;
-using HightScore.Entities.Model.Abstract;
+﻿using HighScore.DAL.Repository.Abstract;
+using HighScore.Entities.Model.Abstract;
 
-namespace HightScore.BL.Managers.Abstract
+namespace HighScore.BL.Managers.Abstract
 {
     public interface IManager<T> : IRepository<T> where T : BaseEntity
     {

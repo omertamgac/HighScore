@@ -1,6 +1,6 @@
-﻿using HightScore.Entities.Model.Concrete;
+﻿using HighScore.Entities.Model.Concrete;
 
-namespace HightScore.BL.Managers.Abstract
+namespace HighScore.BL.Managers.Abstract
 {
     public interface IitemPlatformManager : IManager<ItemPlatform>
     {
