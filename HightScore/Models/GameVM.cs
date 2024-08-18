@@ -13,7 +13,7 @@ namespace HightScore.Models
         public double? AverageRating { get; set; }
         public List<string>? Categories { get; set; }
         public List<string>? Platforms { get; set; }
-        public List<UserReview>? UserReviews { get; set; }
+        public List<UserReview>? UserReviews { get; set; } = new List<UserReview>();
         public int CurrentPage { get; set; }
         public int TotalPages { get; set; }
 

@@ -140,7 +140,7 @@
         {
             <div class="col-md-4 mb-4 d-flex">
                 <div class="card w-100">
-                    <img src="/images/@game.photo" class="card-img-top" alt="@game.name">
+                    <a style="text-decoration:none; color:#a7b1c1" asp-controller="Items" asp-action="Details" asp-route-id="@game.Id"> <img src="/images/@game.photo" class="card-img-top" alt="@game.name"></a>
                     <div class="card-body ">
                         <h5 class="card-title">
                             <a style="text-decoration:none; color:#a7b1c1" asp-controller="Items" asp-action="Details" asp-route-id="@game.Id">@game.name</a>
@@ -149,16 +149,16 @@
                         {
                             @if (game.AverageRating >= 50 && game.AverageRating <= 69.9)
                         {
-                            <p style="font-size:20px" class="card-text text-warning">Point: @game.AverageRating</p>
+                                <p style="font-size:20px" class="card-text text-warning"> @game.AverageRating <span style="color:aliceblue">- Mixed</span></p>
 
                         } @if ( game.AverageRating >= 70)
                         {
-                                <p style="font-size:20px" class="card-text text-success">Point: @game.AverageRating</p>
+                                <p style="font-size:20px" class="card-text text-success"> @game.AverageRating <span style="color:aliceblue">- Positive</span></p>
 
                         }
                          @if (game.AverageRating < 49.9 )
                         {
-                                <p style="font-size:20px" class="card-text text-danger">Point: @game.AverageRating</p>
+                                <p style="font-size:20px" class="card-text text-danger"> @game.AverageRating <span style="color:aliceblue">- Negative</span></p>
 
                         }
                         }

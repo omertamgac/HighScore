@@ -98,6 +98,7 @@ namespace HightScore.Controllers
 
         public async Task<IActionResult> Details(int id, int pageNumber = 1, int pageSize = 8)
         {
+            // Verileri asenkron olarak al
             var game = await _itemManager.GetGameByIdAsync(id);
             var categories = await _itemCategoryManager.GetByIdAsync(id);
             var platforms = await _itemPlatformManager.GetByIdAsync(id);
@@ -108,15 +109,30 @@ namespace HightScore.Controllers
                 return NotFound();
             }
 
+            // Ortalama puanı hesapla
             double averageRating = await _itemManager.GetAverageRatingAsync(id);
 
-            int totalReviews = userReviews.Count();
+            // Kullanıcının ID'sini al
+            var currentUserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+            // Kullanıcının yorumunu ve diğer yorumları ayır
+            var userReview = userReviews.FirstOrDefault(r => r.UserId == currentUserId);
+            var otherReviews = userReviews.Where(r => r.UserId != currentUserId).ToList();
+
+            // Toplam inceleme sayısı
+            int totalReviews = otherReviews.Count() + (userReview != null ? 1 : 0);
             int totalPages = (int)Math.Ceiling(totalReviews / (double)pageSize);
 
-            var paginatedReviews = userReviews
-                                    .Skip((pageNumber - 1) * pageSize)
-                                    .Take(pageSize)
-                                    .ToList();
+            // Sayfalama işlemini uygula
+            var paginatedOtherReviews = otherReviews
+                                        .Skip((pageNumber - 1) * pageSize)
+                                        .Take(pageSize)
+                                        .ToList();
+
+            // Kullanıcının yorumu varsa ve bu ilk sayfadaysa, onu ekleyin
+            var paginatedReviews = (pageNumber == 1 && userReview != null)
+                                    ? new List<UserReview> { userReview }.Concat(paginatedOtherReviews).ToList()
+                                    : paginatedOtherReviews;
 
             var viewModel = new GameVM
             {
@@ -136,6 +152,7 @@ namespace HightScore.Controllers
 
             return View(viewModel);
         }
+
 
 
 

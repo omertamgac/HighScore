@@ -24,11 +24,11 @@
 </style>
 <link href="~/css/Details.css" rel="stylesheet" type="text/css" />
 
-<div class="container mt-4">
+<div  class="container mt-4">
     <div class="detail-container">
         <div class="game-image">
             <img src="/images/@Model.photo" alt="@Model.Title" class="img-fluid" />
-            <div class="game-details mt-4">
+            <div style="background-color: rgba(0, 0, 0, 0.5); border-radius:15px;" class="game-details mt-4">
                 <h4>Categories</h4>
                 <ul>
                     @foreach (var category in Model.Categories)
@@ -57,31 +57,33 @@
             </div>
             <p class="game-description">@Model.Description</p>
             <p class="game-description"><strong>Release Date:</strong> @Model.RelaseDate.ToShortDateString()</p>
+            @if (User.IsInRole("User"))
+            {
+                <div class="add-review-container">
+                    <h4>Add a Review</h4>
+                    <form asp-action="CreateComment" method="post">
+                        <div class="form-group">
+                            <label style="font-size:20px;margin:6px;" for="comment">Comment:</label>
+                            <textarea  class="form-control" id="comment" name="comment" rows="3" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label style="font-size:20px; margin:6px;" for="rating">Rating (1-100):</label>
+                            <input  type="number" class="form-control" id="rating" name="rating" min="1" max="100" required />
+                        </div>
+                        <input type="hidden" name="itemId" value="@Model.ItemId" />
+                        <button style="margin:6px;" type="submit" class="btn btn-success mt-2">Submit</button>
+                    </form>
+                </div>
+            }
         </div>
+
     </div>
 
-    @if (User.IsInRole("User"))
-    {
-        <div class="add-review-container">
-            <h4>Add a Review</h4>
-            <form asp-action="CreateComment" method="post">
-                <div class="form-group">
-                    <label for="comment">Comment:</label>
-                    <textarea class="form-control" id="comment" name="comment" rows="3" required></textarea>
-                </div>
-                <div class="form-group">
-                    <label for="rating">Rating (1-100):</label>
-                    <input type="number" class="form-control" id="rating" name="rating" min="1" max="100" required />
-                </div>
-                <input type="hidden" name="itemId" value="@Model.ItemId" />
-                <button type="submit" class="btn btn-success mt-2">Submit</button>
-            </form>
-        </div>
-    }
+   
 
     <div class="user-reviews">
         <h4>Reviews</h4>
-        @if (Model.UserReviews != null && Model.UserReviews.Count > 0)
+        @if (Model.UserReviews != null && Model.UserReviews.Any())
         {
             @foreach (var review in Model.UserReviews)
             {
@@ -140,7 +142,7 @@
             <p style="color:white;">There are no reviews yet.</p>
         }
     </div>
-</div>
+
 
 <script>
     document.addEventListener('DOMContentLoaded', function () {
