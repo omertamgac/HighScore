@@ -1,0 +1,44 @@
+body {
+    background-color: #222431;
+    color: #ffffff; /* Genel metin rengi beyaz */
+}
+
+.login-container {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    background: #333344; /* Form arka plan rengi */
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+    .login-container h1 {
+        margin-bottom: 20px;
+        color: #ffffff; /* Baþlýk rengi beyaz */
+    }
+
+.form-label {
+    color: #ffffff; /* Label rengi beyaz */
+}
+
+.btn-primary {
+    background-color: #28a745; /* Login butonu yeþil */
+    border-color: #28a745;
+}
+
+    .btn-primary:hover {
+        background-color: #218838; /* Hover rengini biraz daha koyu yapalým */
+        border-color: #1e7e34;
+    }
+
+.form-check-label {
+    color: #ffffff; /* Remember me etiketi beyaz */
+}
+
+.link-primary {
+    color: #17a2b8;
+}
+
+.text-dark {
+    color: #ffffff; /* Create an Account linki beyaz */
+}

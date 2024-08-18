@@ -1,0 +1,17 @@
+﻿body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    color: #333;
+}
+
+.section {
+    margin-bottom: 20px;
+}
+
+h1, h2, h3, ul, li, p {
+    color: azure;
+}
+
+.btn-primary {
+    margin-top: 20px;
+}
