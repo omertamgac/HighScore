@@ -21,6 +21,8 @@ builder.Services.AddScoped<IEmailSender, SmtpEmailSender>(i =>
 
 builder.Services.AddControllersWithViews();
 
+
+
 builder.Services.AddDbContext<AppDbContext>(options =>
 {
     var config = builder.Configuration;
