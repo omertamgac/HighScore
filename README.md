@@ -1,89 +1,94 @@
 # HighScore
 
-**HighScore**; oyun meraklılarına, oyunlar hakkında detaylı bilgi ve kullanıcı tabanlı değerlendirmeler sunan kapsamlı bir platformdur. Bu proje, oyunların hangi platformlara ne zaman çıktığı, hangi kategorilere dahil oldukları, oyunun konusu ve trailer videosu gibi geniş bir yelpazede bilgiler sunarak, kullanıcıların oyunlar hakkında bilinçli kararlar almasına yardımcı olmayı amaçlamaktadır. Kullanıcılar, bu platformda oyunları puanlayabilir ve yorum yapabilirler.
+**HighScore** is a comprehensive platform that provides detailed information and user-based evaluations about games for gaming enthusiasts. This project aims to help users make informed decisions about games by offering a wide range of details, such as which platforms the games have been released on, their release dates, categories, the game's storyline, and trailer videos. Users can rate games and leave reviews on this platform.
 
-## Proje Hakkında
+## About the Project
 
-### Amaç
+### Purpose
 
-HighScore, oyun severlerin bir araya gelip oyunlar hakkında düşüncelerini paylaşabilecekleri, oyunların çeşitli özellikleri hakkında bilgi edinebilecekleri ve topluluk tabanlı puanlama sistemi sayesinde oyunların kalitesi hakkında fikir sahibi olabilecekleri bir ortam yaratmayı amaçlar. Platform, kullanıcıların oyunlar hakkında objektif değerlendirmeler yapmalarını teşvik ederken, oyunların içerikleri ve özellikleri hakkında detaylı bilgi sunarak oyuncuların bilinçli tercihler yapmasını sağlar.
+HighScore aims to create an environment where gaming enthusiasts can come together to share their thoughts about games, gain insights into various features of games, and form opinions about the quality of games through a community-driven rating system. The platform encourages users to make objective evaluations about games while providing detailed information about the content and features of the games, enabling gamers to make informed choices.
 
-### Özellikler
+### Features
 
-#### Oyun Bilgileri
-HighScore, kullanıcılarına oyunlar hakkında aşağıdaki bilgileri sunar:
-- **Platform Bilgileri:** Oyunların hangi platformlara çıktığını veya çıkacağını gösterir.
-- **Çıkış Tarihleri:** Oyunların piyasaya çıkış tarihlerini içerir.
-- **Kategoriler:** Oyunların ait olduğu kategori veya türleri listeler.
-- **Oyun Konusu:** Oyunların hikayesi veya oynanış teması hakkında bilgiler sağlar.
-- **Trailer Videosu:** Oyunların tanıtım videolarını sunarak, kullanıcıların oyun hakkında görsel bir fikir sahibi olmasını sağlar.
+#### Game Information
+HighScore offers its users the following details about games:
+- **Platform Information:** Indicates which platforms the games have been released on or will be released on.
+- **Release Dates:** Includes the release dates of the games.
+- **Categories:** Lists the categories or genres the games belong to.
+- **Game Storyline:** Provides information about the storyline or theme of the gameplay.
+- **Trailer Videos:** Offers promotional videos of the games, allowing users to gain a visual understanding of the game.
 
-#### Puanlama ve Yorum Sistemi
-HighScore, kullanıcılarına oyunları puanlama ve yorum yapma imkanı tanır:
-- **Puanlama:** Kullanıcılar, oyunlara 100 üzerinden puan vererek, oyunların topluluk tarafından genel olarak nasıl değerlendirildiğini görme imkanı bulur.
-- **Yorumlar:** Kullanıcılar, oyunlar hakkında detaylı yorumlar yapabilir ve bu yorumları düzenleyebilir veya silebilirler. Yorumlar, diğer kullanıcılar tarafından görülebilir ve değerlendirilir.
+#### Rating and Review System
+HighScore allows users to rate and review games:
+- **Rating:** Users can rate games on a scale of 0 to 100, allowing the community to see how games are generally evaluated.
+- **Reviews:** Users can write detailed reviews about games and have the ability to edit or delete their reviews. Reviews are visible to other users and can be assessed by the community.
 
-#### Yönetim Paneli (Admin Özellikleri)
-HighScore, yönetici (Admin) kullanıcılarına geniş yetkiler sunar:
-- **Oyun Yönetimi:** Admin kullanıcılar, platforma yeni oyunlar ekleyebilir, mevcut oyunları düzenleyebilir ve gerektiğinde silebilir.
-- **Kullanıcı Yönetimi:** Adminler, kurallara uymayan kullanıcıları banlayabilir, silebilir veya yeni kullanıcılar ekleyebilir. Ayrıca, kullanıcılar için yeni roller oluşturabilir ve bu rolleri atayabilir.
-- **Yorum Yönetimi:** Adminler, kurallara uygun olmayan veya topluluk standartlarına aykırı olan yorumları platformdan kaldırabilir.
+#### Admin Panel (Admin Features)
+HighScore provides extensive permissions to admin users:
+- **Game Management:** Admin users can add new games to the platform, edit existing games, and delete them if necessary.
+- **User Management:** Admins can ban, delete, or add new users who do not comply with the rules. They can also create new roles for users and assign these roles accordingly.
+- **Review Management:** Admins can remove comments from the platform that do not adhere to the rules or community standards.
 
-#### Kullanıcı Rolleri
-HighScore'da iki ana kullanıcı rolü bulunmaktadır:
-- **Standart Kullanıcılar (User):** Oyunları inceleyebilir, oyunlar hakkında yorum yapabilir ve puan verebilirler. Ayrıca, yaptıkları yorumları düzenleyebilir veya silebilirler.
-- **Yönetici Kullanıcılar (Admin):** Daha geniş yetkilere sahip olup, platformdaki içerik ve kullanıcı yönetiminden sorumludurlar.
+#### User Roles
+There are two main user roles in HighScore:
+- **Standard Users:** They can browse games, write reviews about games, and rate them. They also have the ability to edit or delete their own reviews.
+- **Admin Users:** They have broader permissions and are responsible for managing the content and users on the platform.
 
-## Kullanılan Teknolojiler
+## Technologies Used
 
-HighScore, modern web geliştirme teknolojilerini kullanarak geliştirilmiştir:
-- **Frontend Teknolojileri:**
-  - **HTML5:** Web sayfalarının yapısını oluşturmak için.
-  - **CSS3:** Sayfaların görsel tasarımını ve stilini belirlemek için.
-  - **JavaScript:** Etkileşimli ve dinamik kullanıcı deneyimleri sunmak için.
-  - **jQuery:** JavaScript işlemlerini kolaylaştırmak ve AJAX işlemlerini yönetmek için.
-  - **Bootstrap 5:** Mobil uyumlu ve modern bir kullanıcı arayüzü oluşturmak için.
+HighScore is developed using modern web development technologies:
 
-- **Backend Teknolojileri:**
-  - **ASP.NET Core 8:** Web uygulamasının temel altyapısını sağlamak ve sunucu tarafı işlemleri yönetmek için.
-  - **MySQL:** Veritabanı yönetimi ve veri saklama işlemleri için.
-  - **ASP.NET Identity:** Kullanıcı kimlik doğrulama ve yetkilendirme işlemleri için.
+- **Frontend Technologies:**
+  - **HTML5:** For structuring web pages.
+  - **CSS3:** For defining the visual design and style of the pages.
+  - **JavaScript:** To provide interactive and dynamic user experiences.
+  - **jQuery:** To simplify JavaScript tasks and manage AJAX operations.
+  - **Bootstrap 5:** To create a mobile-responsive and modern user interface.
 
-- **Mimari:** MVC (Model-View-Controller) ve 3 katmanlı mimari kullanılarak, kodun daha yönetilebilir, test edilebilir ve ölçeklenebilir olması sağlanmıştır.
+- **Backend Technologies:**
+  - **ASP.NET Core 8:** To provide the foundational infrastructure and handle server-side operations.
+  - **MySQL:** For database management and data storage.
+  - **ASP.NET Identity:** For managing user authentication and authorization.
 
-## Kurulum ve Kullanım
+- **Architecture:** The project follows the MVC (Model-View-Controller) pattern and utilizes a 3-layer architecture, ensuring the code is more manageable, testable, and scalable.
 
-HighScore platformunu yerel ortamınızda çalıştırmak için aşağıdaki adımları izleyebilirsiniz:
+## Installation and Usage
 
-### 1. Projeyi Klonlama
-Öncelikle, projeyi GitHub üzerindeki depodan yerel makinenize klonlayın:
+To run the HighScore platform on your local environment, follow these steps:
+
+### 1. Clone the Project
+First, clone the project from the GitHub repository to your local machine:
 ```bash
 git clone https://github.com/omertamgac/HighScore.git
 ```
 
-### 2. Bağımlılıkların Yüklenmesi
-Projenin kök dizininde gerekli bağımlılıkları yüklemek için aşağıdaki komutu çalıştırın:
+### 2. Install Dependencies
+Navigate to the root directory of the project and run the following command to install the required dependencies:
 ```bash
 dotnet restore
 ```
 
-### 3. Veritabanı Yapılandırması
-MySQL veritabanınızı oluşturun ve bağlantı dizesini `appsettings.json` dosyasına ekleyin. Veritabanı migrasyonlarını uygulamak için:
+### 3. Database Configuration
+Set up your MySQL database and add the connection string to the `appsettings.json` file. Apply the database migrations by running:
 ```bash
 dotnet ef database update
 ```
 
-### 4. Uygulamanın Çalıştırılması
-Projeyi çalıştırmak için aşağıdaki komutu kullanabilirsiniz:
+### 4. Running the Application
+To run the project, use the following command:
 ```bash
 dotnet run
 ```
-Bu komut, uygulamayı yerel sunucunuzda başlatacak ve projeyi tarayıcınızda çalıştırabileceksiniz.
+This command will start the application on your local server, and you can view the project in your browser.
 
-## Katkıda Bulunma
+## Contributing
 
-HighScore projesine katkıda bulunmak isterseniz, GitHub üzerinde bir `issue` açabilir veya bir `pull request` gönderebilirsiniz. Her türlü geri bildirim ve katkı, projenin gelişmesine yardımcı olacaktır.
+If you would like to contribute to the HighScore project, feel free to open an `issue` or submit a `pull request` on GitHub. Any feedback and contributions are welcome and will help the project improve.
 
-## Lisans
+## License
 
-Bu proje MIT Lisansı ile lisanslanmıştır. Detaylar için `LICENSE` dosyasına göz atabilirsiniz.
+This project is licensed under the MIT License. For more information, please refer to the `LICENSE` file.
+
+--- 
+
+This description is professional and comprehensive, giving potential contributors and users a clear understanding of the project's goals, features, and technologies used.
